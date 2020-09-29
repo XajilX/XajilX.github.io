@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2020/09/28/BSGS/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-09-28T07:20:30.934Z">
+<meta property="og:updated_time" content="2020-09-28T13:25:28.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BSGS求离散对数">
 
@@ -365,18 +365,29 @@
 <h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展:"></a>扩展:</h2><p>当$(a,p) \ne 1$时, 上面的普通BSGS将会失效, 因为此时无法求得逆元. </p>
 <p>此时需要将其转化为$(a,p) = 1$的形式. </p>
 <p>首先给出一个定理: </p>
-<script type="math/tex; mode=display">\frac{a}{d} \equiv \frac{b}{d} (mod\ \frac{m}{d})</script><p>其中$d | (a,b,m)$(证明见最下). </p>
+<script type="math/tex; mode=display">\frac{a}{d} \equiv \frac{b}{d} (mod\ \frac{m}{d})\ (1)</script><p>其中$d | (a,b,m)$(证明见最下). </p>
 <p>若$d \nmid b$, 则根据裴蜀定理, 原式无解, 返回-1. ($a \cdot a^{x-1} +py = b$), 否则可以利用这个公式将原式: </p>
 <script type="math/tex; mode=display">a^x \equiv b (mod\ p)</script><p>化为: </p>
 <script type="math/tex; mode=display">a^{x-1} \cdot \frac{a}{d} \equiv \frac{b}{d} (mod\ \frac{p}{d})</script><p>其中$d = (a,p)$. </p>
 <p>继续变换, 可得: </p>
-<script type="math/tex; mode=display">a^{x-k} \cdot \frac{a}{\prod^{k}_{i}d_i} \equiv \frac{b}{\prod^{k}_{i}d_i}(mod\ \frac{p}{\prod^{k}_{i}d_i})</script><p>其中$d_i$为每次变换时的$(a,\frac{p}{\prod^{i-1}_{j}d_j})$</p>
-<p>此时$(a,\frac{p}{\prod^{k}_{i}d_i})=1$. 令$c = \frac{a}{\prod^{k}_{i}d_i}$, $b’ = \frac{b}{\prod^{k}_{i}d_i}$, $p’ = \frac{p}{\prod^{k}_{i}d_i}$, 上式可写为: </p>
+<script type="math/tex; mode=display">a^{x-k} \cdot \frac{a^k}{\prod^{k}_{i}d_i} \equiv \frac{b}{\prod^{k}_{i}d_i}(mod\ \frac{p}{\prod^{k}_{i}d_i})</script><p>其中$d_i$为每次变换时的$(a,\frac{p}{\prod^{i-1}_{j}d_j})$</p>
+<p>此时$(a,\frac{p}{\prod^{k}_{i}d_i})=1$. 令$c = \frac{a^k}{\prod^{k}_{i}d_i}$, $b’ = \frac{b}{\prod^{k}_{i}d_i}$, $p’ = \frac{p}{\prod^{k}_{i}d_i}$, 上式可写为: </p>
 <script type="math/tex; mode=display">\begin{aligned}
 & a^{x-k} \cdot c \equiv b'(mod\ p') \\
 \Rightarrow & a^{x-k} \equiv b' \cdot c^{-1}(mod\ p')
 \end{aligned}</script><p>这样, 我们就把$(a,p) \neq 1$的情况转化为了$(a,p) = 1$的情况, 然后用普通的BSGS解决就行了. </p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">exbsgs</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> p,<span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> c = <span class="number">1</span>,g,k(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">while</span>((g=gcd(a,p))!=<span class="number">1</span>) &#123;    <span class="comment">//将(a,p) != 1的情况化归</span></span><br><span class="line">        <span class="keyword">if</span>(b%g!=<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        c = c*(a/g)%p;</span><br><span class="line">        b /= g;</span><br><span class="line">        p /= g;</span><br><span class="line">        ++k;</span><br><span class="line">        <span class="keyword">if</span>(b == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> k;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    b = b*inv(c,p)%p;</span><br><span class="line">    <span class="comment">/* 普通BSGS流程 */</span></span><br><span class="line">    <span class="keyword">int</span> m = <span class="built_in">ceil</span>(<span class="built_in">sqrt</span>(p));</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; e;</span><br><span class="line">    e[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> x = a%p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i(<span class="number">1</span>);i&lt;m;++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(x==b) &#123;</span><br><span class="line">            <span class="keyword">return</span> i+k; <span class="comment">//记得答案要+k, 因为普通BSGS求得的是x-k</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!e.count(x)) &#123;</span><br><span class="line">            e[x] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        x = x*a%p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> anm = inv(x,p);</span><br><span class="line">    x = (b*anm)%p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i(<span class="number">1</span>);i&lt;=m;++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(e.count(x)) &#123;</span><br><span class="line">            <span class="keyword">return</span> i*m + e[x] + k;  <span class="comment">//同上</span></span><br><span class="line">        &#125;</span><br><span class="line">        x = (x*anm)%p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="证明"><a href="#证明" class="headerlink" title="证明:"></a>证明:</h2><p>首先是公式$(1)$: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+& a \equiv b(mod\ m) \\
+\Rightarrow & a-b = km (k \in \Z) \\
+\Rightarrow & \frac{a}{d} - \frac{b}{d} = k \cdot \frac{m}{d} \\
+\Rightarrow & \frac{a}{d} \equiv \frac{b}{d} (mod\ \frac{m}{d})
+\end{aligned}</script><p>接着是文字证明为何$c$在$mod\ p’$意义下有逆元: </p>
+<p>通过化归的过程, 有: $(a,p’) = 1$</p>
+<p>这意味着对$a,p’$进行质因数分解后, 它们两个没有相同的质因数. </p>
+<p>同时$c = \frac{a^k}{\prod^{k}_{i}d_i}$, 不会从$a$中产生新的质因数, 所以$c,p’$也没有相同的质因数, $(c,p’) = 1$, $c$在$mod\ p’$意义下逆元存在. </p>
+
       
     </div>
     
@@ -566,7 +577,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展"><span class="nav-number">3.</span> <span class="nav-text">扩展:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展"><span class="nav-number">3.</span> <span class="nav-text">扩展:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#证明"><span class="nav-number">4.</span> <span class="nav-text">证明:</span></a></li></ol></div>
             
 
           </div>
