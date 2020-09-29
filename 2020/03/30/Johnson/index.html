@@ -89,7 +89,7 @@
 <meta property="og:image" content="http://yoursite.com/img/Johnson2.png">
 <meta property="og:image" content="http://yoursite.com/img/Johnson3.png">
 <meta property="og:image" content="http://yoursite.com/img/Johnson4.png">
-<meta property="og:updated_time" content="2020-06-28T05:24:07.388Z">
+<meta property="og:updated_time" content="2020-09-29T13:32:44.510Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Johnson全源最短路">
 <meta name="twitter:image" content="http://yoursite.com/img/Johnson.png">
@@ -373,20 +373,20 @@
 <h3 id="证明1-2"><a href="#证明1-2" class="headerlink" title="证明1/2:"></a>证明1/2:</h3><p>重构后的图中, 从$s$到$t$的一条路径$s \to p_1 \to p_2 \to \cdots \to p_k \to t$的长度为:<br>
 <script type="text/javascript" src="/js/custom/switcher.js"></script>
 <script>
-    var sMob = [
-        '$$  \\begin{align*}',
-        '& (w \\langle s,p_1 \\rangle -h_{p_1}+h_s) \\\\',
-        '& + (w \\langle p_1,p_2 \\rangle -h_{p_2}+h_{p_1}) \\\\',
-        '& + \\cdots \\\\',
-        '& + (w \\langle p_k,t \\rangle -h_t+h_{p_k}) \\\\',
-        '= &  \\ (w \\langle s,p_1 \\rangle +w \\langle p_1,p_2 \\rangle + \\cdots +w \\langle p_k,t \\rangle) \\\\',
-        '& - h_t + h_s',
-        '\\end{align*} $$'].join('\n');
-    var sPC = [
-        '$$ \\begin{align*}',
-        '& (w \\langle s,p_1 \\rangle -h_{p_1}+h_s) + (w \\langle p_1,p_2 \\rangle -h_{p_2}+h_{p_1}) + \\cdots + (w \\langle p_k,t \\rangle -h_t+h_{p_k}) \\\\',
-        '= & (w \\langle s,p_1 \\rangle +w \\langle p_1,p_2 \\rangle + \\cdots +w \\langle p_k,t \\rangle) - h_t + h_s',
-        '\\end{align*} $$'].join('\n');
+    var sMob = String.raw
+        `$$  \begin{aligned}
+        & (w \langle s,p_1 \rangle -h_{p_1}+h_s) \\
+        & + (w \langle p_1,p_2 \rangle -h_{p_2}+h_{p_1}) \\
+        & + \cdots \\
+        & + (w \langle p_k,t \rangle -h_t+h_{p_k}) \\
+        = &  \ (w \langle s,p_1 \rangle +w \langle p_1,p_2 \rangle + \cdots +w \langle p_k,t \rangle) \\
+        & - h_t + h_s
+        \end{aligned} $$`;
+    var sPC = String.raw
+        `$$ \begin{aligned}
+        & (w \langle s,p_1 \rangle -h_{p_1}+h_s) + (w \langle p_1,p_2 \rangle -h_{p_2}+h_{p_1}) + \cdots + (w \langle p_k,t \rangle -h_t+h_{p_k}) \\
+        = & (w \langle s,p_1 \rangle +w \langle p_1,p_2 \rangle + \cdots +w \langle p_k,t \rangle) - h_t + h_s
+        \end{aligned} $$`;
     document.write(switcher(sPC,sMob));
 </script>
 </p>
