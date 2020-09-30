@@ -89,7 +89,7 @@
 <meta property="og:image" content="http://yoursite.com/img/Johnson2.png">
 <meta property="og:image" content="http://yoursite.com/img/Johnson3.png">
 <meta property="og:image" content="http://yoursite.com/img/Johnson4.png">
-<meta property="og:updated_time" content="2020-09-30T04:42:45.252Z">
+<meta property="og:updated_time" content="2020-09-30T04:59:42.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Johnson全源最短路">
 <meta name="twitter:image" content="http://yoursite.com/img/Johnson.png">
@@ -371,7 +371,7 @@
 <p>时间复杂度为$O(nm+nmlogn)$</p>
 <h2 id="正确性证明"><a href="#正确性证明" class="headerlink" title="正确性证明:"></a>正确性证明:</h2><p>需要证明的是两个命题, 即重构后的图上的最短路径和原图的最短路径一致, 以及重构后每条边的边权均为非负值. </p>
 <h3 id="证明1-2"><a href="#证明1-2" class="headerlink" title="证明1/2:"></a>证明1/2:</h3><p>重构后的图中, 从$s$到$t$的一条路径$s \to p_1 \to p_2 \to \cdots \to p_k \to t$的长度为:<br>
-<script type="text/javascript" src="/js/custom/switcher.js"></script>
+<!-- script type="text/javascript" src="/js/custom/switcher.js"></script>
 <script>
     var sMob = String.raw`$$  \begin{aligned}
         & (w \langle s,p_1 \rangle -h_{p_1}+h_s) \\
@@ -386,7 +386,7 @@
         = & (w \langle s,p_1 \rangle +w \langle p_1,p_2 \rangle + \cdots +w \langle p_k,t \rangle) - h_t + h_s
         \end{aligned} $$`;
     document.write(switcher(sPC,sMob));
-</script>
+</script -->
 </p>
 <p>从这里可以看出”势能”这个名字的由来: 无论走哪条路径, 最后的$h_t-h_s$是不变的. </p>
 <p>同时由于$h_t-h_s$是定值, 前面的部分为原图的路径长度, 因此<strong>重构后图上的每条路径都与原图相对应</strong></p>
