@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2020/09/30/Lucas/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-09-30T14:29:51.798Z">
+<meta property="og:updated_time" content="2020-10-01T03:32:24.134Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卢卡斯定理">
 
@@ -369,10 +369,22 @@
 (1+x)^p & = 1 + \sum_{i=1}^{p-1} {p \choose i} x^i + x^p \\
 & \equiv 1 + x^p(mod\ p)
 \end{aligned}</script><p>将该式代入上式, 有: </p>
-<script type="math/tex; mode=display">\begin{aligned}
-& (1+x)^n \equiv (1+x^p)^s \cdot (1+x)^q(mod\ p) \\
-\iff & \sum_{i=0}^{n} {n \choose i} x^i \equiv \sum_{i=0}^{s} {s \choose i}x^{ip} \cdot \sum_{i=0}^{q} {q \choose i}x^i(mod\ p)
-\end{aligned}</script><p>左边取$x^m$, 当$0 \leq q &lt; p$时, 右侧两个二项式只能取$x^{tp}$和$x^r$, 有: </p>
+
+<script type="text/javascript" src="/js/custom/switcher.js"></script>
+<script>
+    var sPC = String.raw`$$ \begin{aligned}
+        & (1+x)^n \equiv (1+x^p)^s \cdot (1+x)^q(mod\ p) \\
+        \iff & \sum_{i=0}^{n} {n \choose i} x^i \equiv \sum_{i=0}^{s} {s \choose i}x^{ip} \cdot \sum_{i=0}^{q} {q \choose i}x^i(mod\ p)
+        \end{aligned} $$`;
+    var sMob = String.raw`$$ \begin{aligned}
+        & (1+x)^n \equiv (1+x^p)^s \cdot (1+x)^q(mod\ p) \\
+        \iff & \sum_{i=0}^{n} {n \choose i} x^i \equiv \sum_{i=0}^{s} {s \choose i}x^{ip} \cdot \sum_{i=0}^{q} {q \choose i}x^i \\
+        & (mod\ p)
+        \end{aligned} $$`;
+    document.write(switcher(sPC,sMob));
+</script>
+
+<p>左边取$x^m$, 当$0 \leq q &lt; p$时, 右侧两个二项式只能取$x^{tp}$和$x^r$, 有: </p>
 <script type="math/tex; mode=display">{n \choose m}x^m \equiv {s \choose t}x^{tp} \cdot {q \choose r}x^r (mod\ p)</script><p>左右消去$x^m$, 即证得卢卡斯定理: </p>
 <script type="math/tex; mode=display">{n \choose m} \equiv {s \choose t}{q \choose r}(mod\ p)</script>
       
