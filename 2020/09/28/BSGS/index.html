@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2020/09/28/BSGS/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-09-29T10:57:24.952Z">
+<meta property="og:updated_time" content="2020-10-04T08:33:07.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BSGS求离散对数">
 
@@ -366,7 +366,7 @@
 <p>此时需要将其转化为$(a,p) = 1$的形式. </p>
 <p>首先给出一个定理: </p>
 <script type="math/tex; mode=display">\frac{a}{d} \equiv \frac{b}{d} (mod\ \frac{m}{d})\ (1)</script><p>其中$d | (a,b,m)$(证明见最下). </p>
-<p>若$d \nmid b$, 则根据裴蜀定理, 原式无解, 返回-1. ($a \cdot a^{x-1} +py = b$), 否则可以利用这个公式将原式: </p>
+<p>若$d \nmid b$, 除了$b=1$的情况下$x=0$, 否则根据裴蜀定理, 原式无解, 返回-1. ($a \cdot a^{x-1} +py = b$) 否则可以利用这个公式将原式: </p>
 <script type="math/tex; mode=display">a^x \equiv b (mod\ p)</script><p>化为: </p>
 <script type="math/tex; mode=display">a^{x-1} \cdot \frac{a}{d} \equiv \frac{b}{d} (mod\ \frac{p}{d})</script><p>其中$d = (a,p)$. </p>
 <p>继续变换, 可得: </p>
