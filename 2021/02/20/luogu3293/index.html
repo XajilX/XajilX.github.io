@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:description" content="原题链接">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-02-20T10:06:19.589Z">
+<meta property="og:updated_time" content="2021-02-20T10:15:42.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(luogu3293)美味(SCOI2016)">
 <meta name="twitter:description" content="原题链接">
@@ -366,7 +366,7 @@
       
         <p><a href="https://www.luogu.com.cn/problem/P3293" target="_blank" rel="noopener">原题链接</a><br><a id="more"></a></p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>先将$a_j+x_i$看作一个整体, 与$b_i$求最大异或和. </p>
-<p>求最大异或和使用<strong>贪心</strong>的方法, 即从高位往低位枚举, 尽量使某一位异或异或值为1. </p>
+<p>求最大异或和使用<strong>贪心</strong>的方法, 即从高位往低位枚举, 尽量使某一位异或值为1. </p>
 <p>假设前$i-1$位处理完后结果为$ans$, 则第$i$位为0时$a+x$取值范围是$[ans,ans+2^{i}-1]$, 为1时取值范围是$[ans+2^i,ans+2^{i+1}-1]$. </p>
 <p>于是对于$a$, 两个取值范围为$[ans-x,ans+2^{i}-x-1]$ 和 $[ans+2^i-x,ans+2^{i+1}-x-1]$</p>
 <p>问题便转换为数组区间$[l,r]$内是否有指定<strong>值域</strong>的数, 使用<strong>主席树</strong>即可. </p>
