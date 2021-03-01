@@ -252,6 +252,195 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/01/LeftistHeap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AjiL">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AjiL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/03/01/LeftistHeap/" itemprop="url">左偏树(左偏堆)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-01T21:19:01+08:00">
+                2021-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index">
+                    <span itemprop="name">note</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<h2 id="什么是左偏树-堆"><a href="#什么是左偏树-堆" class="headerlink" title="什么是左偏树(堆):"></a>什么是左偏树(堆):</h2><p>左偏树是一种比较常用的<strong>可并二叉堆</strong>. 支持在最坏$O(log\ n)$的时间复杂度内进行堆的合并操作. </p>
+<h2 id="相关定义"><a href="#相关定义" class="headerlink" title="相关定义:"></a>相关定义:</h2><p><em>外结点:</em> 左儿子或右儿子为空的结点. </p>
+<p><em>距离:</em> 一个结点到离它最近的外结点的距离. 特殊地, 外结点本身距离为0, 空结点距离为-1. </p>
+<h2 id="左偏树的性质及结论"><a href="#左偏树的性质及结论" class="headerlink" title="左偏树的性质及结论:"></a>左偏树的性质及结论:</h2><ol>
+<li><p>左偏树满足<strong>堆性质</strong>. </p>
+</li>
+<li><p>左偏树满足<strong>左偏性质</strong>, 即对于<strong>每个结点, 其左子结点距离$d_{ls}$大于等于右子结点距离$d_{rs}$</strong>. </p>
+</li>
+<li><p>由2, 结点$x$的距离$d_x = d_{rs} + 1$. </p>
+</li>
+<li><p>根结点距离为$d$的左偏树最少有$2^{n+1}-1$个结点, 此时该树为一个<strong>满二叉树</strong>. </p>
+</li>
+<li><p>同4, $n$个结点的左偏树距离最大为$log_2n$. </p>
+</li>
+</ol>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作:"></a>基本操作:</h2><p>左偏树最基本操作便是合并操作. </p>
+<p>定义函数<code>merge(x,y)</code>, 作用是将根为$x, y$的两个堆合并, 返回合并后堆的根. </p>
+<p>以小根堆为例, 基本步骤如下: </p>
+<ol>
+<li>若$x,y$其中有一个结点为空结点, 则返回另一个结点. 否则下一步</li>
+<li>若$v_x&lt;v_y$, 则以$x$作为合并后的根结点, 否则以$y$作为根结点. 为避免讨论, 当$v_x \geq v_y$时, 直接交换$x,y$. </li>
+<li>将$y$与$x$的左儿子进行合并, 即$ls_x=merge(ls_x,y)$. </li>
+<li>合并完成后维护左偏性质: 当$d_{ls}&lt;d_{rs}$时交换左右儿子. </li>
+</ol>
+<p>示例代码如下所示: </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sn[x][0]为左儿子, sn[x][1]为右儿子</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(a[i]&gt;a[j] || (a[i]==a[j] &amp;&amp; i&gt;j)) &#123;</span><br><span class="line">        swap(i,j);</span><br><span class="line">    &#125;</span><br><span class="line">    sn[i][<span class="number">1</span>] = merge(j,sn[i][<span class="number">1</span>]);</span><br><span class="line">    fa[sn[i][<span class="number">1</span>]] = i;</span><br><span class="line">    <span class="keyword">if</span>(d[sn[i][<span class="number">0</span>]]&lt;d[sn[i][<span class="number">1</span>]]) &#123;</span><br><span class="line">        swap(sn[i][<span class="number">0</span>],sn[i][<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    d[i] = d[sn[i][<span class="number">1</span>]] + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作:"></a>其他操作:</h2><p><strong>插入:</strong> 将插入结点当作左偏堆合并即可. </p>
+<p><strong>删除:</strong> 将根的左右子结点合并即可. </p>
+<p><strong>寻找所在堆的根结点:</strong> 直接沿着父结点向上寻找. </p>
+<p><strong>路径压缩优化找根:</strong></p>
+<p>类似于并查集, 每个结点记录一个值$rt$, 在递归找根时顺便压缩$rt$. </p>
+<p>需要注意的是删除根节点$x$时可能有部分结点$rt = x$, 此时要将$rt_x$指向左右子结点合并后的新根. </p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h2><p>左偏树由于具有合并和找根的功能, 可以算作是并查集的”进化版”. </p>
+<p>同时由于具有权值, 可以用于树上的合并之中. </p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题:"></a>例题:</h2><p><a href="https://www.luogu.com.cn/problem/P3377" target="_blank" rel="noopener">(luogu3377)【模板】左偏树（可并堆）</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">int</span> <span class="title">Mn</span><span class="params">(<span class="number">100500</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>&amp; x,<span class="keyword">int</span>&amp; y)</span> </span>&#123;   <span class="comment">//交换</span></span><br><span class="line">    x ^= y ^= x ^= y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">qrd</span><span class="params">(<span class="keyword">int</span>&amp; x)</span> </span>&#123;  <span class="comment">//快读</span></span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> c = getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">        c = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">        x = x*<span class="number">10</span> + c-<span class="string">'0'</span>;</span><br><span class="line">        c = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> a[Mn];  <span class="comment">//权值</span></span><br><span class="line"><span class="keyword">int</span> fa[Mn], sn[Mn][<span class="number">2</span>];  <span class="comment">//根结点, 左右子结点</span></span><br><span class="line"><span class="keyword">int</span> d[Mn];  <span class="comment">//距离</span></span><br><span class="line"><span class="keyword">bool</span> isd[Mn];   <span class="comment">//是否被删除</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span> </span>&#123;    <span class="comment">//合并</span></span><br><span class="line">    <span class="keyword">if</span>(i==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(a[i]&gt;a[j] || (a[i]==a[j] &amp;&amp; i&gt;j)) &#123;</span><br><span class="line">        swap(i,j);</span><br><span class="line">    &#125;</span><br><span class="line">    sn[i][<span class="number">1</span>] = merge(j,sn[i][<span class="number">1</span>]);</span><br><span class="line">    fa[sn[i][<span class="number">1</span>]] = i;</span><br><span class="line">    <span class="keyword">if</span>(d[sn[i][<span class="number">0</span>]]&lt;d[sn[i][<span class="number">1</span>]]) &#123;</span><br><span class="line">        swap(sn[i][<span class="number">0</span>],sn[i][<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    d[i] = d[sn[i][<span class="number">1</span>]] + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;   <span class="comment">//找根(用到了路径压缩)</span></span><br><span class="line">    <span class="keyword">return</span> fa[x] == <span class="number">0</span> ? x : fa[x] = find(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    qrd(n), qrd(m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i(<span class="number">1</span>);i&lt;=n;++i) &#123;</span><br><span class="line">        qrd(a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(m--) &#123;</span><br><span class="line">        <span class="keyword">int</span> o;</span><br><span class="line">        qrd(o);</span><br><span class="line">        <span class="keyword">if</span>(o==<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> x,y;</span><br><span class="line">            qrd(x), qrd(y);</span><br><span class="line">            <span class="keyword">if</span>(!isd[x]&amp;&amp;!isd[y]) &#123;</span><br><span class="line">                <span class="keyword">int</span> rx = find(x);</span><br><span class="line">                <span class="keyword">int</span> ry = find(y);</span><br><span class="line">                <span class="keyword">if</span>(rx!=ry) &#123;    <span class="comment">//只有当两个数不在同一堆里才合并</span></span><br><span class="line">                    merge(rx,ry);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> x;</span><br><span class="line">            qrd(x);</span><br><span class="line">            <span class="keyword">if</span>(isd[x]) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> rx = find(x);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a[rx]);</span><br><span class="line">                isd[rx] = <span class="literal">true</span>;</span><br><span class="line">                fa[sn[rx][<span class="number">0</span>]] = fa[sn[rx][<span class="number">1</span>]] = <span class="number">0</span>;</span><br><span class="line">                fa[rx] = merge(sn[rx][<span class="number">0</span>],sn[rx][<span class="number">1</span>]);    <span class="comment">//将rx的根指向合并后的新根</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/20/luogu3293/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1719,163 +1908,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/04/exLucas/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="AjiL">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AjiL's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/04/exLucas/" itemprop="url">扩展Lucas定理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-04T20:25:47+08:00">
-                2020-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/" itemprop="url" rel="index">
-                    <span itemprop="name">note</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/数论/" itemprop="url" rel="index">
-                    <span itemprop="name">数论</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><del>蛮怪的</del><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/11/04/exLucas/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1928,7 +1960,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">114</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1950,7 +1982,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
