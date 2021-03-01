@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2020/01/21/inter-grie/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-28T05:24:07.404Z">
+<meta property="og:updated_time" content="2021-03-01T13:28:56.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="区间贪心">
 
@@ -350,7 +350,8 @@
       
 
       
-        <p><br> <a id="more"></a></p>
+        <hr>
+<a id="more"></a>
 <h2 id="区间覆盖"><a href="#区间覆盖" class="headerlink" title="区间覆盖:"></a>区间覆盖:</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述:"></a>问题描述:</h3><p>给定$n$个区间$[s_i,t_i]$, 选择最少的区间, 覆盖给定区间$[s,t]$</p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h3><p>将区间按$s_i$从小到大排序, 如果第一个起点$s_1 &gt; s$, 则无解, 否则选取$t_i$离$s$最远的区间. </p>
 <p>此时可将指定区间视作$[t_i+1,t]$, 继续上述操作, 直至$t_i \ge t$</p>

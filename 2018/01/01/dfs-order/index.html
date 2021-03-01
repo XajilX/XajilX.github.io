@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/tree.png">
-<meta property="og:updated_time" content="2020-06-28T05:24:07.404Z">
+<meta property="og:updated_time" content="2021-03-01T13:28:38.103Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dfs序">
 <meta name="twitter:image" content="http://yoursite.com/img/tree.png">
@@ -352,7 +352,9 @@
       
 
       
-        <p><br><a id="more"></a><br>dfs序是一种处理树的方法, 它可以<strong>把树上的操作变为序列操作</strong>, 从而简化树上的操作</p>
+        <hr>
+<a id="more"></a>
+<p>dfs序是一种处理树的方法, 它可以<strong>把树上的操作变为序列操作</strong>, 从而简化树上的操作</p>
 <h2 id="如何生成dfs序"><a href="#如何生成dfs序" class="headerlink" title="如何生成dfs序"></a>如何生成dfs序</h2><p><img src="/img/tree.png" alt="tree"></p>
 <p>首先, 设置一个全局变量dfs_clock, 它的作用是记录访问某个结点的时间<br><br>然后对树进行dfs, 每次访问到一个结点时dfs_clock都+1<br><br>然后根据dfs时访问的顺序将树的每一个结点的信息存储下来</p>
 <p>比如上面那棵树的dfs序就是: 1,2,5,6,3,4,7,8,9</p>

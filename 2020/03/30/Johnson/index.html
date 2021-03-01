@@ -89,7 +89,7 @@
 <meta property="og:image" content="http://yoursite.com/img/Johnson2.png">
 <meta property="og:image" content="http://yoursite.com/img/Johnson3.png">
 <meta property="og:image" content="http://yoursite.com/img/Johnson4.png">
-<meta property="og:updated_time" content="2020-09-30T07:36:26.181Z">
+<meta property="og:updated_time" content="2021-03-01T13:29:02.582Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Johnson全源最短路">
 <meta name="twitter:image" content="http://yoursite.com/img/Johnson.png">
@@ -355,7 +355,8 @@
       
 
       
-        <p><br><a id="more"></a></p>
+        <hr>
+<a id="more"></a>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h2><p>最为熟知的全源最短路算法肯定是floyd, 时间复杂度是$O(n^3)$. </p>
 <p>但是当给出的图是稀疏图, 边权为非负值时, 可以直接跑n遍dijkstra, 时间复杂度是$O(nmlogn)$, 此时m(边数)与n(点数)同阶, 要比floyd更优. </p>
 <p>但dijkstra不能正确求解带负权边的最短路, 对于带负权边的图我们需要经过预处理, 使得所有的边权非负. 这便是Johnson算法要做的. </p>
