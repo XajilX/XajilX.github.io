@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/luogu1311_sample.png">
-<meta property="og:updated_time" content="2020-06-28T05:24:07.404Z">
+<meta property="og:updated_time" content="2021-03-01T13:33:54.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(luogu1311)选择客栈">
 <meta name="twitter:image" content="http://yoursite.com/img/luogu1311_sample.png">
@@ -352,7 +352,8 @@
       
 
       
-        <p><br><a id="more"></a></p>
+        <hr>
+<a id="more"></a>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>用一个二维数组存储下每个位置之前的所有的颜色的客栈个数(即前缀和), 并记录下每一个在限制范围内的客栈</p>
 <p>以这些客栈为分割点, 将整个区间分为若干段(不包括分割点)</p>
 <p>对于每个分割点, 统计它之前的区间与后面的一段的方案数, 对分割点单独统计, 这样便可以做到不重复也不遗漏统计</p>

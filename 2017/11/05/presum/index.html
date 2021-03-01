@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/11/05/presum/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-28T05:24:07.412Z">
+<meta property="og:updated_time" content="2021-03-01T13:37:26.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前缀和思想">
 
@@ -350,7 +350,8 @@
       
 
       
-        <p><br><a id="more"></a></p>
+        <hr>
+<a id="more"></a>
 <h2 id="前缀和的定义"><a href="#前缀和的定义" class="headerlink" title="前缀和的定义:"></a>前缀和的定义:</h2><p>对于一个数组a[i], 定义一个数组sum[i], 其中sum[0]=0, sum[i]=(a[1]+a[2]+…+a[i]), 则sum称为a的前缀和</p>
 <h2 id="前缀和的作用"><a href="#前缀和的作用" class="headerlink" title="前缀和的作用:"></a>前缀和的作用:</h2><p>对于无修改数组的查询区间和, 可以在边读入数据时边处理前缀和, 然后在<strong>O(1)</strong>的时间下回答每个询问, 预处理O(n).<br>具体做法就是求出前缀和后对于询问[l,r]的区间和直接计算sum[r]-sum[l-1].<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> a[],sum[];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i(<span class="number">1</span>);i&lt;=n;++i)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,a+i);</span><br><span class="line">    sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span>(m--)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> l,r;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum[r]-sum[l<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>但前缀和主要是一种思想, 对于符合区间减法的查询在O(n)的预处理后可在O(1)下回答</strong></p>
