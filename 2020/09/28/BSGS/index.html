@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2020/09/28/BSGS/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-10-04T08:33:07.721Z">
+<meta property="og:updated_time" content="2021-03-01T13:22:00.223Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BSGS求离散对数">
 
@@ -350,7 +350,7 @@
       
 
       
-        <p><br> <a id="more"></a></p>
+        <p><hr> <a id="more"></a></p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h2><p>BSGS(Baby-Step-Giant-Step)算法解决的是这样一个问题: 当$(a,p)=1$时, 求最小的$x$, 使得$a^x \equiv b(mod\ p)$. 这个$x$即为离散对数$log_ab$. </p>
 <p>先考虑最简单的情况, 即$p$为素数. </p>
 <p>根据费马小定理, 这时只需检查$0, 1, …, p-1$是否为解即可. 因为$a^{p-1} \equiv 1(mod\ p)$, 当$x$超过$p-1$时$a^x$就循环了. </p>
