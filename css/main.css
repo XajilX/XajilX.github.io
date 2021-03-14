@@ -1828,7 +1828,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0dff67;
+  background: #b81d8f;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3148,7 +3148,7 @@ pre .javascript .function {
 }
 @media only screen and (min-device-aspect-ratio: 4/3) {
   body {
-    background: url("/images/GL.png");
+    background: url("/images/GL.jpg");
     background-size: cover;
     background-attachment: fixed;
     background-position: 50% 30%;
