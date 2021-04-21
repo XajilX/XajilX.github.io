@@ -88,7 +88,7 @@
 <meta property="og:description" content="随机算法玄学">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/PRCycle.jpg">
-<meta property="og:updated_time" content="2020-09-13T04:58:41.083Z">
+<meta property="og:updated_time" content="2021-04-01T07:19:19.308Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pollard-Rho因数分解">
 <meta name="twitter:description" content="随机算法玄学">
@@ -366,7 +366,7 @@
 <p>受到该”悖论”启发, 一个随机数不行我们可以取两个随机数, 例如: 在$[1,1000]$中随机取一个数, 取到23的概率是1/1000, 但在$[1,1000]$中随机取两个数$i,j$, 其差的绝对值$|i-j|$等于23的概率大约是0.195%, 大约提升了一倍. </p>
 <h2 id="概率优化"><a href="#概率优化" class="headerlink" title="概率优化:"></a>概率优化:</h2><p>虽然通过取两个随机数提升了准确率. 但是提升一倍还是不够的. </p>
 <p>一个重要的想法是: 两个数的最大公约数一定是某个数的因数. 也就是说, 我们随机一个数$k$, 只要$gcd(k,n) &gt; 1$, 则可以求得一个因数$gcd(k,n)$. 这样的k有很多: n有很多因子, 每个因子的倍数都可以作为合适的k. </p>
-<p>将两个优化合起来: 选取两个随机数$a,b$, 若有$gcd(|i-j|,n)&gt;1$, 则找到一个$n$的因子$gcd(|i,j|,n)$. 这便是Pollard-Rho算法的核心. </p>
+<p>将两个优化合起来: 选取两个随机数$i,j$, 若有$gcd(|i-j|,n)&gt;1$, 则找到一个$n$的因子$gcd(|i-j|,n)$. 这便是Pollard-Rho算法的核心. </p>
 <h2 id="随机算法优化"><a href="#随机算法优化" class="headerlink" title="随机算法优化:"></a>随机算法优化:</h2><p>直接用C自带的随机数实现上述思想会发现运行很慢. Pollard的原版中给出了一个函数$g(x) = (x^2 - 1) mod\ n$, 使用这个函数迭代来生成一个伪随机序列, 即$x_i = g(x_{i-1})$.</p>
 <p>由于$mod\ n$的存在, 序列中最多出现n个数. 所以这个伪随机序列中一定会存在一个环, 画出来就像这个样子: (图片来自维基)</p>
 <p><img src="/img/PRCycle.jpg" alt="Rho"></p>
@@ -553,6 +553,10 @@
                 
                   <li class="links-of-blogroll-item">
                     <a href="https://zmyjoe.github.io/" title="Joe Zhou" target="_blank">Joe Zhou</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://halc.top/" title="Azure Hu" target="_blank">Azure Hu</a>
                   </li>
                 
               </ul>
