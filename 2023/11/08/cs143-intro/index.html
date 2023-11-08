@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2023/11/08/cs143-intro/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-11-08T11:41:09.769Z">
+<meta property="og:updated_time" content="2023-11-08T13:36:25.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Compiler -- Intro">
 
@@ -352,7 +352,7 @@
       
         <hr>
 <a id="more"></a>
-<h1 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h1><p>编译器是一个将一个程序由一种源语言翻译到目标语言的程序。</p>
+<h2 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h2><p>编译器是一个将一个程序由一种源语言翻译到目标语言的程序。</p>
 <p>通常来讲，一个编程语言有如下三种工作方式：</p>
 <ul>
 <li><strong>编译</strong>：将程序通过编译器编译为机器语言的目标程序，直接将数据输入至目标程序由机器执行，如 C 语言。</li>
@@ -360,7 +360,7 @@
 <li>混合：由编译器将程序编译为某种中间语言的程序，再使用虚拟机解释执行该程序，如 Java 语言与 JVM 。</li>
 </ul>
 <p>实际项目中往往会将程序分为各个片段，因此除了编译器外还需要预处理器收集符号信息等，汇编器与链接器将不同片段编译生成的汇编程序链接起来；同时有些语言还需要预处理器事先调用宏来替换源代码，以及从程序中收集编译器参数等。</p>
-<h1 id="编译器结构"><a href="#编译器结构" class="headerlink" title="编译器结构"></a>编译器结构</h1><p>一个编译器通常由以下五个部分组成，该结构最早来自于 FORTRAN I 的编译器：</p>
+<h2 id="编译器结构"><a href="#编译器结构" class="headerlink" title="编译器结构"></a>编译器结构</h2><p>一个编译器通常由以下五个部分组成，该结构最早来自于 FORTRAN I 的编译器：</p>
 <ol>
 <li><a href="/2023/11/08/cs143-lexer/"><strong>词法分析（Lexical Analysis, scan）</strong></a>：从字符流中识别出词素（lexeme），将程序由字节流转化为带有词汇信息的 <strong>token</strong> 流；</li>
 <li><strong>语法分析（Syntax Analysis, parse）</strong>(TBD)：从 token 流中识别出语法结构，从而构建出包含语法信息的结构，通常是 <strong>AST(Abstract Syntax Tree)</strong> ；</li>
@@ -568,7 +568,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编译器"><span class="nav-number">1.</span> <span class="nav-text">编译器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译器结构"><span class="nav-number">2.</span> <span class="nav-text">编译器结构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译器"><span class="nav-number">1.</span> <span class="nav-text">编译器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译器结构"><span class="nav-number">2.</span> <span class="nav-text">编译器结构</span></a></li></ol></div>
             
 
           </div>
