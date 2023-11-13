@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2023/11/08/cs143-lexer/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-11-08T15:42:43.895Z">
+<meta property="og:updated_time" content="2023-11-11T05:03:21.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Compiler -- Lexer">
 
@@ -352,17 +352,17 @@
       
         <hr>
 <a id="more"></a>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>词法分析读取源代码中的字符，识别其中的子串为不同类型的词素（lexeme），生成其对应的 token 传递给语法解析器。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>词法分析读取源代码中的字符，识别其中的子串为不同类型的词素（lexeme），生成其对应的 token 传递给语法解析器。</p>
 <p>通常来讲，除了生成 token，词法分析器还会清除空白、注释，发现非法字符，生成符号表记录标识符，记录行号以便生成报错信息等。</p>
-<h2 id="Lexeme-Token-amp-Token-class"><a href="#Lexeme-Token-amp-Token-class" class="headerlink" title="Lexeme, Token &amp; Token class"></a>Lexeme, Token &amp; Token class</h2><p>一个 token 通常包括两个部分：该 token 所属的 <strong>token 类（token class）</strong> 以及该 token 代表的子串，也即 <strong>词素（lexeme）</strong>。例如<code>&lt;Identifier, a&gt;</code>，<code>&lt;keyword, if&gt;</code>等。</p>
+<h2 id="Lexeme-Token-amp-Token-class"><a href="#Lexeme-Token-amp-Token-class" class="headerlink" title="Lexeme, Token &amp; Token class"></a>Lexeme, Token &amp; Token class</h2><p>一个 token 通常包括两个部分：该 token 所属的 <strong>token 类（token class）</strong>以及该 token 代表的子串，也即<strong>词素（lexeme）</strong>。例如<code>&lt;Identifier, a&gt;</code>，<code>&lt;keyword, if&gt;</code>等。</p>
 <p>一个 token 类表示了一个字符串集合，这些字符串通常具有相近的含义。例如标识符，某个关键字，字面常量等。词素 则表示了能被识别为某个 token 类的字符串。</p>
 <p>为了识别与分类词素，需要一些方法来定义 token 类的识别模式（pattern）。常用的方法是使用<strong>正则语言（Regular Language）</strong>。</p>
-<h2 id="正则语言与正则表达式"><a href="#正则语言与正则表达式" class="headerlink" title="正则语言与正则表达式"></a>正则语言与正则表达式</h2><p>数学上定义的“语言”（language）由两个集合所组成： <strong>字符集（alphabet）</strong> 与定义在该字符集上的 <strong>字符串（String）</strong> 集。</p>
+<h2 id="正则语言与正则表达式"><a href="#正则语言与正则表达式" class="headerlink" title="正则语言与正则表达式"></a>正则语言与正则表达式</h2><p>数学上定义的“语言”（language）由两个集合所组成：<strong>字符集（alphabet）</strong>与定义在该字符集上的<strong>字符串（string）</strong>集。</p>
 <p>其中字符集为一个包含若干符号的有限集，一般用希腊字母$\Sigma$表示，常见的例如 ASCII 字符集和 Unicode 字符集；字符串为一个由字符集$\Sigma$中的符号组成的有限序列；而语言中的字符串集可以是任意的由若干定义在$\Sigma$上的字符串组成的可数集。</p>
 <p>从该定义中可以看出，每个 token 类都可以视作一个语言。</p>
 <p>对于定义在相同字符集的两个语言$L$, $M$，有如下运算：</p>
 <ul>
-<li><strong>并（Union）</strong>：$L \cup M = \{s \mid s \in L \lor s \in M\}$</li>
+<li><strong>并（union）</strong>：$L \cup M = \{s \mid s \in L \lor s \in M\}$</li>
 <li><strong>连接（concatenation）</strong>：$LM = \{st \mid s \in L \land t \in M\}$</li>
 <li><strong>克林闭包（Kleene closure）</strong>：$L* = \bigcup_{i=0}^{\infty} L^i$</li>
 </ul>
@@ -413,7 +413,7 @@
 <li>一个转移集合$S \to^a S$，其中$a \in \Sigma \cup \{\epsilon\}$</li>
 </ul>
 <p>有限状态机可以表示为一个有向图，其中的结点即为状态，边即为转移，边上有标号$a$。</p>
-<p>有限状态机可分为非确定性有限状态机（Nondeterministic ~, abbr. NFA）与确定性有限状态机（Deterministic ~, abbr. DFA）。其中 DFA 除了上述部分外，还有以下约束：</p>
+<p>有限状态机可分为<strong>非确定性有限状态机（Nondeterministic ~, abbr. NFA）</strong>与<strong>确定性有限状态机（Deterministic ~, abbr. DFA）</strong>。其中 DFA 除了上述部分外，还有以下约束：</p>
 <ul>
 <li>对于每个状态$s \in S$与每个字符$a \in \Sigma$，至多有一个转移；</li>
 <li>空串$\epsilon$不允许出现在标号上。</li>
@@ -445,6 +445,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">\&quot; &#123;</span><br><span class="line">    BEGIN(STRING);</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\[^ntbf] &#123;</span><br><span class="line">    push_char_safe(yytext[1]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\\n &#123;</span><br><span class="line">    push_char_safe(&apos;\n&apos;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\t &#123;</span><br><span class="line">    push_char_safe(&apos;\t&apos;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\b  &#123;</span><br><span class="line">    push_char_safe(&apos;\b&apos;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\f &#123;</span><br><span class="line">    push_char_safe(&apos;\f&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\\\n &#123;</span><br><span class="line">    push_char_safe(&apos;\n&apos;);</span><br><span class="line">    ++curr_lineno;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\&quot; &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    int len = string_buf_ptr - string_buf;</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">    if(is_strlen_exceed) &#123;</span><br><span class="line">    cool_yylval.error_msg = &quot;String constant too long&quot;;</span><br><span class="line">    is_strlen_exceed = false;</span><br><span class="line">    return (ERROR);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">    cool_yylval.symbol = stringtable.add_string(string_buf, len);</span><br><span class="line">        return (STR_CONST);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\n &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    is_strlen_exceed = false;</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">    cool_yylval.error_msg = &quot;Unterminated string constant&quot;;</span><br><span class="line">    ++curr_lineno;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;&lt;&lt;EOF&gt;&gt; &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    cool_yylval.error_msg = &quot;EOF in string constant&quot;;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\0 &#123;</span><br><span class="line">    cool_yylval.error_msg = &quot;String contains null character&quot;;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;. &#123;</span><br><span class="line">    push_char_safe(yytext[0]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>和注释一样需要在定义段中加上<code>%x STRING</code>定义状态。同时这里使用了一个自定义的函数<code>push_char_safe</code>：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *string_buf_ptr;</span><br><span class="line">Boolean is_strlen_exceed;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_char_safe</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(string_buf_ptr - string_buf &lt; MAX_STR_CONST) &#123;</span><br><span class="line">        *(string_buf_ptr++) = c;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        is_strlen_exceed = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该函数需定义在定义段的代码块中。</p>
 
       
     </div>
@@ -484,6 +485,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/11/13/cs143-parser/" rel="prev" title="Compiler -- Parser">
+                Compiler -- Parser <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -560,7 +565,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">155</span>
+                  <span class="site-state-item-count">156</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -639,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lexeme-Token-amp-Token-class"><span class="nav-number">2.</span> <span class="nav-text">Lexeme, Token &amp; Token class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则语言与正则表达式"><span class="nav-number">3.</span> <span class="nav-text">正则语言与正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#token-识别"><span class="nav-number">4.</span> <span class="nav-text">token 识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有限状态机"><span class="nav-number">5.</span> <span class="nav-text">有限状态机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lab"><span class="nav-number">6.</span> <span class="nav-text">Lab</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lexeme-Token-amp-Token-class"><span class="nav-number">2.</span> <span class="nav-text">Lexeme, Token &amp; Token class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则语言与正则表达式"><span class="nav-number">3.</span> <span class="nav-text">正则语言与正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#token-识别"><span class="nav-number">4.</span> <span class="nav-text">token 识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有限状态机"><span class="nav-number">5.</span> <span class="nav-text">有限状态机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lab"><span class="nav-number">6.</span> <span class="nav-text">Lab</span></a></li></ol></div>
             
 
           </div>
