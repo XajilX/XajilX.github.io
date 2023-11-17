@@ -88,7 +88,7 @@
 <meta property="og:image" content="http://yoursite.com/img/paser_tree.png">
 <meta property="og:image" content="http://yoursite.com/img/cfg_ambiguity.png">
 <meta property="og:image" content="http://yoursite.com/img/AST.png">
-<meta property="og:updated_time" content="2023-11-13T05:45:15.137Z">
+<meta property="og:updated_time" content="2023-11-14T12:26:10.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Compiler -- Parser">
 <meta name="twitter:image" content="http://yoursite.com/img/paser_tree.png">
@@ -581,7 +581,7 @@ A \to & XYZ\cdot  \\
 <li>传播：同样对于核项$[A\to\alpha\cdot\beta, a]$，其所在的 LR(1) 自动机结点后继存在项$[B\to\gamma\cdot\delta, b]$，但$a=b$，其后继存在预测符$b$仅因为项$A\to\alpha\cdot\beta$也存在$b$作为附加的预测符。此时称预测符由$A\to\alpha\cdot\beta$<strong>传播（propagate）</strong>至$B\to\gamma\cdot\delta$。注意传播本身与预测符无关，如果一个项传播至另一个项则其所有预测符均将附在被传播的项上。</li>
 </ul>
 <p>事实上可以发现，两种生成方式的不同是由于 LR(1) 自动机生成规则中生成$\epsilon$边的规则导致的，串$\beta a$的不同情况导致了不同的生成方式：若$\epsilon\in f(\beta)$，则$a\in f(\beta a)$，此时便会产生传播；同时$f(\beta) \subseteq f(\beta a)$，此时$f(\beta)$的部分便是自发生成的预测符。</p>
-<p>由于传播行为本身与预测符无关，因此我们可以使用一个不在语法中的终止符$#$来分辨两种生成方式，具体来说：</p>
+<p>由于传播行为本身与预测符无关，因此我们可以使用一个不在语法中的终止符$\#$来分辨两种生成方式，具体来说：</p>
 <ol>
 <li>对核项$[A\to\alpha\cdot\beta, \#]$使用 LR(1) 自动机的生成规则生成其$\epsilon$闭包（也即只使用$\epsilon$边能到达的 LR(1) 项）；</li>
 <li>若项$[B\to\gamma\cdot X\delta, a], a\neq\#$在闭包中，则在核项$A\to\alpha\cdot\beta$的$X$边的后继结点中，$a$是$B\to\gamma X\cdot\delta$自发生成的（注意分割符的位置）；</li>
@@ -640,6 +640,10 @@ A \to & XYZ\cdot  \\
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/11/17/cs143-semant/" rel="prev" title="Compiler -- Semant">
+                Compiler -- Semant <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -716,7 +720,7 @@ A \to & XYZ\cdot  \\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-count">157</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
