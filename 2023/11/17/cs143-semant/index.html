@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2023/11/17/cs143-semant/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-11-17T05:54:40.081Z">
+<meta property="og:updated_time" content="2023-11-17T13:12:56.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Compiler -- Semant">
 
@@ -458,7 +458,7 @@
 }</script><p>然而由于上面的规则，如果形参的类型声明中出现 self 类型，则最后一条$T_i\leq T’_i$对该形参为恒假，因此 self 类型声明不能出现在方法形参的类型声明中。</p>
 <h2 id="错误恢复"><a href="#错误恢复" class="headerlink" title="错误恢复"></a>错误恢复</h2><p>同样地，语义分析器也需要错误恢复来尽可能多的发现代码中的错误。不过由于已经建立起了 AST，因此相比前面的步骤，在语义分析中进行错误恢复要更简单，例如对于未定义或重定义的变量，直接报告错误即可。</p>
 <p>语义分析中的错误恢复的重点是类型检查中的错误恢复。一个朴素的解决方法是将类型检查错误的表达式指定为 Object 类型，即所有类型的根类型。但这样会导致级联报错，因为作为根类型，绝大多数的操作是无法对 Object 类进行的，而这又会导致错误并被指定为 Object 类型。</p>
-<p>另一个方案是引入一个新的类型 No_type，并定义对所有类型$C$，有$\mathrm{No_type} \leq C$。这样所有操作对 No_type 均有定义，报错时只会报告发现错误的位置。</p>
+<p>另一个方案是引入一个新的类型 No_type，并定义对所有类型$C$，有$\mathrm{No\_type} \leq C$。这样所有操作对 No_type 均有定义，报错时只会报告发现错误的位置。</p>
 <p>但引入 No_type 有一个问题：对于无多继承的语言来说，引入 No_type 后其继承关系将会由树变为一个 DAG，这会使得对类型的处理变得十分复杂。一个解决方法是将 No_type 视为一个特例，对其它的类型仍然使用基于树的算法。</p>
 <h2 id="复合类型"><a href="#复合类型" class="headerlink" title="复合类型"></a>复合类型</h2><p>许多语言都有复合类型的概念，例如 C 中的数组、指针，C++ 的模板类等。这些复合类型的声明需要使用类型表达式（type expression），且需要语义分析器具有识别类型表达式的功能，并给出合适的类型签名。</p>
 <p>对于数组、指针这类的类型，可能会导致别名（aliasing）问题：基类的指针可以指向子类指针所指向的空间并使用基类的初始化函数，此时子类指针想要调用基类中没有的方法便会产生错误。</p>
@@ -530,6 +530,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/11/19/cs143-codegen/" rel="prev" title="Compiler -- Codegen">
+                Compiler -- Codegen <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -606,7 +610,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">157</span>
+                  <span class="site-state-item-count">158</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
