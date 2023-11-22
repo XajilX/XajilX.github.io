@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2023/11/08/cs143-intro/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-11-19T15:52:37.460Z">
+<meta property="og:updated_time" content="2023-11-22T07:38:01.599Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Compiler -- Intro">
 
@@ -365,8 +365,8 @@
 <li><a href="/2023/11/08/cs143-lexer/"><strong>词法分析（Lexical Analysis, scan）</strong></a>：从字符流中识别出词素（lexeme），将程序由字节流转化为带有词汇信息的 <strong>token</strong> 流；</li>
 <li><a href="/2023/11/13/cs143-parser/"><strong>语法分析（Syntax Analysis, parse）</strong></a>：从 token 流中识别出语法结构，从而构建出包含语法信息的结构，通常是<strong>AST(Abstract Syntax Tree)</strong>；</li>
 <li><a href="/2023/11/17/cs143-semant/"><strong>语义分析（Semantic Analysis）</strong></a>：对 AST 进行进一步的检查，如<strong>类型</strong>与<strong>作用域</strong>检查；生成相关的语义信息，如表达式类型等；</li>
-<li><strong>中间代码生成（Intermediate Code Generation）</strong>：生成介于源语言与汇编之间的<strong>中间语言表示（Intermediate Representation, IR）</strong>(TBD)，用于代码优化；</li>
-<li><strong>代码优化（Code Optimization）</strong>(TBD)：使用生成的中间代码将程序改写为作用相同但更优的程序（运行时间、内存使用、耗电等方面），有时也会对 AST 或者汇编代码进行优化；</li>
+<li><strong>中间代码生成（Intermediate Code Generation）</strong>：生成介于源语言与汇编之间的<strong>中间语言表示（Intermediate Representation, IR）</strong>，用于代码优化；</li>
+<li><a href="/2023/11/22/cs143-opt/"><strong>代码优化（Code Optimization）</strong></a>：使用生成的中间代码将程序改写为作用相同但更优的程序（运行时间、内存使用、耗电等方面），有时也会对 AST 或者汇编代码进行优化；</li>
 <li><a href="/2023/11/19/cs143-codegen/"><strong>代码生成（Code Generation）</strong></a>：将中间代码或 AST 翻译为目标语言，通常是汇编语言，供后续程序处理或运行。</li>
 </ol>
 <p>通常将前三个步骤称为编译器的<strong>前端</strong>，后三个步骤称为编译器<strong>后端</strong>，区别在于前端会报告源程序中的错误，而通过了编译器前端的程序在后端通常不会报错。</p>
@@ -489,7 +489,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">158</span>
+                  <span class="site-state-item-count">159</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -88,7 +88,7 @@
 <meta property="og:image" content="http://yoursite.com/img/storage_org.png">
 <meta property="og:image" content="http://yoursite.com/img/stack_frame.png">
 <meta property="og:image" content="http://yoursite.com/img/obj_layout.png">
-<meta property="og:updated_time" content="2023-11-19T15:51:26.170Z">
+<meta property="og:updated_time" content="2023-11-22T15:52:13.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Compiler -- Codegen">
 <meta name="twitter:image" content="http://yoursite.com/img/storage_org.png">
@@ -391,6 +391,39 @@
 <p><img src="/img/obj_layout.png" alt="对象布局"></p>
 <p>其中类标签为一个整数，在代码生成时需要为每个类生成一个合适的类标签以在运行时获取对象所属类的信息；方法指针指向一个只读数据区的列表，该列表中包含该类方法的入口地址，该列表的编排也需要先储存基类方法再储存子类的方法；基类属性是嵌套的，也即储存直接基类之前需要先储存直接基类的基类属性。</p>
 <p>可以发现如果使用该布局，指向该对象的指针同样也是一个合法的指向该对象所属类基类的指针，因此该布局是可行的。</p>
+<h2 id="堆内存管理"><a href="#堆内存管理" class="headerlink" title="堆内存管理"></a>堆内存管理</h2><p>除了全局变量和栈中的局部变量以外，内存中还有许多变量需要使用变量中的指针或引用进行间接访问，这类变量通常储存在堆（heap）中。</p>
+<p>不同于全局变量与局部变量，堆中的变量的多少以及生存期在编译期是不确定的，因此需要在运行期管理堆中内存的手段。通常有三种方式：</p>
+<ul>
+<li>使用函数或关键字在代码中手动申请和释放内存，例如 C 中的<code>malloc/free</code>和 C++ 中的<code>new/delete</code>；</li>
+<li>手动申请内存，使用运行时系统定期自动回收内存，例如 Java 与 C# 等语言中的<strong>垃圾回收机制（Garbage Collection, abbr. GC）</strong>；</li>
+<li>将堆内存的申请与释放与某个变量的生存期关联起来，在变量的生存期开始与结束时自动对堆中的变量进行申请与释放，也称 RAII 机制（Resource Acquisition Is Initialization），例如 C++ 与 Rust 中的智能指针。</li>
+</ul>
+<p>三种方式各有优缺点。手动管理的优点在于内存管理比较灵活，适用于系统编程等较底层的编程；缺点在于经常会由于疏忽造成各类难以复现与定位的内存 bug，如内存泄露、悬垂指针等。GC 机制则很少出现类似的 bug，但代价是较大的性能损失，通常作用相同的代码在 Java 上的实现其运行时间是 C 语言实现的两倍及以上。RAII 机制结合了两者的优点，但有一些内存结构无法处理，例如循环引用。</p>
+<h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>在程序中，只有能被“找到”的变量是能够被使用的；无法被“找到”的变量则无法使用，称为垃圾（garbage），这类变量所占据的内存可以被回收用于后续的内存申请。</p>
+<p>这种能否被“找到”的属性称为变量的可达性（reachable）。若符合如下两个条件则称变量为可达的：</p>
+<ul>
+<li>该变量是全局变量、局部变量或者是在寄存器上的临时变量；</li>
+<li>有某个可达变量拥有该变量的指针或引用。</li>
+</ul>
+<p>符合第一个条件的变量称为根变量（root）。有了可达性的概念则可以使用如下的算法进行垃圾回收：</p>
+<ol>
+<li>从根变量出发，标记所有的可达变量；</li>
+<li>若堆中某变量标记为可达则清除标记，否则将该变量所占内存空间回收。</li>
+</ol>
+<p>该算法称为<strong>标记-清除算法（mark and sweep）</strong>，即第一步为标记，第二步为清除。</p>
+<p>空闲空间的管理通常是由空闲链表（free list）来完成的：内存回收时将该内存空间以空闲块的形式插入空闲链表中，分配内存时遍历空闲链表，找到大小足够的块便分配该块，将该块移除空闲链表，如果有剩余空间还需将剩余空间重新插入空闲链表当中。</p>
+<p>实际执行该算法时仍有一些需要注意的地方：GC 通常是在可用空间不足时触发的，然而标记时可能需要辅助的内存空间来标记可达变量（例如栈），而且辅助的内存空间大小是未知的。</p>
+<p>一个想法是将变量内部的指针用作辅助内存。具体来讲，进行标记的同时可以将整个链进行翻转，到达链的终点时再沿着翻转的链回溯并将链重新翻转回去。这便是指针翻转（pointer reversal）算法。</p>
+<p>这样在标记的过程中只需要记录两个指针：当前标记的指针与链中前一个变量的指针。</p>
+<p>另外的一个问题是标记-清除算法容易产生<strong>内存碎片（memory fragment）</strong>，即内存中的空闲空间大于申请的空间，但没有可用的大于申请空间的空闲内存块。</p>
+<p>一种方法是在清除后再加一步整理（compact），将可达变量复制到空闲内存的起始位置并重置变量中的指针。这种算法称为<strong>标记-清除-整理算法（mark-sweep-compact）</strong>。这样剩余的空闲内存就变成了一整块，消除了内存碎片。这样做的缺点在于重新进行复制消耗的运行时间较大。</p>
+<p>另一种方法是将堆分为两块相同大小的块，若一个块满了标记可达变量并连续复制到另一个块中，并将原先的块标记为空块。这种算法称为<strong>标记-复制算法（mark and copy）</strong>。这样标记和复制可以同时进行，缺点在于需要一个额外的预留空间。</p>
+<p>在 Java 的实现中，堆中的数据分为两个部分：新生代和老年代；新生代经常会发生垃圾回收，因此新生代使用标记-复制算法进行 GC；老年代较少发生 GC，因此使用标记-清除-整理算法。</p>
+<h2 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h2><p>不同于垃圾回收，<strong>引用计数（Reference Counting, abbr. RC）</strong>会为每个堆中的变量设置一个计数器记录有多少指针指向该变量，若计数器变为 0，则立刻清除该变量。</p>
+<p>C++11 中引入了三种智能指针，其中<code>shared_ptr&lt;T&gt;</code>即为使用引用计数的智能指针。使用<code>make_shared&lt;T&gt;()</code>可以创建一个智能指针和一个与指针绑定的堆上变量，此时会申请变量的空间和一个储存计数器的空间；当智能指针被拷贝时计数器加1，当指针被释放时（超出作用域或在堆中被释放）或更改了指针位置（赋值或调用<code>shared_ptr&lt;T&gt;::reset()</code>）计数器减1，若计数器为 0 则释放变量和计数器。</p>
+<p>引用计数同样会产生内存碎片，同时引用计数无法处理循环引用。一个方法是在空间不足时仍然使用 GC 回收内存。另一个方法是使用另一种智能指针<code>weak_ptr&lt;T&gt;</code>，该指针只能通过<code>shared_ptr&lt;T&gt;</code>或其它的<code>weak_ptr&lt;T&gt;</code>构造，且不会增加对象的引用计数，访问变量时需使用<code>weak_ptr&lt;T&gt;::lock()</code>方法尝试创建一个<code>shared_ptr&lt;T&gt;</code>再访问，若指向的对象引用计数为 0 则<code>weak_ptr&lt;T&gt;::lock()</code>方法将返回空指针。</p>
+<p>一个比较经典的例子是对于树状的数据结构，可以使用<code>shared_ptr&lt;T&gt;</code>构建指向子结点的指针，使用<code>weak_ptr&lt;T&gt;</code>构建指向父节点的指针。</p>
+<p>引用循环本质上是变量所有权（ownership）的问题，<code>shared_ptr&lt;T&gt;</code>代表指针拥有变量的所有权，而<code>weak_ptr&lt;T&gt;</code>则没有。这样引用循环的问题就变为了代码设计的问题。</p>
 <h2 id="操作语义"><a href="#操作语义" class="headerlink" title="操作语义"></a>操作语义</h2><p>一些编译器可能需要跨平台工作，不适合直接使用汇编来描述表达式的求值过程，因此需要一个尽量准确且与某个特定的实现无关的方式来描述求值过程。</p>
 <p>从数学的角度来讲，程序是一个由一个“状态”到另一个“状态”的映射，可以使用命题逻辑的方式来描述某个表达式的语义：若机器起始状态符合 X，则经过表达式求值后机器的状态符合 Y。因此可以使用和类型检测相同的方式来描述求值的过程。</p>
 <p>例如，对于赋值操作，有如下操作语义：</p>
@@ -470,6 +503,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2023/11/22/cs143-opt/" rel="prev" title="Compiler -- Opt">
+                Compiler -- Opt <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -545,7 +582,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">158</span>
+                  <span class="site-state-item-count">159</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -624,7 +661,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时组织"><span class="nav-number">2.</span> <span class="nav-text">运行时组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆栈机"><span class="nav-number">3.</span> <span class="nav-text">堆栈机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈帧"><span class="nav-number">4.</span> <span class="nav-text">栈帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#临时变量"><span class="nav-number">5.</span> <span class="nav-text">临时变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象布局"><span class="nav-number">6.</span> <span class="nav-text">对象布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作语义"><span class="nav-number">7.</span> <span class="nav-text">操作语义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lab"><span class="nav-number">8.</span> <span class="nav-text">Lab</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时组织"><span class="nav-number">2.</span> <span class="nav-text">运行时组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆栈机"><span class="nav-number">3.</span> <span class="nav-text">堆栈机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈帧"><span class="nav-number">4.</span> <span class="nav-text">栈帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#临时变量"><span class="nav-number">5.</span> <span class="nav-text">临时变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象布局"><span class="nav-number">6.</span> <span class="nav-text">对象布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆内存管理"><span class="nav-number">7.</span> <span class="nav-text">堆内存管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收"><span class="nav-number">8.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用计数"><span class="nav-number">9.</span> <span class="nav-text">引用计数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作语义"><span class="nav-number">10.</span> <span class="nav-text">操作语义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lab"><span class="nav-number">11.</span> <span class="nav-text">Lab</span></a></li></ol></div>
             
 
           </div>
