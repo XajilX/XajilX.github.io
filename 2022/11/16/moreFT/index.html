@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="FFT,">
+
+
+
+
+
+
+
+
+
+
+<meta name="keywords" content="FFT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Miscellaneous of Fourier Transform">
+<meta property="og:url" content="http://yoursite.com/2022/11/16/moreFT/index.html">
+<meta property="og:site_name" content="AjiL&#39;s Blog">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/4fb96041279e0979e16e5c9c64128311.png">
+<meta property="og:updated_time" content="2024-08-03T12:36:17.507Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Miscellaneous of Fourier Transform">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/4fb96041279e0979e16e5c9c64128311.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2022/11/16/moreFT/">
+
+
+
+
+
+  <title>Miscellaneous of Fourier Transform | AjiL's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AjiL's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/11/16/moreFT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AjiL">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AjiL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Miscellaneous of Fourier Transform</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-11-16T14:25:00+11:00">
+                2022-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index">
+                    <span itemprop="name">note</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/misc/" itemprop="url" rel="index">
+                    <span itemprop="name">misc</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<a id="more"></a>
+<h2 id="傅里叶级数"><a href="#傅里叶级数" class="headerlink" title="傅里叶级数"></a>傅里叶级数</h2><p>傅里叶认为, 对于周期为$2\pi$的函数, 均可展开为如下的级数形式: </p>
+<script type="math/tex; mode=display">
+f(x) = \frac{a_0}{2} + \sum_{i=1}^{\infty}(a_i\cos ix + b_i\sin ix)</script><p>系数$a_0, a_i, b_i$称为<strong>傅里叶系数</strong>. </p>
+<p>由于三角函数系具有正交性, 即: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+\int_{-\pi}^{\pi} \cos nx\ {\rm d}x &= 0\ (n \in \mathbb{N}^+) \\
+\int_{-\pi}^{\pi} \sin nx\ {\rm d}x &= 0\ (n \in \mathbb{N}^+) \\
+\int_{-\pi}^{\pi} \sin nx \cos mx\ {\rm d}x &= 0\ (n,m \in \mathbb{N}^+) \\
+\int_{-\pi}^{\pi} \sin nx \sin mx\ {\rm d}x &= 0\ (n,m \in \mathbb{N}^+, n \ne m) \\
+\int_{-\pi}^{\pi} \cos nx \cos mx\ {\rm d}x &= 0\ (n,m \in \mathbb{N}^+, n \ne m) \\
+\end{aligned}</script><p>上式可由定积分与积化和差公式证明. </p>
+<p>同时有: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+\int_{-\pi}^{\pi} 1\ {\rm d}x &= 2\pi \\
+\int_{-\pi}^{\pi} \cos^2 nx\ {\rm d}x &= \pi\ (n \in \mathbb{N}^+) \\
+\int_{-\pi}^{\pi} \sin^2 nx\ {\rm d}x &= \pi\ (n \in \mathbb{N}^+) \\
+\end{aligned}</script><p>所以可得(需满足一致收敛): </p>
+<script type="math/tex; mode=display">\begin{aligned}
+a_0 &= \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)\ {\rm d}x \\
+a_n &= \frac{1}{\pi} \int_{-\pi}^{\pi}f(x)\cos nx\ {\rm d}x\ (n \in \mathbb{N}^+) \\
+b_n &= \frac{1}{\pi} \int_{-\pi}^{\pi}f(x)\sin nx\ {\rm d}x\ (n \in \mathbb{N}^+) \\
+\end{aligned}</script><p>若$f(x)$为奇函数, $a_n$均为0, 此时傅里叶级数为正弦级数; 同理, 若$f(x)$为偶函数傅里叶级数为余弦级数. </p>
+<p>由欧拉公式($\rm j$为虚数单位): </p>
+
+$$
+e^{{\rm j}x} = \cos x + {\rm j}\sin x
+$$
+
+<p>可将傅里叶级数扩展至复数域: </p>
+
+$$\begin{aligned}
+f(x) &= \frac{a_0}{2} + \sum_{i=1}^{\infty}(a_i\cos ix + b_i\sin ix) \\
+&= \frac{a_0}{2} + \sum_{i=1}^{\infty}(a_i\frac{e^{{\rm j}ix} + e^{-{\rm j}ix}}{2} - b_i{\rm j}\frac{e^{{\rm j}ix} - e^{-{\rm j}ix}}{2}) \\
+&= \sum_{i=-\infty}^{+\infty} c_ie^{{\rm j}ix}
+\end{aligned}$$
+
+<p>其中: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+c_0 &= \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)\ {\rm d}x \\
+c_n &= \frac{a_n - b_n{\rm j}}{2}\ (n \in \mathbb{N}^+) \\
+c_{-n} &= \frac{a_n + b_n{\rm j}}{2}\ (n \in \mathbb{N}^+)
+\end{aligned}</script><p>三式合并即得: </p>
+<script type="math/tex; mode=display">
+c_n = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)e^{-{\rm j}nx}\ {\rm d}x</script><p>对于傅里叶级数, 有帕塞瓦尔定理: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+& \int_{-\pi}^{\pi} |f(x)|^2dx \\ 
+=& 2\pi \left(\frac{a_0^2}{4}+\frac{1}{2}\sum_{i=1}^{\infty}(a_i^2 + b_i^2)\right) \\
+=& 2\pi\sum_{i=-\infty}^{+\infty}|c_i|^2
+\end{aligned}</script><p>使用三角函数系的正交性即可得证. </p>
+<h2 id="傅里叶变换"><a href="#傅里叶变换" class="headerlink" title="傅里叶变换"></a>傅里叶变换</h2><p>当周期不为$2\pi$时, 设周期为$T$, 则有: </p>
+
+$$
+f(x) = \sum_{i=-\infty}^{+\infty} c_ie^{{\rm j}\frac{2\pi ix}{T}} \\
+c_i = \frac{1}{T}\int_{-T/2}^{T/2}f(x)e^{-{\rm j}\frac{2\pi ix}{T}}\ {\rm d}x
+$$
+
+<p>设$\omega_i = 2\pi i/T$, 令$F(\omega)=\alpha\displaystyle\int_{-T/2}^{T/2}f(x)e^{-{\rm j}\omega x} {\rm d}x$, 则: </p>
+
+$$
+c_i = \frac{1}{T\alpha}F(\omega_i) \\
+f(x) = \frac{1}{2\pi\alpha} \sum_{i=-\infty}^{+\infty} F(\omega_i)e^{{\rm j}\omega_i x} \frac{2\pi}{T}
+$$
+
+<p>当$T \to +\infty$时, $f(x)$变为非周期函数, 级数变为黎曼和, 则有: </p>
+
+$$
+F(\omega) = \alpha\int_{-\infty}^{+\infty}f(x)e^{-{\rm j}\omega x}\ {\rm d}x \tag{1}
+$$
+$$
+f(x) =  \frac{1}{2\pi\alpha}\int_{-\infty}^{+\infty}F(\omega)e^{{\rm j}\omega x}\ {\rm d}\omega \tag{2}
+$$
+
+<p>式$(1)$即为傅里叶变换, 式$(2)$为逆变换, 一般视为算子将其记作$FT[f(x)]$与$IFT[F(\omega)]$. $\alpha$称为规范化因子, 通常取为$1$, 有时会取$\frac{1}{ \sqrt{2\pi} }$</p>
+<p>需要注意的是式中的$\int_{-\infty}^{+\infty}$均为柯西主值积分, 也即$\lim \limits_{M\to +\infty}\int_{-M}^M$的缩写</p>
+<p>与傅里叶级数同理, 若$f(x)$为奇函数则变换后为纯虚函数, 若$f(x)$为偶函数则变换后为实函数, 分别称为正弦变换与余弦变换. </p>
+<p>对于傅里叶变换, 有线性性质: </p>
+<script type="math/tex; mode=display">
+FT[af+bg] = aFT[f]+bFT[g]</script><p>频移特性与时移特性: </p>
+<script type="math/tex; mode=display">
+FT[f](\omega + \omega_0) = FT[fe^{-{\rm j}\omega_0 x}](\omega) \\
+FT[f(x+x_0)](\omega) = (e^{ {\rm j} \omega x_0}FT[f])(\omega)</script><p>比较重要的有<strong>时域卷积定理</strong>和<strong>频域卷积定理</strong>: </p>
+<script type="math/tex; mode=display">
+FT[f*g] = FT[F] \cdot FT[g] \\
+\frac{1}{2\pi}IFT[F*G] = IFT[F] \cdot IFT[G]</script><p>实数域$\mathbb{R}$上的卷积定义如下: </p>
+<script type="math/tex; mode=display">
+(f*g)(x) = \int_{-\infty}^{+\infty} f(t)g(x-t)\ {\rm d}t</script><p>若计算$F(-\omega)$</p>
+<script type="math/tex; mode=display">\begin{aligned}
+F(-\omega) =& \int_{-\infty}^{+\infty}f(x)e^{ {\rm j}\omega x }{\rm d}x \\
+=& \int_{-\infty}^{+\infty} f(x)\cos(\omega x) {\rm d}x \\
+&+ {\rm j}\int_{-\infty}^{+\infty} f(x)\sin(\omega x){\rm d}x \\
+=& \overline{F}(\omega)
+\end{aligned}</script><p>若函数为实函数则变换后的复函数实部为偶函数, 虚部为奇函数. 负频率部分的幅值与正频率一致, 相位角相反. </p>
+<p>对于傅里叶变换也有帕塞瓦尔定理: </p>
+<script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty}|f(x)|^2{\rm d}x = \frac{1}{2\pi}\int_{-\infty}^{+\infty}|F
+(\omega)|^2 {\rm d}\omega</script><h2 id="离散时间傅里叶变换"><a href="#离散时间傅里叶变换" class="headerlink" title="离散时间傅里叶变换"></a>离散时间傅里叶变换</h2><p>为了在计算机中表示信号, 需要对连续的信号进行<strong>采样</strong>将其变为一个离散的数列. </p>
+<p>为了对其进行分析, 需要从数学上定义采样, 为此首先需要引入冲激函数(狄拉克$\delta$函数), 它由两个式子定义: </p>
+<script type="math/tex; mode=display">
+\begin{cases}
+\delta(x) = 0,\ x \neq 0 \\
+\displaystyle\int_{-\infty}^{+\infty}\delta(x)\ {\rm d}x = 1
+\end{cases}</script><p>也可定义为: </p>
+<script type="math/tex; mode=display">
+\delta(x) = \frac{ {\rm d} u(x)}{ {\rm d} x }\\
+u(x) = \begin{cases}
+1&,x > 0 \\
+0&,x < 0
+\end{cases}</script><p>$u(x)$为单位阶跃函数. </p>
+<p>若函数$f(t)$在$t_0$处有值, 显然有: </p>
+<script type="math/tex; mode=display">f(t)\delta(t-t_0) = f(t_0)\delta(t-t_0)</script><p>同时显然$\delta$函数为偶函数, 所以: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+\int_{-\infty}^{+\infty} f(t)\delta(x-t)\ {\rm d}t &= f(x)\int_{-\infty}^{+\infty}\delta(t-x)\ {\rm d}t \\
+&= f(x)
+\end{aligned}</script><p>也即$\delta$函数为卷积的单位元. 由时域卷积定理可以设$FT[\delta] = 1$; 同时若对常函数$1$进行IFT, 则有: </p>
+<script type="math/tex; mode=display">IFT[1](x) = \frac{1}{2\pi}\int_{-\infty}^{+\infty}e^{ {\rm j} \omega x}\ {\rm d}\omega = \delta(x)</script><p>下面给出采样的数学定义. 对于连续信号$f(t)$, 对其进行采样即为: </p>
+<script type="math/tex; mode=display">
+f^*(t) = f(t)\sum_{i=-\infty}^{+\infty}\delta(t-iT_s)</script><p>其中的$T_s$称为采样间隔, 一般记$f_s=1/T_s$为采样频率, $\omega_s=2\pi f_s$为采样角频率. </p>
+<p>若对$f^*$进行傅里叶变换, 则有: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+FT[f^*](\omega) &= \int_{-\infty}^{+\infty} f(x)e^{-{\rm j}\omega x}\sum_{i=-\infty}^{+\infty}\delta(x-iT_s)\ {\rm d}x \\
+&= \sum_{i=-\infty}^{+\infty}\int_{-\infty}^{+\infty} f(x)e^{-{\rm j}\omega x}\delta(x-iT_s)\ {\rm d}x \\
+&= \sum_{i=-\infty}^{+\infty} f(iT_s)e^{-{\rm j} \omega iT_s}
+\end{aligned}</script><p>该变换即为离散时间傅里叶变换(DTFT), 需要注意积分与求和的交换需要级数的一致收敛性. </p>
+<p>DTFT有一个重要性质. 对$s(t) = \sum_{i=-\infty}^{+\infty}\delta(t-iT_s)$求傅里叶级数: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+c_n &= \frac{1}{T_s}\int_{-T_s/2}^{T_s/2} e^{-{\rm j} \omega_s nt} \delta(t)\ {\rm d}t \\
+&= \frac{1}{T_s}\int_{-\infty}^{+\infty} e^{-{\rm j} \omega_s nt} \delta(t)\ {\rm d}t \\
+&= \frac{1}{T_s}
+\end{aligned}</script><p>所以: </p>
+<script type="math/tex; mode=display">
+s(t) = \frac{1}{T_s}\sum_{i=-\infty}^{+\infty}e^{ {\rm j} \omega_s it}</script><p>再对$s(t)$进行傅里叶变换: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+FT[s](\omega) &= \frac{1}{T_s}\int_{-\infty}^{+\infty} e^{-{\rm j} \omega t} \sum_{i=-\infty}^{+\infty}e^{ {\rm j} \omega_s it}\ {\rm d}t \\
+&= \frac{1}{T_s} \sum_{i=-\infty}^{+\infty} \int_{-\infty}^{+\infty} e^{ {\rm j} (i\omega_s - \omega)t }\ {\rm d}t \\
+&= \frac{2\pi}{T_s} \sum_{i=-\infty}^{+\infty} \delta(i\omega_s - \omega)
+\end{aligned}</script><p>对$f^*$的傅里叶变换可以由频域卷积定理重新求得: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+FT[f^*](\omega) &= \frac{1}{2\pi}(FT[f] * FT[s])(\omega) \\
+&= \frac{1}{T_s} \int_{-\infty}^{+\infty}FT[f](\omega - u)\sum_{i=-\infty}^{+\infty} \delta(i\omega_s - u)\ {\rm d}u \\
+&= \frac{1}{T_s} \sum_{i=-\infty}^{+\infty} \int_{-\infty}^{+\infty}FT[f](\omega - u) \delta(u - i\omega_s)\ {\rm d}u \\
+&= \frac{1}{T_s} \sum_{i=-\infty}^{+\infty} FT[f](\omega - i\omega_s)
+\end{aligned}</script><p>也即在时域内以$T_s$采样间隔进行采样, 相当于在频域内以$\omega_s$为周期进行周期延拓.</p>
+<p>由此便有<strong>奈奎斯特采样定理</strong>: 若要保留$\omega_N$以内的角频率信息, 采样角频率要大于等于$2\omega_N$, 否则将会发生频率混叠: </p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/4fb96041279e0979e16e5c9c64128311.png" alt="frequency_overlap"></p>
+<p>工程上由于后期处理的需求可能会略高于两倍, 常用的音频采样率44100Hz便是由此而来(人耳最多只能听到20Hz-20kHz的信息). </p>
+<p>令$x(n) = f(nT_s)$, 即频率归一化, 则可将DTFT化简为: </p>
+<script type="math/tex; mode=display">X^*(\omega) = \sum_{n=-\infty}^{+\infty}x(n)e^{-{\rm j} \omega n}</script><p>同理, 有逆DTFT: </p>
+<script type="math/tex; mode=display">x(n) = \frac{1}{2\pi} \int_{-\pi}^{\pi} X^*(\omega)e^{ {\rm j} \omega n }\ {\rm d} \omega</script><h2 id="离散傅里叶变换"><a href="#离散傅里叶变换" class="headerlink" title="离散傅里叶变换"></a>离散傅里叶变换</h2><p>DTFT解决了离散信号频率分析的问题, 但仍有问题需要解决: 一方面变换为一个无限长的级数求和, 另一方面得到的函数仍然是连续函数. </p>
+<p>第一个问题很好解决, 实际输入的信号都是有限长度的, 可记为$x_0, x_1, \cdots, x_{L-1}$, 其余部分均取为0即可. </p>
+<p>对于另外一个问题, 可以考虑对频域同样进行”采样”, 即在一个周期的区间$[0, 2\pi)$中只取$N$个等间距的点计算. </p>
+<p>设计算的第$k$个频率为$\omega_k = 2\pi k/N$, 记$X_k=X^*(\omega_k)$, 则有: </p>
+<script type="math/tex; mode=display">
+X_k = \sum_{n=0}^{L-1}x_ne^{-{\rm j} \omega_k n }</script><p>通常记$w_N = e^{-{\rm j}2\pi /N }$, 也即: </p>
+<script type="math/tex; mode=display">
+X_k = \sum_{n=0}^{L-1}x_nw_N^{kn}</script><p>现在问题是$N$的取值. 若$N&lt;L$则有: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+X_k &= \sum_{n=0}^{N-1}x_nw_N^{kn} + \sum_{n=N}^{L-1}x_nw_N^{kn} \\
+&= \sum_{n=0}^{N-1}x_nw_N^{kn} + \sum_{n=0}^{L-N-1}x_{n+N}w_N^{kn} \\
+\end{aligned}</script><p>发生了时域混叠, 所以$N$的取值必须大于等于$L$, 为了方便起见一般令$N=L$, $N&gt;L$时向时域序列填充0即可: </p>
+<script type="math/tex; mode=display">
+X_k = \sum_{n=0}^{N-1} x_nw_N^{kn} \tag{3}</script><p>这便是离散傅里叶变换(DFT), 类似地, 有逆DFT: </p>
+<script type="math/tex; mode=display">
+x_n = \frac{1}{N}\sum_{k=0}^{N-1}X_kw_N^{-kn} \tag{4}</script><p>证明可见<a href="/2021/07/07/FFT/">这里(FFT)</a></p>
+<p>若$n \geq N$则所得即为$x_{n \mod N}$, 相当于对原信号进行了周期延拓. </p>
+<p>同样在离散卷积的意义下DFT有时域卷积定理与频域卷积定理. 同时可以看出DFT与IDFT实际上是特殊点的多项式求值. </p>
+<p>若计算$X_{N-k}$: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+X_{N-k} &= \sum_{n=0}^{N-1} x_nw_N^{(N-k)n} \\
+&= \sum_{n=0}^{N-1} x_nw_N^{-kn}
+\end{aligned}</script><p>当$x_n$均为实数时其值为$\overline{X_n}$, 也即DFT所得的序列是一个共轭对称序列.</p>
+<p>若计算$X_0$: </p>
+<script type="math/tex; mode=display">
+X_0 = \sum_{n=0}^{N-1} x_n</script><p>为$x_n$的累加和, 一般称该值为直流分量. </p>
+<p>对DFT也有帕塞瓦尔定理: </p>
+<script type="math/tex; mode=display">
+\sum_{n=0}^{N-1}|x_n|^2 = \frac{1}{N}\sum_{k=0}^{N-1}|X_k|^2</script><h2 id="Bluestein算法"><a href="#Bluestein算法" class="headerlink" title="Bluestein算法"></a>Bluestein算法</h2><p>普通的FFT只能得到长度为2的整数次幂的DFT, 对于其它情况则需要使用Bluestein算法快速计算. </p>
+<p>对序列$x_0, x_1, \cdots, x_{N-1}$进行DFT, 有: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+X_k &= \sum_{n=0}^{N-1} x_nw_N^{kn} \\
+&= \sum_{n=0}^{N-1} x_nw_N^{(-(k-n)^2+k^2+n^2)/2} \\
+&= w_N^{k^2/2}\sum_{n=0}^{N-1} x_nw_N^{n^2/2}w_N^{-(k-n)^2/2} \\
+&= w_{2N}^{k^2}\sum_{n=0}^{N-1} x_nw_{2N}^{n^2}w_{2N}^{-(k-n)^2} \\
+\end{aligned}</script><p>可以发现后面的求和为一个卷积, 使用FFT计算卷积即可. 时间复杂度为$O(N\log N)$, 常数大约是FFT的六倍. </p>
+<p>IDFT也同理可得: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+x_n &= \frac{1}{N}\sum_{k=0}^{N-1}X_kw_N^{-kn} \\
+&= \frac{1}{N}\sum_{k=0}^{N-1} X_kw_N^{((n-k)^2-k^2-n^2)/2} \\
+&= \frac{1}{N}w_{2N}^{-n^2}\sum_{k=0}^{N-1} X_kw_{2N}^{-k^2}w_{2N}^{(n-k)^2} \\
+\end{aligned}</script><p>若使用的是NTT则可能需要计算二次剩余, 此时可以使用: </p>
+<script type="math/tex; mode=display">
+kn = \frac{-(k-n)^{\underline{2} } + k^{\underline{2} } + (n+1)^{\underline{2} } }{2}</script><p>来拆解$kn$, 可避免计算二次剩余. </p>
+<h2 id="离散余弦变换"><a href="#离散余弦变换" class="headerlink" title="离散余弦变换"></a>离散余弦变换</h2><p>DFT得到的结果为复数, 有时不方便解释. 此时便可引入离散余弦变换(DCT). </p>
+<p>如前文所述, 当信号是偶函数时进行傅里叶变换得到的便是实函数, 所以对原信号进行偶延拓后再进行DFT便得到了DCT. 偶延拓的方法不同得到的DCT也不同, 其中最常用的一种如下: </p>
+<script type="math/tex; mode=display">
+y_k = 2\alpha_k \sum_{n=0}^{N-1} x_n \cos\left( \frac{\pi k(2n+1)}{2N} \right) \\
+x_n = \frac{y_0}{2N\alpha_0} + \frac{1}{N} \sum_{k=1}^{N-1}\frac{y_k}{\alpha_k}\cos\left( \frac{\pi k(2n+1)}{2N} \right)</script><p>相当于将信号右移$1/2$个单位后进行偶延拓再进行DCT. $\alpha_k$通常取$1$, 有时为了使转移矩阵正交化会取为: </p>
+<script type="math/tex; mode=display">
+\alpha_k = \begin{cases}
+\sqrt{\frac{1}{4N}},\ k=0 \\
+\sqrt{\frac{1}{2N}},\ k>0
+\end{cases}</script><p>DCT可以更好的聚集低频能量(由于进行了偶延拓后再周期延拓相比于DFT直接周期延拓函数图像更加平滑, 高频部分能量更少), 经常被用于图像处理之中. JPEG即是利用了该性质进行图像压缩. </p>
+<p>需要注意的是通常一维DCT的实现时间复杂度为$O(N^2)$, 因此对于一维信号的分析仍较多使用DFT. </p>
+<h2 id="短时傅里叶变换"><a href="#短时傅里叶变换" class="headerlink" title="短时傅里叶变换"></a>短时傅里叶变换</h2><p>对信号直接进行DFT可以得到整个信号各频率的强度. 然而对于实际的信号如音频信号, 信号在各时间上的频率信息是不一样的. 直接对整个信号进行DFT则丢失了时间信息. </p>
+<p>一个办法是将信号按照时间截取短的等长的”帧”, 再对每帧进行DFT, 这便是短时傅里叶变换(STFT). 由于每帧时间较短可以假定信号在一帧之内频率信息基本一致, 对于音频信号一般的共识是在10ms-40ms内信号基本是平稳的. </p>
+<p>若直接对截取的信号进行DFT则可能因为周期延拓时的跳变导致<strong>频率泄露</strong>, 此时需要对截取后的信号乘上一个<strong>窗函数</strong>再进行DFT以减小频率泄露. 一个比较常用的窗函数为汉宁窗: </p>
+<script type="math/tex; mode=display">
+W_{N,n}=\begin{cases}
+\frac{1}{2}\left(1-\cos\frac{2\pi n}{N-1}\right)&,0\leq n <N \\
+0&,{\rm otherwise}
+\end{cases}</script><p>其中的$N$为帧长度. </p>
+<p>加窗后, 信号$x_n$在第$t$帧(从0开始)的强度值$x_{t,n}$则为: </p>
+<script type="math/tex; mode=display">
+x_{t,n} = x_nW_{N, (n-tH)}</script><p>其中的$H$通常称为hop size, 即两帧之间”越过”的采样点数量. </p>
+<p>对第$t$帧进行DFT, 第$k$频率的强度$X_{t,k}$即为: </p>
+<script type="math/tex; mode=display">
+X_{t,k} = \sum_{n=0}^{N-1}x_{t,(n+tH)}w_N^{kn}</script><p>对于逆STFT则较为复杂, 由于每个帧之间可能有重叠, 对修改后的STFT每帧进行DFT可能每帧的重叠部分有冲突, 无法对应到真实存在的信号. </p>
+<p>其中一种想法是使用窗函数进行加权平均, 但使用最多的是如下的方法: </p>
+<p>假设有一信号$y_i$, 对其进行STFT可得$Y_t[k]$, 考虑修改后的STFT$X^*_{t,k}$与$Y_{t,k}$的距离的平均平方和: </p>
+<script type="math/tex; mode=display">
+D(X^*,y) = \sum_t\frac{1}{N}\sum_{k=0}^{N-1}\mid X^*_{t,k} - Y_{t,k} \mid^2</script><p>由DFT的线性性质以及帕塞瓦尔定理, 则有: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+D(X^*,y) &= \sum_t \sum_{n=0}^{N-1}( x^*_{t,(n+tH)} - y_{t,(n+tH)} )^2 \\
+&= \sum_t \sum_n ( x^*_{t,n} - y_{n}W_{N,(n-tH)} )^2
+\end{aligned}</script><p>对$y$求导, 等于0时$D$为极小值, 有: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+& \sum_n\sum_t x^*_{t,n}W_{N,(n-tH)} \\
+=& \sum_n y_n \sum_t W^2_{N,(n-tH)}
+\end{aligned}</script><p>对比$\sum_n$各项, 即有: </p>
+<script type="math/tex; mode=display">
+y_n=\frac{\sum_t x^*_{t,n}W_{N,(n-tH)}}{\sum_t W^2_{N,(n-tH)}}</script><p>如上所述, 据此重建的信号的STFT与原来修改得到的STFT的平均平方误差最小. </p>
+<p>需要注意分母$\sum_t W^2_{N,(n-tH)}$不能为0, 因此对于以0开头的窗函数可能需要向前填充0并且保留一定的帧重叠. </p>
+<h2 id="由一维到二维"><a href="#由一维到二维" class="headerlink" title="由一维到二维"></a>由一维到二维</h2><p>对于二维的信号, 有二维傅里叶变换2FT: </p>
+<script type="math/tex; mode=display">
+2FT[f](\omega, \nu) = \int_{-\infty}^{+\infty}\!\!\!\int_{-\infty}^{+\infty}f(x,y)e^{-{\rm j} (\omega x + \nu y)} {\rm d}x{\rm d}y \\
+2IFT[F](x, y) = \frac{1}{4\pi^2}\int_{-\infty}^{+\infty}\!\!\!\int_{-\infty}^{+\infty}F(\omega,\nu)e^{ {\rm j} (\omega x + \nu y)} {\rm d}\omega{\rm d}\nu \\</script><p>可以发现基底$e^{-{\rm j} (\omega x + \nu y)}$实际上是两个一维的傅里叶变换的乘积. </p>
+<p>由此即可推出二维离散傅里叶变换2DFT: </p>
+<script type="math/tex; mode=display">
+X_{k,l} = \sum_{m=0}^{M-1}\sum_{n=0}^{N-1}x_{m,n}w_{M}^{km}w_N^{ln} \\
+x_{m,n} = \frac{1}{MN}\sum_{k=0}^{M-1}\sum_{l=0}^{N-1}X_{m,n}w_{M}^{-km}w_N^{-ln} \\</script><p>可以看出实际上可以对每行进行DFT后再对每列进行DFT即可得到二维的2DFT. 时间复杂度即为$O(MN\log MN)$</p>
+<p>同样也有二维DCT, 设$c_{N,k,m}=\cos( \pi k(2m+1)/2N)$, $\beta_{m,n}=\alpha_m\alpha_n$: </p>
+<script type="math/tex; mode=display">
+y_{k,l}=4\beta_{k,l}\sum_{m=0}^{M-1}\sum_{n=0}^{N-1}x_{m,n}c_{M,k,m}c_{N,l,n}</script><script type="math/tex; mode=display">\begin{aligned}
+x_{m,n} &= \frac{y_{0,0}}{4MN\beta_{0,0}} \\
+& + \frac{1}{2MN}\left( \sum_{k=0}^{M-1}\sum_{kl=0,l<N}\frac{y_{k,l} }{\beta_{k,l} }c_{M,k,m}c_{N,l,n} \right) \\
+& + \frac{1}{MN}\left( \sum_{k=1}^{M-1}\sum_{l=1}^{N-1}\frac{y_{k,l} }{\beta_{k,l} }c_{M,k,m}c_{N,l,n} \right) \\
+\end{aligned}</script><p>二维DCT经常用于图像有关的处理, 如图像压缩(JPEG)或图像隐水印. JPEG即是对图像分为$8\times 8$的块后对每块进行DCT, 然后对DCT参数进行量化丢弃部分人眼无法辨别的高频参数后进行游程编码. 隐水印则是将水印信息嵌入人眼难以观察的中高频参数中. </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FFT/" rel="tag"># FFT</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/07/02/NoteTMP/" rel="next" title="Some Notes of TMP">
+                <i class="fa fa-chevron-left"></i> Some Notes of TMP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/09/28/loj118/" rel="prev" title="(loj118)正则表达式">
+                (loj118)正则表达式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="AjiL">
+            
+              <p class="site-author-name" itemprop="name">AjiL</p>
+              <p class="site-description motion-element" itemprop="description">El Psy Kongroo</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.tonyjam.cn/" title="TonyJam" target="_blank">TonyJam</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zmyjoe.github.io/" title="ZmyJoe" target="_blank">ZmyJoe</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://halc.top/" title="HalcyonAzu" target="_blank">HalcyonAzu</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#傅里叶级数"><span class="nav-number">1.</span> <span class="nav-text">傅里叶级数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#傅里叶变换"><span class="nav-number">2.</span> <span class="nav-text">傅里叶变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离散时间傅里叶变换"><span class="nav-number">3.</span> <span class="nav-text">离散时间傅里叶变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离散傅里叶变换"><span class="nav-number">4.</span> <span class="nav-text">离散傅里叶变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bluestein算法"><span class="nav-number">5.</span> <span class="nav-text">Bluestein算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离散余弦变换"><span class="nav-number">6.</span> <span class="nav-text">离散余弦变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#短时傅里叶变换"><span class="nav-number">7.</span> <span class="nav-text">短时傅里叶变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#由一维到二维"><span class="nav-number">8.</span> <span class="nav-text">由一维到二维</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AjiL</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

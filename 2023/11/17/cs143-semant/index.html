@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="编译原理,">
+
+
+
+
+
+
+
+
+
+
+<meta name="keywords" content="编译原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Compiler -- Semant">
+<meta property="og:url" content="http://yoursite.com/2023/11/17/cs143-semant/index.html">
+<meta property="og:site_name" content="AjiL&#39;s Blog">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2024-08-03T12:36:17.507Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Compiler -- Semant">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2023/11/17/cs143-semant/">
+
+
+
+
+
+  <title>Compiler -- Semant | AjiL's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AjiL's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/11/17/cs143-semant/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AjiL">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AjiL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Compiler -- Semant</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-11-17T13:54:40+11:00">
+                2023-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index">
+                    <span itemprop="name">note</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/编译原理/" itemprop="url" rel="index">
+                    <span itemprop="name">编译原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<a id="more"></a>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>语义分析对上一步生成的 AST 进行进一步的检查，同时对每个 AST 结点生成相应的语义信息，以便后续的代码生成。通常来说语义分析的过程可以拆分为多遍的 AST 遍历。</p>
+<p>虽然 CFG 能够表示许多语言，但编程语言中的某些结构仍然无法使用 CFG 表示，例如下面这个语言：</p>
+<script type="math/tex; mode=display">\{wcw \mid w\in L((a \mid b)*)\}</script><p>一个类似的例子是在许多编程语言中，变量需要先定义后使用。这些语法结构将由语义分析器检查，并筛出不正确的代码。</p>
+<p>语义分析是编译器前端部分的最后一步，需要负责语言层面的剩余的所有检查，通常有作用域检查和类型检查。经过语义分析后的代码会被认为是一个合法的程序，由后端生成汇编代码。</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>一个标识符的<strong>作用域（scope）</strong>是指程序的一个部分，在该部分内标识符是可访问的（accessible）。</p>
+<p>绝大多数编程语言中作用域是静态的（static），意思是标识符的作用域仅与代码有关，而与运行时的行为无关，这种作用域便可以通过语义分析来识别；然而有一部分于语言的作用域是动态的（dynamic），这类语言通常会用运行时的方法来检查，比如将未定义的变量默认为空。</p>
+<p>同一个标识符在不同的代码部分中代表的含义可能不同。在大多数编程语言中，大多数标识符遵循<strong>最近嵌套原则（most-closely nested rule）</strong>：代码由许多嵌套的代码块组成，对于一个标识符的引用，从该引用所处的代码块由里向外寻找该标识符的定义。</p>
+<p>但是也有许多例外，例如在许多编程语言中，函数（或者方法）与类可以在声明之前使用；在大多数面向对象的语言中，类中的方法可以不在该类所在的块中定义而定义在其基类中，同时方法还可以由子类重定义。这些例外大多需要特殊处理。</p>
+<p>由于涉及作用域的问题，所以<strong>符号表（symbol table）</strong>的结构不能像前两个步骤一样仅由一个哈希表完成。一般需要支持如下的操作：</p>
+<ul>
+<li>进入新的作用域；</li>
+<li>在当前符号表中寻找某个符号（标识符）；</li>
+<li>在当前作用域中寻找某个符号；</li>
+<li>添加符号；</li>
+<li>退出作用域；</li>
+</ul>
+<p>其中第三个操作是因为一些语言不允许同一个作用域内以及函数的形参重定义同名的变量，也由于该操作所以通常符号表会设计成包含哈希表的栈。</p>
+<p>对于例外的那些情况，例如全局定义的类或方法，常用的方法是先遍历一遍收集这些符号，再重新遍历一遍检查符号的引用。</p>
+<h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><p><strong>类型（type）</strong>的定义在各种编程语言中不尽相同。但通常来说，类型是一类能够进行相同操作的变量集合，以及一些在该集合上可以进行的操作的统称。对于面向对象的语言来说，类型（type）和类（class）基本上是同义词。</p>
+<p>汇编语言没有类型的概念，所以对变量进行类型检查，保证对变量的操作合法是编译器的责任。</p>
+<p>类型系统的实现有两种方式：静态类型（static typed）语言是指大多数或者绝大多数对类型的检查在编译期完成的语言，如 C、Java 等语言；动态类型（dynamic typed）语言是指绝大多数对类型的检查在运行时完成的语言，如 Scheme、Python、Javascript 等语言。</p>
+<p>通常类型检查会写成命题逻辑的形式，例如对加法表达式进行类型检查可以写成如下形式：</p>
+<script type="math/tex; mode=display">(e_1:\mathrm{Int} \land e_2:\mathrm{Int}) \Rightarrow (e_1 + e_2):\mathrm{Int}</script><p>冒号表示某个表达式是哪个类型。传统上也会写成如下形式：</p>
+<script type="math/tex; mode=display">
+\frac{
+    \begin{gathered}
+    O,M,C\vdash e_1:\mathrm{Int}\\
+    O,M,C\vdash e_2:\mathrm{Int}\\
+    \end{gathered}
+  }{
+    O,M,C\vdash (e_1+e_2):\mathrm{Int}
+  }</script><p>前面的$O,M,C$称为<strong>类型环境（Type environments）</strong>。</p>
+<h2 id="类型环境"><a href="#类型环境" class="headerlink" title="类型环境"></a>类型环境</h2><p>对于一部分表达式，仅靠命题逻辑形式本身是无法进行类型检测的，需要给出外部条件（例如对变量类型的检查），这类外部条件称为<strong>类型环境</strong>。</p>
+<p>有了类型环境，便可以写出变量的类型检查逻辑：</p>
+<script type="math/tex; mode=display">\frac{O,M,C\vdash O(x) = T}{O,M,C\vdash x:T}</script><p>其中$O$代表 Object，是一个从变量标识符到类型的映射，可以使用之前所述的符号表来维护。</p>
+<p>变量定义的类型检查逻辑可以写为（COOL 语法）：</p>
+<script type="math/tex; mode=display">\frac{O[T_0/x],M,C\vdash e_1:T_1}{O,M,C\vdash (\mathrm{let}\ x:T_0\ \mathrm{in}\ e_1):T_1}</script><p>其中中括号记号的含义如下：</p>
+<script type="math/tex; mode=display">
+  f[y_0/x_0](x) = \begin{cases}
+    y_0 &, x=x_0 \\
+    f(x) &, \mathrm{otherwise}
+  \end{cases}</script><p>至于 COOL 语言中的其它的类型环境，$M$代表 Method，接受方法名与类名为参数，返回各形参类型与返回值类型；$C$代表 Class，代表当前表达式所在的类，与 self 类型有关。</p>
+<h2 id="子类型"><a href="#子类型" class="headerlink" title="子类型"></a>子类型</h2><p>对于面向对象的语言来说有<strong>子类型（subtype）</strong>的概念。有子类型就需要类型系统满足里氏替换原则，即所有基类可以出现的地方都可以出现其子类型。从集合的角度来说子类型应该是基类的子集。</p>
+<p>可以在类型上建立如下的偏序关系$\leq$来描述这个概念：</p>
+<ul>
+<li>当类型（类）$X$继承自类型（类）$Y$时，有$X \leq Y$；</li>
+<li>自反性：对于类型$X, X \leq X$；</li>
+<li>传递性：$(X\leq Y \land Y\leq Z) \Rightarrow X\leq Z$。</li>
+</ul>
+<p>有了该关系便可以对一些需要里氏替换原则的表达式进行类型检测。例如，对于赋值语句：</p>
+<script type="math/tex; mode=display">
+\frac{
+  \begin{gathered}
+  O(x) = T_0 \\
+  O, M, C \vdash e_1 : T_1 \\
+  T_1 \leq T_0
+  \end{gathered}
+}{
+  O, M, C \vdash (x \leftarrow e_1) : T_1
+}</script><p>同时可以定义一个重要的概念：最小上限（Least Upper Bound, abbr. lub）。形式化地：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+  & (X \leq Z \land Y \leq Z) \land (\forall Z' \in \{W \mid X \leq W \land Y \leq W\}. Z \leq Z') \\
+  \Rightarrow & \mathrm{lub}(X, Y) = Z
+\end{aligned}</script><p>对于绝大多数只有单继承的语言（如 Java）来说，其继承关系是一棵树，则 lub 即为两个类在树继承树上的最近公共祖先（Least Common Ancestor, abbr. LCA）；对于有多继承的语言（如 C++）则要复杂许多，其继承关系是有向无环图（Directed Acyclic Graph, abbr. DAG），lub 为两个点的最近公共支配点。</p>
+<p>有了最小上限的概念则可以对分支结构进行类型检查：</p>
+<script type="math/tex; mode=display">
+\frac{
+  \begin{gathered}
+  O, M, C \vdash e_0 : \mathrm{Bool} \\
+  O, M, C \vdash e_1 : T_1 \\
+  O, M, C \vdash e_2 : T_2
+  \end{gathered}
+}{
+  O, M, C \vdash (\mathrm{if}\ e_0\ \mathrm{then}\ e_1\ \mathrm{else}\ e_2) : \mathrm{lub}(T_1, T_2)
+}</script><p>因为运行前并不知道$e_0$求值的结果是真是假，所以在编译期这里只能做最保险的假设，也即$\mathrm{lub}(T_1, T_2)$。</p>
+<h2 id="self-类型"><a href="#self-类型" class="headerlink" title="self 类型"></a>self 类型</h2><p>有的时候方法可能需要将自身作为返回值返回。对于没有继承特性的语言来说没有什么问题，但对于许多面向对象的语言来说，如果这个方法在基类当中，则对返回值类型的检查可能会造成问题。因此需要引入 self 类型。</p>
+<p>对于一个方法，如果声明其返回值为 self 类型，则返回值的类型与调用对象的类型相同；而调用对象的类必须是方法定义所在的类或其子类，因此 self 类型所代表的是某个类及其子类的一个集合，对于没有多继承的语言来说即为继承树上的一个子树。</p>
+<p>令$S_C$为出现在类$C$中的 self 类型，则有如下关系：</p>
+<ul>
+<li>$S_C \leq C, S_C \leq S_C$；</li>
+<li>$C \leq T \Rightarrow S_C \leq T$；</li>
+<li>$\neg(T \leq S_C)$；</li>
+<li>对于两个不同的类，其 self 类型的关系未定义。</li>
+</ul>
+<p>第三条规则是因为$S_C$代表了$C$的所有子类，无法保证某个类型$T$与$C$的所有子类的关系；第四条规则是因为两个不同类的 self 类型不会同时出现，因此这样的关系没有意义。</p>
+<p>定义了偏序关系后同样可以定义 self 类型的 lub：</p>
+<ul>
+<li>$\mathrm{lub}(S_C, S_C) = S_C$；</li>
+<li>$\mathrm{lub}(S_C, T) = \mathrm{lub}(T, S_C) = \mathrm{lub}(C, T)$。</li>
+</ul>
+<p>对于 self 类型声明可能出现的位置，唯一需要注意的是 self 类型声明不能出现在方法形参的类型声明中。因为对于方法调用有如下规则：</p>
+<script type="math/tex; mode=display">
+\frac{
+  \begin{gathered}
+  O, M, C \vdash e_0 : T_0 \\
+  O, M, C \vdash e_1 : T_1 \\
+  \vdots \\
+  O, M, C \vdash e_n : T_n \\
+  M(T_0, f) = (T'_1, T'_2, \cdots, T'_n, T_{n+1}) \\
+  \forall 1 \leq i \leq n. T_i \leq T'_i
+  \end{gathered}
+}{
+  O, M, C \vdash (e_0.f(e_1, e_2, \cdots, e_n)) : T_{n+1}
+}</script><p>然而由于上面的规则，如果形参的类型声明中出现 self 类型，则最后一条$T_i\leq T’_i$对该形参为恒假，因此 self 类型声明不能出现在方法形参的类型声明中。</p>
+<h2 id="错误恢复"><a href="#错误恢复" class="headerlink" title="错误恢复"></a>错误恢复</h2><p>同样地，语义分析器也需要错误恢复来尽可能多的发现代码中的错误。不过由于已经建立起了 AST，因此相比前面的步骤，在语义分析中进行错误恢复要更简单，例如对于未定义或重定义的变量，直接报告错误即可。</p>
+<p>语义分析中的错误恢复的重点是类型检查中的错误恢复。一个朴素的解决方法是将类型检查错误的表达式指定为 Object 类型，即所有类型的根类型。但这样会导致级联报错，因为作为根类型，绝大多数的操作是无法对 Object 类进行的，而这又会导致错误并被指定为 Object 类型。</p>
+<p>另一个方案是引入一个新的类型 No_type，并定义对所有类型$C$，有$\mathrm{No\_type} \leq C$。这样所有操作对 No_type 均有定义，报错时只会报告发现错误的位置。</p>
+<p>但引入 No_type 有一个问题：对于无多继承的语言来说，引入 No_type 后其继承关系将会由树变为一个 DAG，这会使得对类型的处理变得十分复杂。一个解决方法是将 No_type 视为一个特例，对其它的类型仍然使用基于树的算法。</p>
+<h2 id="复合类型"><a href="#复合类型" class="headerlink" title="复合类型"></a>复合类型</h2><p>许多语言都有复合类型的概念，例如 C 中的数组、指针，C++ 的模板类等。这些复合类型的声明需要使用类型表达式（type expression），且需要语义分析器具有识别类型表达式的功能，并给出合适的类型签名。</p>
+<p>对于数组、指针这类的类型，可能会导致别名（aliasing）问题：基类的指针可以指向子类指针所指向的空间并使用基类的初始化函数，此时子类指针想要调用基类中没有的方法便会产生错误。</p>
+<p>一个方法是对这些类型的类型检查中禁用子类替换，这可能会损失一部分表达性；另一种方法是类似于 Java 使用运行时的机制来检测这类问题。</p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>许多语言都有不同类型的“数”，例如有符号和无符号整数、不同长度的整数、浮点数等等。这些类型之间在进行算术运算的时候往往并不是通过定义每个类型之间的运算来实现，而是通过类型转换（type conversion）来实现的。</p>
+<p>某些类型转换必须要通过某种声明来触发，这些类型转换称为显式类型转换（explicit ~ / cast）；还有一些类型转换可以由编译器来识别并进行，称为隐式类型转换（implicit ~ / coercion）。</p>
+<p>通常能够进行隐式类型转换的关系可以表示为一棵树，若两个被运算数的类型不同则将两个数都转换到该树的 LCA 上。</p>
+<h2 id="Lab"><a href="#Lab" class="headerlink" title="Lab"></a>Lab</h2><p>作业四需要使用 C++ 或 Java 来实现 COOL 语言的语义分析器。</p>
+<p>首先在头文件中定义继承树的结点类：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> InheritsNode_class* InheritsNode;</span><br><span class="line"><span class="keyword">typedef</span> list_node&lt;InheritsNode&gt; InheritsNodes_class;</span><br><span class="line"><span class="keyword">typedef</span> InheritsNodes_class* InheritsNodes;</span><br><span class="line"></span><br><span class="line"><span class="function">InheritsNodes <span class="title">nil_InheritsNodes</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">InheritsNodes <span class="title">single_InheritsNodes</span><span class="params">(InheritsNode)</span></span>;</span><br><span class="line"><span class="function">InheritsNodes <span class="title">append_InheritsNodes</span><span class="params">(InheritsNodes, InheritsNodes)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InheritsNode_class</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  Class_ cls;</span><br><span class="line">  <span class="keyword">int</span> depth, tree_size;</span><br><span class="line">  InheritsNode parent;</span><br><span class="line">  InheritsNode link_top, heavy_son;</span><br><span class="line">  InheritsNodes sons;</span><br><span class="line">  <span class="keyword">bool</span> flag_errtype, flag_prim;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> dep)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">link</span><span class="params">()</span></span>;</span><br><span class="line">  InheritsNode_class(<span class="keyword">const</span> InheritsNode_class&amp; rhs):</span><br><span class="line">    cls(rhs.cls),</span><br><span class="line">    depth(rhs.depth),</span><br><span class="line">    tree_size(rhs.tree_size),</span><br><span class="line">    parent(rhs.parent),</span><br><span class="line">    link_top(rhs.link_top),</span><br><span class="line">    heavy_son(rhs.heavy_son),</span><br><span class="line">    sons(rhs.sons),</span><br><span class="line">    flag_errtype(rhs.flag_errtype),</span><br><span class="line">    flag_prim(rhs.flag_prim) &#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">put_sym</span><span class="params">(attr_class*, SymbolTable&lt;Symbol,InheritsNode_class&gt;*)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">put_sym</span><span class="params">(method_class*, SymbolTable&lt;Symbol,InheritsNode_class&gt;*)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">put_sym</span><span class="params">(Feature, SymbolTable&lt;Symbol,InheritsNode_class&gt;*)</span></span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  InheritsNode_class(Class_ cls):</span><br><span class="line">    cls(cls),</span><br><span class="line">    depth(<span class="number">0</span>),</span><br><span class="line">    tree_size(<span class="number">0</span>),</span><br><span class="line">    parent(<span class="literal">nullptr</span>),</span><br><span class="line">    link_top(<span class="keyword">this</span>),</span><br><span class="line">    heavy_son(<span class="literal">nullptr</span>),</span><br><span class="line">    sons(nil_InheritsNodes()),</span><br><span class="line">    flag_errtype(<span class="literal">false</span>),</span><br><span class="line">    flag_prim(<span class="literal">false</span>) &#123;&#125;</span><br><span class="line">  SymbolTable&lt;Symbol, InheritsOprand&gt; obj_symtab;</span><br><span class="line">  SymbolTable&lt;Symbol, Types_class&gt; meth_symtab;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">set_parent</span><span class="params">(InheritsNode)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">is_inited</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> depth &gt; <span class="number">0</span>; &#125;</span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">is_errtype</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> flag_errtype; &#125;</span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">is_prim</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> flag_prim; &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">dump</span><span class="params">(<span class="built_in">std</span>::ostream&amp;, <span class="keyword">int</span>)</span></span>;</span><br><span class="line">  <span class="function">InheritsNode <span class="title">copy</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="keyword">new</span> InheritsNode_class(*<span class="keyword">this</span>); &#125;;</span><br><span class="line">  <span class="function">Class_ <span class="title">get_class</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> cls; &#125;;</span><br><span class="line">  <span class="function">InheritsNode <span class="title">get_parent</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> parent; &#125;</span><br><span class="line">  <span class="function">InheritsNodes <span class="title">get_sons</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> sons; &#125;</span><br><span class="line">  <span class="function"><span class="keyword">friend</span> InheritsNode <span class="title">Node_errtype</span><span class="params">(Class_)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">friend</span> InheritsNode <span class="title">Node_prim</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">friend</span> InheritsNode <span class="title">Node_object</span><span class="params">(Class_)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">friend</span> InheritsNode <span class="title">lca</span><span class="params">(InheritsNode, InheritsNode)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">friend</span> <span class="keyword">bool</span> <span class="title">le</span><span class="params">(InheritsNode, InheritsNode)</span></span>;</span><br><span class="line">  <span class="function">Types <span class="title">get_meth_type</span><span class="params">(Symbol)</span></span>;</span><br><span class="line">  <span class="function">Type <span class="title">get_obj_type</span><span class="params">(Symbol)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">gather_symbols</span><span class="params">(SymbolTable&lt;Symbol,InheritsNode_class&gt;*)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">check</span><span class="params">(ClassTable*)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>flag_errtype</code>为<code>true</code>代表该结点为<code>Err_type</code>（即为前文所述的 No_type，由于作业中要求将 no_expr 的类型标记为 No_type 因此改了个名字）；<code>flag_prim</code>为<code>true</code>代表该节点为特殊类型<code>prim_slot</code>（其实去掉好像也行）；其它的属性为与树结构相关的信息，方便后续的树上操作。</p>
+<p>然后定义判断类型关系与求最近公共祖先的函数。由于有 self 类型和 Err_type，为了方便起见先定义一个类<code>InheritsOperand</code>，对于类型关系之间的操作都在该类上实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InheritsOprand</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> InheritsOprand Type_class;</span><br><span class="line"><span class="keyword">typedef</span> InheritsOprand* Type;</span><br><span class="line"><span class="keyword">typedef</span> list_node&lt;Type&gt; Types_class;</span><br><span class="line"><span class="keyword">typedef</span> Types_class* Types;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InheritsOprand</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  InheritsNode node;</span><br><span class="line">  <span class="keyword">bool</span> flag_self;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  InheritsOprand(InheritsNode node, <span class="keyword">bool</span> is_self=<span class="literal">false</span>):</span><br><span class="line">    node(node), flag_self(is_self) &#123;&#125;</span><br><span class="line">  InheritsOprand(<span class="keyword">const</span> InheritsOprand&amp; rhs):</span><br><span class="line">    node(rhs.node), flag_self(rhs.flag_self) &#123;&#125;</span><br><span class="line">  <span class="function">InheritsNode <span class="title">get_node</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> node; &#125;</span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">is_self</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> flag_self; &#125;</span><br><span class="line">  <span class="function">Type <span class="title">trans_self</span><span class="params">(Type clsenv)</span> </span>&#123; <span class="keyword">return</span> flag_self ? clsenv : <span class="keyword">this</span>; &#125;</span><br><span class="line">  <span class="function">Symbol <span class="title">get_name</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;= (InheritsOprand, InheritsOprand);</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">dump</span><span class="params">(<span class="built_in">std</span>::ostream&amp;, <span class="keyword">int</span>)</span></span>;</span><br><span class="line">  <span class="function">Type <span class="title">copy</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="keyword">new</span> InheritsOprand(*<span class="keyword">this</span>); &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">InheritsOprand <span class="title">lca</span><span class="params">(InheritsOprand, InheritsOprand)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">Types <span class="title">nil_Types</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">Types <span class="title">single_Types</span><span class="params">(Type)</span></span>;</span><br><span class="line"><span class="function">Types <span class="title">append_Types</span><span class="params">(Types, Types)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>对类型关系的操作使用了<a href="/2018/01/06/tree-cutting">重链剖分</a>。首先需要初始化结点中的相关信息：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> InheritsNode_class::calc(<span class="keyword">int</span> dep=<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;depth = dep;</span><br><span class="line">    <span class="keyword">this</span>-&gt;tree_size = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> i = sons-&gt;first(); sons-&gt;more(i); i = sons-&gt;next(i)) &#123;</span><br><span class="line">        <span class="keyword">auto</span> son = sons-&gt;nth(i);</span><br><span class="line">        son-&gt;calc(dep + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">this</span>-&gt;tree_size += son-&gt;tree_size;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">this</span>-&gt;heavy_son || <span class="keyword">this</span>-&gt;heavy_son-&gt;tree_size &lt; son-&gt;tree_size) &#123;</span><br><span class="line">            <span class="keyword">this</span>-&gt;heavy_son = son;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> InheritsNode_class::link() &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>-&gt;heavy_son) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;heavy_son-&gt;link_top = <span class="keyword">this</span>-&gt;link_top;</span><br><span class="line">        <span class="keyword">this</span>-&gt;heavy_son-&gt;link();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> i = sons-&gt;first(); sons-&gt;more(i); i = sons-&gt;next(i)) &#123;</span><br><span class="line">        <span class="keyword">auto</span> son = sons-&gt;nth(i);</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>-&gt;heavy_son != son) &#123;</span><br><span class="line">            son-&gt;link_top = son;</span><br><span class="line">            son-&gt;link();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> InheritsNode_class::init() &#123;</span><br><span class="line">    <span class="keyword">if</span>(flag_errtype) &#123; <span class="keyword">return</span>; &#125;</span><br><span class="line">    <span class="keyword">this</span>-&gt;calc(); <span class="keyword">this</span>-&gt;link();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>calc()</code>用于计算各结点深度与子树大小，以及选择重儿子；<code>link()</code>用于连接重链，标记重链链顶；<code>init()</code>仅需根结点调用，用于对整棵树进行初始化。</p>
+<p>接下来便是实现关系判定以及求 LCA 的函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">InheritsNode <span class="title">lca</span><span class="params">(InheritsNode lhs, InheritsNode rhs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!lhs || lhs-&gt;is_errtype()) &#123; <span class="keyword">return</span> rhs; &#125;</span><br><span class="line">    <span class="keyword">if</span>(!rhs || rhs-&gt;is_errtype()) &#123; <span class="keyword">return</span> lhs; &#125;</span><br><span class="line">    <span class="keyword">while</span>(lhs-&gt;link_top != rhs-&gt;link_top) &#123;</span><br><span class="line">        <span class="keyword">if</span>(lhs-&gt;link_top-&gt;depth &lt; rhs-&gt;link_top-&gt;depth) &#123;</span><br><span class="line">            <span class="keyword">auto</span> chs = lhs; lhs = rhs; rhs = chs;</span><br><span class="line">        &#125;</span><br><span class="line">        lhs = lhs-&gt;link_top-&gt;parent;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> lhs-&gt;depth &lt;= rhs-&gt;depth ? lhs : rhs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">le</span><span class="params">(InheritsNode lhs, InheritsNode rhs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(lhs-&gt;is_errtype()) &#123; <span class="keyword">return</span> <span class="literal">true</span>; &#125;</span><br><span class="line">    <span class="keyword">if</span>(rhs-&gt;is_errtype() || lhs-&gt;depth &lt; rhs-&gt;depth) &#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;</span><br><span class="line">    <span class="keyword">while</span>(lhs-&gt;link_top != rhs-&gt;link_top &amp;&amp; lhs-&gt;depth &gt;= rhs-&gt;depth) &#123;</span><br><span class="line">        lhs = lhs-&gt;link_top-&gt;parent;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> lhs-&gt;depth &gt;= rhs-&gt;depth;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">InheritsOprand <span class="title">lca</span><span class="params">(InheritsOprand lhs, InheritsOprand rhs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; lca(lhs.get_node(), rhs.get_node()), lhs.is_self() &amp;&amp; rhs.is_self() &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span> &lt;= (InheritsOprand lhs, InheritsOprand rhs) &#123;</span><br><span class="line">    <span class="keyword">if</span>(lhs.is_self() &amp;&amp; rhs.is_self()) &#123; <span class="keyword">return</span> <span class="literal">true</span>; &#125;</span><br><span class="line">    <span class="keyword">if</span>(rhs.is_self() &amp;&amp; !lhs.get_node()-&gt;is_errtype()) &#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;</span><br><span class="line">    <span class="keyword">return</span> le(lhs.get_node(), rhs.get_node());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后修改一下<code>ClassTable</code>的定义使其支持手写的继承树：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassTable</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  <span class="keyword">int</span> semant_errors;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">install_basic_classes</span><span class="params">()</span></span>;</span><br><span class="line">  InheritsNode node_obj, node_err;</span><br><span class="line">  ostream&amp; error_stream;</span><br><span class="line">  <span class="function">InheritsNode <span class="title">search_node</span><span class="params">(Symbol)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  ClassTable(Classes);</span><br><span class="line">  SymbolTable&lt;Symbol, InheritsNode_class&gt;* inherits_tree;</span><br><span class="line">  <span class="function">InheritsNode <span class="title">get_node_obj</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> node_obj; &#125;</span><br><span class="line">  <span class="function">InheritsNode <span class="title">get_node_err</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> node_err; &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">gather_features</span><span class="params">(InheritsNode)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">check</span><span class="params">(InheritsNode node)</span></span>;</span><br><span class="line">  <span class="function">Type <span class="title">get_sym_type</span><span class="params">(Symbol, Type)</span></span>;</span><br><span class="line">  <span class="function">Types <span class="title">get_meth_type</span><span class="params">(Type,Symbol)</span></span>;</span><br><span class="line">  <span class="function">Type <span class="title">get_obj_type</span><span class="params">(Type,Symbol)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">errors</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> semant_errors; &#125;</span><br><span class="line">  <span class="function">ostream&amp; <span class="title">semant_error</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function">ostream&amp; <span class="title">semant_error</span><span class="params">(Class_ c)</span></span>;</span><br><span class="line">  <span class="function">ostream&amp; <span class="title">semant_error</span><span class="params">(Symbol filename, tree_node *t)</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>其中的<code>inherits_tree</code>即为继承树的结点，<code>node_obj</code>为继承树的根，<code>node_err</code>代表特殊的 Err_type 结点。</p>
+<p>然后修改一下入口函数<code>program_class::semant()</code>的定义来确定语义分析的步骤：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> program_class::semant()</span><br><span class="line">&#123;</span><br><span class="line">    initialize_constants();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* ClassTable constructor may do some semantic analysis */</span></span><br><span class="line">    ClassTable *classtable = <span class="keyword">new</span> ClassTable(classes);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* some semantic analysis code may go here */</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">auto</span> halt_if_err = [&amp;]() &#123;</span><br><span class="line">        <span class="keyword">if</span> (classtable-&gt;errors()) &#123;</span><br><span class="line">            <span class="built_in">cerr</span> &lt;&lt; <span class="string">"Compilation halted due to static semantic errors."</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    halt_if_err();</span><br><span class="line">    </span><br><span class="line">    classtable-&gt;gather_features(classtable-&gt;get_node_obj());</span><br><span class="line">    halt_if_err();</span><br><span class="line"></span><br><span class="line">    classtable-&gt;check(classtable-&gt;get_node_obj());</span><br><span class="line">    halt_if_err();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>语义分析的步骤首先是建立继承树，然后收集属性和方法名，接着根据继承树和属性与方法符号表进行检查。</p>
+<p>然后是定义<code>ClassTable</code>的构造函数，根据入口函数<code>program_class::semant()</code>的注释，该构造函数作用是检测各个类的声明是否合法并构造继承树：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">ClassTable::ClassTable(Classes classes) : semant_errors(<span class="number">0</span>) , error_stream(<span class="built_in">cerr</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Fill this in */</span></span><br><span class="line">    </span><br><span class="line">    inherits_tree = <span class="keyword">new</span> SymbolTable&lt;Symbol, InheritsNode_class&gt;();</span><br><span class="line">    inherits_tree-&gt;enterscope();</span><br><span class="line">    install_basic_classes();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Check redefinition</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> i = classes-&gt;first(); classes-&gt;more(i); i = classes-&gt;next(i)) &#123;</span><br><span class="line">        Class_ cls = classes-&gt;nth(i);</span><br><span class="line">        Symbol name = cls-&gt;get_name();</span><br><span class="line">        <span class="keyword">if</span>(inherits_tree-&gt;probe(name)) &#123;</span><br><span class="line">            semant_error(cls) &lt;&lt; <span class="string">"Redefinition of class "</span> &lt;&lt; name-&gt;get_string() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            InheritsNode node_cls = <span class="keyword">new</span> InheritsNode_class(cls);</span><br><span class="line">            inherits_tree-&gt;addid(name, node_cls);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Build Inhiritance tree</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> i = classes-&gt;first(); classes-&gt;more(i); i = classes-&gt;next(i)) &#123;</span><br><span class="line">        Class_ cls = classes-&gt;nth(i);</span><br><span class="line">        InheritsNode node_cls = inherits_tree-&gt;probe(cls-&gt;get_name()),</span><br><span class="line">            node_parent = inherits_tree-&gt;probe(cls-&gt;get_parent());</span><br><span class="line">        <span class="keyword">if</span>(node_parent == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            semant_error(cls) &lt;&lt; <span class="string">"Parent for class "</span> &lt;&lt; cls-&gt;get_name()-&gt;get_string() &lt;&lt; <span class="string">" not found"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">            node_cls-&gt;set_parent(node_obj);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(</span><br><span class="line">            cls-&gt;get_parent()-&gt;equal_string(<span class="string">"Int"</span>, <span class="number">3</span>) ||</span><br><span class="line">            cls-&gt;get_parent()-&gt;equal_string(<span class="string">"Bool"</span>, <span class="number">4</span>) ||</span><br><span class="line">            cls-&gt;get_parent()-&gt;equal_string(<span class="string">"String"</span>, <span class="number">6</span>)</span><br><span class="line">        ) &#123;</span><br><span class="line">            semant_error(cls) &lt;&lt; <span class="string">"Class "</span> &lt;&lt; cls-&gt;get_parent()-&gt;get_string() &lt;&lt; <span class="string">" cannot be inherited"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">            node_cls-&gt;set_parent(node_parent);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            node_cls-&gt;set_parent(node_parent);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Check cyclic</span></span><br><span class="line">    node_obj-&gt;init();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> i = classes-&gt;first(); classes-&gt;more(i); i = classes-&gt;next(i)) &#123;</span><br><span class="line">        Class_ cls = classes-&gt;nth(i);</span><br><span class="line">        InheritsNode node_cls = inherits_tree-&gt;probe(cls-&gt;get_name());</span><br><span class="line">        <span class="keyword">if</span>(!node_cls-&gt;is_inited()) &#123;</span><br><span class="line">            semant_error(cls) &lt;&lt; <span class="string">"Class "</span> &lt;&lt; cls-&gt;get_name()-&gt;get_string() &lt;&lt; <span class="string">" is in cyclic inheritance"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>install_basic_classes()</code>中也需要添加语句将原始类型接到继承树上：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> ClassTable::install_basic_classes() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*...*/</span></span><br><span class="line">    Class_ Err_class = class_(Err_type, No_class, nil_Features(), filename);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>-&gt;node_obj = Node_object(Object_class);</span><br><span class="line">    <span class="keyword">this</span>-&gt;node_err = Node_errtype(Err_class);</span><br><span class="line">    InheritsNode node_int = <span class="keyword">new</span> InheritsNode_class(Int_class),</span><br><span class="line">        node_bool = <span class="keyword">new</span> InheritsNode_class(Bool_class),</span><br><span class="line">        node_str = <span class="keyword">new</span> InheritsNode_class(Str_class),</span><br><span class="line">        node_io = <span class="keyword">new</span> InheritsNode_class(IO_class),</span><br><span class="line">        node_prim = Node_prim();</span><br><span class="line">    </span><br><span class="line">    inherits_tree-&gt;addid(Object, node_obj);</span><br><span class="line">    inherits_tree-&gt;addid(Err_type, node_err);</span><br><span class="line">    inherits_tree-&gt;addid(prim_slot, node_prim);</span><br><span class="line">    inherits_tree-&gt;addid(IO, node_io);</span><br><span class="line">    inherits_tree-&gt;addid(Int, node_int);</span><br><span class="line">    inherits_tree-&gt;addid(Bool, node_bool);</span><br><span class="line">    inherits_tree-&gt;addid(Str, node_str);</span><br><span class="line"></span><br><span class="line">    node_io-&gt;set_parent(node_obj);</span><br><span class="line">    node_int-&gt;set_parent(node_obj);</span><br><span class="line">    node_bool-&gt;set_parent(node_obj);</span><br><span class="line">    node_str-&gt;set_parent(node_obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后是收集符号，将属性和方法分别收集到每个类的变量符号表和方法符号表中：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> ClassTable::gather_features(InheritsNode node) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;semant_errors += node-&gt;gather_symbols(inherits_tree);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> i = node-&gt;get_sons()-&gt;first(); node-&gt;get_sons()-&gt;more(i); i = node-&gt;get_sons()-&gt;next(i)) &#123;</span><br><span class="line">        gather_features(node-&gt;get_sons()-&gt;nth(i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> InheritsNode_class::gather_symbols(SymbolTable&lt;Symbol,InheritsNode_class&gt;* inh_tree) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;obj_symtab.enterscope(); <span class="keyword">this</span>-&gt;meth_symtab.enterscope();</span><br><span class="line">    <span class="keyword">this</span>-&gt;obj_symtab.addid(self, <span class="keyword">new</span> InheritsOprand(<span class="keyword">this</span>, <span class="literal">true</span>));</span><br><span class="line">    Features fs = <span class="keyword">this</span>-&gt;cls-&gt;get_features();</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> i = fs-&gt;first(); fs-&gt;more(i); i = fs-&gt;next(i)) &#123;</span><br><span class="line">        Feature f = fs-&gt;nth(i);</span><br><span class="line">        errs += put_sym(f, inh_tree);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> InheritsNode_class::put_sym(attr_class* feature, SymbolTable&lt;Symbol,InheritsNode_class&gt;* inh_tree) &#123;</span><br><span class="line">    <span class="keyword">if</span>(obj_symtab.probe(feature-&gt;get_name())) &#123;</span><br><span class="line">        semant_error(<span class="keyword">this</span>-&gt;cls, feature) &lt;&lt; <span class="string">"Redefinition for attribute "</span> &lt;&lt; feature-&gt;get_name() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(feature-&gt;get_type_decl() == SELF_TYPE) &#123;</span><br><span class="line">        obj_symtab.addid(feature-&gt;get_name(), <span class="keyword">new</span> InheritsOprand(<span class="keyword">this</span>,<span class="literal">true</span>));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        InheritsNode type = inh_tree-&gt;lookup(feature-&gt;get_type_decl());</span><br><span class="line">        <span class="keyword">if</span>(type) &#123;</span><br><span class="line">            obj_symtab.addid(feature-&gt;get_name(), <span class="keyword">new</span> InheritsOprand(type));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            semant_error(<span class="keyword">this</span>-&gt;cls, feature) &lt;&lt; <span class="string">"Not found type for type declaration in attribute "</span> &lt;&lt; feature-&gt;get_name() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            obj_symtab.addid(feature-&gt;get_name(), <span class="keyword">new</span> InheritsOprand(inh_tree-&gt;lookup(Err_type)));</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> InheritsNode_class::put_sym(method_class* feature, SymbolTable&lt;Symbol,InheritsNode_class&gt;* inh_tree) &#123;</span><br><span class="line">    Symbol name = feature-&gt;get_name();</span><br><span class="line">    <span class="keyword">if</span>(meth_symtab.probe(name)) &#123;</span><br><span class="line">        semant_error(<span class="keyword">this</span>-&gt;cls, feature) &lt;&lt; <span class="string">"Redefinition for method "</span> &lt;&lt; name &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Formals fs = feature-&gt;get_formals();</span><br><span class="line">    Types ts = nil_Types();</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">auto</span> fn_append_ts = [&amp;](Symbol type_decl) -&gt; <span class="keyword">bool</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(type_decl == SELF_TYPE) &#123;</span><br><span class="line">            ts = append_Types(ts, single_Types(<span class="keyword">new</span> InheritsOprand(<span class="keyword">this</span>, <span class="literal">true</span>)));</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            InheritsNode type = inh_tree-&gt;lookup(type_decl);</span><br><span class="line">            <span class="keyword">if</span>(type) &#123;</span><br><span class="line">                ts = append_Types(ts, single_Types(<span class="keyword">new</span> InheritsOprand(type)));</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                ts = append_Types(ts, single_Types(<span class="keyword">new</span> InheritsOprand(inh_tree-&gt;lookup(Err_type))));</span><br><span class="line">                ++errs;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> i = fs-&gt;first(); fs-&gt;more(i); i = fs-&gt;next(i)) &#123;</span><br><span class="line">        Formal f = fs-&gt;nth(i);</span><br><span class="line">        Symbol type_decl = f-&gt;get_type_decl();</span><br><span class="line">        <span class="keyword">if</span>(type_decl == SELF_TYPE) &#123;</span><br><span class="line">            semant_error(<span class="keyword">this</span>-&gt;cls, feature) &lt;&lt; <span class="string">"Formal type cannot be SELF_TYPE"</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt;</span><br><span class="line">                pad(<span class="number">2</span>) &lt;&lt; <span class="string">"In method "</span> &lt;&lt; name &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">                ++errs; <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!fn_append_ts(type_decl)) &#123;</span><br><span class="line">            semant_error(<span class="keyword">this</span>-&gt;cls, feature) &lt;&lt; </span><br><span class="line">                <span class="string">"Not found type name for type declaration in formal "</span> &lt;&lt; f-&gt;get_name() &lt;&lt; <span class="built_in">endl</span> &lt;&lt;</span><br><span class="line">                    pad(<span class="number">2</span>) &lt;&lt; <span class="string">"In method "</span> &lt;&lt; name &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!fn_append_ts(feature-&gt;get_return_type())) &#123;</span><br><span class="line">        semant_error(<span class="keyword">this</span>-&gt;cls, feature) &lt;&lt;</span><br><span class="line">            <span class="string">"Not found type name for type declaration in return type"</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt; </span><br><span class="line">                pad(<span class="number">2</span>) &lt;&lt; <span class="string">"In method "</span> &lt;&lt; name &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(!errs) &#123; meth_symtab.addid(name, ts); &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> InheritsNode_class::put_sym(Feature feature, SymbolTable&lt;Symbol,InheritsNode_class&gt;* inh_tree) &#123;</span><br><span class="line">    <span class="keyword">if</span>(feature-&gt;is_attr()) &#123;</span><br><span class="line">        <span class="keyword">return</span> put_sym(<span class="keyword">dynamic_cast</span>&lt;attr_class*&gt;(feature), inh_tree);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> put_sym(<span class="keyword">dynamic_cast</span>&lt;method_class*&gt;(feature), inh_tree);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后是类型检查，根据手册上给出的类型检查规则写即可：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> ClassTable::check(InheritsNode node) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;semant_errors += node-&gt;check(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> i = node-&gt;get_sons()-&gt;first(); node-&gt;get_sons()-&gt;more(i); i = node-&gt;get_sons()-&gt;next(i)) &#123;</span><br><span class="line">        check(node-&gt;get_sons()-&gt;nth(i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Types ClassTable::get_meth_type(Type t, Symbol s) &#123;</span><br><span class="line">    <span class="keyword">auto</span> node = t-&gt;get_node();</span><br><span class="line">    <span class="keyword">if</span>(node-&gt;is_errtype() || node-&gt;is_prim()) &#123; <span class="keyword">return</span> <span class="literal">NULL</span>; &#125;</span><br><span class="line">    <span class="keyword">while</span>(node != node_obj) &#123;</span><br><span class="line">        Types ts = node-&gt;get_meth_type(s);</span><br><span class="line">        <span class="keyword">if</span>(!ts) &#123;</span><br><span class="line">            node = node-&gt;get_parent();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> ts;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> node-&gt;get_meth_type(s);</span><br><span class="line">&#125;</span><br><span class="line">Type ClassTable::get_obj_type(Type <span class="keyword">start_t</span>, Symbol s) &#123;</span><br><span class="line">    <span class="keyword">auto</span> node = <span class="keyword">start_t</span>-&gt;get_node();</span><br><span class="line">    <span class="keyword">if</span>(node-&gt;is_errtype() || node-&gt;is_prim()) &#123; <span class="keyword">return</span> <span class="literal">nullptr</span>; &#125;</span><br><span class="line">    <span class="keyword">while</span>(node != node_obj) &#123;</span><br><span class="line">        Type <span class="keyword">ret_t</span> = node-&gt;get_obj_type(s);</span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">ret_t</span>) &#123;</span><br><span class="line">            node = node-&gt;get_parent();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">ret_t</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> node-&gt;get_obj_type(s);</span><br><span class="line">&#125;</span><br><span class="line">InheritsNode ClassTable::search_node(Symbol s) &#123; <span class="keyword">return</span> inherits_tree-&gt;probe(s); &#125;</span><br><span class="line">Type ClassTable::get_sym_type(Symbol s, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">if</span>(s == SELF_TYPE) &#123;</span><br><span class="line">        <span class="keyword">return</span> clsenv;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">auto</span> node = search_node(s);</span><br><span class="line">        <span class="keyword">return</span> node ? <span class="keyword">new</span> Type_class(node) : <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Types InheritsNode_class::get_meth_type(Symbol s) &#123; <span class="keyword">return</span> <span class="keyword">this</span>-&gt;meth_symtab.lookup(s); &#125;</span><br><span class="line">Type InheritsNode_class::get_obj_type(Symbol s) &#123; <span class="keyword">return</span> <span class="keyword">this</span>-&gt;obj_symtab.lookup(s); &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> attr_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    InheritsNode node = clsenv-&gt;get_node();</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;init-&gt;check(clstab, clsenv);</span><br><span class="line">    <span class="keyword">if</span>(init-&gt;get_type() == No_type) &#123; <span class="keyword">return</span> errs; &#125;</span><br><span class="line">    Type <span class="keyword">init_t</span> = clstab-&gt;get_sym_type(init-&gt;get_type(), clsenv),</span><br><span class="line">        <span class="keyword">decl_t</span> = node-&gt;get_obj_type(<span class="keyword">this</span>-&gt;name)-&gt;trans_self(clsenv);</span><br><span class="line">    <span class="keyword">if</span>(!(*<span class="keyword">init_t</span> &lt;= *<span class="keyword">decl_t</span>)) &#123;</span><br><span class="line">        semant_error(node-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type mismatch in attribute declaration"</span> &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">            &lt;&lt; pad(<span class="number">2</span>) &lt;&lt; <span class="string">"Type declared as "</span> &lt;&lt; <span class="keyword">decl_t</span>-&gt;get_name() &lt;&lt; <span class="string">" while initialed by "</span> &lt;&lt; <span class="keyword">init_t</span>-&gt;get_name() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        ++errs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> method_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    InheritsNode node = clsenv-&gt;get_node();</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="number">0</span>;</span><br><span class="line">    node-&gt;obj_symtab.enterscope();</span><br><span class="line">    Types <span class="keyword">meth_t</span> = node-&gt;meth_symtab.probe(<span class="keyword">this</span>-&gt;name);</span><br><span class="line">    <span class="keyword">int</span> i = <span class="keyword">this</span>-&gt;formals-&gt;first();</span><br><span class="line">    <span class="keyword">for</span>(; <span class="keyword">this</span>-&gt;formals-&gt;more(i); i = <span class="keyword">this</span>-&gt;formals-&gt;next(i)) &#123;</span><br><span class="line">        Formal f = formals-&gt;nth(i);</span><br><span class="line">        <span class="keyword">if</span>(f-&gt;get_name() == self) &#123;</span><br><span class="line">            semant_error(node-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Formal parameter name cannot be self"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            ++errs; <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(node-&gt;obj_symtab.probe(f-&gt;get_name())) &#123;</span><br><span class="line">            semant_error(node-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Redefinition of formal parameter "</span> &lt;&lt; f-&gt;get_name() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            ++errs; <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        node-&gt;obj_symtab.addid(f-&gt;get_name(), <span class="keyword">meth_t</span>-&gt;nth(i)-&gt;trans_self(clsenv));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(errs) &#123; <span class="keyword">return</span> errs; &#125;</span><br><span class="line">    errs += <span class="keyword">this</span>-&gt;expr-&gt;check(clstab, clsenv);</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>-&gt;expr-&gt;get_type() != No_type) &#123;</span><br><span class="line">        Type <span class="keyword">expr_t</span> = clstab-&gt;get_sym_type(<span class="keyword">this</span>-&gt;expr-&gt;get_type(), clsenv),</span><br><span class="line">        <span class="keyword">ret_t</span> = <span class="keyword">meth_t</span>-&gt;nth(i)-&gt;trans_self(clsenv);</span><br><span class="line">        <span class="keyword">if</span>(!(*<span class="keyword">expr_t</span> &lt;= *<span class="keyword">ret_t</span>)) &#123;</span><br><span class="line">            semant_error(node-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type mismatch in method declaration"</span> &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">                &lt;&lt; pad(<span class="number">2</span>) &lt;&lt; <span class="string">"Return type declared as "</span> &lt;&lt; <span class="keyword">ret_t</span>-&gt;get_name() &lt;&lt; <span class="string">" while type of body is "</span> &lt;&lt; <span class="keyword">expr_t</span>-&gt;get_name() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            ++errs;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    node-&gt;obj_symtab.exitscope();</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> no_expr_class::check(ClassTable* clstab, Type clsenv) &#123; <span class="keyword">this</span>-&gt;set_type(No_type); <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br><span class="line"><span class="keyword">int</span> int_const_class::check(ClassTable* clstab, Type clsenv) &#123; <span class="keyword">this</span>-&gt;set_type(Int); <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br><span class="line"><span class="keyword">int</span> bool_const_class::check(ClassTable* clstab, Type clsenv) &#123; <span class="keyword">this</span>-&gt;set_type(Bool); <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br><span class="line"><span class="keyword">int</span> string_const_class::check(ClassTable* clstab, Type clsenv) &#123; <span class="keyword">this</span>-&gt;set_type(Str); <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br><span class="line"><span class="keyword">int</span> isvoid_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;e1-&gt;check(clstab, clsenv);</span><br><span class="line">    <span class="keyword">this</span>-&gt;set_type(Bool); <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> new__class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">if</span>(clstab-&gt;get_sym_type(<span class="keyword">this</span>-&gt;type_name, clsenv)) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(<span class="keyword">this</span>-&gt;type_name); <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type name "</span> &lt;&lt; <span class="keyword">this</span>-&gt;type_name &lt;&lt; <span class="string">" undefined"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> loop_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;pred-&gt;check(clstab, clsenv) + <span class="keyword">this</span>-&gt;body-&gt;check(clstab, clsenv);</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>-&gt;pred-&gt;get_type() == Bool) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Object);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type mismatch in loop clause"</span> &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">            &lt;&lt; pad(<span class="number">2</span>) &lt;&lt; <span class="string">"Bool required in prelude but found "</span> &lt;&lt; pred-&gt;get_type() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); ++errs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> comp_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;e1-&gt;check(clstab, clsenv);</span><br><span class="line">    <span class="keyword">if</span>(e1-&gt;get_type() == Bool) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Bool);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type mismatch in complement operation"</span> &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">            &lt;&lt; pad(<span class="number">2</span>) &lt;&lt; <span class="string">"Bool required but found "</span> &lt;&lt; e1-&gt;get_type() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); ++errs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> neg_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;e1-&gt;check(clstab, clsenv);</span><br><span class="line">    <span class="keyword">if</span>(e1-&gt;get_type() == Int) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Int);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type mismatch in negative operation"</span> &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">            &lt;&lt; pad(<span class="number">2</span>) &lt;&lt; <span class="string">"Int required but found "</span> &lt;&lt; e1-&gt;get_type() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); ++errs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> plus_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;e1-&gt;check(clstab, clsenv) + <span class="keyword">this</span>-&gt;e2-&gt;check(clstab, clsenv);</span><br><span class="line">    <span class="keyword">if</span>(e1-&gt;get_type() == Int &amp;&amp; e2-&gt;get_type() == Int) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Int);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type mismatch in plus operation"</span> &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">            &lt;&lt; pad(<span class="number">2</span>) &lt;&lt; <span class="string">"Two ints required but found "</span> &lt;&lt; e1-&gt;get_type() &lt;&lt; <span class="string">" on left and "</span> &lt;&lt; e2-&gt;get_type() &lt;&lt; <span class="string">" on right"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); ++errs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> sub_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;e1-&gt;check(clstab, clsenv) + <span class="keyword">this</span>-&gt;e2-&gt;check(clstab, clsenv);</span><br><span class="line">    <span class="keyword">if</span>(e1-&gt;get_type() == Int &amp;&amp; e2-&gt;get_type() == Int) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Int);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type mismatch in substract operation"</span> &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">            &lt;&lt; pad(<span class="number">2</span>) &lt;&lt; <span class="string">"Two ints required but found "</span> &lt;&lt; e1-&gt;get_type() &lt;&lt; <span class="string">" on left and "</span> &lt;&lt; e2-&gt;get_type() &lt;&lt; <span class="string">" on right"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); ++errs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> mul_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;e1-&gt;check(clstab, clsenv) + <span class="keyword">this</span>-&gt;e2-&gt;check(clstab, clsenv);</span><br><span class="line">    <span class="keyword">if</span>(e1-&gt;get_type() == Int &amp;&amp; e2-&gt;get_type() == Int) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Int);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type mismatch in multiply operation"</span> &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">            &lt;&lt; pad(<span class="number">2</span>) &lt;&lt; <span class="string">"Two ints required but found "</span> &lt;&lt; e1-&gt;get_type() &lt;&lt; <span class="string">" on left and "</span> &lt;&lt; e2-&gt;get_type() &lt;&lt; <span class="string">" on right"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); ++errs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> divide_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;e1-&gt;check(clstab, clsenv) + <span class="keyword">this</span>-&gt;e2-&gt;check(clstab, clsenv);</span><br><span class="line">    <span class="keyword">if</span>(e1-&gt;get_type() == Int &amp;&amp; e2-&gt;get_type() == Int) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Int);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type mismatch in divide operation"</span> &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">            &lt;&lt; pad(<span class="number">2</span>) &lt;&lt; <span class="string">"Two ints required but found "</span> &lt;&lt; e1-&gt;get_type() &lt;&lt; <span class="string">" on left and "</span> &lt;&lt; e2-&gt;get_type() &lt;&lt; <span class="string">" on right"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); ++errs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> lt_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;e1-&gt;check(clstab, clsenv) + <span class="keyword">this</span>-&gt;e2-&gt;check(clstab, clsenv);</span><br><span class="line">    <span class="keyword">if</span>(e1-&gt;get_type() == Int &amp;&amp; e2-&gt;get_type() == Int) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Bool);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type mismatch in lt operation"</span> &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">            &lt;&lt; pad(<span class="number">2</span>) &lt;&lt; <span class="string">"Two ints required but found "</span> &lt;&lt; e1-&gt;get_type() &lt;&lt; <span class="string">" on left and "</span> &lt;&lt; e2-&gt;get_type() &lt;&lt; <span class="string">" on right"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); ++errs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> leq_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;e1-&gt;check(clstab, clsenv) + <span class="keyword">this</span>-&gt;e2-&gt;check(clstab, clsenv);</span><br><span class="line">    <span class="keyword">if</span>(e1-&gt;get_type() == Int &amp;&amp; e2-&gt;get_type() == Int) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Bool);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type mismatch in leq operation"</span> &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">            &lt;&lt; pad(<span class="number">2</span>) &lt;&lt; <span class="string">"Two ints required but found "</span> &lt;&lt; e1-&gt;get_type() &lt;&lt; <span class="string">" on left and "</span> &lt;&lt; e2-&gt;get_type() &lt;&lt; <span class="string">" on right"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); ++errs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> eq_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;e1-&gt;check(clstab, clsenv) + <span class="keyword">this</span>-&gt;e2-&gt;check(clstab, clsenv);</span><br><span class="line">    Symbol e1_t_sym = e1-&gt;get_type(), e2_t_sym = e2-&gt;get_type();</span><br><span class="line">    <span class="keyword">auto</span> is_prim = [](Symbol s) -&gt; <span class="keyword">bool</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> s == Int || s == Bool || s == Str;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">if</span>(((is_prim(e1_t_sym) || is_prim(e2_t_sym)) &amp;&amp; e1_t_sym == e2_t_sym) ||</span><br><span class="line">        !(is_prim(e1_t_sym) || is_prim(e2_t_sym))) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Bool);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type mismatch in eq operation"</span> &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">            &lt;&lt; pad(<span class="number">2</span>) &lt;&lt; <span class="string">"Found "</span> &lt;&lt; e1-&gt;get_type() &lt;&lt; <span class="string">" on left and "</span> &lt;&lt; e2-&gt;get_type() &lt;&lt; <span class="string">" on right"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); ++errs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> cond_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;pred-&gt;check(clstab, clsenv) + </span><br><span class="line">        <span class="keyword">this</span>-&gt;then_exp-&gt;check(clstab, clsenv) +</span><br><span class="line">        <span class="keyword">this</span>-&gt;else_exp-&gt;check(clstab, clsenv);</span><br><span class="line">    <span class="keyword">if</span>(pred-&gt;get_type() == Bool) &#123;</span><br><span class="line">        Type <span class="keyword">then_t</span> = clstab-&gt;get_sym_type(then_exp-&gt;get_type(), clsenv),</span><br><span class="line">            <span class="keyword">else_t</span> = clstab-&gt;get_sym_type(else_exp-&gt;get_type(), clsenv);</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(lca(*<span class="keyword">then_t</span>, *<span class="keyword">else_t</span>).get_name());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type mismatch in condition clause"</span> &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">            &lt;&lt; pad(<span class="number">2</span>) &lt;&lt; <span class="string">"Bool required in prelude but found "</span> &lt;&lt; pred-&gt;get_type() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); ++errs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> block_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> i = <span class="keyword">this</span>-&gt;body-&gt;first(); <span class="keyword">this</span>-&gt;body-&gt;more(i); i = <span class="keyword">this</span>-&gt;body-&gt;next(i)) &#123;</span><br><span class="line">        Expression expr = <span class="keyword">this</span>-&gt;body-&gt;nth(i);</span><br><span class="line">        errs += expr-&gt;check(clstab, clsenv);</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(expr-&gt;get_type());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> object_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    Type t = clstab-&gt;get_obj_type(clsenv, name);</span><br><span class="line">    <span class="keyword">if</span>(t) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(t-&gt;get_name()); <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Identifier "</span> &lt;&lt; <span class="keyword">this</span>-&gt;name &lt;&lt; <span class="string">" used without declaration"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> assign_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="number">0</span>;</span><br><span class="line">    Type <span class="keyword">obj_t</span> = clstab-&gt;get_obj_type(clsenv, name);</span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">obj_t</span>) &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Identifier "</span> &lt;&lt; <span class="keyword">this</span>-&gt;name &lt;&lt; <span class="string">" used without declaration"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">obj_t</span> = <span class="keyword">new</span> Type_class(clstab-&gt;get_node_obj());</span><br><span class="line">        ++errs;</span><br><span class="line">    &#125;</span><br><span class="line">    expr-&gt;check(clstab, clsenv);</span><br><span class="line">    Type <span class="keyword">expr_t</span> = clstab-&gt;get_sym_type(expr-&gt;get_type(), clsenv);</span><br><span class="line">    <span class="keyword">if</span>(!(*<span class="keyword">expr_t</span> &lt;= *<span class="keyword">obj_t</span>)) &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type mismatch in assignment"</span> &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">            &lt;&lt; pad(<span class="number">2</span>) &lt;&lt; <span class="string">"Variety type is "</span> &lt;&lt; <span class="keyword">obj_t</span>-&gt;get_name() &lt;&lt; <span class="string">" but type of expression is "</span> &lt;&lt; <span class="keyword">expr_t</span>-&gt;get_name() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        ++errs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>-&gt;set_type(errs ? Err_type : <span class="keyword">expr_t</span>-&gt;get_name());</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> dispatch_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;expr-&gt;check(clstab, clsenv);</span><br><span class="line">    Type <span class="keyword">expr_t</span> = clstab-&gt;get_sym_type(<span class="keyword">this</span>-&gt;expr-&gt;get_type(), clsenv);</span><br><span class="line">    Types meth_ts = clstab-&gt;get_meth_type(<span class="keyword">expr_t</span>, <span class="keyword">this</span>-&gt;name);</span><br><span class="line">    <span class="keyword">if</span>(!meth_ts) &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Method "</span> &lt;&lt; <span class="keyword">this</span>-&gt;expr-&gt;get_type() &lt;&lt; <span class="string">"."</span> &lt;&lt; <span class="keyword">this</span>-&gt;name &lt;&lt; <span class="string">" not found "</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); <span class="keyword">return</span> errs + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(meth_ts-&gt;len() - <span class="number">1</span> != actual-&gt;len()) &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Parameters length mismatch for dispatch "</span> &lt;&lt; <span class="keyword">this</span>-&gt;expr-&gt;get_type() &lt;&lt; <span class="string">"."</span> &lt;&lt; <span class="keyword">this</span>-&gt;name &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); <span class="keyword">return</span> errs + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="keyword">this</span>-&gt;actual-&gt;first(); <span class="keyword">this</span>-&gt;actual-&gt;more(i); i = <span class="keyword">this</span>-&gt;actual-&gt;next(i)) &#123;</span><br><span class="line">        Type <span class="keyword">form_t</span> = meth_ts-&gt;nth(i);</span><br><span class="line">        Expression act_e = actual-&gt;nth(i);</span><br><span class="line">        errs += act_e-&gt;check(clstab, clsenv);</span><br><span class="line">        Type <span class="keyword">act_t</span> = clstab-&gt;get_sym_type(act_e-&gt;get_type(), clsenv);</span><br><span class="line">        <span class="keyword">if</span>(!(*<span class="keyword">act_t</span> &lt;= *<span class="keyword">form_t</span>)) &#123;</span><br><span class="line">            semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; </span><br><span class="line">                <span class="string">"Parameter mismatch for "</span> &lt;&lt; i &lt;&lt; <span class="string">"th parameter in dispatch "</span> &lt;&lt; <span class="keyword">this</span>-&gt;expr-&gt;get_type() &lt;&lt; <span class="string">"."</span> &lt;&lt; <span class="keyword">this</span>-&gt;name &lt;&lt; <span class="built_in">endl</span> &lt;&lt;</span><br><span class="line">                    pad(<span class="number">2</span>) &lt;&lt; <span class="keyword">form_t</span>-&gt;get_name() &lt;&lt; <span class="string">" required but found "</span> &lt;&lt; act_e-&gt;get_type() &lt;&lt; <span class="string">" in actual parameter"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            ++errs;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(errs) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        Type <span class="keyword">ret_t</span> = meth_ts-&gt;nth(i);</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(<span class="keyword">ret_t</span>-&gt;is_self() ? expr-&gt;get_type() : <span class="keyword">ret_t</span>-&gt;get_name());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> static_dispatch_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;expr-&gt;check(clstab, clsenv);</span><br><span class="line">    Type <span class="keyword">expr_t</span> = clstab-&gt;get_sym_type(<span class="keyword">this</span>-&gt;expr-&gt;get_type(), clsenv);</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>-&gt;type_name == SELF_TYPE) &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt;</span><br><span class="line">            <span class="string">"Type declaration in static dispatch cannot be SELF_TYPE"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); <span class="keyword">return</span> errs + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Type <span class="keyword">decl_t</span> = clstab-&gt;get_sym_type(<span class="keyword">this</span>-&gt;type_name, clsenv);</span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">decl_t</span>) &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type "</span> &lt;&lt; <span class="keyword">this</span>-&gt;type_name &lt;&lt; <span class="string">" not found "</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); <span class="keyword">return</span> errs + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!(*<span class="keyword">expr_t</span> &lt;= *<span class="keyword">decl_t</span>)) &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt;</span><br><span class="line">            <span class="string">"Type for static dispatch "</span> &lt;&lt; <span class="keyword">this</span>-&gt;expr-&gt;get_type() &lt;&lt; <span class="string">"@"</span> &lt;&lt; <span class="keyword">this</span>-&gt;type_name &lt;&lt; <span class="string">" mismatch "</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); <span class="keyword">return</span> errs + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Types formal_ts = clstab-&gt;get_meth_type(<span class="keyword">decl_t</span>, <span class="keyword">this</span>-&gt;name);</span><br><span class="line">    <span class="keyword">if</span>(!formal_ts) &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Method "</span> &lt;&lt; <span class="keyword">this</span>-&gt;type_name &lt;&lt; <span class="string">"."</span> &lt;&lt; <span class="keyword">this</span>-&gt;name &lt;&lt; <span class="string">" not found "</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); <span class="keyword">return</span> errs + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(formal_ts-&gt;len() - <span class="number">1</span> != actual-&gt;len()) &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Parameters length mismatch for method "</span> &lt;&lt; <span class="keyword">this</span>-&gt;expr-&gt;get_type() &lt;&lt; <span class="string">"."</span> &lt;&lt; <span class="keyword">this</span>-&gt;name &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type); <span class="keyword">return</span> errs + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = formal_ts-&gt;first(); formal_ts-&gt;more(i); i = formal_ts-&gt;next(i)) &#123;</span><br><span class="line">        Type <span class="keyword">form_t</span> = formal_ts-&gt;nth(i);</span><br><span class="line">        Expression act_e = actual-&gt;nth(i);</span><br><span class="line">        errs += act_e-&gt;check(clstab, clsenv);</span><br><span class="line">        Type <span class="keyword">act_t</span> = clstab-&gt;get_sym_type(act_e-&gt;get_type(), clsenv);</span><br><span class="line">        <span class="keyword">if</span>(!(*<span class="keyword">act_t</span> &lt;= *<span class="keyword">form_t</span>)) &#123;</span><br><span class="line">            semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; </span><br><span class="line">                <span class="string">"Parameter mismatch for "</span> &lt;&lt; i &lt;&lt; <span class="string">"th parameter in method "</span> &lt;&lt; <span class="keyword">this</span>-&gt;expr-&gt;get_type() &lt;&lt; <span class="string">"."</span> &lt;&lt; <span class="keyword">this</span>-&gt;name &lt;&lt; <span class="built_in">endl</span> &lt;&lt;</span><br><span class="line">                    pad(<span class="number">2</span>) &lt;&lt; <span class="keyword">form_t</span>-&gt;get_name() &lt;&lt; <span class="string">" required but found "</span> &lt;&lt; act_e-&gt;get_type() &lt;&lt; <span class="string">" in actual parameter"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            ++errs;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(errs) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(Err_type);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        Type <span class="keyword">ret_t</span> = formal_ts-&gt;nth(i);</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_type(<span class="keyword">ret_t</span>-&gt;is_self() ? expr-&gt;get_type() : <span class="keyword">ret_t</span>-&gt;get_name());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> let_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    InheritsNode node = clsenv-&gt;get_node();</span><br><span class="line">    node-&gt;obj_symtab.enterscope();</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(identifier == self) &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Identifier cannot be self"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        ++errs;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        Type <span class="keyword">decl_t</span> = clstab-&gt;get_sym_type(<span class="keyword">this</span>-&gt;type_decl, clsenv);</span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">decl_t</span>) &#123;</span><br><span class="line">            semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type declaration not found for "</span> &lt;&lt; <span class="keyword">this</span>-&gt;type_decl &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            ++errs;</span><br><span class="line">            node-&gt;obj_symtab.addid(<span class="keyword">this</span>-&gt;identifier, <span class="keyword">new</span> Type_class(clstab-&gt;get_node_err()));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            node-&gt;obj_symtab.addid(<span class="keyword">this</span>-&gt;identifier, <span class="keyword">decl_t</span>);</span><br><span class="line">            errs += <span class="keyword">this</span>-&gt;init-&gt;check(clstab, clsenv);</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>-&gt;init-&gt;get_type() != No_type) &#123;</span><br><span class="line">                Type <span class="keyword">init_t</span> = clstab-&gt;get_sym_type(<span class="keyword">this</span>-&gt;init-&gt;get_type(), clsenv);</span><br><span class="line">                <span class="keyword">if</span>(!(*<span class="keyword">init_t</span> &lt;= *<span class="keyword">decl_t</span>)) &#123;</span><br><span class="line">                    semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type for let clause mismatch"</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt;</span><br><span class="line">                        pad(<span class="number">2</span>) &lt;&lt; <span class="keyword">this</span>-&gt;type_decl &lt;&lt; <span class="string">" required but found "</span> &lt;&lt; <span class="keyword">init_t</span>-&gt;get_name() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">                    ++errs;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                node-&gt;obj_symtab.addid(<span class="keyword">this</span>-&gt;identifier, <span class="keyword">decl_t</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    errs += <span class="keyword">this</span>-&gt;body-&gt;check(clstab, clsenv);</span><br><span class="line">    node-&gt;obj_symtab.exitscope();</span><br><span class="line">    <span class="keyword">this</span>-&gt;set_type(body-&gt;get_type());</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> typcase_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="keyword">this</span>-&gt;expr-&gt;check(clstab, clsenv);</span><br><span class="line">    Type <span class="keyword">ret_t</span> = <span class="keyword">new</span> Type_class(clstab-&gt;get_node_err(), <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> i = <span class="keyword">this</span>-&gt;cases-&gt;first(); <span class="keyword">this</span>-&gt;cases-&gt;more(i); i = <span class="keyword">this</span>-&gt;cases-&gt;next(i)) &#123;</span><br><span class="line">        Case c = <span class="keyword">this</span>-&gt;cases-&gt;nth(i);</span><br><span class="line">        errs += c-&gt;check(clstab, clsenv);</span><br><span class="line">        Type <span class="keyword">c_t</span> = clstab-&gt;get_sym_type(c-&gt;get_type(), clsenv);</span><br><span class="line">        <span class="keyword">ret_t</span> = <span class="keyword">new</span> Type_class(lca(*<span class="keyword">ret_t</span>, *<span class="keyword">c_t</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>-&gt;set_type(<span class="keyword">ret_t</span>-&gt;get_name());</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> branch_class::check(ClassTable* clstab, Type clsenv) &#123;</span><br><span class="line">    <span class="keyword">int</span> errs = <span class="number">0</span>;</span><br><span class="line">    InheritsNode node = clsenv-&gt;get_node();</span><br><span class="line">    node-&gt;obj_symtab.enterscope();</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>-&gt;name == self) &#123;</span><br><span class="line">        semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Identifier cannot be self"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        ++errs;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        Type <span class="keyword">decl_t</span> = clstab-&gt;get_sym_type(<span class="keyword">this</span>-&gt;type_decl, clsenv);</span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">decl_t</span>) &#123;</span><br><span class="line">            Type <span class="keyword">decl_t</span> = clstab-&gt;get_sym_type(<span class="keyword">this</span>-&gt;type_decl, clsenv);</span><br><span class="line">            node-&gt;obj_symtab.addid(<span class="keyword">this</span>-&gt;name, <span class="keyword">new</span> Type_class(clstab-&gt;get_node_err()));</span><br><span class="line">            semant_error(clsenv-&gt;get_node()-&gt;get_class(), <span class="keyword">this</span>) &lt;&lt; <span class="string">"Type declaration not found for "</span> &lt;&lt; <span class="keyword">this</span>-&gt;type_decl &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            ++errs;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            node-&gt;obj_symtab.addid(<span class="keyword">this</span>-&gt;name, <span class="keyword">decl_t</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    errs += <span class="keyword">this</span>-&gt;expr-&gt;check(clstab, clsenv);</span><br><span class="line">    node-&gt;obj_symtab.exitscope();</span><br><span class="line">    <span class="keyword">return</span> errs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编译原理/" rel="tag"># 编译原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/11/13/cs143-parser/" rel="next" title="Compiler -- Parser">
+                <i class="fa fa-chevron-left"></i> Compiler -- Parser
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/11/19/cs143-codegen/" rel="prev" title="Compiler -- Codegen">
+                Compiler -- Codegen <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="AjiL">
+            
+              <p class="site-author-name" itemprop="name">AjiL</p>
+              <p class="site-description motion-element" itemprop="description">El Psy Kongroo</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.tonyjam.cn/" title="TonyJam" target="_blank">TonyJam</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zmyjoe.github.io/" title="ZmyJoe" target="_blank">ZmyJoe</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://halc.top/" title="HalcyonAzu" target="_blank">HalcyonAzu</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域"><span class="nav-number">2.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型"><span class="nav-number">3.</span> <span class="nav-text">类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型环境"><span class="nav-number">4.</span> <span class="nav-text">类型环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子类型"><span class="nav-number">5.</span> <span class="nav-text">子类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#self-类型"><span class="nav-number">6.</span> <span class="nav-text">self 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误恢复"><span class="nav-number">7.</span> <span class="nav-text">错误恢复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复合类型"><span class="nav-number">8.</span> <span class="nav-text">复合类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型转换"><span class="nav-number">9.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lab"><span class="nav-number">10.</span> <span class="nav-text">Lab</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AjiL</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Link-Cut Tree,">
+
+
+
+
+
+
+
+
+
+
+<meta name="keywords" content="Link-Cut Tree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Link-Cut Tree">
+<meta property="og:url" content="http://yoursite.com/2021/12/10/LCT/index.html">
+<meta property="og:site_name" content="AjiL&#39;s Blog">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2024-08-03T12:36:17.497Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Link-Cut Tree">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/12/10/LCT/">
+
+
+
+
+
+  <title>Link-Cut Tree | AjiL's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AjiL's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/10/LCT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AjiL">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AjiL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Link-Cut Tree</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-10T13:44:49+11:00">
+                2021-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index">
+                    <span itemprop="name">note</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<a id="more"></a>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h2><p>LCT是用于维护动态森林的数据结构. 可以做到$O(\log n)$的查询, 切割, 连接操作. </p>
+<p>LCT基于树链剖分的思想, 即将一棵树剖成多条树链, 方便采用数据结构处理. </p>
+<p>具体来说, LCT采用了”<strong>实链剖分</strong>“, 即每个点指定一个”实儿子”, 通过”实儿子”连成”实链”. 与普通的树链剖分区别在于”实儿子”是<strong>动态变化</strong>的. </p>
+<p>LCT使用<strong>splay</strong>来维护树链. 由于一条树链上的节点点深度各不相同. 所以可以使用<strong>深度</strong>作为关键字建立splay. 每个节点的左子树深度比该节点小, 右子树深度比该节点大. </p>
+<p>树链之间的连接关系可以在splay的树根上做文章: 将splay的根的父节点指向这个splay对应树链深度最小的点在原树上的父节点. 这样整棵树便连接起来了, 同时区分出了树上的虚实关系: 实边双向连接, 虚边单向连接. </p>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作:"></a>操作:</h2><p>需要实现LCT首先需要实现splay, 以<a href="https://www.luogu.com.cn/problem/P3690" target="_blank" rel="noopener">luoguP3690</a>为例, 代码与节点定义如下所示: </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">td</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> v,sm,sz;    <span class="comment">//节点值, 异或和, splay子树大小</span></span><br><span class="line">    <span class="keyword">bool</span> tr;    <span class="comment">//翻转标记</span></span><br><span class="line">    <span class="keyword">int</span> fa, sn[<span class="number">2</span>];  <span class="comment">//父指针, 左右儿子指针</span></span><br><span class="line">&#125;t[Mn]; <span class="comment">//节点空间</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">idn</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;    <span class="comment">//父子节点关系(x是其父节点的左/右儿子)</span></span><br><span class="line">    <span class="keyword">if</span>(t[t[x].fa].sn[<span class="number">0</span>] == x) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(t[t[x].fa].sn[<span class="number">1</span>] == x) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">psd</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;   <span class="comment">//懒标记下放</span></span><br><span class="line">    <span class="keyword">if</span>(t[x].tr) &#123;</span><br><span class="line">        swap(t[t[x].sn[<span class="number">0</span>]].sn[<span class="number">0</span>],t[t[x].sn[<span class="number">0</span>]].sn[<span class="number">1</span>]);</span><br><span class="line">        swap(t[t[x].sn[<span class="number">1</span>]].sn[<span class="number">0</span>],t[t[x].sn[<span class="number">1</span>]].sn[<span class="number">1</span>]);</span><br><span class="line">        t[t[x].sn[<span class="number">0</span>]].tr ^= <span class="number">1</span>;</span><br><span class="line">        t[t[x].sn[<span class="number">1</span>]].tr ^= <span class="number">1</span>;</span><br><span class="line">        t[x].tr = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mtn</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;   <span class="comment">//维护</span></span><br><span class="line">    t[x].sz = t[t[x].sn[<span class="number">0</span>]].sz + t[t[x].sn[<span class="number">1</span>]].sz + <span class="number">1</span>;</span><br><span class="line">    t[x].sm = t[t[x].sn[<span class="number">0</span>]].sm ^ t[t[x].sn[<span class="number">1</span>]].sm ^ t[x].v;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rot</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;   <span class="comment">//将x向上旋转</span></span><br><span class="line">    int fx(t[x].fa), gx(t[fx].fa);</span><br><span class="line">    psd(fx), psd(x);</span><br><span class="line">    int d(idn(x)), df(idn(fx));</span><br><span class="line">    t[fx].sn[d] = t[x].sn[d^<span class="number">1</span>];</span><br><span class="line">    t[x].sn[d^<span class="number">1</span>] = fx;</span><br><span class="line">    t[t[fx].sn[d]].fa = fx;</span><br><span class="line">    t[fx].fa = x;</span><br><span class="line">    t[x].fa = gx;</span><br><span class="line">    <span class="keyword">if</span>(df!=<span class="number">-1</span>) &#123;</span><br><span class="line">        t[gx].sn[df] = x;</span><br><span class="line">    &#125;</span><br><span class="line">    mtn(fx), mtn(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">psdPath</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;   <span class="comment">//递归下放标记</span></span><br><span class="line">    <span class="keyword">if</span>(idn(x)!=<span class="number">-1</span>) &#123;</span><br><span class="line">        psdPath(t[x].fa);</span><br><span class="line">    &#125;</span><br><span class="line">    psd(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spl</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;   <span class="comment">//伸缩</span></span><br><span class="line">    psdPath(x);</span><br><span class="line">    <span class="keyword">while</span>(idn(x)!=<span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (idn(t[x].fa) != <span class="number">-1</span>) &#123;</span><br><span class="line">            rot((idn(x)==idn(t[x].fa)) ? t[x].fa : x);</span><br><span class="line">        &#125;</span><br><span class="line">        rot(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="access-x"><a href="#access-x" class="headerlink" title="access(x)"></a>access(x)</h3><p>将根到x的所有边变为实边, 这条路径上节点的其余边全部变为虚边. 此时x为根所在的实链中最深的节点. </p>
+<p>本质上就是将x接入根所在的splay中. 由于LCT的特性, 需要从下往上处理. </p>
+<p>首先使用splay的操作将x伸缩到其所在splay的根. 此时其splay右子树为深度比x大的实链节点, 需要将其断开. </p>
+<p>同时由于x在实链splay的根上, 其父指针指向了这个splay对应实链深度最小的点在原树上的父节点. 将该节点的右儿子设为x, 就使得x所在实链与上面的实链连接起来了. </p>
+<p>重复这个步骤直到x的父指针为空, access操作就完成了. </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">acs</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> y(<span class="number">0</span>); x; y=x, x=t[x].fa) &#123;</span><br><span class="line">        spl(x); <span class="comment">//伸展到根</span></span><br><span class="line">        t[x].sn[<span class="number">1</span>] = y; <span class="comment">//实链连接</span></span><br><span class="line">        mtn(x); <span class="comment">//维护</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="makeroot-x"><a href="#makeroot-x" class="headerlink" title="makeroot(x)"></a>makeroot(x)</h3><p>将x变为原树的根. </p>
+<p>这个操作的作用主要是进行原树上的路径操作, 将路径的其中一个点变为根后对另一个点access即可在一个splay中进行原树上的路径操作. </p>
+<p>将x access后将x和根所在的splay翻转即可. 可以脑补一下将x到原根这条链的深度翻转的结果. </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mkr</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    acs(x); spl(x);</span><br><span class="line">    swap(t[x].sn[<span class="number">0</span>],t[x].sn[<span class="number">1</span>]);    <span class="comment">//翻转</span></span><br><span class="line">    t[x].tr ^= <span class="number">1</span>;   <span class="comment">//打上翻转标记</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="findroot-x"><a href="#findroot-x" class="headerlink" title="findroot(x)"></a>findroot(x)</h3><p>寻找x所在的原树的根. </p>
+<p>这个操作可以用来判断两个节点是否在同一个树中, 也即将LCT视作一个支持删边的”并查集”. </p>
+<p>将x access后寻找x所在splay中深度最小的节点即可. </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fdr</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    acs(x); spl(x);</span><br><span class="line">    <span class="keyword">while</span>(t[x].sn[<span class="number">0</span>]) &#123;</span><br><span class="line">        psd(x); x = t[x].sn[<span class="number">0</span>]; <span class="comment">//注意先下传标记再向下遍历</span></span><br><span class="line">    &#125;</span><br><span class="line">    spl(x); <span class="comment">//将根伸展可以使得一些操作更加方便</span></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="link-x-y"><a href="#link-x-y" class="headerlink" title="link(x,y)"></a>link(x,y)</h3><p>连接x和y. </p>
+<p>makeroot y后access并splay x然后再将y的父节点设为x(即x与y连接一条虚边). </p>
+<p>将x access并splay是为了维护节点x. </p>
+<p>注意先判断x与y是否在同一棵树上. </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lnk</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(rand()&amp;<span class="number">1</span>) &#123;  <span class="comment">//随机化</span></span><br><span class="line">        swap(x,y);</span><br><span class="line">    &#125;</span><br><span class="line">    mkr(y);</span><br><span class="line">    <span class="keyword">if</span>(fdr(x)!=y) &#123; <span class="comment">//findroot x时已经将x access和splay</span></span><br><span class="line">        t[y].fa = x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="cut-x-y"><a href="#cut-x-y" class="headerlink" title="cut(x,y)"></a>cut(x,y)</h3><p>断开x与y的边. </p>
+<p>makeroot x后首先使用findroot y判断x与y是否在同一棵树上, 若x与y有边连接则y为x的右儿子且y没有左儿子. 此时断开x与y的连接即可. </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cut</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    mkr(x);</span><br><span class="line">    <span class="keyword">if</span>(fdr(y)==x &amp;&amp; t[y].fa==x &amp;&amp; !t[y].sn[<span class="number">0</span>]) &#123;    <span class="comment">//判断是否有边</span></span><br><span class="line">        t[x].sn[<span class="number">1</span>] = t[y].fa = <span class="number">0</span>;   <span class="comment">//断开</span></span><br><span class="line">        mtn(x); <span class="comment">//splay结构改变需要重新维护</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="一些技巧"><a href="#一些技巧" class="headerlink" title="一些技巧:"></a>一些技巧:</h2><h3 id="边权变点权"><a href="#边权变点权" class="headerlink" title="边权变点权:"></a>边权变点权:</h3><p>一些题目需要维护的是边权而不是点权, 此时可以将原树上的边也看作点, 点权即为原树上的边权. 加边删边时将对应边的点两边连边删边即可. </p>
+<p>由于森林的边数最多为n-1条, 所以空间增加了一倍. </p>
+<h3 id="维护子树信息"><a href="#维护子树信息" class="headerlink" title="维护子树信息:"></a>维护子树信息:</h3><p>维护子树信息需要每个节点同时维护实子树与虚子树的信息, 而LCT”认父不认子”的特性使得虚子树的信息不太方便维护. </p>
+<p>解决的方法是对每个点<strong>统计其所有虚子树的贡献</strong>, 并且在涉及<strong>改变splay形态</strong>的操作中即时修改. </p>
+<p>access操作中每次循环中当前splay的根节点的原右儿子与新右儿子的虚实发生了变化, 此时需要减去新右儿子的贡献并加上原右儿子的贡献. </p>
+<p>link操作连接了一条虚边, 所以此时需要加上新虚儿子的贡献. </p>
+<p>可以看出使用LCT维护的子树信息需要满足<strong>可减性</strong>, 例如子树权值和, 反例是子树最大值. 否则在access操作中无法维护虚子树信息. </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Link-Cut-Tree/" rel="tag"># Link-Cut Tree</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/11/14/luogu2569/" rel="next" title="(luogu2569) 股票交易">
+                <i class="fa fa-chevron-left"></i> (luogu2569) 股票交易
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/12/13/NT-block/" rel="prev" title="数论分块">
+                数论分块 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="AjiL">
+            
+              <p class="site-author-name" itemprop="name">AjiL</p>
+              <p class="site-description motion-element" itemprop="description">El Psy Kongroo</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.tonyjam.cn/" title="TonyJam" target="_blank">TonyJam</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zmyjoe.github.io/" title="ZmyJoe" target="_blank">ZmyJoe</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://halc.top/" title="HalcyonAzu" target="_blank">HalcyonAzu</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">2.</span> <span class="nav-text">操作:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#access-x"><span class="nav-number">2.1.</span> <span class="nav-text">access(x)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#makeroot-x"><span class="nav-number">2.2.</span> <span class="nav-text">makeroot(x)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#findroot-x"><span class="nav-number">2.3.</span> <span class="nav-text">findroot(x)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#link-x-y"><span class="nav-number">2.4.</span> <span class="nav-text">link(x,y)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cut-x-y"><span class="nav-number">2.5.</span> <span class="nav-text">cut(x,y)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些技巧"><span class="nav-number">3.</span> <span class="nav-text">一些技巧:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#边权变点权"><span class="nav-number">3.1.</span> <span class="nav-text">边权变点权:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#维护子树信息"><span class="nav-number">3.2.</span> <span class="nav-text">维护子树信息:</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AjiL</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

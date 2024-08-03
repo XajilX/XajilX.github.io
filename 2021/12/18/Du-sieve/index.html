@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数论,杜教筛,">
+
+
+
+
+
+
+
+
+
+
+<meta name="keywords" content="数论,杜教筛">
+<meta property="og:type" content="article">
+<meta property="og:title" content="杜教筛">
+<meta property="og:url" content="http://yoursite.com/2021/12/18/Du-sieve/index.html">
+<meta property="og:site_name" content="AjiL&#39;s Blog">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2024-08-03T12:36:17.497Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="杜教筛">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/12/18/Du-sieve/">
+
+
+
+
+
+  <title>杜教筛 | AjiL's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AjiL's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/18/Du-sieve/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AjiL">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AjiL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">杜教筛</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-18T14:54:38+11:00">
+                2021-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index">
+                    <span itemprop="name">note</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/数论/" itemprop="url" rel="index">
+                    <span itemprop="name">数论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><hr><br><a id="more"></a></p>
+<h2 id="概论"><a href="#概论" class="headerlink" title="概论:"></a>概论:</h2><p>杜教筛可以做到在<strong>亚线性</strong>的时间复杂度下求出部分数论函数的前缀和. </p>
+<p><del>事实上感觉和”筛”好像没啥关系</del></p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现:"></a>实现:</h2><p>假设需要求解的前缀和为$S_f(n) = \sum_{i=1}^n f(i)$, 引入一个函数$g(n)$并考虑如下式子: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+& \sum_{i=1}^n (f*g)(i) \\
+= & \sum_{i=1}^n \sum_{d \mid i} g(d) f(\frac{i}{d}) \\
+= & \sum_{d=1}^n g(d) \sum_{i=1}^{\lfloor n/d \rfloor} f(i) \\
+= & \sum_{i=1}^n g(i)S_f(\left\lfloor \frac{n}{i} \right\rfloor)
+\end{aligned}</script><p>将$g(1)S_f(n)$分离出来, 便有: </p>
+<script type="math/tex; mode=display">
+g(1)S_f(n) = \sum_{i=1}^n (f*g)(i) - \sum_{i=2}^{n}g(i)S_f(\left\lfloor \frac{n}{i} \right\rfloor)</script><p>(注意后面这个和式是从2开始的)</p>
+<p>这个等式便是杜教筛的核心式. 若我们能找到函数$g$, 使得: </p>
+<ul>
+<li>$\sum_{i=1}^n (f*g)(i)$ 易求</li>
+<li>$g(i)$ 的区间和易求</li>
+</ul>
+<p>则可以使用<a href="/2021/12/13/NT-block/">数论分块</a>加速求解$S_f(n)$</p>
+<h2 id="一些例子"><a href="#一些例子" class="headerlink" title="一些例子:"></a>一些例子:</h2><ul>
+<li>$\mu$</li>
+</ul>
+<p>已知$\mu * I = \epsilon$, 取$g(n) = I$, 有: </p>
+<script type="math/tex; mode=display">
+S_{\mu}(n) = 1 - \sum_{i=2}^n S_{\mu}(\left\lfloor \frac{n}{i} \right\rfloor)</script><ul>
+<li>$\varphi$</li>
+</ul>
+<p>已知$\varphi * I = id$, 取$g(n) = I$, 有: </p>
+<script type="math/tex; mode=display">
+S_{\varphi}(n) = \frac{n(n+1)}{2} - \sum_{i=2}^n S_{\varphi}(\left\lfloor \frac{n}{i} \right\rfloor)</script><ul>
+<li>$id \cdot \varphi$</li>
+</ul>
+<p>根据点积对狄利克雷卷积的分配律, 有: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+(id \cdot \varphi)*id & = (id\cdot\varphi) * (id\cdot I)\\
+& = id\cdot (\varphi*I) = id_2
+\end{aligned}</script><p>取$g(n)=id$, 有: </p>
+<script type="math/tex; mode=display">
+S_{id\cdot\varphi}(n) = \frac{n(n+1)(2n+1)}{6} - \sum_{i=2}^n iS_{id\cdot\varphi}(\left\lfloor \frac{n}{i} \right\rfloor)</script><h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析:"></a>复杂度分析:</h2><p>若使用递归的方法实现杜教筛, 暂时忽略前面的卷积和项, 设时间复杂度为$T(n)$, 则有: </p>
+<script type="math/tex; mode=display">
+T(n) = \sum_{i=1}^{\lfloor \sqrt{n} \rfloor} T(i)+T(\left\lfloor \frac{n}{i} \right\rfloor)</script><p>同时对于$i \in \left[1,\lfloor \sqrt{n} \rfloor \right]$, 有$i &lt; n/i$, 所以: </p>
+<script type="math/tex; mode=display">
+T(n) = O\left(\sum_{i=1}^{\sqrt{n}} T\left(\frac{n}{i}\right)\right)</script><p>对于$T(n/i)$, 由于继续展开后均为高阶无穷小, 所以只展开一层, 即取数论分块的时间复杂度$O(\sqrt{n/i})$: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+T(n) & = O\left(\sum_{i=1}^{\sqrt{n}} \sqrt{\frac{n}{i}}\right) \\
+& = O\left(\int_1^{\sqrt{n}} \sqrt{\frac{n}{x}}dx\right) \\
+& = O(n^{3/4})
+\end{aligned}</script><p>若线性筛出前$m$个数的前缀和, 则有: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+T(n) & = O(m) + O\left(\sum_{i=1}^{n/m} \sqrt{\frac{n}{i}}\right) \\
+& = O\left(m +\int_1^{n/m} \sqrt{\frac{n}{x}}dx\right) \\
+& = O\left(m + \frac{n}{\sqrt{m}}\right)
+\end{aligned}</script><p>当$m = n/\sqrt{m}$时取得最小值, 此时$m=n^{2/3}$, 时间复杂度为$O(n^{2/3})$</p>
+<p>事实上从上面的分析也可以看出, 省略的项比较多, 所以常数稍大. </p>
+<p>同时需要将计算$\sum (f*g)$的时间复杂度考虑进去, 若$\sum (f*g)$的时间复杂度小于等于$O(n^{2/3})$则总体时间复杂度不变. </p>
+<p>注意到计算过程中$S_f(\lfloor n/i \rfloor)$也将被计算, 同时使用数论分块时计算$g$的区间和只需要计算全体$S_g(\lfloor n/i \rfloor)$即可(可以参见数论分块来证明), 因此若事先使用杜教筛将$S_g(\lfloor n/i \rfloor)$算出并储存, 总体时间复杂度也不变. </p>
+<p>综上, 使用杜教筛在$O(n^{2/3})$时间内计算$S_f$的条件如下: </p>
+<ul>
+<li>$f$能够使用线性筛计算得到. </li>
+<li>能够找到函数$g$, 使得: <ul>
+<li>可使用杜教筛在$O(n^{2/3})$时间内计算$S_g$</li>
+<li>计算$S_{f*g}$的时间复杂度小于等于$O(n^{2/3})$</li>
+</ul>
+</li>
+</ul>
+<p>至于如何存储$S(\lfloor n/i \rfloor)$, 可以使用unordered_map, 也可以使用根号分治的方法将$\lfloor n/i \rfloor$分为两类存储. </p>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码:"></a>示例代码:</h2><p><a href="https://www.luogu.com.cn/problem/P4213" target="_blank" rel="noopener">luogu4213 【模板】杜教筛（Sum）</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">int</span> <span class="title">Mn</span><span class="params">(<span class="number">1000500</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">qrd</span><span class="params">(T&amp; x)</span> </span>&#123;</span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> c = getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">        c = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">        x = x*<span class="number">10</span> + c-<span class="string">'0'</span>;</span><br><span class="line">        c = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*线性筛部分*/</span></span><br><span class="line">LL smu[Mn],sph[Mn];</span><br><span class="line"><span class="keyword">bool</span> isp[Mn];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; prm;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(isp,<span class="number">-1</span>,<span class="keyword">sizeof</span> isp);</span><br><span class="line">    sph[<span class="number">1</span>] = smu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    isp[<span class="number">1</span>] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i(<span class="number">2</span>);i&lt;Mn;++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(isp[i]) &#123;</span><br><span class="line">            prm.push_back(i);</span><br><span class="line">            smu[i] = <span class="number">-1</span>;</span><br><span class="line">            sph[i] = i<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> a: prm) &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="number">1l</span>l*a*i&gt;=Mn) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            isp[i*a] = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span>(i%a==<span class="number">0</span>) &#123;</span><br><span class="line">                smu[i*a] = <span class="number">0</span>;</span><br><span class="line">                sph[i*a] = sph[i] * a;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                smu[i*a] = -smu[i];</span><br><span class="line">                sph[i*a] = sph[i] * (a<span class="number">-1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        smu[i] += smu[i<span class="number">-1</span>]; </span><br><span class="line">        sph[i] += sph[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*杜教筛 mu*/</span></span><br><span class="line"><span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,LL&gt; ansmu,ansph;</span><br><span class="line"><span class="function">LL <span class="title">getMu</span><span class="params">(LL x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x&lt;Mn) &#123;  <span class="comment">//线性筛预处理优化</span></span><br><span class="line">        <span class="keyword">return</span> smu[x];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(ansmu[x]) &#123;</span><br><span class="line">        <span class="keyword">return</span> ansmu[x];</span><br><span class="line">    &#125;</span><br><span class="line">    LL ret = <span class="number">1</span>;</span><br><span class="line">    LL l(2),r;  //注意起始位置</span><br><span class="line">    <span class="keyword">for</span>(;l&lt;=x;l = r+<span class="number">1</span>) &#123;</span><br><span class="line">        r = x/(x/l);</span><br><span class="line">        ret -= getMu(x/l)*(r-l+<span class="number">1</span>);  <span class="comment">//公式</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ansmu[x] = ret;  <span class="comment">//存入unordered_map</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*杜教筛 phi*/</span></span><br><span class="line"><span class="function">LL <span class="title">getPh</span><span class="params">(LL x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x&lt;Mn) &#123;</span><br><span class="line">        <span class="keyword">return</span> sph[x];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(ansph[x]) &#123;</span><br><span class="line">        <span class="keyword">return</span> ansph[x];</span><br><span class="line">    &#125;</span><br><span class="line">    LL ret = (<span class="number">1l</span>l*x*(x+<span class="number">1</span>)/<span class="number">2l</span>l);</span><br><span class="line">    LL l(2),r;</span><br><span class="line">    <span class="keyword">for</span>(;l&lt;=x;l = r+<span class="number">1</span>) &#123;</span><br><span class="line">        r = x/(x/l);</span><br><span class="line">        ret -= getPh(x/l)*(r-l+<span class="number">1</span>);  <span class="comment">//公式too</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ansph[x] = ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    qrd(T);</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        LL n; qrd(n);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld %lld\n"</span>,getPh(n),getMu(n));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数论/" rel="tag"># 数论</a>
+          
+            <a href="/tags/杜教筛/" rel="tag"># 杜教筛</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/12/13/mobius-inversion/" rel="next" title="莫比乌斯反演与狄利克雷卷积">
+                <i class="fa fa-chevron-left"></i> 莫比乌斯反演与狄利克雷卷积
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/12/19/Min25-sieve/" rel="prev" title="Min_25筛">
+                Min_25筛 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="AjiL">
+            
+              <p class="site-author-name" itemprop="name">AjiL</p>
+              <p class="site-description motion-element" itemprop="description">El Psy Kongroo</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.tonyjam.cn/" title="TonyJam" target="_blank">TonyJam</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zmyjoe.github.io/" title="ZmyJoe" target="_blank">ZmyJoe</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://halc.top/" title="HalcyonAzu" target="_blank">HalcyonAzu</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概论"><span class="nav-number">1.</span> <span class="nav-text">概论:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些例子"><span class="nav-number">3.</span> <span class="nav-text">一些例子:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂度分析"><span class="nav-number">4.</span> <span class="nav-text">复杂度分析:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码"><span class="nav-number">5.</span> <span class="nav-text">示例代码:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AjiL</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

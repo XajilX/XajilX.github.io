@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数论,莫比乌斯反演,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="终于算是搞明白这个东西了">
+<meta name="keywords" content="数论,莫比乌斯反演">
+<meta property="og:type" content="article">
+<meta property="og:title" content="莫比乌斯反演与狄利克雷卷积">
+<meta property="og:url" content="http://yoursite.com/2021/12/13/mobius-inversion/index.html">
+<meta property="og:site_name" content="AjiL&#39;s Blog">
+<meta property="og:description" content="终于算是搞明白这个东西了">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2024-08-03T12:36:17.507Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="莫比乌斯反演与狄利克雷卷积">
+<meta name="twitter:description" content="终于算是搞明白这个东西了">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/12/13/mobius-inversion/">
+
+
+
+
+
+  <title>莫比乌斯反演与狄利克雷卷积 | AjiL's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AjiL's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/13/mobius-inversion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AjiL">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AjiL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">莫比乌斯反演与狄利克雷卷积</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-13T20:54:18+11:00">
+                2021-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index">
+                    <span itemprop="name">note</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/数论/" itemprop="url" rel="index">
+                    <span itemprop="name">数论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><del>终于算是搞明白这个东西了</del></p>
+<a id="more"></a>
+<h2 id="一个记号"><a href="#一个记号" class="headerlink" title="一个记号:"></a>一个记号:</h2><p>艾弗森括号: $<br>[P]=\begin{cases}\<br>1 &amp;, P\ is\ true \\<br>0 &amp;, P\ is\ false<br>\end{cases}<br>$<br>其中$P$为一个命题, 同时艾弗森括号与其他值相乘时不受其定义域影响, 例如$\frac{[x\neq 0]}{x}$当$x=0$时其值为零. </p>
+<h2 id="数论函数"><a href="#数论函数" class="headerlink" title="数论函数:"></a>数论函数:</h2><p>讲莫比乌斯反演首先得讲莫比乌斯函数, 讲莫比乌斯函数首先得说下啥是数论函数. </p>
+<p>数论函数即是定义在正整数区间上的函数. 常见的数论函数有欧拉$\varphi$函数, 因数个数, 因数和, 以及接下来讨论的莫比乌斯$\mu$函数. </p>
+<p>一类比较重要的数论函数叫做<strong>积性函数</strong>: 对于两个<strong>互质</strong>的正整数$p,q$, 若有$f(pq)=f(p)f(q)$, 则称数论函数$f$为积性函数. 上面提到的数论函数都是积性函数. </p>
+<p>特殊地, 若去掉互质的约束, 即对于任意正整数$p,q$均有$f(pq)=f(p)f(q)$, 则称$f$为<strong>完全积性函数</strong>. 比如$f(x) = x^k$. </p>
+<p>积性函数都可以使用<strong>欧拉筛</strong>进行线性的预处理. </p>
+<h2 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数:"></a>莫比乌斯函数:</h2><p>莫比乌斯$\mu$函数的定义如下: </p>
+<script type="math/tex; mode=display">
+    \mu(x) =
+    \begin{cases}
+        1 &, x=1 \\
+        (-1)^k &,x=\prod_{i=1}^k p_i \\
+        0 &, others
+    \end{cases}</script><p>其中$p_1 \neq p_2 \neq \cdots$, 且$p_i$均为质数. </p>
+<p>一个重要性质如下: </p>
+<script type="math/tex; mode=display">
+\sum_{d|n} \mu(d) = [n=1]</script><p>(事实上这个性质比反演好用)</p>
+<p><strong>证明</strong>: </p>
+<p>当$n=1$时, 等式显然成立. </p>
+<p>当$n \neq 1$时, 令$n = \prod_{i=1}^k p_i^{c_i}$(质因数分解), 则有: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+    & \sum_{d|n}\mu(d) \\
+    = & \  \mu(1) + \mu(p_1)+\mu(p_2)+\cdots \\
+    & + \mu(p_1p_2) + \mu(p_1p_3) + \cdots \\
+    & + \cdots + \mu(p_1p_2 \cdots p_k) \\
+    = & \  \sum_{i=0}^k (-1)^i {k \choose i} \\
+    = & \ (1-1)^k = 0
+\end{aligned}</script><p>从中可以看出$\mu$函数在容斥当中的作用. </p>
+<h2 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演:"></a>莫比乌斯反演:</h2><blockquote>
+<p>对于函数$f(n)$, 若有$F(n) = \sum_{d|n} f(x)$, 则有$f(n) = \sum_{d|n}\mu(d)F(n/d)$. </p>
+</blockquote>
+<p>另一种更常用的形式如下: </p>
+<blockquote>
+<p>对于函数$f(n)$, 若有$F(n) = \sum_{n|d} f(x)$, 则有$f(n) = \sum_{n|d}\mu(d/n)F(d)$. </p>
+</blockquote>
+<p><strong>证明</strong>: </p>
+<p>对于第一种形式: </p>
+<script type="math/tex; mode=display">
+\require{extpfeil}
+\begin{aligned}
+    \sum_{d|n}\mu(d)F(\frac{n}{d}) = & \sum_{d|n}\mu(d)\sum_{q|(n/d)}f(q) \\
+    \xlongequal{q|n, dq|n} & \sum_{q|n}f(q)\sum_{d|(n/q)}\mu(d) \\
+    = & \sum_{q|n}f(q)[\frac{n}{q}=1] \\
+    = & f(n)
+\end{aligned}</script><p>对于第二种形式:</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    \sum_{n|d}\mu(\frac{d}{n})F(d) = & \sum_{i=1} \mu(i)F(in) \\
+    = & \sum_{i=1}\mu(i)\sum_{j=1}f(ijn) \\
+    \xlongequal{T=ij} & \sum_{T=1}f(Tn)\sum_{i|T}\mu(i) \\
+    = & \sum_{T=1}f(Tn)[T=1] \\
+    = & f(n)
+\end{aligned}</script><h2 id="狄利克雷卷积"><a href="#狄利克雷卷积" class="headerlink" title="狄利克雷卷积:"></a>狄利克雷卷积:</h2><p>对于两个数论函数$f(x),g(x)$, 定义运算: </p>
+<script type="math/tex; mode=display">
+    (f*g)(x) = \sum_{d|x}f(d)g(\frac{x}{d})</script><p>该运算称为狄利克雷卷积. </p>
+<p>显然狄利克雷卷积满足交换律, 结合律和分配律. (其实是懒得写证明了)</p>
+<p>狄利克雷卷积有条重要的性质: 两个积性函数卷积后依然是积性函数, 所以通过狄利克雷卷积得到的函数也可以使用欧拉筛线性预处理. </p>
+<p>狄利克雷卷积有单位元$\epsilon(x) = [x=1]$. </p>
+<p>有了狄利克雷卷积, 之前提到的$\mu$函数的性质就可以表示为: </p>
+<script type="math/tex; mode=display">
+    \mu * I = \epsilon</script><p>其中$I(x)=1$. 也即$\mu$是$I$的逆元. </p>
+<p>此时莫比乌斯反演的第一种形式也变得十分显然: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+     & F = f*I \\
+    \therefore \ & F*\mu = f*I*\mu \\
+     & = f * \epsilon = f
+\end{aligned}</script><p>同时欧拉$\varphi$函数有一个与狄利克雷卷积有关的性质: </p>
+<script type="math/tex; mode=display">
+\sum_{d|n} \varphi(d) = n</script><blockquote>
+<p><strong>证明</strong>: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+    \sum_{d|n} \varphi(d) = & \sum_{d|n}\varphi(\frac{n}{d}) \\
+    = & \sum_{d|n}\sum_{i=1}^{n/d}[(i,\frac{n}{d}=1)] \\
+    = & \sum_{d|n}\sum_{i=1}^{n/d}[(id,n)=d] \\
+    \xlongequal{引入无关项} & \sum_{d|n}\sum_{i=1}^{n}[(i,n)=d] \\
+    \xlongequal{枚举gcd} & n
+\end{aligned}</script><p>事实上有个更通用的做法: 考察积性函数在质数幂次上的值: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+\sum_{d|p^k} \varphi(d) = & 1 + \sum_{i=1}^{k} p^i-p^{i-1} \\
+= & p^k \\
+\mathrm{assume}\ n = & \prod_{p} p^k \\
+\Rightarrow\sum_{d|n} \varphi(d) = & \prod_{p} \sum_{d|p^k} \varphi(d) \\
+= & \prod_{p} p^k = n
+\end{aligned}</script></blockquote>
+<p>同时: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+    & \varphi * I = id \\
+    \Longrightarrow & \varphi = id * \mu \\
+    \iff & \varphi(x) = \sum_{d|x} \mu(d) \frac{x}{d} \\
+    \Longrightarrow & \frac{\varphi(x)}{x} = \sum_{d|x} \frac{\mu(d)}{d}
+\end{aligned}</script><p>这个式子简洁地将$\varphi$函数与$\mu$函数结合在了一起. (虽然好像暂时不知道有啥用)</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数论/" rel="tag"># 数论</a>
+          
+            <a href="/tags/莫比乌斯反演/" rel="tag"># 莫比乌斯反演</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/12/13/NT-block/" rel="next" title="数论分块">
+                <i class="fa fa-chevron-left"></i> 数论分块
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/12/18/Du-sieve/" rel="prev" title="杜教筛">
+                杜教筛 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="AjiL">
+            
+              <p class="site-author-name" itemprop="name">AjiL</p>
+              <p class="site-description motion-element" itemprop="description">El Psy Kongroo</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.tonyjam.cn/" title="TonyJam" target="_blank">TonyJam</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zmyjoe.github.io/" title="ZmyJoe" target="_blank">ZmyJoe</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://halc.top/" title="HalcyonAzu" target="_blank">HalcyonAzu</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一个记号"><span class="nav-number">1.</span> <span class="nav-text">一个记号:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数论函数"><span class="nav-number">2.</span> <span class="nav-text">数论函数:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯函数"><span class="nav-number">3.</span> <span class="nav-text">莫比乌斯函数:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">4.</span> <span class="nav-text">莫比乌斯反演:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#狄利克雷卷积"><span class="nav-number">5.</span> <span class="nav-text">狄利克雷卷积:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AjiL</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Metaprogramming,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="看了些有关模板元编程的东西, 写点笔记 一个视频">
+<meta name="keywords" content="Metaprogramming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Some Notes of TMP">
+<meta property="og:url" content="http://yoursite.com/2022/07/02/NoteTMP/index.html">
+<meta property="og:site_name" content="AjiL&#39;s Blog">
+<meta property="og:description" content="看了些有关模板元编程的东西, 写点笔记 一个视频">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2024-08-03T12:36:17.497Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Some Notes of TMP">
+<meta name="twitter:description" content="看了些有关模板元编程的东西, 写点笔记 一个视频">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2022/07/02/NoteTMP/">
+
+
+
+
+
+  <title>Some Notes of TMP | AjiL's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AjiL's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/07/02/NoteTMP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AjiL">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AjiL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Some Notes of TMP</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-07-02T21:01:45+10:00">
+                2022-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index">
+                    <span itemprop="name">note</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/misc/" itemprop="url" rel="index">
+                    <span itemprop="name">misc</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>看了些有关模板元编程的东西, 写点笔记</p>
+<p><a href="https://www.bilibili.com/video/BV1JK4y1D7Yz" target="_blank" rel="noopener">一个视频</a></p>
+<a id="more"></a>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>元编程指通过编写或操纵其它程序或自身作为数据, 或者在运行时完成部分本该在编译时完成的工作的编程方式. (来自Wikipedia)</p>
+<p>C++中的模板元编程(Template MetaProgramming, TMP)使用<strong>模板的实例化</strong>来进行<strong>编译期</strong>的求值. </p>
+<p>模板元编程通常用来提高代码的灵活性和提升运行时速度(因为一部分计算放到了编译期中). </p>
+<p>模板元编程是图灵完备的, 通过<strong>模板特化</strong>实现分支, 通过<strong>递归</strong>实现循环, 同时由于是编译期的求值, 其中的参数, 中间量和返回值均是<strong>不可变</strong>的. 从这些角度来说模板元编程有点类似于函数式编程. </p>
+<h2 id="一些例子"><a href="#一些例子" class="headerlink" title="一些例子"></a>一些例子</h2><p>求两个数的最大公因数<code>gcd&lt;m, n&gt;</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">unsigned</span> m, <span class="keyword">unsigned</span> n&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">gcd</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">unsigned</span> <span class="keyword">constexpr</span> value = gcd&lt;n, m%n&gt;::value;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">unsigned</span> m&gt;</span><br><span class="line"><span class="keyword">static</span> gcd&lt;m, <span class="number">0</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">static_assert</span>(m != <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">unsigned</span> <span class="keyword">constexpr</span> value = m;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回值为值的元函数也可以使用<code>constexpr</code>函数代替:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="keyword">unsigned</span> <span class="title">gcd</span><span class="params">(<span class="keyword">unsigned</span> a, <span class="keyword">unsigned</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b == <span class="number">0</span> ? a : gcd(b, a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>获得去除<code>const</code>的类型<code>remove_const&lt;T&gt;</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">remove_const</span> &#123;</span> <span class="keyword">using</span> type = T; &#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">remove_const</span>&lt;T const&gt; &#123;</span> <span class="keyword">using</span> type = T; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>获得类型本身<code>identity&lt;T&gt;</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">identity</span>&lt;T&gt; &#123;</span> <span class="keyword">using</span> type = T; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>获得某类型的一个值<code>integral_constant&lt;T, v&gt;</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">T</span> <span class="title">v</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">integral_constant</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> T value = v;</span><br><span class="line">    <span class="function"><span class="keyword">constexpr</span>   <span class="keyword">operator</span> <span class="title">T</span> <span class="params">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span> </span>&#123; <span class="keyword">return</span> value; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">constexpr</span> T <span class="title">operator</span> <span class="params">()</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span> </span>&#123; <span class="keyword">return</span> value; &#125;</span><br><span class="line">    ...;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><code>bool_constant&lt;b&gt;</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">bool</span> b&gt;</span><br><span class="line"><span class="keyword">using</span> bool_constant = integral_constan&lt;<span class="keyword">bool</span>, b&gt;;</span><br></pre></td></tr></table></figure></p>
+<p><code>true_type</code>和<code>false_type</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> true_type = bool_constant&lt;<span class="literal">true</span>&gt;</span><br><span class="line"><span class="keyword">using</span> false_type = bool_constant&lt;<span class="literal">false</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这两个类型可以简化元函数的编写, 例如: </p>
+<p>判断两个类型是否一致<code>is_same&lt;T, U&gt;</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">class</span> <span class="title">U</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">is_same</span> :</span> false_type &#123;&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">is_same</span>&lt;T, T&gt; :</span> true_type &#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>判断某类型是否在类型列表中<code>is_one_of&lt;T, Ts...&gt;</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">class</span>... <span class="title">Ps</span>&gt; <span class="title">struct</span> <span class="title">is_one_of</span>;</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">is_one_of</span>&lt;T&gt; :</span> false_type &#123;&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">class</span>... <span class="title">Ps</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">is_one_of</span>&lt;T, T, Ps...&gt; :</span> true_type &#123;&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">class</span> <span class="title">P0</span>, <span class="title">class</span>... <span class="title">Ps</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">is_one_of</span>&lt;T, P0, Ps...&gt; :</span> is_one_of&lt;T, Ps...&gt; &#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>判断类型是否为<code>void</code>类型<code>is_void&lt;T&gt;</code>(type trait)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; <span class="title">struct</span> <span class="title">is_void</span> :</span> false_type &#123;&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;&gt; <span class="class"><span class="keyword">struct</span> <span class="title">is_void</span>&lt;void&gt; :</span> true_type &#123;&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;&gt; <span class="class"><span class="keyword">struct</span> <span class="title">is_void</span>&lt;void const&gt; :</span> true_type &#123;&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;&gt; <span class="class"><span class="keyword">struct</span> <span class="title">is_void</span>&lt;void volatile&gt; :</span> true_type &#123;&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;&gt; <span class="class"><span class="keyword">struct</span> <span class="title">is_void</span>&lt;void const volatile&gt; :</span> true_type &#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>或者:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; <span class="title">struct</span> <span class="title">is_void</span> :</span></span><br><span class="line">is_one_of&lt;T,</span><br><span class="line">    <span class="keyword">void</span>,</span><br><span class="line">    <span class="keyword">void</span> <span class="keyword">const</span>,</span><br><span class="line">    <span class="keyword">void</span> <span class="keyword">volatile</span>,</span><br><span class="line">    <span class="keyword">void</span> <span class="keyword">const</span> <span class="keyword">volatile</span>&gt; &#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>若定义了<code>remove_cv&lt;T&gt;</code>(去除<code>const</code>和<code>volatile</code>)也有:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; <span class="title">struct</span> <span class="title">is_void</span> :</span></span><br><span class="line">is_same&lt;<span class="keyword">remove_cv_t</span>&lt;T&gt;, <span class="keyword">void</span>&gt;</span><br><span class="line">&#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>头文件<code>&lt;type_traits&gt;</code>中定义了许多类似的type trait, 由于性能原因绝大多数type trait的实现都是基于编译器的内建方法. </p>
+<h2 id="元函数的调用"><a href="#元函数的调用" class="headerlink" title="元函数的调用"></a>元函数的调用</h2><p>通过获取结构体中的公共成员以”调用”元函数. </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcd&lt;<span class="number">8</span>, <span class="number">12</span>&gt;::value;</span><br><span class="line"><span class="keyword">typename</span> remove_const&lt;<span class="keyword">int</span> <span class="keyword">const</span>&gt;::type xxx;</span><br></pre></td></tr></table></figure>
+<p>由于模板可被重载, 需要使用<code>typename</code>关键字指定<code>::type</code>为类型. </p>
+<h2 id="一些约定"><a href="#一些约定" class="headerlink" title="一些约定"></a>一些约定</h2><p>返回值为值的模板函数, 返回值放在公开的静态成员常量<code>value</code>中, 或者直接继承自<code>std::integral_constant</code>. </p>
+<p>返回值为类型的模板函数, 返回值放在公开的成员类型<code>type</code>中. </p>
+<p>一般需要一个以<code>_v</code>(值)或<code>_t</code>(类型)结尾的的模板常量以方便调用: </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">unsigned</span> m, <span class="keyword">unsigned</span> n&gt;</span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">unsigned</span> gcd_v = gcd&lt;m, n&gt;::value;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">using</span> <span class="title">remove_const_t</span> = <span class="title">typename</span> <span class="title">remove_const</span>&lt;T&gt;:</span>:type;</span><br></pre></td></tr></table></figure>
+<p>不要对标准库中的type trait特化, 这样可能导致未定义行为. </p>
+<h2 id="SFINAE"><a href="#SFINAE" class="headerlink" title="SFINAE"></a>SFINAE</h2><p>SFINAE means Substitution Failure Is Not An Error. </p>
+<p>当模板实例化时, 编译器首先会寻找模板类型参数, 有如下三种情形: </p>
+<ul>
+<li>使用显式的模板类型参数; </li>
+<li>从函数的实参中推断类型; </li>
+<li>使用默认的模板类型参数. </li>
+</ul>
+<p>找到模板参数后则会依次查找模板的定义, 使用找到的模板参数替换定义中的模板参数. 若替换过程中产生的代码有意义则实例化成功, 否则称发生了替换失败(Substitution Failure), 编译器<strong>不会抛出错误</strong>, 将<strong>继续寻找其它定义</strong>. </p>
+<p>假设定义了元函数<code>enable_if&lt;b, T&gt;</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">bool</span>, <span class="class"><span class="keyword">class</span> <span class="title">T</span> = <span class="title">void</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">enable_if</span> :</span> identity&lt;T&gt; &#123;&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">enable_if</span>&lt;false, T&gt; &#123;</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>注意false时结构体无<code>type</code>成员. </p>
+<p>假设某算法<code>f</code>需要对整型与浮点型数据进行重载, 则有: </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">enable_if_t</span>&lt;is_integral_v&lt;T&gt;, int&gt; <span class="title">f</span> (<span class="title">T</span> <span class="title">val</span>) &#123;</span>...;&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">enable_if_t</span>&lt;is_floating_point_v&lt;T&gt;, double&gt; <span class="title">f</span> (<span class="title">T</span> <span class="title">val</span>) &#123;</span>...;&#125;</span><br></pre></td></tr></table></figure>
+<p>若传入的参数为整型则第二条中的<code>enable_if_t</code>将生成错误的代码(对无<code>type</code>成员的结构体取<code>type</code>), 发生SFINAE, 寻找其它定义, 反之亦然. 但当传入的参数为其它的类型(例如字符串), 则两个定义均不成立, 将发生编译错误. </p>
+<blockquote>
+<p>C++20以后可以使用concept和requires子句替代上述写法:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;integral T&gt;    <span class="comment">// concept</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span> <span class="params">(T val)</span> </span>&#123;...;&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">requires</span> <span class="title">floating_point</span>&lt;T&gt;    // <span class="title">requires</span> <span class="title">clause</span></span></span><br><span class="line"><span class="class"><span class="title">double</span> <span class="title">f</span> (<span class="title">T</span> <span class="title">val</span>) &#123;</span>...;&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="非求值运算"><a href="#非求值运算" class="headerlink" title="非求值运算"></a>非求值运算</h2><p>对于例如<code>sizof</code>, <code>decltype</code>之类的运算符, 其运算对象在编译期和运行时<strong>均不求值</strong>. 这意味着这类运算符只会检查运算对象的<strong>声明</strong>. </p>
+<p>其中<code>decltype()</code>和<code>std::declval&lt;T&gt;()</code>是一对十分有用的非求值运算. <code>decltype()</code>将返回括号内表达式的返回值<strong>类型</strong>, <code>std::declval&lt;T&gt;()</code>将返回一个类型为<code>T</code>的右值引用(<code>std::declval&lt;T&amp;&gt;()</code>可返回左值引用, 由于引用折叠). </p>
+<p>用例: 判断某类型是否能够复制赋值<code>is_copy_assignable&lt;T&gt;</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">is_copy_assignable</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">U</span>,</span></span><br><span class="line"><span class="class">        <span class="title">class</span> = <span class="title">decltype</span>(<span class="title">declval</span>&lt;U&amp;&gt;() = <span class="title">declval</span>&lt;U const&amp;&gt;())&gt;</span></span><br><span class="line"><span class="class">    <span class="title">static</span> <span class="title">true_type</span> <span class="title">try_assignment</span>(<span class="title">U</span>&amp;&amp;);</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> false_type <span class="title">try_assignment</span><span class="params">(...)</span></span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">using</span> type = <span class="keyword">decltype</span>(try_assignment(declval&lt;T&gt;()));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>在没有<code>decltype</code>时(C++11以前)则需要使用<code>sizeof</code>, 通过返回类型的大小来区分真假. </p>
+<h2 id="void-t"><a href="#void-t" class="headerlink" title="void_t"></a>void_t</h2><p><code>void_t</code>的定义如下:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span>...&gt; <span class="title">using</span> <span class="title">void_t</span> = <span class="title">void</span>;</span></span><br></pre></td></tr></table></figure></p>
+<p>当模板参数均<strong>有意义</strong>时则返回<code>void</code>类型, 否则将引发SFINAE. </p>
+<p>用例: 判断某类型是否有公开成员类型<code>type</code>:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">class</span> = <span class="title">void</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">has_type</span> :</span> false_type &#123;&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">has_type</span>&lt;T, void_t&lt;typename T::type&gt;&gt; :</span> true_type &#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>用例: 重写<code>is_copy_assinable</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">using</span> <span class="title">copy_assignment_t</span> =</span></span><br><span class="line"><span class="class">    <span class="title">decltype</span>(<span class="title">declval</span>&lt;T&amp;&gt;() = <span class="title">declval</span>&lt;T const &amp;&gt;())</span></span><br><span class="line"><span class="class"><span class="title">template</span>&lt;class T, class = void&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">is_copy_assignable</span> :</span> false_type &#123;&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">is_copy_assignable</span>&lt;T,</span></span><br><span class="line"><span class="class">    void_t&lt;copy_assignment_t&lt;T&gt;&gt;&gt; :</span></span><br><span class="line">    is_same&lt;<span class="keyword">copy_assignment_t</span>&lt;T&gt;, T&amp;&gt; &#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>注意模板默认参数<strong>必须与<code>void_t</code>的返回类型匹配</strong>, 若不匹配模板特化将失效. </p>
+<blockquote>
+<p>在C++20以后也可以使用concept与requires子句替代:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">concept</span> <span class="title">copy_assignable</span> = <span class="title">requires</span>(<span class="title">T</span>&amp; <span class="title">a</span>, <span class="title">T</span> <span class="title">const</span> &amp; <span class="title">b</span>)</span></span><br><span class="line"><span class="class">&#123;</span> a = b; &#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">is_copy_assignable</span> :</span> false_type &#123;&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">requires</span> <span class="title">copy_assignable</span>&lt;T&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">is_copy_assignable</span>&lt;T&gt; :</span> true_type &#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Metaprogramming/" rel="tag"># Metaprogramming</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/03/03/cf1139d/" rel="next" title="(cf1139d) Steps to One">
+                <i class="fa fa-chevron-left"></i> (cf1139d) Steps to One
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/11/16/moreFT/" rel="prev" title="Miscellaneous of Fourier Transform">
+                Miscellaneous of Fourier Transform <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="AjiL">
+            
+              <p class="site-author-name" itemprop="name">AjiL</p>
+              <p class="site-description motion-element" itemprop="description">El Psy Kongroo</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.tonyjam.cn/" title="TonyJam" target="_blank">TonyJam</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zmyjoe.github.io/" title="ZmyJoe" target="_blank">ZmyJoe</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://halc.top/" title="HalcyonAzu" target="_blank">HalcyonAzu</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些例子"><span class="nav-number">2.</span> <span class="nav-text">一些例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元函数的调用"><span class="nav-number">3.</span> <span class="nav-text">元函数的调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些约定"><span class="nav-number">4.</span> <span class="nav-text">一些约定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SFINAE"><span class="nav-number">5.</span> <span class="nav-text">SFINAE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非求值运算"><span class="nav-number">6.</span> <span class="nav-text">非求值运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#void-t"><span class="nav-number">7.</span> <span class="nav-text">void_t</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AjiL</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
