@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-11-16T03:25:00.000Z">
-<meta property="article:modified_time" content="2024-08-03T12:36:17.507Z">
+<meta property="article:modified_time" content="2024-08-04T10:35:18.643Z">
 <meta property="article:author" content="AjiL">
 <meta property="article:tag" content="FFT">
 <meta name="twitter:card" content="summary">
@@ -35,7 +35,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/11/16/moreFT/","path":"2022/11/16/moreFT/","title":"Miscellaneous of Fourier Transform"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2022/11/16/moreFT/","path":"2022/11/16/moreFT/","title":"Miscellaneous of Fourier Transform"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Miscellaneous of Fourier Transform | AjiL's Blog</title>
@@ -185,7 +185,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/16/moreFT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -513,7 +513,7 @@ X^*(\omega)e^{ {\rm j} \omega n }\ {\rm d} \omega\]</span></p>
 <p>第一个问题很好解决, 实际输入的信号都是有限长度的, 可记为<span
 class="math inline">\(x_0, x_1, \cdots, x_{L-1}\)</span>,
 其余部分均取为0即可.</p>
-<p>对于另外一个问题, 可以考虑对频域同样进行"采样",
+<p>对于另外一个问题, 可以考虑对频域同样进行”采样”,
 即在一个周期的区间<span class="math inline">\([0,
 2\pi)\)</span>中只取<span
 class="math inline">\(N\)</span>个等间距的点计算.</p>
@@ -604,13 +604,13 @@ kn = \frac{-(k-n)^{\underline{2} } + k^{\underline{2} } +
 <p>如前文所述, 当信号是偶函数时进行傅里叶变换得到的便是实函数,
 所以对原信号进行偶延拓后再进行DFT便得到了DCT.
 偶延拓的方法不同得到的DCT也不同, 其中最常用的一种如下:</p>
-<p><span class="math display">\[
+<p><span class="math display">\[\begin{aligned}
 y_k = 2\alpha_k \sum_{n=0}^{N-1} x_n \cos\left( \frac{\pi k(2n+1)}{2N}
 \right) \\
 x_n = \frac{y_0}{2N\alpha_0} + \frac{1}{N}
 \sum_{k=1}^{N-1}\frac{y_k}{\alpha_k}\cos\left( \frac{\pi k(2n+1)}{2N}
 \right)
-\]</span></p>
+\end{aligned}\]</span></p>
 <p>相当于将信号右移<span
 class="math inline">\(1/2\)</span>个单位后进行偶延拓再进行DCT. <span
 class="math inline">\(\alpha_k\)</span>通常取<span
@@ -631,19 +631,19 @@ class="math inline">\(O(N^2)\)</span>,
 <p>对信号直接进行DFT可以得到整个信号各频率的强度.
 然而对于实际的信号如音频信号, 信号在各时间上的频率信息是不一样的.
 直接对整个信号进行DFT则丢失了时间信息.</p>
-<p>一个办法是将信号按照时间截取短的等长的"帧", 再对每帧进行DFT,
+<p>一个办法是将信号按照时间截取短的等长的”帧”, 再对每帧进行DFT,
 这便是短时傅里叶变换(STFT).
 由于每帧时间较短可以假定信号在一帧之内频率信息基本一致,
 对于音频信号一般的共识是在10ms-40ms内信号基本是平稳的.</p>
 <p>若直接对截取的信号进行DFT则可能因为周期延拓时的跳变导致<strong>频率泄露</strong>,
 此时需要对截取后的信号乘上一个<strong>窗函数</strong>再进行DFT以减小频率泄露.
 一个比较常用的窗函数为汉宁窗:</p>
-<p><span class="math display">\[
+<p><span class="math display">\[\begin{aligned}
 W_{N,n}=\begin{cases}
 \frac{1}{2}\left(1-\cos\frac{2\pi n}{N-1}\right)&amp;,0\leq n &lt;N \\
 0&amp;,{\rm otherwise}
 \end{cases}
-\]</span></p>
+\end{aligned}\]</span></p>
 <p>其中的<span class="math inline">\(N\)</span>为帧长度.</p>
 <p>加窗后, 信号<span class="math inline">\(x_n\)</span>在第<span
 class="math inline">\(t\)</span>帧(从0开始)的强度值<span
@@ -652,7 +652,7 @@ class="math inline">\(x_{t,n}\)</span>则为:</p>
 x_{t,n} = x_nW_{N, (n-tH)}
 \]</span></p>
 <p>其中的<span class="math inline">\(H\)</span>通常称为hop size,
-即两帧之间"越过"的采样点数量.</p>
+即两帧之间”越过”的采样点数量.</p>
 <p>对第<span class="math inline">\(t\)</span>帧进行DFT, 第<span
 class="math inline">\(k\)</span>频率的强度<span
 class="math inline">\(X_{t,k}\)</span>即为:</p>

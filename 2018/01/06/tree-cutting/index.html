@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -40,7 +40,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2018/01/06/tree-cutting/","path":"2018/01/06/tree-cutting/","title":"树链剖分"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2018/01/06/tree-cutting/","path":"2018/01/06/tree-cutting/","title":"树链剖分"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>树链剖分 | AjiL's Blog</title>
@@ -190,7 +190,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2018/01/06/tree-cutting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -252,7 +252,7 @@
 <p>剖分的方法有几种, 但用得多的还是<strong>重链剖分</strong></p>
 <p>重链剖分指的就是把某个结点与它的<strong>重儿子</strong>(子树大小最大的子结点)编成一条链</p>
 <h2 id="实现">实现:</h2>
-<p>重链剖分是基于dfs的, 所以也可以称之为一种"启发式的dfs序"</p>
+<p>重链剖分是基于dfs的, 所以也可以称之为一种”启发式的dfs序”</p>
 <p>重链剖分一般用两个dfs实现:</p>
 <p>第一遍dfs: 计算子树大小, 寻找重儿子</p>
 <p>伪代码: <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> dep[Mn],size[Mn],hs[Mn],fa[Mn];    <span class="comment">//结点深度,结点子树大小,结点的重儿子,父结点</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs1</span><span class="params">(<span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    size[p] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(x=child of p)</span><br><span class="line">    &#123;</span><br><span class="line">        dep[x] = dep[p]<span class="number">+1</span>;</span><br><span class="line">        fa[x] = p;</span><br><span class="line">        <span class="built_in">dfs1</span>(x);</span><br><span class="line">        size[p] += size[x];</span><br><span class="line">        <span class="keyword">if</span>(size[x]&gt;size[hs[p]])	hs[p] = x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -36,7 +36,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2020/11/02/RollBackMo/","path":"2020/11/02/RollBackMo/","title":"回滚莫队"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2020/11/02/RollBackMo/","path":"2020/11/02/RollBackMo/","title":"回滚莫队"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>回滚莫队 | AjiL's Blog</title>
@@ -186,7 +186,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/02/RollBackMo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -271,7 +271,7 @@ class="math inline">\(r\)</span>是单调递增的.</p>
 <p>对于左区间的查询比较麻烦:
 如果左端点比当前左指针更小则可以直接向左进行增加元素的操作,
 但如果更大怎么办?</p>
-<p>回到"回滚"这个词上, 由于右区间的查询比较简单,
+<p>回到”回滚”这个词上, 由于右区间的查询比较简单,
 我们可以额外保存下右区间的操作情况和查询结果,
 当发生左端点比左指针更大的情况, 则直接将操作与结果回滚到右区间,
 由于<span class="math inline">\(l &lt; br+1\)</span>一定成立,

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -37,7 +37,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2021/03/06/luogu2572/","path":"2021/03/06/luogu2572/","title":"(luogu2572)序列操作[SCOI2010]"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2021/03/06/luogu2572/","path":"2021/03/06/luogu2572/","title":"(luogu2572)序列操作[SCOI2010]"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>(luogu2572)序列操作[SCOI2010] | AjiL's Blog</title>
@@ -187,7 +187,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/06/luogu2572/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -246,7 +246,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p><a href="https://www.luogu.com.cn/problem/P2572">原题链接</a></p>
+    <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2572">原题链接</a></p>
 <span id="more"></span>
 <h2 id="思路">思路:</h2>
 <p>其实就是个比较复杂的线段树模板.</p>
@@ -254,7 +254,7 @@
 所以需要<strong>同时存储有关0和1的数据</strong>.</p>
 <p>同时需要注意标记下放的顺序,
 <strong>先抹平后取反</strong>(因为先取反后抹平与直接抹平效果是一样的).</p>
-<p>查询方面, 对于"最多连续个1"可以采用与区间连续最大和一样的思路,
+<p>查询方面, 对于”最多连续个1”可以采用与区间连续最大和一样的思路,
 即储存每段区间最大连续长度还有从左右端点延申出来的最大长度.
 合并时一共三种情况, 即全在左段或右段, 或跨越左右两段.</p>
 <h2 id="代码">代码:</h2>

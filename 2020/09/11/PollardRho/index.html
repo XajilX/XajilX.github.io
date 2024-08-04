@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -39,7 +39,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2020/09/11/PollardRho/","path":"2020/09/11/PollardRho/","title":"Pollard-Rho因数分解"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2020/09/11/PollardRho/","path":"2020/09/11/PollardRho/","title":"Pollard-Rho因数分解"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Pollard-Rho因数分解 | AjiL's Blog</title>
@@ -189,7 +189,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/11/PollardRho/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -267,7 +267,7 @@ class="math inline">\(O(1)\)</span>. 但这个方法显然准确率太低.</p>
 大致是1/2!</p>
 <p>生日悖论的实质是: 满足答案的组合比单个个体要多,
 所以采用组合的方式随机要比单个随机准确率更高.</p>
-<p>受到该"悖论"启发, 一个随机数不行我们可以取两个随机数, 例如: 在<span
+<p>受到该”悖论”启发, 一个随机数不行我们可以取两个随机数, 例如: 在<span
 class="math inline">\([1,1000]\)</span>中随机取一个数,
 取到23的概率是1/1000, 但在<span
 class="math inline">\([1,1000]\)</span>中随机取两个数<span
@@ -303,8 +303,8 @@ class="math inline">\(x_i = g(x_{i-1})\)</span>.</p>
 所以该算法叫Pollard-Rho(233).</p>
 <p>为了避免在环上递推过多, 使用Floyd判环算法, 即使用两个变量<span
 class="math inline">\(x,y\)</span>, 从同一起点开始,
-用类似"龟兔赛跑"的方式, x每次往后迭代一次, y每次往后迭代两次,
-迭代后以x,y作为判定数判定, 当两个数相等时说明"兔"已经领先"龟"一圈,
+用类似”龟兔赛跑”的方式, x每次往后迭代一次, y每次往后迭代两次,
+迭代后以x,y作为判定数判定, 当两个数相等时说明”兔”已经领先”龟”一圈,
 结束迭代, 返回判定失败, 使用其他初始值重新判定.</p>
 <p>实际运用中可能伪随机生成序列中找不到合适的k, 一个例子是4.
 这个时候可能需要更改生成伪随机序列的递推方程.

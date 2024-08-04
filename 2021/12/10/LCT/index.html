@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -35,7 +35,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2021/12/10/LCT/","path":"2021/12/10/LCT/","title":"Link-Cut Tree"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2021/12/10/LCT/","path":"2021/12/10/LCT/","title":"Link-Cut Tree"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Link-Cut Tree | AjiL's Blog</title>
@@ -185,7 +185,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/10/LCT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -247,9 +247,9 @@
 class="math inline">\(O(\log n)\)</span>的查询, 切割, 连接操作.</p>
 <p>LCT基于树链剖分的思想, 即将一棵树剖成多条树链,
 方便采用数据结构处理.</p>
-<p>具体来说, LCT采用了"<strong>实链剖分</strong>",
-即每个点指定一个"实儿子", 通过"实儿子"连成"实链".
-与普通的树链剖分区别在于"实儿子"是<strong>动态变化</strong>的.</p>
+<p>具体来说, LCT采用了”<strong>实链剖分</strong>”,
+即每个点指定一个”实儿子”, 通过”实儿子”连成”实链”.
+与普通的树链剖分区别在于”实儿子”是<strong>动态变化</strong>的.</p>
 <p>LCT使用<strong>splay</strong>来维护树链.
 由于一条树链上的节点点深度各不相同.
 所以可以使用<strong>深度</strong>作为关键字建立splay.
@@ -260,7 +260,7 @@ class="math inline">\(O(\log n)\)</span>的查询, 切割, 连接操作.</p>
 虚边单向连接.</p>
 <h2 id="操作">操作:</h2>
 <p>需要实现LCT首先需要实现splay, 以<a
-href="https://www.luogu.com.cn/problem/P3690">luoguP3690</a>为例,
+target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3690">luoguP3690</a>为例,
 代码与节点定义如下所示:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">td</span> &#123;</span><br><span class="line">    <span class="type">int</span> v,sm,sz;    <span class="comment">//节点值, 异或和, splay子树大小</span></span><br><span class="line">    <span class="type">bool</span> tr;    <span class="comment">//翻转标记</span></span><br><span class="line">    <span class="type">int</span> fa, sn[<span class="number">2</span>];  <span class="comment">//父指针, 左右儿子指针</span></span><br><span class="line">&#125;t[Mn]; <span class="comment">//节点空间</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">idn</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;    <span class="comment">//父子节点关系(x是其父节点的左/右儿子)</span></span><br><span class="line">    <span class="keyword">if</span>(t[t[x].fa].sn[<span class="number">0</span>] == x) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(t[t[x].fa].sn[<span class="number">1</span>] == x) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">psd</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;   <span class="comment">//懒标记下放</span></span><br><span class="line">    <span class="keyword">if</span>(t[x].tr) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(t[t[x].sn[<span class="number">0</span>]].sn[<span class="number">0</span>],t[t[x].sn[<span class="number">0</span>]].sn[<span class="number">1</span>]);</span><br><span class="line">        <span class="built_in">swap</span>(t[t[x].sn[<span class="number">1</span>]].sn[<span class="number">0</span>],t[t[x].sn[<span class="number">1</span>]].sn[<span class="number">1</span>]);</span><br><span class="line">        t[t[x].sn[<span class="number">0</span>]].tr ^= <span class="number">1</span>;</span><br><span class="line">        t[t[x].sn[<span class="number">1</span>]].tr ^= <span class="number">1</span>;</span><br><span class="line">        t[x].tr = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">mtn</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;   <span class="comment">//维护</span></span><br><span class="line">    t[x].sz = t[t[x].sn[<span class="number">0</span>]].sz + t[t[x].sn[<span class="number">1</span>]].sz + <span class="number">1</span>;</span><br><span class="line">    t[x].sm = t[t[x].sn[<span class="number">0</span>]].sm ^ t[t[x].sn[<span class="number">1</span>]].sm ^ t[x].v;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">rot</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;   <span class="comment">//将x向上旋转</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">fx</span><span class="params">(t[x].fa)</span>, <span class="title">gx</span><span class="params">(t[fx].fa)</span></span>;</span><br><span class="line">    <span class="built_in">psd</span>(fx), <span class="built_in">psd</span>(x);</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">d</span><span class="params">(idn(x))</span>, <span class="title">df</span><span class="params">(idn(fx))</span></span>;</span><br><span class="line">    t[fx].sn[d] = t[x].sn[d^<span class="number">1</span>];</span><br><span class="line">    t[x].sn[d^<span class="number">1</span>] = fx;</span><br><span class="line">    t[t[fx].sn[d]].fa = fx;</span><br><span class="line">    t[fx].fa = x;</span><br><span class="line">    t[x].fa = gx;</span><br><span class="line">    <span class="keyword">if</span>(df!=<span class="number">-1</span>) &#123;</span><br><span class="line">        t[gx].sn[df] = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">mtn</span>(fx), <span class="built_in">mtn</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">psdPath</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;   <span class="comment">//递归下放标记</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">idn</span>(x)!=<span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">psdPath</span>(t[x].fa);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">psd</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">spl</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;   <span class="comment">//伸缩</span></span><br><span class="line">    <span class="built_in">psdPath</span>(x);</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">idn</span>(x)!=<span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">idn</span>(t[x].fa) != <span class="number">-1</span>) &#123;</span><br><span class="line">            <span class="built_in">rot</span>((<span class="built_in">idn</span>(x)==<span class="built_in">idn</span>(t[x].fa)) ? t[x].fa : x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">rot</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="accessx">access(x)</h3>
@@ -285,7 +285,7 @@ href="https://www.luogu.com.cn/problem/P3690">luoguP3690</a>为例,
 <h3 id="findrootx">findroot(x)</h3>
 <p>寻找x所在的原树的根.</p>
 <p>这个操作可以用来判断两个节点是否在同一个树中,
-也即将LCT视作一个支持删边的"并查集".</p>
+也即将LCT视作一个支持删边的”并查集”.</p>
 <p>将x access后寻找x所在splay中深度最小的节点即可.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fdr</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">acs</span>(x); <span class="built_in">spl</span>(x);</span><br><span class="line">    <span class="keyword">while</span>(t[x].sn[<span class="number">0</span>]) &#123;</span><br><span class="line">        <span class="built_in">psd</span>(x); x = t[x].sn[<span class="number">0</span>]; <span class="comment">//注意先下传标记再向下遍历</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">spl</span>(x); <span class="comment">//将根伸展可以使得一些操作更加方便</span></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="linkxy">link(x,y)</h3>
@@ -307,7 +307,7 @@ x然后再将y的父节点设为x(即x与y连接一条虚边).</p>
 <p>由于森林的边数最多为n-1条, 所以空间增加了一倍.</p>
 <h3 id="维护子树信息">维护子树信息:</h3>
 <p>维护子树信息需要每个节点同时维护实子树与虚子树的信息,
-而LCT"认父不认子"的特性使得虚子树的信息不太方便维护.</p>
+而LCT”认父不认子”的特性使得虚子树的信息不太方便维护.</p>
 <p>解决的方法是对每个点<strong>统计其所有虚子树的贡献</strong>,
 并且在涉及<strong>改变splay形态</strong>的操作中即时修改.</p>
 <p>access操作中每次循环中当前splay的根节点的原右儿子与新右儿子的虚实发生了变化,

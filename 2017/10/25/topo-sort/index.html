@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -38,7 +38,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2017/10/25/topo-sort/","path":"2017/10/25/topo-sort/","title":"拓扑排序及应用"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2017/10/25/topo-sort/","path":"2017/10/25/topo-sort/","title":"拓扑排序及应用"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>拓扑排序及应用 | AjiL's Blog</title>
@@ -188,7 +188,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2017/10/25/topo-sort/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -257,17 +257,17 @@
 <p>有两种方法:</p>
 <p><strong>1.dfs:</strong></p>
 <p>dfs遍历DAG, 并在遍历完后将结点放在当前序列的首部</p>
-<p><strong>----代码----(来自紫书)</strong> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> c[Mn];</span><br><span class="line"><span class="type">int</span> topo[Mn], <span class="built_in">t</span>(n);</span><br><span class="line"><span class="type">bool</span> dfs</span><br><span class="line">&#123;</span><br><span class="line">    c[u] = <span class="number">-1</span> <span class="comment">//访问标志</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">v</span>(<span class="number">0</span>);v&lt;n;++v)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(G[u][v)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(c[v]&lt;<span class="number">0</span>)	<span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">//存在有向环, 排序失败</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(!c[v] &amp;&amp; !<span class="built_in">dfs</span>(v)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    c[u] = <span class="number">1</span>; topo[--t]=u;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>—-代码—-(来自紫书)</strong> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> c[Mn];</span><br><span class="line"><span class="type">int</span> topo[Mn], <span class="built_in">t</span>(n);</span><br><span class="line"><span class="type">bool</span> dfs</span><br><span class="line">&#123;</span><br><span class="line">    c[u] = <span class="number">-1</span> <span class="comment">//访问标志</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">v</span>(<span class="number">0</span>);v&lt;n;++v)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(G[u][v)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(c[v]&lt;<span class="number">0</span>)	<span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">//存在有向环, 排序失败</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(!c[v] &amp;&amp; !<span class="built_in">dfs</span>(v)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    c[u] = <span class="number">1</span>; topo[--t]=u;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>2.bfs:</strong></p>
 <p>运用一个队列, 删除在队头的结点， 并寻找入度为0的点入队</p>
-<p><strong>----代码----</strong> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> topo[Mn];</span><br><span class="line"><span class="type">int</span> in[Mn]; <span class="comment">//入度</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">h</span><span class="params">(<span class="number">1</span>)</span>,<span class="title">t</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=n;++i)</span><br><span class="line">    <span class="keyword">if</span>(!in[i])	topo[t++]=i;</span><br><span class="line"><span class="keyword">while</span>(h!=t)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(edge* <span class="built_in">e</span>(v[topo[h]]);e;e=e-&gt;next)</span><br><span class="line">    &#123;</span><br><span class="line">        --in[e-&gt;e];</span><br><span class="line">        <span class="keyword">if</span>(!in[e-&gt;e])</span><br><span class="line">            topo[t++] = e-&gt;e;</span><br><span class="line">    &#125;</span><br><span class="line">    ++h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>—-代码—-</strong> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> topo[Mn];</span><br><span class="line"><span class="type">int</span> in[Mn]; <span class="comment">//入度</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">h</span><span class="params">(<span class="number">1</span>)</span>,<span class="title">t</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=n;++i)</span><br><span class="line">    <span class="keyword">if</span>(!in[i])	topo[t++]=i;</span><br><span class="line"><span class="keyword">while</span>(h!=t)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(edge* <span class="built_in">e</span>(v[topo[h]]);e;e=e-&gt;next)</span><br><span class="line">    &#123;</span><br><span class="line">        --in[e-&gt;e];</span><br><span class="line">        <span class="keyword">if</span>(!in[e-&gt;e])</span><br><span class="line">            topo[t++] = e-&gt;e;</span><br><span class="line">    &#125;</span><br><span class="line">    ++h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="拓扑排序的作用">拓扑排序的作用:</h2>
 <p>首先, 拓扑序可以用来定任务的起始时间, 这也是一般书上讲的东西</p>
 <p>其次, 拓扑序<strong>可以判定一个有向图是不是DAG</strong></p>
 <p>因为<strong>有且只有DAG才存在拓扑序</strong></p>
 <p>那么, 如果将DAG的性质和定序结合起来会怎么样?</p>
 <p>我们知道, <strong>DAG与dp有密不可分的关系</strong></p>
-<p>而拓扑序可以给出DAG的处理顺序...</p>
+<p>而拓扑序可以给出DAG的处理顺序…</p>
 <p>也就是说, <strong>拓扑序可以给出DAG上dp的计算顺序</strong></p>
 <p>这也是一般DAG上dp的优化思路</p>
 

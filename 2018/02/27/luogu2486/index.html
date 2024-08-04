@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,19 +12,19 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="这题就有点难度了...">
+    <meta name="description" content="这题就有点难度了…">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(luogu2486)染色(SDOI2011)">
 <meta property="og:url" content="http://example.com/2018/02/27/luogu2486/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
-<meta property="og:description" content="这题就有点难度了...">
+<meta property="og:description" content="这题就有点难度了…">
 <meta property="og:locale">
 <meta property="article:published_time" content="2018-02-26T13:00:00.000Z">
 <meta property="article:modified_time" content="2024-08-03T12:36:17.507Z">
@@ -37,7 +37,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2018/02/27/luogu2486/","path":"2018/02/27/luogu2486/","title":"(luogu2486)染色(SDOI2011)"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2018/02/27/luogu2486/","path":"2018/02/27/luogu2486/","title":"(luogu2486)染色(SDOI2011)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>(luogu2486)染色(SDOI2011) | AjiL's Blog</title>
@@ -187,7 +187,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2018/02/27/luogu2486/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -246,10 +246,10 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>这题就有点难度了... <span id="more"></span></p>
+    <div class="post-body" itemprop="articleBody"><p>这题就有点难度了… <span id="more"></span></p>
 <p><a href="/2018/01/06/tree-cutting">树链剖分笔记索引</a></p>
 <h2 id="思路">思路:</h2>
-<p>还是<strong>树链剖分+线段树</strong>...</p>
+<p>还是<strong>树链剖分+线段树</strong>…</p>
 <p>这题难一点的地方就在于<strong>线段树的处理</strong></p>
 <p>我们可以记录下区间内的颜色段个数, 然后维护它</p>
 <p>但有个问题, 合并两个区间时中间的颜色段可能跨了左右两个区间,

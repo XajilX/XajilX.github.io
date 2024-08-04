@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -39,7 +39,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2020/03/02/cf1295C/","path":"2020/03/02/cf1295C/","title":"(CF1295C)Obtain The String"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2020/03/02/cf1295C/","path":"2020/03/02/cf1295C/","title":"(CF1295C)Obtain The String"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>(CF1295C)Obtain The String | AjiL's Blog</title>
@@ -189,7 +189,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/02/cf1295C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -245,14 +245,14 @@
     
     
     <div class="post-body" itemprop="articleBody"><p><a
-href="http://codeforces.com/problemset/problem/1295/C"><strong>原题链接</strong></a></p>
+target="_blank" rel="noopener" href="http://codeforces.com/problemset/problem/1295/C"><strong>原题链接</strong></a></p>
 <span id="more"></span>
 <h2 id="思路">思路:</h2>
 <p><strong>贪心+二分+前缀和</strong></p>
-<p>贪心指对于字符串b中的每个字母, 选择串a中"可选区域"中最前面那个.
-"可选区域"由前一个字母决定. 若可选区域中没有则答案+1并在整个串a中寻找,
+<p>贪心指对于字符串b中的每个字母, 选择串a中”可选区域”中最前面那个.
+“可选区域”由前一个字母决定. 若可选区域中没有则答案+1并在整个串a中寻找,
 若串a也没有则无解.</p>
-<p>其中, "选择串a中'可选区域'中最前面那个"由二分+前缀和完成.
+<p>其中, “选择串a中’可选区域’中最前面那个”由二分+前缀和完成.
 对于每个字母统计区间[1, n]中该字母出现次数,
 二分时便可通过前缀和判断某区间是否有所要寻找的字母.</p>
 <p>时间复杂度: 预处理O(n)(可能常数较大), 计算O(mlogn),

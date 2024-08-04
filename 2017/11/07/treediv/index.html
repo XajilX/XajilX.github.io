@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -40,7 +40,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2017/11/07/treediv/","path":"2017/11/07/treediv/","title":"树上差分"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2017/11/07/treediv/","path":"2017/11/07/treediv/","title":"树上差分"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>树上差分 | AjiL's Blog</title>
@@ -190,7 +190,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2017/11/07/treediv/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -251,15 +251,15 @@
 <p>说到差分就不得不说到前缀和(因为两个互为逆操作). 对于树上差分,
 我们需要定义一个类似前缀和的操作来将差分转化为原来的值</p>
 <p>定义树上某个结点的前缀和为<strong>它本身及其所有后代结点的权值之和</strong></p>
-<p>(为什么这样定义? 也许是好算吧...)</p>
+<p>(为什么这样定义? 也许是好算吧…)</p>
 <h2 id="树上差分">树上差分:</h2>
 <p>说完树上前缀和, 进入正题</p>
 <p>差分一般是用来做区间修改的, 而树上差分也是一个道理</p>
-<p>这里树上的"区间"指的其实是一条树链</p>
+<p>这里树上的”区间”指的其实是一条树链</p>
 <p>我们可以对每个树上的结点定义一个数d,
 表示某个结点与它所有子结点的权值之和的差, 叶子结点的d即为它本身</p>
 <p>定义了d之后, 我们就可以和序列一样,
-<strong>把树上"区间"的操作转化为单点的操作.</strong></p>
+<strong>把树上”区间”的操作转化为单点的操作.</strong></p>
 <figure>
 <img src="/img/tree.png" alt="tree" />
 <figcaption aria-hidden="true">tree</figcaption>

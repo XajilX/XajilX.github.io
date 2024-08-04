@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -38,7 +38,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2018/03/15/luogu2765/","path":"2018/03/15/luogu2765/","title":"(luogu2765)魔术球问题"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2018/03/15/luogu2765/","path":"2018/03/15/luogu2765/","title":"(luogu2765)魔术球问题"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>(luogu2765)魔术球问题 | AjiL's Blog</title>
@@ -188,7 +188,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2018/03/15/luogu2765/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -255,8 +255,8 @@
 <p><strong>2.放在一个球的后面</strong></p>
 <p>如果选择方案2, 放进去的球只能放在<strong>一个</strong>球后面,
 我们可以尝试使用<strong>二分图匹配</strong>解决</p>
-<p>将一个球分割为两个点u和u', 所有的u结点为X集合, u'结点为Y集合</p>
-<p>如果球v可以放在u的后面, 则连一条边&lt;u,v'&gt;</p>
+<p>将一个球分割为两个点u和u’, 所有的u结点为X集合, u’结点为Y集合</p>
+<p>如果球v可以放在u的后面, 则连一条边&lt;u,v’&gt;</p>
 <p>每加入一个球重新构图, 求最大匹配, 如果匹配数没有增加, 则加一个柱子,
 直到不能再加为止, 则答案为加入球数-1(因为最后一个球不能加进去)</p>
 <p>输出的话, 建一个数组, 表示某个球的下一个球,

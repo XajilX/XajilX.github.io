@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -35,7 +35,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2021/07/07/FFT/","path":"2021/07/07/FFT/","title":"FFT与NTT"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2021/07/07/FFT/","path":"2021/07/07/FFT/","title":"FFT与NTT"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>FFT与NTT | AjiL's Blog</title>
@@ -185,7 +185,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/07/FFT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -264,7 +264,7 @@ class="math inline">\(A(x)\)</span>.</p>
 只需要对值进行运算即可.</p>
 <h2 id="fft">FFT</h2>
 <p>使得快速傅里叶变换(Fast Fourier Transform,
-FFT)"快速"的原因在于FFT使用特定的一组横坐标来求对应的<span
+FFT)“快速”的原因在于FFT使用特定的一组横坐标来求对应的<span
 class="math inline">\(A(x)\)</span>, 并且发掘出了其中的内在联系.</p>
 <p>具体来讲, FFT使用的横坐标由傅里叶变换而来,
 是在复平面单位圆上的复数.</p>
@@ -371,7 +371,7 @@ class="math inline">\(k\)</span><strong>的二进制反转</strong>.</p>
 <h2 id="ntt">NTT</h2>
 <p>数论变换(Number Theory Transform, NTT)的思想与FFT差不多,
 区别在于加上取模的操作后可以利用数论的一些概念来代替复数.</p>
-<p>首先需要介绍"原根"的概念:</p>
+<p>首先需要介绍”原根”的概念:</p>
 <blockquote>
 <p>设<span class="math inline">\(m\)</span>是正整数，<span
 class="math inline">\(a\)</span>是整数，若<span

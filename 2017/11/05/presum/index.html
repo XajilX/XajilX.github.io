@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -35,7 +35,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2017/11/05/presum/","path":"2017/11/05/presum/","title":"前缀和思想"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2017/11/05/presum/","path":"2017/11/05/presum/","title":"前缀和思想"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>前缀和思想 | AjiL's Blog</title>
@@ -185,7 +185,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2017/11/05/presum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -244,7 +244,7 @@
 <span id="more"></span>
 <h2 id="前缀和的定义">前缀和的定义:</h2>
 <p>对于一个数组a[i], 定义一个数组sum[i], 其中sum[0]=0,
-sum[i]=(a[1]+a[2]+...+a[i]), 则sum称为a的前缀和</p>
+sum[i]=(a[1]+a[2]+…+a[i]), 则sum称为a的前缀和</p>
 <h2 id="前缀和的作用">前缀和的作用:</h2>
 <p>对于无修改数组的查询区间和, 可以在边读入数据时边处理前缀和,
 然后在<strong>O(1)</strong>的时间下回答每个询问, 预处理O(n).
@@ -267,7 +267,7 @@ sum[i]=(a[1]+a[2]+...+a[i]), 则sum称为a的前缀和</p>
 <h2 id="二维前缀和">二维前缀和</h2>
 <p>相比于一维的前缀和, 二维前缀和多了一维, 处理起来稍微麻烦一点</p>
 <p>对于一个二维数组a[i][j],
-设sum[i][j]=(a[1][1]+a[1][2]+...+a[1][j]+a[2][1]+...+a[2][j]+...+a[i][j]),
+设sum[i][j]=(a[1][1]+a[1][2]+…+a[1][j]+a[2][1]+…+a[2][j]+…+a[i][j]),
 则sum[i][j]为a[i][j]的二维前缀和</p>
 <p>可以根据容斥原理来处理二维前缀和</p>
 <p>对于sum[i][j], 有sum[i][j]=sum[i-1][j]+sum[i][j-1]-sum[i-1][j-1]</p>

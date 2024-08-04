@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -36,7 +36,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2017/11/04/binsear/","path":"2017/11/04/binsear/","title":"二分查找"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2017/11/04/binsear/","path":"2017/11/04/binsear/","title":"二分查找"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>二分查找 | AjiL's Blog</title>
@@ -186,7 +186,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2017/11/04/binsear/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -251,8 +251,8 @@
 <h2 id="二分查找的变种">二分查找的变种:</h2>
 <p>做题的时候经常能碰到这样的情况: 寻找某个最大值或最小值.
 这个时候也能使用二分查找, 不过边界处理要困难一些.</p>
-<p><strong>---寻找符合条件的最大值---</strong> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">chk</span><span class="params">(<span class="type">int</span> m)</span></span>; <span class="comment">//判断是否合法</span></span><br><span class="line"><span class="type">int</span> l,r;</span><br><span class="line"><span class="keyword">while</span>(l&lt;=r)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">mid</span><span class="params">((l+r)/<span class="number">2</span>)</span></span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">chk</span>(mid))	l=mid<span class="number">+1</span>; <span class="comment">//符合条件时, 可能[mid+1,r]有解</span></span><br><span class="line">    <span class="keyword">else</span>	r=mid<span class="number">-1</span>; <span class="comment">//不符合条件时, 在[l,mid-1]查找</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> r;</span><br></pre></td></tr></table></figure>
-<strong>---寻找符合条件的最小值---</strong> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">chk</span><span class="params">(<span class="type">int</span> m)</span></span>;</span><br><span class="line"><span class="type">int</span> l,r;</span><br><span class="line"><span class="keyword">while</span>(l&lt;=r)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">mid</span><span class="params">((l+r)/<span class="number">2</span>)</span></span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">chk</span>(mid))	r=mid<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span>	l=mid<span class="number">+1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> l;</span><br></pre></td></tr></table></figure></p>
+<p><strong>—寻找符合条件的最大值—</strong> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">chk</span><span class="params">(<span class="type">int</span> m)</span></span>; <span class="comment">//判断是否合法</span></span><br><span class="line"><span class="type">int</span> l,r;</span><br><span class="line"><span class="keyword">while</span>(l&lt;=r)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">mid</span><span class="params">((l+r)/<span class="number">2</span>)</span></span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">chk</span>(mid))	l=mid<span class="number">+1</span>; <span class="comment">//符合条件时, 可能[mid+1,r]有解</span></span><br><span class="line">    <span class="keyword">else</span>	r=mid<span class="number">-1</span>; <span class="comment">//不符合条件时, 在[l,mid-1]查找</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> r;</span><br></pre></td></tr></table></figure>
+<strong>—寻找符合条件的最小值—</strong> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">chk</span><span class="params">(<span class="type">int</span> m)</span></span>;</span><br><span class="line"><span class="type">int</span> l,r;</span><br><span class="line"><span class="keyword">while</span>(l&lt;=r)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">mid</span><span class="params">((l+r)/<span class="number">2</span>)</span></span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">chk</span>(mid))	r=mid<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span>	l=mid<span class="number">+1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> l;</span><br></pre></td></tr></table></figure></p>
 
     </div>
 

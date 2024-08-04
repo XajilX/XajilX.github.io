@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -37,7 +37,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/07/02/NoteTMP/","path":"2022/07/02/NoteTMP/","title":"Some Notes of TMP"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2022/07/02/NoteTMP/","path":"2022/07/02/NoteTMP/","title":"Some Notes of TMP"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Some Notes of TMP | AjiL's Blog</title>
@@ -187,7 +187,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/02/NoteTMP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -244,7 +244,7 @@
     
     <div class="post-body" itemprop="articleBody"><p>看了些有关模板元编程的东西, 写点笔记</p>
 <p><a
-href="https://www.bilibili.com/video/BV1JK4y1D7Yz">一个视频</a></p>
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JK4y1D7Yz">一个视频</a></p>
 <span id="more"></span>
 <h2 id="定义">定义</h2>
 <p>元编程指通过编写或操纵其它程序或自身作为数据,
@@ -281,7 +281,7 @@ trait) <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span cl
 <p>头文件<code>&lt;type_traits&gt;</code>中定义了许多类似的type trait,
 由于性能原因绝大多数type trait的实现都是基于编译器的内建方法.</p>
 <h2 id="元函数的调用">元函数的调用</h2>
-<p>通过获取结构体中的公共成员以"调用"元函数.</p>
+<p>通过获取结构体中的公共成员以”调用”元函数.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcd&lt;<span class="number">8</span>, <span class="number">12</span>&gt;::value;</span><br><span class="line"><span class="keyword">typename</span> remove_const&lt;<span class="type">int</span> <span class="type">const</span>&gt;::type xxx;</span><br></pre></td></tr></table></figure>
 <p>由于模板可被重载,
 需要使用<code>typename</code>关键字指定<code>::type</code>为类型.</p>
