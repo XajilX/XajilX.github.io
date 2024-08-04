@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -17,13 +17,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="article">
 <meta property="og:title" content="Link-Cut Tree">
 <meta property="og:url" content="http://example.com/2021/12/10/LCT/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-10T02:44:49.000Z">
 <meta property="article:modified_time" content="2024-08-03T12:36:17.497Z">
 <meta property="article:author" content="AjiL">
@@ -35,7 +35,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2021/12/10/LCT/","path":"2021/12/10/LCT/","title":"Link-Cut Tree"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/12/10/LCT/","path":"2021/12/10/LCT/","title":"Link-Cut Tree"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Link-Cut Tree | AjiL's Blog</title>
@@ -60,7 +60,7 @@
     <div class="column">
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -77,7 +77,7 @@
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
     </div>
   </div>
 </div>
@@ -85,7 +85,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
 
@@ -100,10 +100,10 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -126,18 +126,18 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">159</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
         <span class="site-state-item-count">82</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -155,7 +155,7 @@
     <div class="sidebar-inner sidebar-blogroll">
       <div class="links-of-blogroll animated">
         <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          Links
+          链接
         </div>
         <ul class="links-of-blogroll-list">
             <li class="links-of-blogroll-item">
@@ -185,7 +185,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/10/LCT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -213,19 +213,19 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
 
-      <time title="Created: 2021-12-10 13:44:49" itemprop="dateCreated datePublished" datetime="2021-12-10T13:44:49+11:00">2021-12-10</time>
+      <time title="创建时间：2021-12-10 13:44:49" itemprop="dateCreated datePublished" datetime="2021-12-10T13:44:49+11:00">2021-12-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">In</span>
+      <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
         </span>
-          , 
+          ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
         </span>
@@ -240,82 +240,80 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><hr />
+    <div class="post-body" itemprop="articleBody"><hr>
 <span id="more"></span>
 <h2 id="概述">概述:</h2>
-<p>LCT是用于维护动态森林的数据结构. 可以做到<span
-class="math inline">\(O(\log n)\)</span>的查询, 切割, 连接操作.</p>
-<p>LCT基于树链剖分的思想, 即将一棵树剖成多条树链,
+<p>LCT 是用于维护动态森林的数据结构。可以做到<span class="math inline"> \(O(\log n)\)</span> 的查询，切割，连接操作.</p>
+<p>LCT 基于树链剖分的思想，即将一棵树剖成多条树链，
 方便采用数据结构处理.</p>
-<p>具体来说, LCT采用了”<strong>实链剖分</strong>”,
-即每个点指定一个”实儿子”, 通过”实儿子”连成”实链”.
-与普通的树链剖分区别在于”实儿子”是<strong>动态变化</strong>的.</p>
-<p>LCT使用<strong>splay</strong>来维护树链.
+<p>具体来说，LCT 采用了” <strong>实链剖分</strong>”,
+即每个点指定一个” 实儿子”, 通过” 实儿子” 连成” 实链”.
+与普通的树链剖分区别在于” 实儿子” 是<strong>动态变化</strong>的.</p>
+<p>LCT 使用 <strong>splay</strong> 来维护树链.
 由于一条树链上的节点点深度各不相同.
-所以可以使用<strong>深度</strong>作为关键字建立splay.
-每个节点的左子树深度比该节点小, 右子树深度比该节点大.</p>
-<p>树链之间的连接关系可以在splay的树根上做文章:
-将splay的根的父节点指向这个splay对应树链深度最小的点在原树上的父节点.
-这样整棵树便连接起来了, 同时区分出了树上的虚实关系: 实边双向连接,
+所以可以使用<strong>深度</strong>作为关键字建立 splay.
+每个节点的左子树深度比该节点小，右子树深度比该节点大.</p>
+<p>树链之间的连接关系可以在 splay 的树根上做文章:
+将 splay 的根的父节点指向这个 splay 对应树链深度最小的点在原树上的父节点.
+这样整棵树便连接起来了，同时区分出了树上的虚实关系：实边双向连接，
 虚边单向连接.</p>
 <h2 id="操作">操作:</h2>
-<p>需要实现LCT首先需要实现splay, 以<a
-target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3690">luoguP3690</a>为例,
+<p>需要实现 LCT 首先需要实现 splay, 以 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3690">luoguP3690</a> 为例，
 代码与节点定义如下所示:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">td</span> &#123;</span><br><span class="line">    <span class="type">int</span> v,sm,sz;    <span class="comment">//节点值, 异或和, splay子树大小</span></span><br><span class="line">    <span class="type">bool</span> tr;    <span class="comment">//翻转标记</span></span><br><span class="line">    <span class="type">int</span> fa, sn[<span class="number">2</span>];  <span class="comment">//父指针, 左右儿子指针</span></span><br><span class="line">&#125;t[Mn]; <span class="comment">//节点空间</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">idn</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;    <span class="comment">//父子节点关系(x是其父节点的左/右儿子)</span></span><br><span class="line">    <span class="keyword">if</span>(t[t[x].fa].sn[<span class="number">0</span>] == x) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(t[t[x].fa].sn[<span class="number">1</span>] == x) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">psd</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;   <span class="comment">//懒标记下放</span></span><br><span class="line">    <span class="keyword">if</span>(t[x].tr) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(t[t[x].sn[<span class="number">0</span>]].sn[<span class="number">0</span>],t[t[x].sn[<span class="number">0</span>]].sn[<span class="number">1</span>]);</span><br><span class="line">        <span class="built_in">swap</span>(t[t[x].sn[<span class="number">1</span>]].sn[<span class="number">0</span>],t[t[x].sn[<span class="number">1</span>]].sn[<span class="number">1</span>]);</span><br><span class="line">        t[t[x].sn[<span class="number">0</span>]].tr ^= <span class="number">1</span>;</span><br><span class="line">        t[t[x].sn[<span class="number">1</span>]].tr ^= <span class="number">1</span>;</span><br><span class="line">        t[x].tr = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">mtn</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;   <span class="comment">//维护</span></span><br><span class="line">    t[x].sz = t[t[x].sn[<span class="number">0</span>]].sz + t[t[x].sn[<span class="number">1</span>]].sz + <span class="number">1</span>;</span><br><span class="line">    t[x].sm = t[t[x].sn[<span class="number">0</span>]].sm ^ t[t[x].sn[<span class="number">1</span>]].sm ^ t[x].v;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">rot</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;   <span class="comment">//将x向上旋转</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">fx</span><span class="params">(t[x].fa)</span>, <span class="title">gx</span><span class="params">(t[fx].fa)</span></span>;</span><br><span class="line">    <span class="built_in">psd</span>(fx), <span class="built_in">psd</span>(x);</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">d</span><span class="params">(idn(x))</span>, <span class="title">df</span><span class="params">(idn(fx))</span></span>;</span><br><span class="line">    t[fx].sn[d] = t[x].sn[d^<span class="number">1</span>];</span><br><span class="line">    t[x].sn[d^<span class="number">1</span>] = fx;</span><br><span class="line">    t[t[fx].sn[d]].fa = fx;</span><br><span class="line">    t[fx].fa = x;</span><br><span class="line">    t[x].fa = gx;</span><br><span class="line">    <span class="keyword">if</span>(df!=<span class="number">-1</span>) &#123;</span><br><span class="line">        t[gx].sn[df] = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">mtn</span>(fx), <span class="built_in">mtn</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">psdPath</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;   <span class="comment">//递归下放标记</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">idn</span>(x)!=<span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">psdPath</span>(t[x].fa);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">psd</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">spl</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;   <span class="comment">//伸缩</span></span><br><span class="line">    <span class="built_in">psdPath</span>(x);</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">idn</span>(x)!=<span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">idn</span>(t[x].fa) != <span class="number">-1</span>) &#123;</span><br><span class="line">            <span class="built_in">rot</span>((<span class="built_in">idn</span>(x)==<span class="built_in">idn</span>(t[x].fa)) ? t[x].fa : x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">rot</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">td</span> {</span><br><span class="line">    <span class="type">int</span> v,sm,sz;    <span class="comment">//节点值, 异或和, splay子树大小</span></span><br><span class="line">    <span class="type">bool</span> tr;    <span class="comment">//翻转标记</span></span><br><span class="line">    <span class="type">int</span> fa, sn[<span class="number">2</span>];  <span class="comment">//父指针, 左右儿子指针</span></span><br><span class="line">}t[Mn]; <span class="comment">//节点空间</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">idn</span><span class="params">(<span class="type">int</span> x)</span> </span>{    <span class="comment">//父子节点关系(x是其父节点的左/右儿子)</span></span><br><span class="line">    <span class="keyword">if</span>(t[t[x].fa].sn[<span class="number">0</span>] == x) {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    } <span class="keyword">else</span> <span class="keyword">if</span>(t[t[x].fa].sn[<span class="number">1</span>] == x) {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">psd</span><span class="params">(<span class="type">int</span> x)</span> </span>{   <span class="comment">//懒标记下放</span></span><br><span class="line">    <span class="keyword">if</span>(t[x].tr) {</span><br><span class="line">        <span class="built_in">swap</span>(t[t[x].sn[<span class="number">0</span>]].sn[<span class="number">0</span>],t[t[x].sn[<span class="number">0</span>]].sn[<span class="number">1</span>]);</span><br><span class="line">        <span class="built_in">swap</span>(t[t[x].sn[<span class="number">1</span>]].sn[<span class="number">0</span>],t[t[x].sn[<span class="number">1</span>]].sn[<span class="number">1</span>]);</span><br><span class="line">        t[t[x].sn[<span class="number">0</span>]].tr ^= <span class="number">1</span>;</span><br><span class="line">        t[t[x].sn[<span class="number">1</span>]].tr ^= <span class="number">1</span>;</span><br><span class="line">        t[x].tr = <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">mtn</span><span class="params">(<span class="type">int</span> x)</span> </span>{   <span class="comment">//维护</span></span><br><span class="line">    t[x].sz = t[t[x].sn[<span class="number">0</span>]].sz + t[t[x].sn[<span class="number">1</span>]].sz + <span class="number">1</span>;</span><br><span class="line">    t[x].sm = t[t[x].sn[<span class="number">0</span>]].sm ^ t[t[x].sn[<span class="number">1</span>]].sm ^ t[x].v;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">rot</span><span class="params">(<span class="type">int</span> x)</span> </span>{   <span class="comment">//将x向上旋转</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">fx</span><span class="params">(t[x].fa)</span>, <span class="title">gx</span><span class="params">(t[fx].fa)</span></span>;</span><br><span class="line">    <span class="built_in">psd</span>(fx), <span class="built_in">psd</span>(x);</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">d</span><span class="params">(idn(x))</span>, <span class="title">df</span><span class="params">(idn(fx))</span></span>;</span><br><span class="line">    t[fx].sn[d] = t[x].sn[d^<span class="number">1</span>];</span><br><span class="line">    t[x].sn[d^<span class="number">1</span>] = fx;</span><br><span class="line">    t[t[fx].sn[d]].fa = fx;</span><br><span class="line">    t[fx].fa = x;</span><br><span class="line">    t[x].fa = gx;</span><br><span class="line">    <span class="keyword">if</span>(df!=<span class="number">-1</span>) {</span><br><span class="line">        t[gx].sn[df] = x;</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">mtn</span>(fx), <span class="built_in">mtn</span>(x);</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">psdPath</span><span class="params">(<span class="type">int</span> x)</span> </span>{   <span class="comment">//递归下放标记</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">idn</span>(x)!=<span class="number">-1</span>) {</span><br><span class="line">        <span class="built_in">psdPath</span>(t[x].fa);</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">psd</span>(x);</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">spl</span><span class="params">(<span class="type">int</span> x)</span> </span>{   <span class="comment">//伸缩</span></span><br><span class="line">    <span class="built_in">psdPath</span>(x);</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">idn</span>(x)!=<span class="number">-1</span>) {</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">idn</span>(t[x].fa) != <span class="number">-1</span>) {</span><br><span class="line">            <span class="built_in">rot</span>((<span class="built_in">idn</span>(x)==<span class="built_in">idn</span>(t[x].fa)) ? t[x].fa : x);</span><br><span class="line">        }</span><br><span class="line">        <span class="built_in">rot</span>(x);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="accessx">access(x)</h3>
-<p>将根到x的所有边变为实边, 这条路径上节点的其余边全部变为虚边.
-此时x为根所在的实链中最深的节点.</p>
-<p>本质上就是将x接入根所在的splay中. 由于LCT的特性,
+<p>将根到 x 的所有边变为实边，这条路径上节点的其余边全部变为虚边.
+此时 x 为根所在的实链中最深的节点.</p>
+<p>本质上就是将 x 接入根所在的 splay 中。由于 LCT 的特性，
 需要从下往上处理.</p>
-<p>首先使用splay的操作将x伸缩到其所在splay的根.
-此时其splay右子树为深度比x大的实链节点, 需要将其断开.</p>
-<p>同时由于x在实链splay的根上,
-其父指针指向了这个splay对应实链深度最小的点在原树上的父节点.
-将该节点的右儿子设为x, 就使得x所在实链与上面的实链连接起来了.</p>
-<p>重复这个步骤直到x的父指针为空, access操作就完成了.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">acs</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">y</span>(<span class="number">0</span>); x; y=x, x=t[x].fa) &#123;</span><br><span class="line">        <span class="built_in">spl</span>(x); <span class="comment">//伸展到根</span></span><br><span class="line">        t[x].sn[<span class="number">1</span>] = y; <span class="comment">//实链连接</span></span><br><span class="line">        <span class="built_in">mtn</span>(x); <span class="comment">//维护</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先使用 splay 的操作将 x 伸缩到其所在 splay 的根.
+此时其 splay 右子树为深度比 x 大的实链节点，需要将其断开.</p>
+<p>同时由于 x 在实链 splay 的根上，
+其父指针指向了这个 splay 对应实链深度最小的点在原树上的父节点.
+将该节点的右儿子设为 x, 就使得 x 所在实链与上面的实链连接起来了.</p>
+<p>重复这个步骤直到 x 的父指针为空，access 操作就完成了.</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">acs</span><span class="params">(<span class="type">int</span> x)</span> </span>{</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">y</span>(<span class="number">0</span>); x; y=x, x=t[x].fa) {</span><br><span class="line">        <span class="built_in">spl</span>(x); <span class="comment">//伸展到根</span></span><br><span class="line">        t[x].sn[<span class="number">1</span>] = y; <span class="comment">//实链连接</span></span><br><span class="line">        <span class="built_in">mtn</span>(x); <span class="comment">//维护</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="makerootx">makeroot(x)</h3>
-<p>将x变为原树的根.</p>
-<p>这个操作的作用主要是进行原树上的路径操作,
-将路径的其中一个点变为根后对另一个点access即可在一个splay中进行原树上的路径操作.</p>
-<p>将x access后将x和根所在的splay翻转即可.
-可以脑补一下将x到原根这条链的深度翻转的结果.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">mkr</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">acs</span>(x); <span class="built_in">spl</span>(x);</span><br><span class="line">    <span class="built_in">swap</span>(t[x].sn[<span class="number">0</span>],t[x].sn[<span class="number">1</span>]);    <span class="comment">//翻转</span></span><br><span class="line">    t[x].tr ^= <span class="number">1</span>;   <span class="comment">//打上翻转标记</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将 x 变为原树的根.</p>
+<p>这个操作的作用主要是进行原树上的路径操作，
+将路径的其中一个点变为根后对另一个点 access 即可在一个 splay 中进行原树上的路径操作.</p>
+<p>将 x access 后将 x 和根所在的 splay 翻转即可.
+可以脑补一下将 x 到原根这条链的深度翻转的结果.</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">mkr</span><span class="params">(<span class="type">int</span> x)</span> </span>{</span><br><span class="line">    <span class="built_in">acs</span>(x); <span class="built_in">spl</span>(x);</span><br><span class="line">    <span class="built_in">swap</span>(t[x].sn[<span class="number">0</span>],t[x].sn[<span class="number">1</span>]);    <span class="comment">//翻转</span></span><br><span class="line">    t[x].tr ^= <span class="number">1</span>;   <span class="comment">//打上翻转标记</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="findrootx">findroot(x)</h3>
-<p>寻找x所在的原树的根.</p>
-<p>这个操作可以用来判断两个节点是否在同一个树中,
-也即将LCT视作一个支持删边的”并查集”.</p>
-<p>将x access后寻找x所在splay中深度最小的节点即可.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fdr</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">acs</span>(x); <span class="built_in">spl</span>(x);</span><br><span class="line">    <span class="keyword">while</span>(t[x].sn[<span class="number">0</span>]) &#123;</span><br><span class="line">        <span class="built_in">psd</span>(x); x = t[x].sn[<span class="number">0</span>]; <span class="comment">//注意先下传标记再向下遍历</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">spl</span>(x); <span class="comment">//将根伸展可以使得一些操作更加方便</span></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>寻找 x 所在的原树的根.</p>
+<p>这个操作可以用来判断两个节点是否在同一个树中，
+也即将 LCT 视作一个支持删边的” 并查集”.</p>
+<p>将 x access 后寻找 x 所在 splay 中深度最小的节点即可.</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fdr</span><span class="params">(<span class="type">int</span> x)</span> </span>{</span><br><span class="line">    <span class="built_in">acs</span>(x); <span class="built_in">spl</span>(x);</span><br><span class="line">    <span class="keyword">while</span>(t[x].sn[<span class="number">0</span>]) {</span><br><span class="line">        <span class="built_in">psd</span>(x); x = t[x].sn[<span class="number">0</span>]; <span class="comment">//注意先下传标记再向下遍历</span></span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">spl</span>(x); <span class="comment">//将根伸展可以使得一些操作更加方便</span></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="linkxy">link(x,y)</h3>
-<p>连接x和y.</p>
-<p>makeroot y后access并splay
-x然后再将y的父节点设为x(即x与y连接一条虚边).</p>
-<p>将x access并splay是为了维护节点x.</p>
-<p>注意先判断x与y是否在同一棵树上.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">lnk</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">rand</span>()&amp;<span class="number">1</span>) &#123;  <span class="comment">//随机化</span></span><br><span class="line">        <span class="built_in">swap</span>(x,y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">mkr</span>(y);</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">fdr</span>(x)!=y) &#123; <span class="comment">//findroot x时已经将x access和splay</span></span><br><span class="line">        t[y].fa = x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>连接 x 和 y.</p>
+<p>makeroot y 后 access 并 splay
+x 然后再将 y 的父节点设为 x (即 x 与 y 连接一条虚边).</p>
+<p>将 x access 并 splay 是为了维护节点 x.</p>
+<p>注意先判断 x 与 y 是否在同一棵树上.</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">lnk</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span> </span>{</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">rand</span>()&amp;<span class="number">1</span>) {  <span class="comment">//随机化</span></span><br><span class="line">        <span class="built_in">swap</span>(x,y);</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">mkr</span>(y);</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">fdr</span>(x)!=y) { <span class="comment">//findroot x时已经将x access和splay</span></span><br><span class="line">        t[y].fa = x;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="cutxy">cut(x,y)</h3>
-<p>断开x与y的边.</p>
-<p>makeroot x后首先使用findroot y判断x与y是否在同一棵树上,
-若x与y有边连接则y为x的右儿子且y没有左儿子. 此时断开x与y的连接即可.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cut</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">mkr</span>(x);</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">fdr</span>(y)==x &amp;&amp; t[y].fa==x &amp;&amp; !t[y].sn[<span class="number">0</span>]) &#123;    <span class="comment">//判断是否有边</span></span><br><span class="line">        t[x].sn[<span class="number">1</span>] = t[y].fa = <span class="number">0</span>;   <span class="comment">//断开</span></span><br><span class="line">        <span class="built_in">mtn</span>(x); <span class="comment">//splay结构改变需要重新维护</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>断开 x 与 y 的边.</p>
+<p>makeroot x 后首先使用 findroot y 判断 x 与 y 是否在同一棵树上，
+若 x 与 y 有边连接则 y 为 x 的右儿子且 y 没有左儿子。此时断开 x 与 y 的连接即可.</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cut</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span> </span>{</span><br><span class="line">    <span class="built_in">mkr</span>(x);</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">fdr</span>(y)==x &amp;&amp; t[y].fa==x &amp;&amp; !t[y].sn[<span class="number">0</span>]) {    <span class="comment">//判断是否有边</span></span><br><span class="line">        t[x].sn[<span class="number">1</span>] = t[y].fa = <span class="number">0</span>;   <span class="comment">//断开</span></span><br><span class="line">        <span class="built_in">mtn</span>(x); <span class="comment">//splay结构改变需要重新维护</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="一些技巧">一些技巧:</h2>
 <h3 id="边权变点权">边权变点权:</h3>
-<p>一些题目需要维护的是边权而不是点权, 此时可以将原树上的边也看作点,
-点权即为原树上的边权. 加边删边时将对应边的点两边连边删边即可.</p>
-<p>由于森林的边数最多为n-1条, 所以空间增加了一倍.</p>
+<p>一些题目需要维护的是边权而不是点权，此时可以将原树上的边也看作点，
+点权即为原树上的边权。加边删边时将对应边的点两边连边删边即可.</p>
+<p>由于森林的边数最多为 n-1 条，所以空间增加了一倍.</p>
 <h3 id="维护子树信息">维护子树信息:</h3>
-<p>维护子树信息需要每个节点同时维护实子树与虚子树的信息,
-而LCT”认父不认子”的特性使得虚子树的信息不太方便维护.</p>
-<p>解决的方法是对每个点<strong>统计其所有虚子树的贡献</strong>,
-并且在涉及<strong>改变splay形态</strong>的操作中即时修改.</p>
-<p>access操作中每次循环中当前splay的根节点的原右儿子与新右儿子的虚实发生了变化,
+<p>维护子树信息需要每个节点同时维护实子树与虚子树的信息，
+而 LCT” 认父不认子” 的特性使得虚子树的信息不太方便维护.</p>
+<p>解决的方法是对每个点<strong>统计其所有虚子树的贡献</strong> ,
+并且在涉及<strong>改变 splay 形态</strong>的操作中即时修改.</p>
+<p>access 操作中每次循环中当前 splay 的根节点的原右儿子与新右儿子的虚实发生了变化，
 此时需要减去新右儿子的贡献并加上原右儿子的贡献.</p>
-<p>link操作连接了一条虚边, 所以此时需要加上新虚儿子的贡献.</p>
-<p>可以看出使用LCT维护的子树信息需要满足<strong>可减性</strong>,
-例如子树权值和, 反例是子树最大值.
-否则在access操作中无法维护虚子树信息.</p>
+<p>link 操作连接了一条虚边，所以此时需要加上新虚儿子的贡献.</p>
+<p>可以看出使用 LCT 维护的子树信息需要满足<strong>可减性</strong> ,
+例如子树权值和，反例是子树最大值.
+否则在 access 操作中无法维护虚子树信息.</p>
 
     </div>
 
@@ -351,6 +349,7 @@ x然后再将y的父节点设为x(即x与y连接一条虚边).</p>
 
 
 
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -365,7 +364,7 @@ x然后再将y的父节点设为x(即x与y连接一条虚边).</p>
     </span>
     <span class="author" itemprop="copyrightHolder">AjiL</span>
   </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
@@ -378,7 +377,7 @@ x然后再将y的父节点设为x(即x与y连接一条虚边).</p>
     <span class="toggle-line"></span>
   </div>
   <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
@@ -390,6 +389,8 @@ x然后再将y的父节点设为x(即x与y连接一条虚边).</p>
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -410,6 +411,10 @@ x然后再将y的父节点设为x(即x与y连接一条虚边).</p>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"XajilX","repo":"gitalk_comments","client_id":"Ov23lidC06Ozg0VieeHH","client_secret":"828218305f3333d7f9ea63d9943a1329c9a06f13","admin_user":"XajilX","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a956854b1a6c78543506d3d49fb759eb"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 </html>

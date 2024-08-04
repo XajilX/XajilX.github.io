@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -17,13 +17,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="article">
 <meta property="og:title" content="Compiler -- Lexer">
 <meta property="og:url" content="http://example.com/2023/11/08/cs143-lexer/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-08T08:39:10.000Z">
 <meta property="article:modified_time" content="2024-08-03T12:36:17.507Z">
 <meta property="article:author" content="AjiL">
@@ -35,7 +35,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2023/11/08/cs143-lexer/","path":"2023/11/08/cs143-lexer/","title":"Compiler -- Lexer"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/11/08/cs143-lexer/","path":"2023/11/08/cs143-lexer/","title":"Compiler -- Lexer"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Compiler -- Lexer | AjiL's Blog</title>
@@ -60,7 +60,7 @@
     <div class="column">
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -77,7 +77,7 @@
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
     </div>
   </div>
 </div>
@@ -85,7 +85,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
 
@@ -100,10 +100,10 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -126,18 +126,18 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">159</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
         <span class="site-state-item-count">82</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -155,7 +155,7 @@
     <div class="sidebar-inner sidebar-blogroll">
       <div class="links-of-blogroll animated">
         <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          Links
+          链接
         </div>
         <ul class="links-of-blogroll-list">
             <li class="links-of-blogroll-item">
@@ -185,7 +185,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/08/cs143-lexer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -213,19 +213,19 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
 
-      <time title="Created: 2023-11-08 19:39:10" itemprop="dateCreated datePublished" datetime="2023-11-08T19:39:10+11:00">2023-11-08</time>
+      <time title="创建时间：2023-11-08 19:39:10" itemprop="dateCreated datePublished" datetime="2023-11-08T19:39:10+11:00">2023-11-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">In</span>
+      <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
         </span>
-          , 
+          ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">编译原理</span></a>
         </span>
@@ -240,7 +240,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><hr />
+    <div class="post-body" itemprop="articleBody"><hr>
 <span id="more"></span>
 <h2 id="概述">概述</h2>
 <p>词法分析读取源代码中的字符，识别其中的子串为不同类型的词素（lexeme），生成其对应的
@@ -250,7 +250,7 @@ token，词法分析器还会清除空白、注释，发现非法字符，生成
 <h2 id="lexeme-token-token-class">Lexeme, Token &amp; Token class</h2>
 <p>一个 token 通常包括两个部分：该 token 所属的 <strong>token 类（token
 class）</strong>以及该 token
-代表的子串，也即<strong>词素（lexeme）</strong>。例如<code>&lt;Identifier, a&gt;</code>，<code>&lt;keyword, if&gt;</code>等。</p>
+代表的子串，也即<strong>词素（lexeme）</strong>。例如 <code>&lt;Identifier, a&gt;</code>，<code>&lt;keyword, if&gt;</code> 等。</p>
 <p>一个 token
 类表示了一个字符串集合，这些字符串通常具有相近的含义。例如标识符，某个关键字，字面常量等。词素
 则表示了能被识别为某个 token 类的字符串。</p>
@@ -258,64 +258,41 @@ class）</strong>以及该 token
 类的识别模式（pattern）。常用的方法是使用<strong>正则语言（Regular
 Language）</strong>。</p>
 <h2 id="正则语言与正则表达式">正则语言与正则表达式</h2>
-<p>数学上定义的“语言”（language）由两个集合所组成：<strong>字符集（alphabet）</strong>与定义在该字符集上的<strong>字符串（string）</strong>集。</p>
-<p>其中字符集为一个包含若干符号的有限集，一般用希腊字母<span
-class="math inline">\(\Sigma\)</span>表示，常见的例如 ASCII 字符集和
-Unicode 字符集；字符串为一个由字符集<span
-class="math inline">\(\Sigma\)</span>中的符号组成的有限序列；而语言中的字符串集可以是任意的由若干定义在<span
-class="math inline">\(\Sigma\)</span>上的字符串组成的可数集。</p>
+<p>数学上定义的 “语言”（language）由两个集合所组成：<strong>字符集（alphabet）</strong>与定义在该字符集上的<strong>字符串（string）</strong>集。</p>
+<p>其中字符集为一个包含若干符号的有限集，一般用希腊字母<span class="math inline"> \(\Sigma\)</span> 表示，常见的例如 ASCII 字符集和
+Unicode 字符集；字符串为一个由字符集<span class="math inline"> \(\Sigma\)</span> 中的符号组成的有限序列；而语言中的字符串集可以是任意的由若干定义在<span class="math inline"> \(\Sigma\)</span> 上的字符串组成的可数集。</p>
 <p>从该定义中可以看出，每个 token 类都可以视作一个语言。</p>
-<p>对于定义在相同字符集的两个语言<span class="math inline">\(L\)</span>,
+<p>对于定义在相同字符集的两个语言<span class="math inline"> \(L\)</span>,
 <span class="math inline">\(M\)</span>，有如下运算：</p>
 <ul>
 <li><strong>并（union）</strong>：<span class="math inline">\(L \cup M =
 \{s \mid s \in L \lor s \in M\}\)</span></li>
-<li><strong>连接（concatenation）</strong>：<span
-class="math inline">\(LM = \{st \mid s \in L \land t \in
+<li><strong> 连接（concatenation）</strong>：<span class="math inline">\(LM = \{st \mid s \in L \land t \in
 M\}\)</span></li>
-<li><strong>克林闭包（Kleene closure）</strong>：<span
-class="math inline">\(L* = \bigcup_{i=0}^{\infty} L^i\)</span></li>
+<li><strong> 克林闭包（Kleene closure）</strong>：<span class="math inline">\(L* = \bigcup_{i=0}^{\infty} L^i\)</span></li>
 </ul>
-<p>其中<span class="math inline">\(L^i\)</span>意为语言<span
-class="math inline">\(L\)</span>自身连接<span
-class="math inline">\(i\)</span>次，<span
-class="math inline">\(i=0\)</span>时即为仅包含空串的语言，记为<span
-class="math inline">\(\{\epsilon\}\)</span>；对应地，空字符串记为<span
-class="math inline">\(\epsilon\)</span>。</p>
-<p>定义在<span
-class="math inline">\(\Sigma\)</span>上的正则语言可如下定义：</p>
+<p>其中<span class="math inline"> \(L^i\)</span> 意为语言<span class="math inline"> \(L\)</span> 自身连接<span class="math inline"> \(i\)</span> 次，<span class="math inline">\(i=0\)</span> 时即为仅包含空串的语言，记为<span class="math inline"> \(\{\epsilon\}\)</span>；对应地，空字符串记为<span class="math inline"> \(\epsilon\)</span>。</p>
+<p>定义在<span class="math inline"> \(\Sigma\)</span> 上的正则语言可如下定义：</p>
 <ul>
-<li>仅包含空串<span
-class="math inline">\(\{\epsilon\}\)</span>和仅包含单个字符<span
-class="math inline">\(\{c\}(c\in \Sigma)\)</span>的语言为正则语言；</li>
-<li>若<span
-class="math inline">\(L\)</span>为正则语言，则其克林闭包<span
-class="math inline">\(L*\)</span>为正则语言；</li>
-<li>若<span class="math inline">\(L, M\)</span>均为正则语言，则其并<span
-class="math inline">\(L \cup M\)</span>与连接<span
-class="math inline">\(LM\)</span>为正则语言。</li>
+<li>仅包含空串<span class="math inline"> \(\{\epsilon\}\)</span> 和仅包含单个字符<span class="math inline"> \(\{c\}(c\in \Sigma)\)</span> 的语言为正则语言；</li>
+<li>若<span class="math inline"> \(L\)</span> 为正则语言，则其克林闭包<span class="math inline"> \(L*\)</span> 为正则语言；</li>
+<li>若<span class="math inline"> \(L, M\)</span> 均为正则语言，则其并<span class="math inline"> \(L \cup M\)</span> 与连接<span class="math inline"> \(LM\)</span> 为正则语言。</li>
 </ul>
 <p>可以通过定义如下的记号代表一个正则语言，即<strong>正则表达式（REGular
 EXpression, abbr. regex）</strong>：</p>
 <ul>
-<li>空串<span class="math inline">\(\epsilon\)</span>代表的语言<span
-class="math inline">\(L(\epsilon) = \{\epsilon\}\)</span>；</li>
-<li>字符<span class="math inline">\(\mathbf{a}(a\in
-\Sigma)\)</span>代表的语言<span class="math inline">\(L(\mathbf{a}) =
+<li>空串<span class="math inline"> \(\epsilon\)</span> 代表的语言<span class="math inline"> \(L(\epsilon) = \{\epsilon\}\)</span>；</li>
+<li>字符<span class="math inline"> \(\mathbf{a}(a\in
+\Sigma)\)</span> 代表的语言<span class="math inline"> \(L(\mathbf{a}) =
 \{a\}\)</span>；</li>
-<li><span class="math inline">\((r)|(s)\)</span>代表并<span
-class="math inline">\(L(r) \cup L(s)\)</span>；</li>
-<li><span class="math inline">\((r)(s)\)</span>代表连接<span
-class="math inline">\(L(r)L(s)\)</span>；</li>
-<li><span class="math inline">\((r)\ast\)</span>代表克林闭包<span
-class="math inline">\((L(r))\ast\)</span>；</li>
-<li><span class="math inline">\((r)\)</span>代表语言<span
-class="math inline">\(L(r)\)</span>，该规则表示在表达式左右添加括号不改变其含义。</li>
+<li><span class="math inline">\((r)|(s)\)</span> 代表并<span class="math inline"> \(L(r) \cup L(s)\)</span>；</li>
+<li><span class="math inline">\((r)(s)\)</span> 代表连接<span class="math inline"> \(L(r)L(s)\)</span>；</li>
+<li><span class="math inline">\((r)\ast\)</span> 代表克林闭包<span class="math inline"> \((L(r))\ast\)</span>；</li>
+<li><span class="math inline">\((r)\)</span> 代表语言<span class="math inline"> \(L(r)\)</span>，该规则表示在表达式左右添加括号不改变其含义。</li>
 </ul>
 <p>同时为了消除括号，通常各运算有如下优先级与结合性：</p>
 <ol type="1">
-<li>一元运算<span
-class="math inline">\(\ast\)</span>优先级最高，左结合；</li>
+<li>一元运算<span class="math inline"> \(\ast\)</span> 优先级最高，左结合；</li>
 <li>连接运算优先级次高，左结合；</li>
 <li>并运算优先级最低，左结合。</li>
 </ol>
@@ -323,38 +300,27 @@ class="math inline">\(\ast\)</span>优先级最高，左结合；</li>
 语言中的标识符，可以用正则表达式表达为（不考虑保留字）：</p>
 <p><span class="math display">\[(\mathrm{letter} \mid
 \_)(\mathrm{letter} \mid \mathrm{digit} \mid \_ )*\]</span></p>
-<p>其中<span
-class="math inline">\(\mathrm{letter}\)</span>表示英文字母，<span
-class="math inline">\(\mathrm{digit}\)</span>表示数字。</p>
+<p>其中<span class="math inline"> \(\mathrm{letter}\)</span> 表示英文字母，<span class="math inline">\(\mathrm{digit}\)</span> 表示数字。</p>
 <h2 id="token-识别">token 识别</h2>
 <p>定义了正则语言与正则表达式后，token
 的识别过程可以表述为如下的步骤：</p>
 <ol type="1">
-<li>写出各个 token 类的正则表达式<span
-class="math inline">\(R_i\)</span>，同时记一个正则表达式<span
-class="math inline">\(R\)</span>为所有<span
-class="math inline">\(R_i\)</span>的并，即： <span
-class="math display">\[R = R_1 \mid R_2 \mid \cdots \mid
+<li>写出各个 token 类的正则表达式<span class="math inline"> \(R_i\)</span>，同时记一个正则表达式<span class="math inline"> \(R\)</span> 为所有<span class="math inline"> \(R_i\)</span> 的并，即： <span class="math display">\[R = R_1 \mid R_2 \mid \cdots \mid
 R_m\]</span></li>
-<li>设输入为<span class="math inline">\(x_1 \cdots
-x_n\)</span>，对所有<span class="math inline">\(i \in [1,
+<li> 设输入为<span class="math inline"> \(x_1 \cdots
+x_n\)</span>，对所有<span class="math inline"> \(i \in [1,
 n]\)</span>，检查是否有： <span class="math display">\[x_1 \cdots x_i
 \in L(R)\]</span></li>
-<li>若找到一个<span
-class="math inline">\(i\)</span>满足上述条件则说明必有至少一个<span
-class="math inline">\(j\in[1,m]\)</span>， <span
-class="math display">\[x_1 \cdots x_i \in L(R_j)\]</span> 将其记录为
-token，对应<span class="math inline">\(R_j\)</span>的 token 类；</li>
-<li>将<span class="math inline">\(x_1 \cdots
-x_i\)</span>移除输入，返回步骤2继续寻找，直至输入为空。</li>
+<li> 若找到一个<span class="math inline"> \(i\)</span> 满足上述条件则说明必有至少一个<span class="math inline"> \(j\in[1,m]\)</span>， <span class="math display">\[x_1 \cdots x_i \in L(R_j)\]</span> 将其记录为
+token，对应<span class="math inline"> \(R_j\)</span> 的 token 类；</li>
+<li>将<span class="math inline"> \(x_1 \cdots
+x_i\)</span> 移除输入，返回步骤 2 继续寻找，直至输入为空。</li>
 </ol>
 <p>对于冲突，有如下策略：</p>
 <ul>
 <li>对于不同长度的满足步骤 2 中条件的前缀，选择最长的前缀，例如将
-<code>==</code> 视为一个 token 而不是两个<code>=</code>；</li>
-<li>对于不同的，满足步骤 3 中条件的<span
-class="math inline">\(R_j\)</span>，选择最小的<span
-class="math inline">\(j\)</span>，也即将排列顺序视为优先级，例如将某些词素视为关键字而非标识符；</li>
+<code>==</code> 视为一个 token 而不是两个 <code>=</code>；</li>
+<li>对于不同的，满足步骤 3 中条件的<span class="math inline"> \(R_j\)</span>，选择最小的<span class="math inline"> \(j\)</span>，也即将排列顺序视为优先级，例如将某些词素视为关键字而非标识符；</li>
 <li>设置错误类以避免失配的情况，如非法字符，非法标识符等。</li>
 </ul>
 <p>识别算法的实现通常使用<strong>有限状态机（Finite
@@ -362,64 +328,58 @@ Automaton）</strong>。</p>
 <h2 id="有限状态机">有限状态机</h2>
 <p>有限状态机包含了以下部分：</p>
 <ul>
-<li>一个输入字符集<span class="math inline">\(\Sigma\)</span>；</li>
-<li>一个状态有限集<span class="math inline">\(S\)</span>；</li>
-<li>一个初始状态<span class="math inline">\(s_0 \in S\)</span>；</li>
-<li>一个接受状态集<span class="math inline">\(F \subseteq
+<li>一个输入字符集<span class="math inline"> \(\Sigma\)</span>；</li>
+<li>一个状态有限集<span class="math inline"> \(S\)</span>；</li>
+<li>一个初始状态<span class="math inline"> \(s_0 \in S\)</span>；</li>
+<li>一个接受状态集<span class="math inline"> \(F \subseteq
 S\)</span>；</li>
-<li>一个转移集合<span class="math inline">\(S \to^a
-S\)</span>，其中<span class="math inline">\(a \in \Sigma \cup
+<li>一个转移集合<span class="math inline"> \(S \to^a
+S\)</span>，其中<span class="math inline"> \(a \in \Sigma \cup
 \{\epsilon\}\)</span></li>
 </ul>
-<p>有限状态机可以表示为一个有向图，其中的结点即为状态，边即为转移，边上有标号<span
-class="math inline">\(a\)</span>。</p>
+<p>有限状态机可以表示为一个有向图，其中的结点即为状态，边即为转移，边上有标号<span class="math inline"> \(a\)</span>。</p>
 <p>有限状态机可分为<strong>非确定性有限状态机（Nondeterministic ~, abbr.
 NFA）</strong>与<strong>确定性有限状态机（Deterministic ~, abbr.
 DFA）</strong>。其中 DFA 除了上述部分外，还有以下约束：</p>
 <ul>
-<li>对于每个状态<span class="math inline">\(s \in
-S\)</span>与每个字符<span class="math inline">\(a \in
+<li>对于每个状态<span class="math inline"> \(s \in
+S\)</span> 与每个字符<span class="math inline"> \(a \in
 \Sigma\)</span>，至多有一个转移；</li>
-<li>空串<span
-class="math inline">\(\epsilon\)</span>不允许出现在标号上。</li>
+<li>空串<span class="math inline"> \(\epsilon\)</span> 不允许出现在标号上。</li>
 </ul>
 <p>每个有限状态机都对应一个正则语言或空语言（即字符串集合为空集），使用有限状态机可以识别某个字符串是否属于对应的正则语言，方法如下：</p>
 <ol type="1">
 <li>从初始状态开始进行转移；</li>
-<li>除了空串外，若要进行标号为<span
-class="math inline">\(a\)</span>的转移，从字符串中“消耗”一个字符<span
-class="math inline">\(a\)</span>，并转移到另一个状态，标号为<span
-class="math inline">\(\epsilon\)</span>的转移不“消耗”字符直接转移；</li>
-<li>若字符串“消耗”完毕后可到达接受状态<span class="math inline">\(f \in
+<li>除了空串外，若要进行标号为<span class="math inline"> \(a\)</span> 的转移，从字符串中 “消耗” 一个字符<span class="math inline"> \(a\)</span>，并转移到另一个状态，标号为<span class="math inline"> \(\epsilon\)</span> 的转移不 “消耗” 字符直接转移；</li>
+<li>若字符串 “消耗” 完毕后可到达接受状态<span class="math inline"> \(f \in
 F\)</span>，则称状态机接受该字符串，该字符串属于对应的正则语言；</li>
-<li>若字符串“消耗”完毕后无法到达接受状态或无法进行任何转移，则称状态机拒绝该字符串，该字符串不属于对应的正则语言。</li>
+<li>若字符串 “消耗” 完毕后无法到达接受状态或无法进行任何转移，则称状态机拒绝该字符串，该字符串不属于对应的正则语言。</li>
 </ol>
 <p>通过将某些状态的集合看作一种状态，可以将 NFA 转化为 DFA
-。至于如何通过正则表达式生成有限状态机以及如何将 NFA 转化为 DFA <a
-href="/2023/09/28/loj118/">前面的博文</a>已经提过了，这里不再赘述。</p>
+。至于如何通过正则表达式生成有限状态机以及如何将 NFA 转化为 DFA <a href="/2023/09/28/loj118/">前面的博文</a>已经提过了，这里不再赘述。</p>
 <h2 id="lab">Lab</h2>
 <p>作业二中需要使用 flex 生成 COOL 语言的 Lexer。首先需要定义各个 token
 类的正则表达式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">CLASS       (class)</span><br><span class="line">ELSE        (else)</span><br><span class="line">FI          (fi)</span><br><span class="line">IF          (if)</span><br><span class="line">IN          (in)</span><br><span class="line">INHERITS    (inherits)</span><br><span class="line">LET         (let)</span><br><span class="line">LOOP        (loop)</span><br><span class="line">POOL        (pool)</span><br><span class="line">THEN        (then)</span><br><span class="line">WHILE       (while)</span><br><span class="line">CASE        (case)</span><br><span class="line">ESAC        (esac)</span><br><span class="line">OF          (of)</span><br><span class="line">DARROW      =&gt;</span><br><span class="line">NEW         (new)</span><br><span class="line">ISVOID      (isvoid)</span><br><span class="line">ASSIGN      &lt;-    </span><br><span class="line">NOT         (not)</span><br><span class="line">LE          &lt;=</span><br><span class="line"></span><br><span class="line">TRUE        t(rue)</span><br><span class="line">FALSE       f(alse)</span><br><span class="line"></span><br><span class="line">OBJID       [a-z][_0-9a-zA-Z]*  // 对象标识符</span><br><span class="line">TYPID       [A-Z][_0-9a-zA-Z]*  // 类型标识符</span><br><span class="line"></span><br><span class="line">ILCMT       --.*    // inline comment</span><br><span class="line">CMTST       &quot;(*&quot;</span><br><span class="line">CMTED       &quot;*)&quot;</span><br><span class="line">INT         [0-9]+  // 整型字面量</span><br><span class="line"></span><br><span class="line">SGN         [\(\)\&#123;\&#125;;:,\.&lt;=\+\-\*/~@]  // 单字符 token</span><br><span class="line">SKIP_SGN    [ \t\f\r\v]     // 空白字符</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">CLASS       (class)</span><br><span class="line">ELSE        (else)</span><br><span class="line">FI          (fi)</span><br><span class="line">IF          (if)</span><br><span class="line">IN          (in)</span><br><span class="line">INHERITS    (inherits)</span><br><span class="line">LET         (let)</span><br><span class="line">LOOP        (loop)</span><br><span class="line">POOL        (pool)</span><br><span class="line">THEN        (then)</span><br><span class="line">WHILE       (while)</span><br><span class="line">CASE        (case)</span><br><span class="line">ESAC        (esac)</span><br><span class="line">OF          (of)</span><br><span class="line">DARROW      =&gt;</span><br><span class="line">NEW         (new)</span><br><span class="line">ISVOID      (isvoid)</span><br><span class="line">ASSIGN      &lt;-    </span><br><span class="line">NOT         (not)</span><br><span class="line">LE          &lt;=</span><br><span class="line"></span><br><span class="line">TRUE        t(rue)</span><br><span class="line">FALSE       f(alse)</span><br><span class="line"></span><br><span class="line">OBJID       [a-z][_0-9a-zA-Z]*  // 对象标识符</span><br><span class="line">TYPID       [A-Z][_0-9a-zA-Z]*  // 类型标识符</span><br><span class="line"></span><br><span class="line">ILCMT       --.*    // inline comment</span><br><span class="line">CMTST       "(*"</span><br><span class="line">CMTED       "*)"</span><br><span class="line">INT         [0-9]+  // 整型字面量</span><br><span class="line"></span><br><span class="line">SGN         [\(\)\{\};:,\.&lt;=\+\-\*/~@]  // 单字符 token</span><br><span class="line">SKIP_SGN    [ \t\f\r\v]     // 空白字符</span><br></pre></td></tr></tbody></table></figure>
 <p>按照作业要求各关键字是大小写不敏感的，新版的 flex 可以使用 (?:)
 组来进行大小写不敏感匹配，但我这里用的是老版本的所以没有使用。</p>
 <p>然后是生成 token。先写出关键字的 token 生成。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;CLASS&#125; &#123; return (CLASS); &#125;</span><br><span class="line">&#123;ELSE&#125;  &#123; return (ELSE); &#125;</span><br><span class="line">&#123;FI&#125;    &#123; return (FI); &#125;</span><br><span class="line">&#123;IF&#125;    &#123; return (IF); &#125;</span><br><span class="line">&#123;IN&#125;    &#123; return (IN); &#125;</span><br><span class="line">&#123;INHERITS&#125;  &#123; return (INHERITS); &#125;</span><br><span class="line">&#123;LET&#125;   &#123; return (LET); &#125;</span><br><span class="line">&#123;LOOP&#125;  &#123; return (LOOP); &#125;</span><br><span class="line">&#123;POOL&#125;  &#123; return (POOL); &#125;</span><br><span class="line">&#123;THEN&#125;  &#123; return (THEN); &#125;</span><br><span class="line">&#123;WHILE&#125; &#123; return (WHILE); &#125;</span><br><span class="line">&#123;CASE&#125;  &#123; return (CASE); &#125;</span><br><span class="line">&#123;ESAC&#125;  &#123; return (ESAC); &#125;</span><br><span class="line">&#123;OF&#125;    &#123; return (OF); &#125;</span><br><span class="line">&#123;DARROW&#125;    &#123; return (DARROW); &#125;</span><br><span class="line">&#123;NEW&#125;       &#123; return (NEW); &#125;</span><br><span class="line">&#123;ISVOID&#125;    &#123; return (ISVOID); &#125;</span><br><span class="line">&#123;ASSIGN&#125;    &#123; return (ASSIGN); &#125;</span><br><span class="line">&#123;NOT&#125;   &#123; return (NOT); &#125;</span><br><span class="line">&#123;LE&#125;    &#123; return (LE); &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">{CLASS} { return (CLASS); }</span><br><span class="line">{ELSE}  { return (ELSE); }</span><br><span class="line">{FI}    { return (FI); }</span><br><span class="line">{IF}    { return (IF); }</span><br><span class="line">{IN}    { return (IN); }</span><br><span class="line">{INHERITS}  { return (INHERITS); }</span><br><span class="line">{LET}   { return (LET); }</span><br><span class="line">{LOOP}  { return (LOOP); }</span><br><span class="line">{POOL}  { return (POOL); }</span><br><span class="line">{THEN}  { return (THEN); }</span><br><span class="line">{WHILE} { return (WHILE); }</span><br><span class="line">{CASE}  { return (CASE); }</span><br><span class="line">{ESAC}  { return (ESAC); }</span><br><span class="line">{OF}    { return (OF); }</span><br><span class="line">{DARROW}    { return (DARROW); }</span><br><span class="line">{NEW}       { return (NEW); }</span><br><span class="line">{ISVOID}    { return (ISVOID); }</span><br><span class="line">{ASSIGN}    { return (ASSIGN); }</span><br><span class="line">{NOT}   { return (NOT); }</span><br><span class="line">{LE}    { return (LE); }</span><br></pre></td></tr></tbody></table></figure>
 <p>然后是单字符 token：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;SGN&#125; &#123;</span><br><span class="line">    return yytext[0];</span><br><span class="line">&#125;</span><br><span class="line">&#123;SKIP_SGN&#125; &#123;&#125;</span><br><span class="line">\n &#123; ++curr_lineno; &#125;</span><br><span class="line">. &#123;</span><br><span class="line">    cool_yylval.error_msg = yytext;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>需要注意的是这几项需要写在最后，<code>.</code>是用来兜底代表非法字符的；并且换行符需要单独处理，因为需要保存行号。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">{SGN} {</span><br><span class="line">    return yytext[0];</span><br><span class="line">}</span><br><span class="line">{SKIP_SGN} {}</span><br><span class="line">\n { ++curr_lineno; }</span><br><span class="line">. {</span><br><span class="line">    cool_yylval.error_msg = yytext;</span><br><span class="line">    return (ERROR);</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p>需要注意的是这几项需要写在最后，<code>.</code> 是用来兜底代表非法字符的；并且换行符需要单独处理，因为需要保存行号。</p>
 <p>接下来是字面量和标识符：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;TRUE&#125; &#123;</span><br><span class="line">    cool_yylval.boolean = true;</span><br><span class="line">    return (BOOL_CONST);</span><br><span class="line">&#125;</span><br><span class="line">&#123;FALSE&#125; &#123;</span><br><span class="line">    cool_yylval.boolean = false;</span><br><span class="line">    return (BOOL_CONST);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;OBJID&#125; &#123;</span><br><span class="line">    cool_yylval.symbol = idtable.add_string(yytext);</span><br><span class="line">    return (OBJECTID);</span><br><span class="line">&#125;</span><br><span class="line">&#123;TYPID&#125; &#123;</span><br><span class="line">    cool_yylval.symbol = idtable.add_string(yytext);</span><br><span class="line">    return (TYPEID);</span><br><span class="line">&#125;</span><br><span class="line">&#123;INT&#125; &#123;</span><br><span class="line">    cool_yylval.symbol = inttable.add_string(yytext);</span><br><span class="line">    return (INT_CONST);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">{TRUE} {</span><br><span class="line">    cool_yylval.boolean = true;</span><br><span class="line">    return (BOOL_CONST);</span><br><span class="line">}</span><br><span class="line">{FALSE} {</span><br><span class="line">    cool_yylval.boolean = false;</span><br><span class="line">    return (BOOL_CONST);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">{OBJID} {</span><br><span class="line">    cool_yylval.symbol = idtable.add_string(yytext);</span><br><span class="line">    return (OBJECTID);</span><br><span class="line">}</span><br><span class="line">{TYPID} {</span><br><span class="line">    cool_yylval.symbol = idtable.add_string(yytext);</span><br><span class="line">    return (TYPEID);</span><br><span class="line">}</span><br><span class="line">{INT} {</span><br><span class="line">    cool_yylval.symbol = inttable.add_string(yytext);</span><br><span class="line">    return (INT_CONST);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>这几项需要写在关键字后面，因为关键字不应该被识别为标识符。</p>
 <p>再然后是注释：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;ILCMT&#125; &#123;&#125;</span><br><span class="line"></span><br><span class="line">&#123;CMTST&#125; &#123; BEGIN(COMMENT); &#125;</span><br><span class="line">&lt;COMMENT&gt;\n &#123; ++curr_lineno; &#125;</span><br><span class="line">&lt;COMMENT&gt;&#123;CMTED&#125; &#123; BEGIN(INITIAL); &#125;</span><br><span class="line">&lt;COMMENT&gt;. &#123;&#125;</span><br><span class="line"></span><br><span class="line">&lt;COMMENT&gt;&lt;&lt;EOF&gt;&gt; &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    cool_yylval.error_msg = &quot;EOF in comment&quot;;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&#123;CMTED&#125; &#123;</span><br><span class="line">    cool_yylval.error_msg = &quot;Unmatched *)&quot;;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">{ILCMT} {}</span><br><span class="line"></span><br><span class="line">{CMTST} { BEGIN(COMMENT); }</span><br><span class="line">&lt;COMMENT&gt;\n { ++curr_lineno; }</span><br><span class="line">&lt;COMMENT&gt;{CMTED} { BEGIN(INITIAL); }</span><br><span class="line">&lt;COMMENT&gt;. {}</span><br><span class="line"></span><br><span class="line">&lt;COMMENT&gt;&lt;&lt;EOF&gt;&gt; {</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    cool_yylval.error_msg = "EOF in comment";</span><br><span class="line">    return (ERROR);</span><br><span class="line">}</span><br><span class="line">{CMTED} {</span><br><span class="line">    cool_yylval.error_msg = "Unmatched *)";</span><br><span class="line">    return (ERROR);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>行内注释比较简单，关键是多行注释，由于多行注释内的语法与注释外不一样，所以使用到了状态
 State。</p>
-<p>状态需要先定义，在定义段中使用<code>%x COMMENT</code>可以定义<code>COMMENT</code>状态，使用<code>BEGIN(COMMENT)</code>可以切换到该状态，使用<code>BEGIN(INITIAL)</code>切换回初始状态，在正则表达式前加上<code>&lt;COMMENT&gt;</code>可以指定在某状态内的匹配操作。</p>
+<p>状态需要先定义，在定义段中使用 <code>%x COMMENT</code> 可以定义 <code>COMMENT</code> 状态，使用 <code>BEGIN(COMMENT)</code> 可以切换到该状态，使用 <code>BEGIN(INITIAL)</code> 切换回初始状态，在正则表达式前加上 <code>&lt;COMMENT&gt;</code> 可以指定在某状态内的匹配操作。</p>
 <p>最后是字符串，和注释一样使用到了状态：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">\&quot; &#123;</span><br><span class="line">    BEGIN(STRING);</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\[^ntbf] &#123;</span><br><span class="line">    push_char_safe(yytext[1]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\\n &#123;</span><br><span class="line">    push_char_safe(&#x27;\n&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\t &#123;</span><br><span class="line">    push_char_safe(&#x27;\t&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\b  &#123;</span><br><span class="line">    push_char_safe(&#x27;\b&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\f &#123;</span><br><span class="line">    push_char_safe(&#x27;\f&#x27;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\\\n &#123;</span><br><span class="line">    push_char_safe(&#x27;\n&#x27;);</span><br><span class="line">    ++curr_lineno;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\&quot; &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    int len = string_buf_ptr - string_buf;</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">    if(is_strlen_exceed) &#123;</span><br><span class="line">    cool_yylval.error_msg = &quot;String constant too long&quot;;</span><br><span class="line">    is_strlen_exceed = false;</span><br><span class="line">    return (ERROR);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">    cool_yylval.symbol = stringtable.add_string(string_buf, len);</span><br><span class="line">        return (STR_CONST);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\n &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    is_strlen_exceed = false;</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">    cool_yylval.error_msg = &quot;Unterminated string constant&quot;;</span><br><span class="line">    ++curr_lineno;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;&lt;&lt;EOF&gt;&gt; &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    cool_yylval.error_msg = &quot;EOF in string constant&quot;;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\0 &#123;</span><br><span class="line">    cool_yylval.error_msg = &quot;String contains null character&quot;;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;. &#123;</span><br><span class="line">    push_char_safe(yytext[0]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>和注释一样需要在定义段中加上<code>%x STRING</code>定义状态。同时这里使用了一个自定义的函数<code>push_char_safe</code>：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *string_buf_ptr;</span><br><span class="line">Boolean is_strlen_exceed;</span><br><span class="line"><span class="type">void</span> <span class="title function_">push_char_safe</span><span class="params">(<span class="type">char</span> c)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(string_buf_ptr - string_buf &lt; MAX_STR_CONST) &#123;</span><br><span class="line">        *(string_buf_ptr++) = c;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        is_strlen_exceed = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">\" {</span><br><span class="line">    BEGIN(STRING);</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">}</span><br><span class="line">&lt;STRING&gt;\\[^ntbf] {</span><br><span class="line">    push_char_safe(yytext[1]);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\\n {</span><br><span class="line">    push_char_safe('\n');</span><br><span class="line">}</span><br><span class="line">&lt;STRING&gt;\\t {</span><br><span class="line">    push_char_safe('\t');</span><br><span class="line">}</span><br><span class="line">&lt;STRING&gt;\\b  {</span><br><span class="line">    push_char_safe('\b');</span><br><span class="line">}</span><br><span class="line">&lt;STRING&gt;\\f {</span><br><span class="line">    push_char_safe('\f');</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\\\n {</span><br><span class="line">    push_char_safe('\n');</span><br><span class="line">    ++curr_lineno;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\" {</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    int len = string_buf_ptr - string_buf;</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">    if(is_strlen_exceed) {</span><br><span class="line">    cool_yylval.error_msg = "String constant too long";</span><br><span class="line">    is_strlen_exceed = false;</span><br><span class="line">    return (ERROR);</span><br><span class="line">    } else {</span><br><span class="line">    cool_yylval.symbol = stringtable.add_string(string_buf, len);</span><br><span class="line">        return (STR_CONST);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line">&lt;STRING&gt;\n {</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    is_strlen_exceed = false;</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">    cool_yylval.error_msg = "Unterminated string constant";</span><br><span class="line">    ++curr_lineno;</span><br><span class="line">    return (ERROR);</span><br><span class="line">}</span><br><span class="line">&lt;STRING&gt;&lt;&lt;EOF&gt;&gt; {</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    cool_yylval.error_msg = "EOF in string constant";</span><br><span class="line">    return (ERROR);</span><br><span class="line">}</span><br><span class="line">&lt;STRING&gt;\0 {</span><br><span class="line">    cool_yylval.error_msg = "String contains null character";</span><br><span class="line">    return (ERROR);</span><br><span class="line">}</span><br><span class="line">&lt;STRING&gt;. {</span><br><span class="line">    push_char_safe(yytext[0]);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>和注释一样需要在定义段中加上 <code>%x STRING</code> 定义状态。同时这里使用了一个自定义的函数 <code>push_char_safe</code>：</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *string_buf_ptr;</span><br><span class="line">Boolean is_strlen_exceed;</span><br><span class="line"><span class="type">void</span> <span class="title function_">push_char_safe</span><span class="params">(<span class="type">char</span> c)</span> {</span><br><span class="line">    <span class="keyword">if</span>(string_buf_ptr - string_buf &lt; MAX_STR_CONST) {</span><br><span class="line">        *(string_buf_ptr++) = c;</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">        is_strlen_exceed = <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>该函数需定义在定义段的代码块中。</p>
 
     </div>
@@ -456,6 +416,7 @@ State。</p>
 
 
 
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -470,7 +431,7 @@ State。</p>
     </span>
     <span class="author" itemprop="copyrightHolder">AjiL</span>
   </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
@@ -483,7 +444,7 @@ State。</p>
     <span class="toggle-line"></span>
   </div>
   <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
@@ -495,6 +456,8 @@ State。</p>
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -515,6 +478,10 @@ State。</p>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"XajilX","repo":"gitalk_comments","client_id":"Ov23lidC06Ozg0VieeHH","client_secret":"828218305f3333d7f9ea63d9943a1329c9a06f13","admin_user":"XajilX","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"51b9a4069c5b9fe2c24ee61b2dba8a62"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 </html>

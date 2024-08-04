@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -17,13 +17,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="article">
-<meta property="og:title" content="左偏树(左偏堆)">
+<meta property="og:title" content="左偏树 (左偏堆)">
 <meta property="og:url" content="http://example.com/2021/03/01/LeftistHeap/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-01T10:19:01.000Z">
 <meta property="article:modified_time" content="2024-08-03T12:36:17.497Z">
 <meta property="article:author" content="AjiL">
@@ -36,10 +36,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2021/03/01/LeftistHeap/","path":"2021/03/01/LeftistHeap/","title":"左偏树(左偏堆)"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/03/01/LeftistHeap/","path":"2021/03/01/LeftistHeap/","title":"左偏树 (左偏堆)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>左偏树(左偏堆) | AjiL's Blog</title>
+<title>左偏树 (左偏堆) | AjiL's Blog</title>
   
 
 
@@ -61,7 +61,7 @@
     <div class="column">
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -78,7 +78,7 @@
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
     </div>
   </div>
 </div>
@@ -86,7 +86,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
 
@@ -101,17 +101,17 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%B7%A6%E5%81%8F%E6%A0%91%E5%A0%86"><span class="nav-number">1.</span> <span class="nav-text">什么是左偏树(堆):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">相关定义:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A6%E5%81%8F%E6%A0%91%E7%9A%84%E6%80%A7%E8%B4%A8%E5%8F%8A%E7%BB%93%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">左偏树的性质及结论:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">基本操作:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">其他操作:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">作用:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">例题:</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%B7%A6%E5%81%8F%E6%A0%91%E5%A0%86"><span class="nav-number">1.</span> <span class="nav-text">什么是左偏树 (堆):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">相关定义:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A6%E5%81%8F%E6%A0%91%E7%9A%84%E6%80%A7%E8%B4%A8%E5%8F%8A%E7%BB%93%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">左偏树的性质及结论:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">基本操作:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">其他操作:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">作用:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">例题:</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -127,18 +127,18 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">159</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
         <span class="site-state-item-count">82</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -156,7 +156,7 @@
     <div class="sidebar-inner sidebar-blogroll">
       <div class="links-of-blogroll animated">
         <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          Links
+          链接
         </div>
         <ul class="links-of-blogroll-list">
             <li class="links-of-blogroll-item">
@@ -186,7 +186,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/01/LeftistHeap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -200,12 +200,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="左偏树(左偏堆) | AjiL's Blog">
+      <meta itemprop="name" content="左偏树 (左偏堆) | AjiL's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          左偏树(左偏堆)
+          左偏树 (左偏堆)
         </h1>
 
         <div class="post-meta-container">
@@ -214,19 +214,19 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
 
-      <time title="Created: 2021-03-01 21:19:01" itemprop="dateCreated datePublished" datetime="2021-03-01T21:19:01+11:00">2021-03-01</time>
+      <time title="创建时间：2021-03-01 21:19:01" itemprop="dateCreated datePublished" datetime="2021-03-01T21:19:01+11:00">2021-03-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">In</span>
+      <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
         </span>
-          , 
+          ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
         </span>
@@ -241,73 +241,51 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><hr />
+    <div class="post-body" itemprop="articleBody"><hr>
 <span id="more"></span>
-<h2 id="什么是左偏树堆">什么是左偏树(堆):</h2>
-<p>左偏树是一种比较常用的<strong>可并二叉堆</strong>. 支持在最坏<span
-class="math inline">\(O(log\
-n)\)</span>的时间复杂度内进行堆的合并操作.</p>
+<h2 id="什么是左偏树堆">什么是左偏树 (堆):</h2>
+<p>左偏树是一种比较常用的<strong>可并二叉堆</strong>. 支持在最坏<span class="math inline"> \(O(log\
+n)\)</span> 的时间复杂度内进行堆的合并操作.</p>
 <h2 id="相关定义">相关定义:</h2>
 <p><em>外结点:</em> 左儿子或右儿子为空的结点.</p>
-<p><em>距离:</em> 一个结点到离它最近的外结点的距离. 特殊地,
-外结点本身距离为0, 空结点距离为-1.</p>
+<p><em>距离:</em> 一个结点到离它最近的外结点的距离。特殊地，
+外结点本身距离为 0, 空结点距离为 - 1.</p>
 <h2 id="左偏树的性质及结论">左偏树的性质及结论:</h2>
 <ol type="1">
 <li><p>左偏树满足<strong>堆性质</strong>.</p></li>
-<li><p>左偏树满足<strong>左偏性质</strong>, 即对于<strong>每个结点,
-其左子结点距离<span
-class="math inline">\(d_{ls}\)</span>大于等于右子结点距离<span
-class="math inline">\(d_{rs}\)</span></strong>.</p></li>
-<li><p>由2, 结点<span class="math inline">\(x\)</span>的距离<span
-class="math inline">\(d_x = d_{rs} + 1\)</span>.</p></li>
-<li><p>根结点距离为<span
-class="math inline">\(d\)</span>的左偏树最少有<span
-class="math inline">\(2^{n+1}-1\)</span>个结点,
+<li><p> 左偏树满足<strong>左偏性质</strong> , 即对于<strong>每个结点，
+其左子结点距离<span class="math inline"> \(d_{ls}\)</span> 大于等于右子结点距离<span class="math inline"> \(d_{rs}\)</span></strong>.</p></li>
+<li><p> 由 2, 结点<span class="math inline"> \(x\)</span> 的距离<span class="math inline"> \(d_x = d_{rs} + 1\)</span>.</p></li>
+<li><p> 根结点距离为<span class="math inline"> \(d\)</span> 的左偏树最少有<span class="math inline"> \(2^{n+1}-1\)</span> 个结点，
 此时该树为一个<strong>满二叉树</strong>.</p></li>
-<li><p>同4, <span
-class="math inline">\(n\)</span>个结点的左偏树距离最大为<span
-class="math inline">\(log_2n\)</span>.</p></li>
+<li><p> 同 4, <span class="math inline">\(n\)</span> 个结点的左偏树距离最大为<span class="math inline"> \(log_2n\)</span>.</p></li>
 </ol>
 <h2 id="基本操作">基本操作:</h2>
 <p>左偏树最基本操作便是合并操作.</p>
-<p>定义函数<code>merge(x,y)</code>, 作用是将根为<span
-class="math inline">\(x, y\)</span>的两个堆合并, 返回合并后堆的根.</p>
-<p>以小根堆为例, 基本步骤如下:</p>
+<p>定义函数 <code>merge(x,y)</code>, 作用是将根为<span class="math inline"> \(x, y\)</span> 的两个堆合并，返回合并后堆的根.</p>
+<p>以小根堆为例，基本步骤如下:</p>
 <ol type="1">
-<li>若<span class="math inline">\(x,y\)</span>其中有一个结点为空结点,
-则返回另一个结点. 否则下一步</li>
-<li>若<span class="math inline">\(v_x&lt;v_y\)</span>, 则以<span
-class="math inline">\(x\)</span>作为合并后的根结点, 否则以<span
-class="math inline">\(y\)</span>作为根结点. 为避免讨论, 当<span
-class="math inline">\(v_x \geq v_y\)</span>时, 直接交换<span
-class="math inline">\(x,y\)</span>.</li>
-<li>将<span class="math inline">\(y\)</span>与<span
-class="math inline">\(x\)</span>的左儿子进行合并, 即<span
-class="math inline">\(ls_x=merge(ls_x,y)\)</span>.</li>
-<li>合并完成后维护左偏性质: 当<span
-class="math inline">\(d_{ls}&lt;d_{rs}\)</span>时交换左右儿子.</li>
+<li>若<span class="math inline"> \(x,y\)</span> 其中有一个结点为空结点，
+则返回另一个结点。否则下一步</li>
+<li>若<span class="math inline"> \(v_x&lt;v_y\)</span>, 则以<span class="math inline"> \(x\)</span> 作为合并后的根结点，否则以<span class="math inline"> \(y\)</span> 作为根结点。为避免讨论，当<span class="math inline"> \(v_x \geq v_y\)</span> 时，直接交换<span class="math inline"> \(x,y\)</span>.</li>
+<li> 将<span class="math inline"> \(y\)</span> 与<span class="math inline"> \(x\)</span> 的左儿子进行合并，即<span class="math inline"> \(ls_x=merge(ls_x,y)\)</span>.</li>
+<li> 合并完成后维护左偏性质：当<span class="math inline"> \(d_{ls}&lt;d_{rs}\)</span> 时交换左右儿子.</li>
 </ol>
 <p>示例代码如下所示:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sn[x][0]为左儿子, sn[x][1]为右儿子</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> i,<span class="type">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(a[i]&gt;a[j] || (a[i]==a[j] &amp;&amp; i&gt;j)) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(i,j);</span><br><span class="line">    &#125;</span><br><span class="line">    sn[i][<span class="number">1</span>] = <span class="built_in">merge</span>(j,sn[i][<span class="number">1</span>]);</span><br><span class="line">    fa[sn[i][<span class="number">1</span>]] = i;</span><br><span class="line">    <span class="keyword">if</span>(d[sn[i][<span class="number">0</span>]]&lt;d[sn[i][<span class="number">1</span>]]) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(sn[i][<span class="number">0</span>],sn[i][<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    d[i] = d[sn[i][<span class="number">1</span>]] + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sn[x][0]为左儿子, sn[x][1]为右儿子</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> i,<span class="type">int</span> j)</span> </span>{</span><br><span class="line">    <span class="keyword">if</span>(i==<span class="number">0</span>) {</span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span>(j==<span class="number">0</span>) {</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span>(a[i]&gt;a[j] || (a[i]==a[j] &amp;&amp; i&gt;j)) {</span><br><span class="line">        <span class="built_in">swap</span>(i,j);</span><br><span class="line">    }</span><br><span class="line">    sn[i][<span class="number">1</span>] = <span class="built_in">merge</span>(j,sn[i][<span class="number">1</span>]);</span><br><span class="line">    fa[sn[i][<span class="number">1</span>]] = i;</span><br><span class="line">    <span class="keyword">if</span>(d[sn[i][<span class="number">0</span>]]&lt;d[sn[i][<span class="number">1</span>]]) {</span><br><span class="line">        <span class="built_in">swap</span>(sn[i][<span class="number">0</span>],sn[i][<span class="number">1</span>]);</span><br><span class="line">    }</span><br><span class="line">    d[i] = d[sn[i][<span class="number">1</span>]] + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="其他操作">其他操作:</h2>
 <p><strong>插入:</strong> 将插入结点当作左偏堆合并即可.</p>
 <p><strong>删除:</strong> 将根的左右子结点合并即可.</p>
 <p><strong>寻找所在堆的根结点:</strong> 直接沿着父结点向上寻找.</p>
 <p><strong>路径压缩优化找根:</strong></p>
-<p>类似于并查集, 每个结点记录一个值<span
-class="math inline">\(rt\)</span>, 在递归找根时顺便压缩<span
-class="math inline">\(rt\)</span>.</p>
-<p>需要注意的是删除根节点<span
-class="math inline">\(x\)</span>时可能有部分结点<span
-class="math inline">\(rt = x\)</span>, 此时要将<span
-class="math inline">\(rt_x\)</span>指向左右子结点合并后的新根.</p>
+<p>类似于并查集，每个结点记录一个值<span class="math inline"> \(rt\)</span>, 在递归找根时顺便压缩<span class="math inline"> \(rt\)</span>.</p>
+<p>需要注意的是删除根节点<span class="math inline"> \(x\)</span> 时可能有部分结点<span class="math inline"> \(rt = x\)</span>, 此时要将<span class="math inline"> \(rt_x\)</span> 指向左右子结点合并后的新根.</p>
 <h2 id="作用">作用:</h2>
-<p>左偏树由于具有合并和找根的功能, 可以算作是并查集的”进化版”.</p>
-<p>同时由于具有权值, 可以用于树上的合并之中.</p>
+<p>左偏树由于具有合并和找根的功能，可以算作是并查集的” 进化版”.</p>
+<p>同时由于具有权值，可以用于树上的合并之中.</p>
 <h2 id="例题">例题:</h2>
-<p><a
-target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3377">(luogu3377)【模板】左偏树（可并堆）</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">const</span> <span class="type">int</span> <span class="title">Mn</span><span class="params">(<span class="number">100500</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span>&amp; x,<span class="type">int</span>&amp; y)</span> </span>&#123;   <span class="comment">//交换</span></span><br><span class="line">    x ^= y ^= x ^= y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">qrd</span><span class="params">(<span class="type">int</span>&amp; x)</span> </span>&#123;  <span class="comment">//快读</span></span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> c = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">        c = <span class="built_in">getchar</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">        x = x*<span class="number">10</span> + c-<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        c = <span class="built_in">getchar</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> a[Mn];  <span class="comment">//权值</span></span><br><span class="line"><span class="type">int</span> fa[Mn], sn[Mn][<span class="number">2</span>];  <span class="comment">//根结点, 左右子结点</span></span><br><span class="line"><span class="type">int</span> d[Mn];  <span class="comment">//距离</span></span><br><span class="line"><span class="type">bool</span> isd[Mn];   <span class="comment">//是否被删除</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> i,<span class="type">int</span> j)</span> </span>&#123;    <span class="comment">//合并</span></span><br><span class="line">    <span class="keyword">if</span>(i==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(a[i]&gt;a[j] || (a[i]==a[j] &amp;&amp; i&gt;j)) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(i,j);</span><br><span class="line">    &#125;</span><br><span class="line">    sn[i][<span class="number">1</span>] = <span class="built_in">merge</span>(j,sn[i][<span class="number">1</span>]);</span><br><span class="line">    fa[sn[i][<span class="number">1</span>]] = i;</span><br><span class="line">    <span class="keyword">if</span>(d[sn[i][<span class="number">0</span>]]&lt;d[sn[i][<span class="number">1</span>]]) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(sn[i][<span class="number">0</span>],sn[i][<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    d[i] = d[sn[i][<span class="number">1</span>]] + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;   <span class="comment">//找根(用到了路径压缩)</span></span><br><span class="line">    <span class="keyword">return</span> fa[x] == <span class="number">0</span> ? x : fa[x] = <span class="built_in">find</span>(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    <span class="built_in">qrd</span>(n), <span class="built_in">qrd</span>(m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=n;++i) &#123;</span><br><span class="line">        <span class="built_in">qrd</span>(a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(m--) &#123;</span><br><span class="line">        <span class="type">int</span> o;</span><br><span class="line">        <span class="built_in">qrd</span>(o);</span><br><span class="line">        <span class="keyword">if</span>(o==<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="type">int</span> x,y;</span><br><span class="line">            <span class="built_in">qrd</span>(x), <span class="built_in">qrd</span>(y);</span><br><span class="line">            <span class="keyword">if</span>(!isd[x]&amp;&amp;!isd[y]) &#123;</span><br><span class="line">                <span class="type">int</span> rx = <span class="built_in">find</span>(x);</span><br><span class="line">                <span class="type">int</span> ry = <span class="built_in">find</span>(y);</span><br><span class="line">                <span class="keyword">if</span>(rx!=ry) &#123;    <span class="comment">//只有当两个数不在同一堆里才合并</span></span><br><span class="line">                    <span class="built_in">merge</span>(rx,ry);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">int</span> x;</span><br><span class="line">            <span class="built_in">qrd</span>(x);</span><br><span class="line">            <span class="keyword">if</span>(isd[x]) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;-1\n&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="type">int</span> rx = <span class="built_in">find</span>(x);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,a[rx]);</span><br><span class="line">                isd[rx] = <span class="literal">true</span>;</span><br><span class="line">                fa[sn[rx][<span class="number">0</span>]] = fa[sn[rx][<span class="number">1</span>]] = <span class="number">0</span>;</span><br><span class="line">                fa[rx] = <span class="built_in">merge</span>(sn[rx][<span class="number">0</span>],sn[rx][<span class="number">1</span>]);    <span class="comment">//将rx的根指向合并后的新根</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3377">(luogu3377)【模板】左偏树（可并堆）</a></p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">const</span> <span class="type">int</span> <span class="title">Mn</span><span class="params">(<span class="number">100500</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span>&amp; x,<span class="type">int</span>&amp; y)</span> </span>{   <span class="comment">//交换</span></span><br><span class="line">    x ^= y ^= x ^= y;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">qrd</span><span class="params">(<span class="type">int</span>&amp; x)</span> </span>{  <span class="comment">//快读</span></span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> c = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c)) {</span><br><span class="line">        c = <span class="built_in">getchar</span>();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c)) {</span><br><span class="line">        x = x*<span class="number">10</span> + c-<span class="string">'0'</span>;</span><br><span class="line">        c = <span class="built_in">getchar</span>();</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="type">int</span> a[Mn];  <span class="comment">//权值</span></span><br><span class="line"><span class="type">int</span> fa[Mn], sn[Mn][<span class="number">2</span>];  <span class="comment">//根结点, 左右子结点</span></span><br><span class="line"><span class="type">int</span> d[Mn];  <span class="comment">//距离</span></span><br><span class="line"><span class="type">bool</span> isd[Mn];   <span class="comment">//是否被删除</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> i,<span class="type">int</span> j)</span> </span>{    <span class="comment">//合并</span></span><br><span class="line">    <span class="keyword">if</span>(i==<span class="number">0</span>) {</span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span>(j==<span class="number">0</span>) {</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span>(a[i]&gt;a[j] || (a[i]==a[j] &amp;&amp; i&gt;j)) {</span><br><span class="line">        <span class="built_in">swap</span>(i,j);</span><br><span class="line">    }</span><br><span class="line">    sn[i][<span class="number">1</span>] = <span class="built_in">merge</span>(j,sn[i][<span class="number">1</span>]);</span><br><span class="line">    fa[sn[i][<span class="number">1</span>]] = i;</span><br><span class="line">    <span class="keyword">if</span>(d[sn[i][<span class="number">0</span>]]&lt;d[sn[i][<span class="number">1</span>]]) {</span><br><span class="line">        <span class="built_in">swap</span>(sn[i][<span class="number">0</span>],sn[i][<span class="number">1</span>]);</span><br><span class="line">    }</span><br><span class="line">    d[i] = d[sn[i][<span class="number">1</span>]] + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span> </span>{   <span class="comment">//找根(用到了路径压缩)</span></span><br><span class="line">    <span class="keyword">return</span> fa[x] == <span class="number">0</span> ? x : fa[x] = <span class="built_in">find</span>(fa[x]);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    <span class="built_in">qrd</span>(n), <span class="built_in">qrd</span>(m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=n;++i) {</span><br><span class="line">        <span class="built_in">qrd</span>(a[i]);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">while</span>(m--) {</span><br><span class="line">        <span class="type">int</span> o;</span><br><span class="line">        <span class="built_in">qrd</span>(o);</span><br><span class="line">        <span class="keyword">if</span>(o==<span class="number">1</span>) {</span><br><span class="line">            <span class="type">int</span> x,y;</span><br><span class="line">            <span class="built_in">qrd</span>(x), <span class="built_in">qrd</span>(y);</span><br><span class="line">            <span class="keyword">if</span>(!isd[x]&amp;&amp;!isd[y]) {</span><br><span class="line">                <span class="type">int</span> rx = <span class="built_in">find</span>(x);</span><br><span class="line">                <span class="type">int</span> ry = <span class="built_in">find</span>(y);</span><br><span class="line">                <span class="keyword">if</span>(rx!=ry) {    <span class="comment">//只有当两个数不在同一堆里才合并</span></span><br><span class="line">                    <span class="built_in">merge</span>(rx,ry);</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="type">int</span> x;</span><br><span class="line">            <span class="built_in">qrd</span>(x);</span><br><span class="line">            <span class="keyword">if</span>(isd[x]) {</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">            } <span class="keyword">else</span> {</span><br><span class="line">                <span class="type">int</span> rx = <span class="built_in">find</span>(x);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a[rx]);</span><br><span class="line">                isd[rx] = <span class="literal">true</span>;</span><br><span class="line">                fa[sn[rx][<span class="number">0</span>]] = fa[sn[rx][<span class="number">1</span>]] = <span class="number">0</span>;</span><br><span class="line">                fa[rx] = <span class="built_in">merge</span>(sn[rx][<span class="number">0</span>],sn[rx][<span class="number">1</span>]);    <span class="comment">//将rx的根指向合并后的新根</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
     </div>
 
@@ -325,13 +303,13 @@ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3377">(lu
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/02/20/luogu3293/" rel="prev" title="(luogu3293)美味(SCOI2016)">
-                  <i class="fa fa-angle-left"></i> (luogu3293)美味(SCOI2016)
+                <a href="/2021/02/20/luogu3293/" rel="prev" title="(luogu3293) 美味 (SCOI2016)">
+                  <i class="fa fa-angle-left"></i> (luogu3293) 美味 (SCOI2016)
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/03/06/luogu2572/" rel="next" title="(luogu2572)序列操作[SCOI2010]">
-                  (luogu2572)序列操作[SCOI2010] <i class="fa fa-angle-right"></i>
+                <a href="/2021/03/06/luogu2572/" rel="next" title="(luogu2572) 序列操作 [SCOI2010]">
+                  (luogu2572) 序列操作 [SCOI2010] <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -344,6 +322,7 @@ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3377">(lu
 
 
 
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -358,7 +337,7 @@ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3377">(lu
     </span>
     <span class="author" itemprop="copyrightHolder">AjiL</span>
   </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
@@ -371,7 +350,7 @@ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3377">(lu
     <span class="toggle-line"></span>
   </div>
   <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
@@ -383,6 +362,8 @@ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3377">(lu
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -403,6 +384,10 @@ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3377">(lu
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"XajilX","repo":"gitalk_comments","client_id":"Ov23lidC06Ozg0VieeHH","client_secret":"828218305f3333d7f9ea63d9943a1329c9a06f13","admin_user":"XajilX","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"932662422899fa1fbca84fa6d6fe418f"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 </html>

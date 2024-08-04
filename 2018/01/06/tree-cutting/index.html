@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -17,15 +17,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="闲来无事, 研究了一下这个神奇却又不算复杂的东西">
+    <meta name="description" content="闲来无事，研究了一下这个神奇却又不算复杂的东西">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树链剖分">
 <meta property="og:url" content="http://example.com/2018/01/06/tree-cutting/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
-<meta property="og:description" content="闲来无事, 研究了一下这个神奇却又不算复杂的东西">
-<meta property="og:locale">
+<meta property="og:description" content="闲来无事，研究了一下这个神奇却又不算复杂的东西">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/cutted-tree.png">
 <meta property="article:published_time" content="2018-01-05T13:00:00.000Z">
 <meta property="article:modified_time" content="2024-08-03T12:36:17.507Z">
@@ -40,7 +40,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2018/01/06/tree-cutting/","path":"2018/01/06/tree-cutting/","title":"树链剖分"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2018/01/06/tree-cutting/","path":"2018/01/06/tree-cutting/","title":"树链剖分"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>树链剖分 | AjiL's Blog</title>
@@ -65,7 +65,7 @@
     <div class="column">
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -82,7 +82,7 @@
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
     </div>
   </div>
 </div>
@@ -90,7 +90,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
 
@@ -105,17 +105,17 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">什么是树链剖分:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">实现:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86%E6%B1%82lca"><span class="nav-number">3.</span> <span class="nav-text">树链剖分求LCA:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">应用:</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">什么是树链剖分:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">实现:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86%E6%B1%82lca"><span class="nav-number">3.</span> <span class="nav-text">树链剖分求 LCA:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">应用:</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -131,18 +131,18 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">159</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
         <span class="site-state-item-count">82</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -160,7 +160,7 @@
     <div class="sidebar-inner sidebar-blogroll">
       <div class="links-of-blogroll animated">
         <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          Links
+          链接
         </div>
         <ul class="links-of-blogroll-list">
             <li class="links-of-blogroll-item">
@@ -190,7 +190,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2018/01/06/tree-cutting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -218,19 +218,19 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
 
-      <time title="Created: 2018-01-06 00:00:00" itemprop="dateCreated datePublished" datetime="2018-01-06T00:00:00+11:00">2018-01-06</time>
+      <time title="创建时间：2018-01-06 00:00:00" itemprop="dateCreated datePublished" datetime="2018-01-06T00:00:00+11:00">2018-01-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">In</span>
+      <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
         </span>
-          , 
+          ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/%E6%A0%91%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">树相关</span></a>
         </span>
@@ -245,55 +245,55 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>闲来无事, 研究了一下这个神奇却又不算复杂的东西 <span id="more"></span></p>
+    <div class="post-body" itemprop="articleBody"><p>闲来无事，研究了一下这个神奇却又不算复杂的东西 <span id="more"></span></p>
 <h2 id="什么是树链剖分">什么是树链剖分:</h2>
-<p>顾名思义, 树链剖分就是把一棵树剖成一条条的树链, 再将树链存储为区间,
+<p>顾名思义，树链剖分就是把一棵树剖成一条条的树链，再将树链存储为区间，
 但实际操作中通常把所有的树链用一个区间存储</p>
-<p>剖分的方法有几种, 但用得多的还是<strong>重链剖分</strong></p>
-<p>重链剖分指的就是把某个结点与它的<strong>重儿子</strong>(子树大小最大的子结点)编成一条链</p>
+<p>剖分的方法有几种，但用得多的还是<strong>重链剖分</strong></p>
+<p>重链剖分指的就是把某个结点与它的<strong>重儿子</strong> (子树大小最大的子结点) 编成一条链</p>
 <h2 id="实现">实现:</h2>
-<p>重链剖分是基于dfs的, 所以也可以称之为一种”启发式的dfs序”</p>
-<p>重链剖分一般用两个dfs实现:</p>
-<p>第一遍dfs: 计算子树大小, 寻找重儿子</p>
-<p>伪代码: <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> dep[Mn],size[Mn],hs[Mn],fa[Mn];    <span class="comment">//结点深度,结点子树大小,结点的重儿子,父结点</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs1</span><span class="params">(<span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    size[p] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(x=child of p)</span><br><span class="line">    &#123;</span><br><span class="line">        dep[x] = dep[p]<span class="number">+1</span>;</span><br><span class="line">        fa[x] = p;</span><br><span class="line">        <span class="built_in">dfs1</span>(x);</span><br><span class="line">        size[p] += size[x];</span><br><span class="line">        <span class="keyword">if</span>(size[x]&gt;size[hs[p]])	hs[p] = x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>第二遍dfs(重点部分): 记录每个结点的时间戳, 把重儿子拉成链,
-记录每个结点所在链的链顶(即同一条链上深度最小的结点)</p>
-<p>伪代码: <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> tp[Mn],a[Mn],visit_c[Mn],<span class="built_in">dfs_c</span>(<span class="number">0</span>); <span class="comment">//链顶,dfs序,访问时间,计数器</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs2</span><span class="params">(<span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    a[++dfs_c] = p;</span><br><span class="line">    visit_c[p] = dfs_c;</span><br><span class="line">    <span class="keyword">if</span>(hs[p])	<span class="comment">//如果重儿子存在(非叶子结点)</span></span><br><span class="line">    &#123;</span><br><span class="line">        tp[hs[p]] = tp[p];	<span class="comment">//拉成重链</span></span><br><span class="line">        <span class="built_in">dfs2</span>(hs[p]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(x=child of p)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(x!=hs[p])</span><br><span class="line">        &#123;</span><br><span class="line">            tp[x] = x;</span><br><span class="line">            <span class="built_in">dfs2</span>(x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="树链剖分求lca">树链剖分求LCA:</h2>
-<p>几乎所有树上问题都要求LCA, 所以求LCA是树链剖分的一项重要操作</p>
-<p>树链剖分求LCA的方式略微有点像倍增LCA</p>
+<p>重链剖分是基于 dfs 的，所以也可以称之为一种” 启发式的 dfs 序”</p>
+<p>重链剖分一般用两个 dfs 实现:</p>
+<p>第一遍 dfs: 计算子树大小，寻找重儿子</p>
+<p>伪代码: </p><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> dep[Mn],size[Mn],hs[Mn],fa[Mn];    <span class="comment">//结点深度,结点子树大小,结点的重儿子,父结点</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs1</span><span class="params">(<span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    size[p] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(x=child of p)</span><br><span class="line">    {</span><br><span class="line">        dep[x] = dep[p]<span class="number">+1</span>;</span><br><span class="line">        fa[x] = p;</span><br><span class="line">        <span class="built_in">dfs1</span>(x);</span><br><span class="line">        size[p] += size[x];</span><br><span class="line">        <span class="keyword">if</span>(size[x]&gt;size[hs[p]])	hs[p] = x;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>第二遍 dfs (重点部分): 记录每个结点的时间戳，把重儿子拉成链，
+记录每个结点所在链的链顶 (即同一条链上深度最小的结点)</p>
+<p>伪代码: </p><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> tp[Mn],a[Mn],visit_c[Mn],<span class="built_in">dfs_c</span>(<span class="number">0</span>); <span class="comment">//链顶,dfs序,访问时间,计数器</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs2</span><span class="params">(<span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    a[++dfs_c] = p;</span><br><span class="line">    visit_c[p] = dfs_c;</span><br><span class="line">    <span class="keyword">if</span>(hs[p])	<span class="comment">//如果重儿子存在(非叶子结点)</span></span><br><span class="line">    {</span><br><span class="line">        tp[hs[p]] = tp[p];	<span class="comment">//拉成重链</span></span><br><span class="line">        <span class="built_in">dfs2</span>(hs[p]);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span>(x=child of p)</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">if</span>(x!=hs[p])</span><br><span class="line">        {</span><br><span class="line">            tp[x] = x;</span><br><span class="line">            <span class="built_in">dfs2</span>(x);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="树链剖分求lca">树链剖分求 LCA:</h2>
+<p>几乎所有树上问题都要求 LCA, 所以求 LCA 是树链剖分的一项重要操作</p>
+<p>树链剖分求 LCA 的方式略微有点像倍增 LCA</p>
 <figure>
-<img src="/img/cutted-tree.png" alt="cutted tree" />
+<img data-src="/img/cutted-tree.png" alt="cutted tree">
 <figcaption aria-hidden="true">cutted tree</figcaption>
 </figure>
 <p>(橙色的边就是重链上的边)</p>
-<p>方法就是如果两个结点不在同一条重链上时,
-将<strong>链顶深度较大</strong>的那个结点跳到它所在的<strong>重链的链顶的父结点</strong>,
-直到这两个结点在同一条重链上, 返回深度较小的那个结点</p>
-<p>比如说要找这棵树的LCA(13,10)</p>
-<p>d(13)&gt;d(10), 所以首先将13跳到2</p>
-<p>然后d(2)&lt;d(10), 将10跳到6</p>
-<p>此时2和6在同一条重链, 返回深度较小的结点, 所以LCA(13,10)=2</p>
-<p>这里有个重要的定理, 是关于树链剖分的时间复杂度的:</p>
-<p><strong>若v是u的子结点, 且(u,v)是轻边(不在重链上的边),
-则有size(v)&lt;size(u)/2</strong></p>
-<p>理由很简单, 如果size(v)&gt;=size(u)/2的话,
-那么size(v)将会比u的任何一个儿子的size都要大,
-(u,v)就是重边(即在重链上的边)了</p>
-<p>由此可得一个推论: <strong>对于任意一个非根节点u, 在u到根节点的路径上,
-轻边和重链的条数不超过log2n</strong>,
-因为每经过一条轻边size都会减半(可以把这里的size看作可行范围)</p>
-<p>所以, 树链剖分LCA的时间复杂度是<strong>O(log2n)</strong>,
+<p>方法就是如果两个结点不在同一条重链上时，
+将<strong>链顶深度较大</strong>的那个结点跳到它所在的<strong>重链的链顶的父结点</strong> ,
+直到这两个结点在同一条重链上，返回深度较小的那个结点</p>
+<p>比如说要找这棵树的 LCA (13,10)</p>
+<p>d (13)&gt;d (10), 所以首先将 13 跳到 2</p>
+<p>然后 d (2)&lt;d (10), 将 10 跳到 6</p>
+<p>此时 2 和 6 在同一条重链，返回深度较小的结点，所以 LCA (13,10)=2</p>
+<p>这里有个重要的定理，是关于树链剖分的时间复杂度的:</p>
+<p><strong>若 v 是 u 的子结点，且 (u,v) 是轻边 (不在重链上的边),
+则有 size (v)&lt;size (u)/2</strong></p>
+<p>理由很简单，如果 size (v)&gt;=size (u)/2 的话，
+那么 size (v) 将会比 u 的任何一个儿子的 size 都要大，
+(u,v) 就是重边 (即在重链上的边) 了</p>
+<p>由此可得一个推论: <strong>对于任意一个非根节点 u, 在 u 到根节点的路径上，
+轻边和重链的条数不超过 log2n</strong>,
+因为每经过一条轻边 size 都会减半 (可以把这里的 size 看作可行范围)</p>
+<p>所以，树链剖分 LCA 的时间复杂度是 <strong>O(log2n)</strong>,
 因为每个非根链顶与其父亲之间的边都是轻边</p>
 <h2 id="应用">应用:</h2>
-<p>搞定树链剖分就可以在大多数树上问题上为所欲为啦~</p>
-<p>只需要在求LCA的过程中顺便维护重链区间就好了</p>
+<p>搞定树链剖分就可以在大多数树上问题上为所欲为啦～</p>
+<p>只需要在求 LCA 的过程中顺便维护重链区间就好了</p>
 <p>放几道例题来感受一下:</p>
 <ul>
-<li><a href="/2018/01/27/luogu3178">(luogu3178)树上操作</a></li>
-<li><a href="/2018/02/01/luogu2590">(luogu2590)树的统计</a></li>
-<li><a href="/2018/02/04/luogu2146">(luogu2146)软件包管理器</a></li>
-<li><a href="/2018/02/27/luogu2486">(luogu2486)染色</a></li>
+<li><a href="/2018/01/27/luogu3178">(luogu3178) 树上操作</a></li>
+<li><a href="/2018/02/01/luogu2590">(luogu2590) 树的统计</a></li>
+<li><a href="/2018/02/04/luogu2146">(luogu2146) 软件包管理器</a></li>
+<li><a href="/2018/02/27/luogu2486">(luogu2486) 染色</a></li>
 </ul>
 
     </div>
@@ -312,13 +312,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2018/01/02/luogu3038/" rel="prev" title="(luogu3038)牧草种植(USACO11DEC)">
-                  <i class="fa fa-angle-left"></i> (luogu3038)牧草种植(USACO11DEC)
+                <a href="/2018/01/02/luogu3038/" rel="prev" title="(luogu3038) 牧草种植 (USACO11DEC)">
+                  <i class="fa fa-angle-left"></i> (luogu3038) 牧草种植 (USACO11DEC)
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2018/01/27/luogu3178/" rel="next" title="(luogu3178)树上操作(HAOI2015)">
-                  (luogu3178)树上操作(HAOI2015) <i class="fa fa-angle-right"></i>
+                <a href="/2018/01/27/luogu3178/" rel="next" title="(luogu3178) 树上操作 (HAOI2015)">
+                  (luogu3178) 树上操作 (HAOI2015) <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -331,6 +331,7 @@
 
 
 
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -345,7 +346,7 @@
     </span>
     <span class="author" itemprop="copyrightHolder">AjiL</span>
   </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
@@ -358,7 +359,7 @@
     <span class="toggle-line"></span>
   </div>
   <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
@@ -370,6 +371,8 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -390,6 +393,10 @@
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"XajilX","repo":"gitalk_comments","client_id":"Ov23lidC06Ozg0VieeHH","client_secret":"828218305f3333d7f9ea63d9943a1329c9a06f13","admin_user":"XajilX","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"33cc6ec7c17797e9e84260c4fc7aa650"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 </html>

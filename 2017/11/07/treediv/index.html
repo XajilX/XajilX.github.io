@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -17,15 +17,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="据说近几年NOIp考得比较多, 于是去研究了一下, 做点笔记">
+    <meta name="description" content="据说近几年 NOIp 考得比较多，于是去研究了一下，做点笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树上差分">
 <meta property="og:url" content="http://example.com/2017/11/07/treediv/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
-<meta property="og:description" content="据说近几年NOIp考得比较多, 于是去研究了一下, 做点笔记">
-<meta property="og:locale">
+<meta property="og:description" content="据说近几年 NOIp 考得比较多，于是去研究了一下，做点笔记">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/tree.png">
 <meta property="article:published_time" content="2017-11-06T13:00:00.000Z">
 <meta property="article:modified_time" content="2024-08-03T12:36:17.507Z">
@@ -40,7 +40,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2017/11/07/treediv/","path":"2017/11/07/treediv/","title":"树上差分"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2017/11/07/treediv/","path":"2017/11/07/treediv/","title":"树上差分"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>树上差分 | AjiL's Blog</title>
@@ -65,7 +65,7 @@
     <div class="column">
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -82,7 +82,7 @@
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
     </div>
   </div>
 </div>
@@ -90,7 +90,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
 
@@ -105,10 +105,10 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -131,18 +131,18 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">159</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
         <span class="site-state-item-count">82</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -160,7 +160,7 @@
     <div class="sidebar-inner sidebar-blogroll">
       <div class="links-of-blogroll animated">
         <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          Links
+          链接
         </div>
         <ul class="links-of-blogroll-list">
             <li class="links-of-blogroll-item">
@@ -190,7 +190,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2017/11/07/treediv/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -218,19 +218,19 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
 
-      <time title="Created: 2017-11-07 00:00:00" itemprop="dateCreated datePublished" datetime="2017-11-07T00:00:00+11:00">2017-11-07</time>
+      <time title="创建时间：2017-11-07 00:00:00" itemprop="dateCreated datePublished" datetime="2017-11-07T00:00:00+11:00">2017-11-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">In</span>
+      <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
         </span>
-          , 
+          ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/%E6%A0%91%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">树相关</span></a>
         </span>
@@ -245,69 +245,62 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>据说近几年NOIp考得比较多, 于是去研究了一下, 做点笔记
+    <div class="post-body" itemprop="articleBody"><p>据说近几年 NOIp 考得比较多，于是去研究了一下，做点笔记
 <span id="more"></span></p>
 <h2 id="树上前缀和">树上前缀和:</h2>
-<p>说到差分就不得不说到前缀和(因为两个互为逆操作). 对于树上差分,
+<p>说到差分就不得不说到前缀和 (因为两个互为逆操作). 对于树上差分，
 我们需要定义一个类似前缀和的操作来将差分转化为原来的值</p>
 <p>定义树上某个结点的前缀和为<strong>它本身及其所有后代结点的权值之和</strong></p>
-<p>(为什么这样定义? 也许是好算吧…)</p>
+<p>(为什么这样定义？也许是好算吧…)</p>
 <h2 id="树上差分">树上差分:</h2>
-<p>说完树上前缀和, 进入正题</p>
-<p>差分一般是用来做区间修改的, 而树上差分也是一个道理</p>
-<p>这里树上的”区间”指的其实是一条树链</p>
-<p>我们可以对每个树上的结点定义一个数d,
-表示某个结点与它所有子结点的权值之和的差, 叶子结点的d即为它本身</p>
-<p>定义了d之后, 我们就可以和序列一样,
-<strong>把树上”区间”的操作转化为单点的操作.</strong></p>
+<p>说完树上前缀和，进入正题</p>
+<p>差分一般是用来做区间修改的，而树上差分也是一个道理</p>
+<p>这里树上的” 区间” 指的其实是一条树链</p>
+<p>我们可以对每个树上的结点定义一个数 d,
+表示某个结点与它所有子结点的权值之和的差，叶子结点的 d 即为它本身</p>
+<p>定义了 d 之后，我们就可以和序列一样，
+<strong>把树上” 区间” 的操作转化为单点的操作.</strong></p>
 <figure>
-<img src="/img/tree.png" alt="tree" />
+<img data-src="/img/tree.png" alt="tree">
 <figcaption aria-hidden="true">tree</figcaption>
 </figure>
-<p>比如上图, 我们如果要把4~8的路径上的所有结点的权值加上1,
-那么对于d来说则是<span class="math inline">\(d_8+1,d_1-1\)</span></p>
-<p>同理, 如果要把1~7的路径上的所有结点权值加3, 对应d的操作则是<span
-class="math inline">\(d_7+1,d_0-1\)</span> (假设1的父节点是0)</p>
-<p>我们可以<strong>记录下d的改变量</strong>,
-当需要询问某个点改变后的权值时,
- 可以直接用dfs求该结点的d改变量的前缀和(即它本身权值的改变量)</p>
+<p>比如上图，我们如果要把 4~8 的路径上的所有结点的权值加上 1,
+那么对于 d 来说则是<span class="math inline"> \(d_8+1,d_1-1\)</span></p>
+<p>同理，如果要把 1~7 的路径上的所有结点权值加 3, 对应 d 的操作则是<span class="math inline"> \(d_7+1,d_0-1\)</span> (假设 1 的父节点是 0)</p>
+<p>我们可以<strong>记录下 d 的改变量</strong> ,
+当需要询问某个点改变后的权值时，
+&nbsp;可以直接用 dfs 求该结点的 d 改变量的前缀和 (即它本身权值的改变量)</p>
 <h2 id="应用">应用：</h2>
-<p>一般来说, 涉及树上差分的题目一般是对于每两个点间的简单路径进行修改,
-所以做这类题时首先要学会怎么求两点的LCA.</p>
-<p>一般这类问题分为两种: 点的修改和边的修改</p>
+<p>一般来说，涉及树上差分的题目一般是对于每两个点间的简单路径进行修改，
+所以做这类题时首先要学会怎么求两点的 LCA.</p>
+<p>一般这类问题分为两种：点的修改和边的修改</p>
 <h3 id="点的修改">点的修改:</h3>
-<p>还是拿上图举例, 假如我们需要将5~6之间的简单路径上的点的权值加上1,
-它们的LCA是2, 我们可以把这条简单路径拆分为两条树链: 2~5和2~6</p>
-<p>首先对2~5进行操作, 即<span
-class="math inline">\(d_5+1,d_1-1\)</span>;</p>
-<p>然后对2~6进行操作, 即<span
-class="math inline">\(d_6+1,d_1-1\)</span>;</p>
-<p>然后我们对2结点重复加了一次, 需要减掉一次, 操作即为<span
-class="math inline">\(d_2-1,d_1+1\)</span>;</p>
+<p>还是拿上图举例，假如我们需要将 5~6 之间的简单路径上的点的权值加上 1,
+它们的 LCA 是 2, 我们可以把这条简单路径拆分为两条树链: 2~5 和 2~6</p>
+<p>首先对 2~5 进行操作，即<span class="math inline"> \(d_5+1,d_1-1\)</span>;</p>
+<p>然后对 2~6 进行操作，即<span class="math inline"> \(d_6+1,d_1-1\)</span>;</p>
+<p>然后我们对 2 结点重复加了一次，需要减掉一次，操作即为<span class="math inline"> \(d_2-1,d_1+1\)</span>;</p>
 <p>最终所做的更改为: <span class="math display">\[d_5+1,\ d_6+1,\
 d_2-1,\ d_1-1\]</span></p>
-<p>由这个例子可以看出, 对于树上的某两个点u,v,
-如果要对他们两个之间的简单路径上的所有点权值加k, 则对应d的操作为:</p>
+<p>由这个例子可以看出，对于树上的某两个点 u,v,
+如果要对他们两个之间的简单路径上的所有点权值加 k, 则对应 d 的操作为:</p>
 <p><span class="math display">\[
 d_u+k,\ d_v+k, \\
 d_{LCA(u,v)}-k, \\
 d_{father(LCA(u,v))}-k
-\]</span> (假设1的父亲结点是0)</p>
+\]</span> (假设 1 的父亲结点是 0)</p>
 <h3 id="边的修改">边的修改:</h3>
-<p>首先, 我们把树上的每一条边(u,v)的权值记录在这两个结点深度较大的结点上
-(即结点的权值记录的是它连向自己父亲结点的边的权值) 这样,
+<p>首先，我们把树上的每一条边 (u,v) 的权值记录在这两个结点深度较大的结点上
+(即结点的权值记录的是它连向自己父亲结点的边的权值) 这样，
 对于边的操作就变为了对于点的操作.</p>
-<p>继续拿上面那张图举例, 假如我们要将6~7之间的简单路径上的边权加1,
-它们的LCA是1, 我们依然可以把这条简单路径拆为两条树链: 1~6和1~7</p>
-<p>根据前面的转化, 我们对1~6的修改即为: <span
-class="math inline">\(d_6+1,d_1-1\)</span>;</p>
-<p>对1~7的修改即为: <span
-class="math inline">\(d_7+1,d_1-1\)</span>;</p>
-<p>最终修改为: <span
-class="math inline">\(d_6+1,d_7+1,d_1-2\)</span>;</p>
-<p>由这个例子可以看出, 对于对于树上的某两个点u,v,
-如果要对他们两个之间的简单路径上的所有边权值加k, 做完如上转化后,
-对应d的操作为:</p>
+<p>继续拿上面那张图举例，假如我们要将 6~7 之间的简单路径上的边权加 1,
+它们的 LCA 是 1, 我们依然可以把这条简单路径拆为两条树链: 1~6 和 1~7</p>
+<p>根据前面的转化，我们对 1~6 的修改即为: <span class="math inline">\(d_6+1,d_1-1\)</span>;</p>
+<p>对 1~7 的修改即为: <span class="math inline">\(d_7+1,d_1-1\)</span>;</p>
+<p>最终修改为: <span class="math inline">\(d_6+1,d_7+1,d_1-2\)</span>;</p>
+<p>由这个例子可以看出，对于对于树上的某两个点 u,v,
+如果要对他们两个之间的简单路径上的所有边权值加 k, 做完如上转化后，
+对应 d 的操作为:</p>
 <p><span class="math display">\[d_u+k,\ d_v+k,\\
 d_{LCA(u,v)}-2k\]</span></p>
 
@@ -332,8 +325,8 @@ d_{LCA(u,v)}-2k\]</span></p>
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2017/11/08/luogu1525/" rel="next" title="(luogu1525)关押罪犯(NOIp2010T3)">
-                  (luogu1525)关押罪犯(NOIp2010T3) <i class="fa fa-angle-right"></i>
+                <a href="/2017/11/08/luogu1525/" rel="next" title="(luogu1525) 关押罪犯 (NOIp2010T3)">
+                  (luogu1525) 关押罪犯 (NOIp2010T3) <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -346,6 +339,7 @@ d_{LCA(u,v)}-2k\]</span></p>
 
 
 
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -360,7 +354,7 @@ d_{LCA(u,v)}-2k\]</span></p>
     </span>
     <span class="author" itemprop="copyrightHolder">AjiL</span>
   </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
@@ -373,7 +367,7 @@ d_{LCA(u,v)}-2k\]</span></p>
     <span class="toggle-line"></span>
   </div>
   <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
@@ -385,6 +379,8 @@ d_{LCA(u,v)}-2k\]</span></p>
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -405,6 +401,10 @@ d_{LCA(u,v)}-2k\]</span></p>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"XajilX","repo":"gitalk_comments","client_id":"Ov23lidC06Ozg0VieeHH","client_secret":"828218305f3333d7f9ea63d9943a1329c9a06f13","admin_user":"XajilX","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"41e93346429a9c18bda1122187fabe00"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 </html>

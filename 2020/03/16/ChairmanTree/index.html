@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -17,15 +17,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="咕咕咕">
 <meta property="og:type" content="article">
-<meta property="og:title" content="主席树(可持久化线段树)">
+<meta property="og:title" content="主席树 (可持久化线段树)">
 <meta property="og:url" content="http://example.com/2020/03/16/ChairmanTree/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:description" content="咕咕咕">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/ChairmanTree.png">
 <meta property="article:published_time" content="2020-03-16T02:10:19.000Z">
 <meta property="article:modified_time" content="2024-08-03T12:36:17.497Z">
@@ -39,10 +39,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2020/03/16/ChairmanTree/","path":"2020/03/16/ChairmanTree/","title":"主席树(可持久化线段树)"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/03/16/ChairmanTree/","path":"2020/03/16/ChairmanTree/","title":"主席树 (可持久化线段树)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>主席树(可持久化线段树) | AjiL's Blog</title>
+<title>主席树 (可持久化线段树) | AjiL's Blog</title>
   
 
 
@@ -64,7 +64,7 @@
     <div class="column">
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -81,7 +81,7 @@
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
     </div>
   </div>
 </div>
@@ -89,7 +89,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
 
@@ -104,10 +104,10 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -130,18 +130,18 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">159</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
         <span class="site-state-item-count">82</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -159,7 +159,7 @@
     <div class="sidebar-inner sidebar-blogroll">
       <div class="links-of-blogroll animated">
         <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          Links
+          链接
         </div>
         <ul class="links-of-blogroll-list">
             <li class="links-of-blogroll-item">
@@ -189,7 +189,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/16/ChairmanTree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -203,12 +203,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="主席树(可持久化线段树) | AjiL's Blog">
+      <meta itemprop="name" content="主席树 (可持久化线段树) | AjiL's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          主席树(可持久化线段树)
+          主席树 (可持久化线段树)
         </h1>
 
         <div class="post-meta-container">
@@ -217,19 +217,19 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
 
-      <time title="Created: 2020-03-16 13:10:19" itemprop="dateCreated datePublished" datetime="2020-03-16T13:10:19+11:00">2020-03-16</time>
+      <time title="创建时间：2020-03-16 13:10:19" itemprop="dateCreated datePublished" datetime="2020-03-16T13:10:19+11:00">2020-03-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">In</span>
+      <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
         </span>
-          , 
+          ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
         </span>
@@ -247,49 +247,39 @@
     <div class="post-body" itemprop="articleBody"><p><del>咕咕咕</del></p>
 <span id="more"></span>
 <h2 id="什么是主席树">什么是主席树:</h2>
-<p>主席树又叫可持久化线段树. 顾名思义,
+<p>主席树又叫可持久化线段树。顾名思义，
 是一个以线段树为基础的可持久化数据结构.</p>
-<p>主要是通过<strong>复用结点</strong>, 在修改的同时保留之前的结构.</p>
+<p>主要是通过<strong>复用结点</strong> , 在修改的同时保留之前的结构.</p>
 <p>大概就长这个样子:</p>
 <figure>
-<img src="/img/ChairmanTree.png" alt="ChairmanTree" />
+<img data-src="/img/ChairmanTree.png" alt="ChairmanTree">
 <figcaption aria-hidden="true">ChairmanTree</figcaption>
 </figure>
 <h2 id="作用">作用:</h2>
-<p>主席树最常见的用法就是求<strong>静态区间的第k小</strong>.
-即给定一个长度为<span class="math inline">\(n\)</span>的序列<span
-class="math inline">\(a\)</span>, 求区间<span
-class="math inline">\([l,r]\)</span>对应序列<span
-class="math inline">\({a_l,a_{l+1},...,a_r}\)</span>中第k小(kth)的数.</p>
-<p>要解决这个问题, 首先引出<strong>权值(值域)线段树</strong>的概念.</p>
-<p>和值域树状数组一样<a href="/2018/08/13/luogu1168">(例题)</a>,
+<p>主席树最常见的用法就是求<strong>静态区间的第 k 小</strong>.
+即给定一个长度为<span class="math inline"> \(n\)</span> 的序列<span class="math inline"> \(a\)</span>, 求区间<span class="math inline"> \([l,r]\)</span> 对应序列<span class="math inline"> \({a_l,a_{l+1},...,a_r}\)</span> 中第 k 小 (kth) 的数.</p>
+<p>要解决这个问题，首先引出<strong>权值 (值域) 线段树</strong>的概念.</p>
+<p>和值域树状数组一样 <a href="/2018/08/13/luogu1168">(例题)</a>,
 值域线段树也是将数据离散化后用线段树维护每个数的出现个数.</p>
-<p>在解决原问题之前, 先解决几个个弱化的问题:</p>
+<p>在解决原问题之前，先解决几个个弱化的问题:</p>
 <h3 id="l1rn">l=1,r=n:</h3>
-<p>方法很多, 使用值域线段树的方法和上面给出的例题有点相似,
-只是将在树状数组上的二分查找变为了在线段树上的查找(类似于名次树).</p>
+<p>方法很多，使用值域线段树的方法和上面给出的例题有点相似，
+只是将在树状数组上的二分查找变为了在线段树上的查找 (类似于名次树).</p>
 <h3 id="l1">l=1:</h3>
-<p>受到上一个问题的启发, 我们可以直接建立n个值域线段树. 对于不同的<span
-class="math inline">\(r\)</span>在相应的线段树查找即可.</p>
-<p>可以注意到, <span
-class="math inline">\([1,i]\)</span>的值域线段树与<span
-class="math inline">\([1,i+1]\)</span>的值域线段树之间只进行了一个点修改操作.
-可以通过<strong>复用结点</strong>将n个线段树变为一个<strong>可持久化线段树</strong>,
+<p>受到上一个问题的启发，我们可以直接建立 n 个值域线段树。对于不同的<span class="math inline"> \(r\)</span> 在相应的线段树查找即可.</p>
+<p>可以注意到，<span class="math inline">\([1,i]\)</span> 的值域线段树与<span class="math inline"> \([1,i+1]\)</span> 的值域线段树之间只进行了一个点修改操作.
+可以通过<strong>复用结点</strong>将 n 个线段树变为一个<strong>可持久化线段树</strong> ,
 从而起到节省空间的作用.</p>
 <h3 id="原问题">原问题:</h3>
-<p>注意到n个”分线段树”的<strong>结构相同</strong>,
-意味着这些线段树是<strong>可减的</strong>. 可以利用<a
-href="/2017/11/05/presum/"><strong>前缀和思想</strong></a>,
-将原问题转化为两个<span class="math inline">\(l=1\)</span>的弱化问题.
-即将<span class="math inline">\([1,r]\)</span>的线段树减去<span
-class="math inline">\([1,l-1]\)</span>的线段树, 便可得到<span
-class="math inline">\([l,r]\)</span>的值域线段树. 问题便迎刃而解.</p>
-<p>预处理时间复杂度<span class="math inline">\(O(nlogn)\)</span>,
-每次查询时间复杂度<span class="math inline">\(O(logn)\)</span>,
-空间复杂度<span class="math inline">\(O(nlogn)\)</span>.</p>
-<p><strong>代码:</strong> <a
-target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3834">(luogu3834)主席树模板</a>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">const</span> <span class="type">int</span> <span class="title">Mn</span><span class="params">(<span class="number">200500</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">qread</span><span class="params">(<span class="type">int</span> &amp;x)</span>    <span class="comment">//快读</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">o</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(c==<span class="string">&#x27;-&#x27;</span>) o=<span class="number">-1</span>;</span><br><span class="line">        c = <span class="built_in">getchar</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c))</span><br><span class="line">    &#123;</span><br><span class="line">        x = x*<span class="number">10</span> + c-<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        c = <span class="built_in">getchar</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    x *= o;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[Mn],vals[Mn];    <span class="comment">//原数组与离散化数组</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">CTree_node</span>    <span class="comment">//主席树结点, 采用链式存储</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> l,r,v;	<span class="comment">//左边界, 右边界, 结点值</span></span><br><span class="line">    CTree_node *ls,*rs;	<span class="comment">//左儿子, 右儿子</span></span><br><span class="line">&#125;*ver[Mn],*null;    <span class="comment">//修改&quot;版本&quot;(version), 自定义null(方便处理)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init_null</span><span class="params">()</span>    <span class="comment">//初始化null</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    null = <span class="keyword">new</span> <span class="built_in">CTree_node</span>();</span><br><span class="line">    null-&gt;ls = null-&gt;rs = null;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r,CTree_node* &amp;p)</span>    <span class="comment">//建第一棵线段树</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    p = <span class="keyword">new</span> <span class="built_in">CTree_node</span>();</span><br><span class="line">    p-&gt;l = l; p-&gt;r = r;</span><br><span class="line">    <span class="keyword">if</span>(l==r)</span><br><span class="line">    &#123;</span><br><span class="line">        p-&gt;ls = p-&gt;rs = null;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">mid</span><span class="params">((l+r)&gt;&gt;<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="built_in">build</span>(l,mid,p-&gt;ls);</span><br><span class="line">    <span class="built_in">build</span>(mid<span class="number">+1</span>,r,p-&gt;rs);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">modify</span><span class="params">(CTree_node* last_ver,CTree_node* &amp;mod_ver,<span class="type">int</span> p)</span>    <span class="comment">//单点修改(上个版本, 修改后的版本)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    mod_ver = <span class="keyword">new</span> <span class="built_in">CTree_node</span>();</span><br><span class="line">    *mod_ver = *last_ver;</span><br><span class="line">    ++(mod_ver-&gt;v);	<span class="comment">//在&quot;路径&quot;上计数</span></span><br><span class="line">    <span class="keyword">if</span>(mod_ver-&gt;l==mod_ver-&gt;r)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(mod_ver-&gt;ls-&gt;r &gt;= p)</span><br><span class="line">        <span class="built_in">modify</span>(last_ver-&gt;ls,mod_ver-&gt;ls,p);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">modify</span>(last_ver-&gt;rs,mod_ver-&gt;rs,p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(CTree_node* ltree,CTree_node* rtree,<span class="type">int</span> k)</span>    <span class="comment">//查找</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> lv = rtree-&gt;ls-&gt;v - ltree-&gt;ls-&gt;v;	<span class="comment">//左儿子的值(判断查找区间的关键)</span></span><br><span class="line">    <span class="keyword">if</span>(ltree-&gt;l==ltree-&gt;r)	<span class="keyword">return</span> vals[ltree-&gt;l];</span><br><span class="line">    <span class="keyword">if</span>(k&lt;=lv)	<span class="keyword">return</span> <span class="built_in">query</span>(ltree-&gt;ls,rtree-&gt;ls,k);</span><br><span class="line">    <span class="keyword">else</span>		<span class="keyword">return</span> <span class="built_in">query</span>(ltree-&gt;rs,rtree-&gt;rs,k-lv);	<span class="comment">//注意在右子树查找时要减去左子树的值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">init_null</span>();</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    <span class="built_in">qread</span>(n), <span class="built_in">qread</span>(m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=n;++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">qread</span>(a[i]);</span><br><span class="line">        vals[i] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(vals<span class="number">+1</span>,vals+n<span class="number">+1</span>);	<span class="comment">//排序</span></span><br><span class="line">    <span class="type">int</span> valn = <span class="built_in">unique</span>(vals<span class="number">+1</span>,vals+n<span class="number">+1</span>)-vals<span class="number">-1</span>;	<span class="comment">//离散化(unique)并找到值的个数</span></span><br><span class="line">    <span class="built_in">build</span>(<span class="number">1</span>,valn,ver[<span class="number">0</span>]);	<span class="comment">//建第一棵树</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=n;++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> apos = <span class="built_in">lower_bound</span>(vals<span class="number">+1</span>,vals+valn<span class="number">+1</span>,a[i])-vals;	<span class="comment">//二分查找a[i]在离散化数组的位置</span></span><br><span class="line">        <span class="built_in">modify</span>(ver[i<span class="number">-1</span>],ver[i],apos);	<span class="comment">//修改(建树)</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> l,r,k;</span><br><span class="line">        <span class="built_in">qread</span>(l), <span class="built_in">qread</span>(r), <span class="built_in">qread</span>(k);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">query</span>(ver[l<span class="number">-1</span>],ver[r],k));	<span class="comment">//查询</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注意到 n 个” 分线段树” 的<strong>结构相同</strong> ,
+意味着这些线段树是<strong>可减的</strong>. 可以利用<a href="/2017/11/05/presum/"><strong>前缀和思想</strong></a> ,
+将原问题转化为两个<span class="math inline"> \(l=1\)</span> 的弱化问题.
+即将<span class="math inline"> \([1,r]\)</span> 的线段树减去<span class="math inline"> \([1,l-1]\)</span> 的线段树，便可得到<span class="math inline"> \([l,r]\)</span> 的值域线段树。问题便迎刃而解.</p>
+<p>预处理时间复杂度<span class="math inline"> \(O(nlogn)\)</span>,
+每次查询时间复杂度<span class="math inline"> \(O(logn)\)</span>,
+空间复杂度<span class="math inline"> \(O(nlogn)\)</span>.</p>
+<p><strong>代码:</strong> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3834">(luogu3834) 主席树模板</a>
+</p><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">const</span> <span class="type">int</span> <span class="title">Mn</span><span class="params">(<span class="number">200500</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">qread</span><span class="params">(<span class="type">int</span> &amp;x)</span>    <span class="comment">//快读</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">o</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">if</span>(c==<span class="string">'-'</span>) o=<span class="number">-1</span>;</span><br><span class="line">        c = <span class="built_in">getchar</span>();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c))</span><br><span class="line">    {</span><br><span class="line">        x = x*<span class="number">10</span> + c-<span class="string">'0'</span>;</span><br><span class="line">        c = <span class="built_in">getchar</span>();</span><br><span class="line">    }</span><br><span class="line">    x *= o;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[Mn],vals[Mn];    <span class="comment">//原数组与离散化数组</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">CTree_node</span>    <span class="comment">//主席树结点, 采用链式存储</span></span><br><span class="line">{</span><br><span class="line">    <span class="type">int</span> l,r,v;	<span class="comment">//左边界, 右边界, 结点值</span></span><br><span class="line">    CTree_node *ls,*rs;	<span class="comment">//左儿子, 右儿子</span></span><br><span class="line">}*ver[Mn],*null;    <span class="comment">//修改"版本"(version), 自定义null(方便处理)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init_null</span><span class="params">()</span>    <span class="comment">//初始化null</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    null = <span class="keyword">new</span> <span class="built_in">CTree_node</span>();</span><br><span class="line">    null-&gt;ls = null-&gt;rs = null;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r,CTree_node* &amp;p)</span>    <span class="comment">//建第一棵线段树</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    p = <span class="keyword">new</span> <span class="built_in">CTree_node</span>();</span><br><span class="line">    p-&gt;l = l; p-&gt;r = r;</span><br><span class="line">    <span class="keyword">if</span>(l==r)</span><br><span class="line">    {</span><br><span class="line">        p-&gt;ls = p-&gt;rs = null;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">mid</span><span class="params">((l+r)&gt;&gt;<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="built_in">build</span>(l,mid,p-&gt;ls);</span><br><span class="line">    <span class="built_in">build</span>(mid<span class="number">+1</span>,r,p-&gt;rs);</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">modify</span><span class="params">(CTree_node* last_ver,CTree_node* &amp;mod_ver,<span class="type">int</span> p)</span>    <span class="comment">//单点修改(上个版本, 修改后的版本)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    mod_ver = <span class="keyword">new</span> <span class="built_in">CTree_node</span>();</span><br><span class="line">    *mod_ver = *last_ver;</span><br><span class="line">    ++(mod_ver-&gt;v);	<span class="comment">//在"路径"上计数</span></span><br><span class="line">    <span class="keyword">if</span>(mod_ver-&gt;l==mod_ver-&gt;r)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(mod_ver-&gt;ls-&gt;r &gt;= p)</span><br><span class="line">        <span class="built_in">modify</span>(last_ver-&gt;ls,mod_ver-&gt;ls,p);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">modify</span>(last_ver-&gt;rs,mod_ver-&gt;rs,p);</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(CTree_node* ltree,CTree_node* rtree,<span class="type">int</span> k)</span>    <span class="comment">//查找</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">int</span> lv = rtree-&gt;ls-&gt;v - ltree-&gt;ls-&gt;v;	<span class="comment">//左儿子的值(判断查找区间的关键)</span></span><br><span class="line">    <span class="keyword">if</span>(ltree-&gt;l==ltree-&gt;r)	<span class="keyword">return</span> vals[ltree-&gt;l];</span><br><span class="line">    <span class="keyword">if</span>(k&lt;=lv)	<span class="keyword">return</span> <span class="built_in">query</span>(ltree-&gt;ls,rtree-&gt;ls,k);</span><br><span class="line">    <span class="keyword">else</span>		<span class="keyword">return</span> <span class="built_in">query</span>(ltree-&gt;rs,rtree-&gt;rs,k-lv);	<span class="comment">//注意在右子树查找时要减去左子树的值</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="built_in">init_null</span>();</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    <span class="built_in">qread</span>(n), <span class="built_in">qread</span>(m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=n;++i)</span><br><span class="line">    {</span><br><span class="line">        <span class="built_in">qread</span>(a[i]);</span><br><span class="line">        vals[i] = a[i];</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">sort</span>(vals<span class="number">+1</span>,vals+n<span class="number">+1</span>);	<span class="comment">//排序</span></span><br><span class="line">    <span class="type">int</span> valn = <span class="built_in">unique</span>(vals<span class="number">+1</span>,vals+n<span class="number">+1</span>)-vals<span class="number">-1</span>;	<span class="comment">//离散化(unique)并找到值的个数</span></span><br><span class="line">    <span class="built_in">build</span>(<span class="number">1</span>,valn,ver[<span class="number">0</span>]);	<span class="comment">//建第一棵树</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=n;++i)</span><br><span class="line">    {</span><br><span class="line">        <span class="type">int</span> apos = <span class="built_in">lower_bound</span>(vals<span class="number">+1</span>,vals+valn<span class="number">+1</span>,a[i])-vals;	<span class="comment">//二分查找a[i]在离散化数组的位置</span></span><br><span class="line">        <span class="built_in">modify</span>(ver[i<span class="number">-1</span>],ver[i],apos);	<span class="comment">//修改(建树)</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">while</span>(m--)</span><br><span class="line">    {</span><br><span class="line">        <span class="type">int</span> l,r,k;</span><br><span class="line">        <span class="built_in">qread</span>(l), <span class="built_in">qread</span>(r), <span class="built_in">qread</span>(k);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,<span class="built_in">query</span>(ver[l<span class="number">-1</span>],ver[r],k));	<span class="comment">//查询</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
 
     </div>
 
@@ -325,6 +315,7 @@ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3834">(lu
 
 
 
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -339,7 +330,7 @@ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3834">(lu
     </span>
     <span class="author" itemprop="copyrightHolder">AjiL</span>
   </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
@@ -352,7 +343,7 @@ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3834">(lu
     <span class="toggle-line"></span>
   </div>
   <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
@@ -364,6 +355,8 @@ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3834">(lu
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -384,6 +377,10 @@ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3834">(lu
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"XajilX","repo":"gitalk_comments","client_id":"Ov23lidC06Ozg0VieeHH","client_secret":"828218305f3333d7f9ea63d9943a1329c9a06f13","admin_user":"XajilX","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"aa3d4f0719174ba0f788dbb36d446999"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 </html>

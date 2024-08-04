@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="终于算是搞明白这个东西了">
 <meta property="og:type" content="article">
@@ -25,7 +25,7 @@
 <meta property="og:url" content="http://example.com/2021/12/13/mobius-inversion/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
 <meta property="og:description" content="终于算是搞明白这个东西了">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-13T09:54:18.000Z">
 <meta property="article:modified_time" content="2024-08-03T12:36:17.507Z">
 <meta property="article:author" content="AjiL">
@@ -38,7 +38,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2021/12/13/mobius-inversion/","path":"2021/12/13/mobius-inversion/","title":"莫比乌斯反演与狄利克雷卷积"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/12/13/mobius-inversion/","path":"2021/12/13/mobius-inversion/","title":"莫比乌斯反演与狄利克雷卷积"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>莫比乌斯反演与狄利克雷卷积 | AjiL's Blog</title>
@@ -63,7 +63,7 @@
     <div class="column">
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -80,7 +80,7 @@
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
     </div>
   </div>
 </div>
@@ -88,7 +88,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
 
@@ -103,10 +103,10 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -129,18 +129,18 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">159</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
         <span class="site-state-item-count">82</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -158,7 +158,7 @@
     <div class="sidebar-inner sidebar-blogroll">
       <div class="links-of-blogroll animated">
         <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          Links
+          链接
         </div>
         <ul class="links-of-blogroll-list">
             <li class="links-of-blogroll-item">
@@ -188,7 +188,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/13/mobius-inversion/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -216,19 +216,19 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
 
-      <time title="Created: 2021-12-13 20:54:18" itemprop="dateCreated datePublished" datetime="2021-12-13T20:54:18+11:00">2021-12-13</time>
+      <time title="创建时间：2021-12-13 20:54:18" itemprop="dateCreated datePublished" datetime="2021-12-13T20:54:18+11:00">2021-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">In</span>
+      <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
         </span>
-          , 
+          ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/%E6%95%B0%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">数论</span></a>
         </span>
@@ -251,32 +251,21 @@
 1 &amp;, P\ is\ true \\
 0 &amp;, P\ is\ false
 \end{cases}\]</span>
-<p>false \end{cases} $ 其中<span
-class="math inline">\(P\)</span>为一个命题,
-同时艾弗森括号与其他值相乘时不受其定义域影响, 例如<span
-class="math inline">\(\frac{[x\neq 0]}{x}\)</span>当<span
-class="math inline">\(x=0\)</span>时其值为零.</p>
+<p>false \end {cases} $ 其中<span class="math inline"> \(P\)</span> 为一个命题，
+同时艾弗森括号与其他值相乘时不受其定义域影响，例如<span class="math inline"> \(\frac{[x\neq 0]}{x}\)</span> 当<span class="math inline"> \(x=0\)</span> 时其值为零.</p>
 <h2 id="数论函数">数论函数:</h2>
-<p>讲莫比乌斯反演首先得讲莫比乌斯函数,
+<p>讲莫比乌斯反演首先得讲莫比乌斯函数，
 讲莫比乌斯函数首先得说下啥是数论函数.</p>
-<p>数论函数即是定义在正整数区间上的函数. 常见的数论函数有欧拉<span
-class="math inline">\(\varphi\)</span>函数, 因数个数, 因数和,
-以及接下来讨论的莫比乌斯<span
-class="math inline">\(\mu\)</span>函数.</p>
+<p>数论函数即是定义在正整数区间上的函数。常见的数论函数有欧拉<span class="math inline"> \(\varphi\)</span> 函数，因数个数，因数和，
+以及接下来讨论的莫比乌斯<span class="math inline"> \(\mu\)</span> 函数.</p>
 <p>一类比较重要的数论函数叫做<strong>积性函数</strong>:
-对于两个<strong>互质</strong>的正整数<span
-class="math inline">\(p,q\)</span>, 若有<span
-class="math inline">\(f(pq)=f(p)f(q)\)</span>, 则称数论函数<span
-class="math inline">\(f\)</span>为积性函数.
+对于两个<strong>互质</strong>的正整数<span class="math inline"> \(p,q\)</span>, 若有<span class="math inline"> \(f(pq)=f(p)f(q)\)</span>, 则称数论函数<span class="math inline"> \(f\)</span> 为积性函数.
 上面提到的数论函数都是积性函数.</p>
-<p>特殊地, 若去掉互质的约束, 即对于任意正整数<span
-class="math inline">\(p,q\)</span>均有<span
-class="math inline">\(f(pq)=f(p)f(q)\)</span>, 则称<span
-class="math inline">\(f\)</span>为<strong>完全积性函数</strong>.
-比如<span class="math inline">\(f(x) = x^k\)</span>.</p>
+<p>特殊地，若去掉互质的约束，即对于任意正整数<span class="math inline"> \(p,q\)</span> 均有<span class="math inline"> \(f(pq)=f(p)f(q)\)</span>, 则称<span class="math inline"> \(f\)</span> 为<strong>完全积性函数</strong>.
+比如<span class="math inline"> \(f(x) = x^k\)</span>.</p>
 <p>积性函数都可以使用<strong>欧拉筛</strong>进行线性的预处理.</p>
 <h2 id="莫比乌斯函数">莫比乌斯函数:</h2>
-<p>莫比乌斯<span class="math inline">\(\mu\)</span>函数的定义如下:</p>
+<p>莫比乌斯<span class="math inline"> \(\mu\)</span> 函数的定义如下:</p>
 <p><span class="math display">\[
     \mu(x) =
     \begin{cases}
@@ -284,17 +273,16 @@ class="math inline">\(f\)</span>为<strong>完全积性函数</strong>.
         (-1)^k &amp;,x=\prod_{i=1}^k p_i \\
         0 &amp;, others
     \end{cases}
-\]</span> 其中<span class="math inline">\(p_1 \neq p_2 \neq
-\cdots\)</span>, 且<span class="math inline">\(p_i\)</span>均为质数.</p>
+\]</span> 其中<span class="math inline"> \(p_1 \neq p_2 \neq
+\cdots\)</span>, 且<span class="math inline"> \(p_i\)</span> 均为质数.</p>
 <p>一个重要性质如下:</p>
 <p><span class="math display">\[
 \sum_{d|n} \mu(d) = [n=1]
 \]</span></p>
 <p>(事实上这个性质比反演好用)</p>
 <p><strong>证明</strong>:</p>
-<p>当<span class="math inline">\(n=1\)</span>时, 等式显然成立.</p>
-<p>当<span class="math inline">\(n \neq 1\)</span>时, 令<span
-class="math inline">\(n = \prod_{i=1}^k p_i^{c_i}\)</span>(质因数分解),
+<p>当<span class="math inline"> \(n=1\)</span> 时，等式显然成立.</p>
+<p>当<span class="math inline"> \(n \neq 1\)</span> 时，令<span class="math inline"> \(n = \prod_{i=1}^k p_i^{c_i}\)</span>(质因数分解),
 则有:</p>
 <p><span class="math display">\[ \begin{aligned}
     &amp; \sum_{d|n}\mu(d) \\
@@ -304,19 +292,14 @@ class="math inline">\(n = \prod_{i=1}^k p_i^{c_i}\)</span>(质因数分解),
     = &amp; \  \sum_{i=0}^k (-1)^i {k \choose i} \\
     = &amp; \ (1-1)^k = 0
 \end{aligned} \]</span></p>
-<p>从中可以看出<span
-class="math inline">\(\mu\)</span>函数在容斥当中的作用.</p>
+<p>从中可以看出<span class="math inline"> \(\mu\)</span> 函数在容斥当中的作用.</p>
 <h2 id="莫比乌斯反演">莫比乌斯反演:</h2>
 <blockquote>
-<p>对于函数<span class="math inline">\(f(n)\)</span>, 若有<span
-class="math inline">\(F(n) = \sum_{d|n} f(x)\)</span>, 则有<span
-class="math inline">\(f(n) = \sum_{d|n}\mu(d)F(n/d)\)</span>.</p>
+<p>对于函数<span class="math inline"> \(f(n)\)</span>, 若有<span class="math inline"> \(F(n) = \sum_{d|n} f(x)\)</span>, 则有<span class="math inline"> \(f(n) = \sum_{d|n}\mu(d)F(n/d)\)</span>.</p>
 </blockquote>
 <p>另一种更常用的形式如下:</p>
 <blockquote>
-<p>对于函数<span class="math inline">\(f(n)\)</span>, 若有<span
-class="math inline">\(F(n) = \sum_{n|d} f(x)\)</span>, 则有<span
-class="math inline">\(f(n) = \sum_{n|d}\mu(d/n)F(d)\)</span>.</p>
+<p>对于函数<span class="math inline"> \(f(n)\)</span>, 若有<span class="math inline"> \(F(n) = \sum_{n|d} f(x)\)</span>, 则有<span class="math inline"> \(f(n) = \sum_{n|d}\mu(d/n)F(d)\)</span>.</p>
 </blockquote>
 <p><strong>证明</strong>:</p>
 <p>对于第一种形式:</p>
@@ -338,46 +321,42 @@ class="math inline">\(f(n) = \sum_{n|d}\mu(d/n)F(d)\)</span>.</p>
     = &amp; f(n)
 \end{aligned} \]</span></p>
 <h2 id="狄利克雷卷积">狄利克雷卷积:</h2>
-<p>对于两个数论函数<span class="math inline">\(f(x),g(x)\)</span>,
+<p>对于两个数论函数<span class="math inline"> \(f(x),g(x)\)</span>,
 定义运算:</p>
 <p><span class="math display">\[
     (f*g)(x) = \sum_{d|x}f(d)g(\frac{x}{d})
 \]</span></p>
 <p>该运算称为狄利克雷卷积.</p>
-<p>显然狄利克雷卷积满足交换律, 结合律和分配律. (其实是懒得写证明了)</p>
-<p>狄利克雷卷积有条重要的性质: 两个积性函数卷积后依然是积性函数,
+<p>显然狄利克雷卷积满足交换律，结合律和分配律. (其实是懒得写证明了)</p>
+<p>狄利克雷卷积有条重要的性质：两个积性函数卷积后依然是积性函数，
 所以通过狄利克雷卷积得到的函数也可以使用欧拉筛线性预处理.</p>
-<p>狄利克雷卷积有单位元<span class="math inline">\(\epsilon(x) =
+<p>狄利克雷卷积有单位元<span class="math inline"> \(\epsilon(x) =
 [x=1]\)</span>.</p>
-<p>有了狄利克雷卷积, 之前提到的<span
-class="math inline">\(\mu\)</span>函数的性质就可以表示为:</p>
+<p>有了狄利克雷卷积，之前提到的<span class="math inline"> \(\mu\)</span> 函数的性质就可以表示为:</p>
 <p><span class="math display">\[
     \mu * I = \epsilon
 \]</span></p>
-<p>其中<span class="math inline">\(I(x)=1\)</span>. 也即<span
-class="math inline">\(\mu\)</span>是<span
-class="math inline">\(I\)</span>的逆元.</p>
+<p>其中<span class="math inline"> \(I(x)=1\)</span>. 也即<span class="math inline"> \(\mu\)</span> 是<span class="math inline"> \(I\)</span> 的逆元.</p>
 <p>此时莫比乌斯反演的第一种形式也变得十分显然:</p>
 <p><span class="math display">\[ \begin{aligned}
      &amp; F = f*I \\
     \therefore \ &amp; F*\mu = f*I*\mu \\
      &amp; = f * \epsilon = f
 \end{aligned} \]</span></p>
-<p>同时欧拉<span
-class="math inline">\(\varphi\)</span>函数有一个与狄利克雷卷积有关的性质:</p>
+<p>同时欧拉<span class="math inline"> \(\varphi\)</span> 函数有一个与狄利克雷卷积有关的性质:</p>
 <p><span class="math display">\[
 \sum_{d|n} \varphi(d) = n
 \]</span></p>
 <blockquote>
 <p><strong>证明</strong>:</p>
-<p><span class="math display">\[ \begin{aligned}
-\sum_{d|n} \varphi(d) = &amp; \sum_{d|n}\varphi(\frac{n}{d}) \\
-= &amp; \sum_{d|n}\sum_{i=1}^{n/d}[(i,\frac{n}{d}=1)] \\
+<p><span class="math display">\[\begin {aligned}
+\sum_{d|n} \varphi (d) = &amp; \sum_{d|n}\varphi (\frac {n}{d}) \\
+= &amp; \sum_{d|n}\sum_{i=1}^{n/d}[(i,\frac {n}{d}=1)] \\
 = &amp; \sum_{d|n}\sum_{i=1}^{n/d}[(id,n)=d] \\
-\xlongequal{引入无关项} &amp; \sum_{d|n}\sum_{i=1}^{n}[(i,n)=d] \\
-\xlongequal{枚举gcd} &amp; n
-\end{aligned} \]</span></p>
-<p>事实上有个更通用的做法: 考察积性函数在质数幂次上的值:</p>
+\xlongequal {引入无关项} &amp; \sum_{d|n}\sum_{i=1}^{n}[(i,n)=d] \\
+\xlongequal {枚举 gcd} &amp; n
+\end {aligned} \]</span></p>
+<p>事实上有个更通用的做法：考察积性函数在质数幂次上的值:</p>
 <p><span class="math display">\[ \begin{aligned}
 \sum_{d|p^k} \varphi(d) = &amp; 1 + \sum_{i=1}^{k} p^i-p^{i-1} \\
 = &amp; p^k \\
@@ -395,9 +374,7 @@ class="math inline">\(\varphi\)</span>函数有一个与狄利克雷卷积有关
     \Longrightarrow &amp; \frac{\varphi(x)}{x} = \sum_{d|x}
 \frac{\mu(d)}{d}
 \end{aligned} \]</span></p>
-<p>这个式子简洁地将<span
-class="math inline">\(\varphi\)</span>函数与<span
-class="math inline">\(\mu\)</span>函数结合在了一起.
+<p>这个式子简洁地将<span class="math inline"> \(\varphi\)</span> 函数与<span class="math inline"> \(\mu\)</span> 函数结合在了一起.
 (虽然好像暂时不知道有啥用)</p>
 
     </div>
@@ -435,6 +412,7 @@ class="math inline">\(\mu\)</span>函数结合在了一起.
 
 
 
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -449,7 +427,7 @@ class="math inline">\(\mu\)</span>函数结合在了一起.
     </span>
     <span class="author" itemprop="copyrightHolder">AjiL</span>
   </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
@@ -462,7 +440,7 @@ class="math inline">\(\mu\)</span>函数结合在了一起.
     <span class="toggle-line"></span>
   </div>
   <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
@@ -474,6 +452,8 @@ class="math inline">\(\mu\)</span>函数结合在了一起.
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -494,6 +474,10 @@ class="math inline">\(\mu\)</span>函数结合在了一起.
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"XajilX","repo":"gitalk_comments","client_id":"Ov23lidC06Ozg0VieeHH","client_secret":"828218305f3333d7f9ea63d9943a1329c9a06f13","admin_user":"XajilX","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a892e94261112ab7fb6341042b488433"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 </html>

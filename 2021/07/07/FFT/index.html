@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -17,13 +17,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="article">
-<meta property="og:title" content="FFT与NTT">
+<meta property="og:title" content="FFT 与 NTT">
 <meta property="og:url" content="http://example.com/2021/07/07/FFT/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-07T05:37:32.000Z">
 <meta property="article:modified_time" content="2024-08-03T12:36:17.497Z">
 <meta property="article:author" content="AjiL">
@@ -35,10 +35,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2021/07/07/FFT/","path":"2021/07/07/FFT/","title":"FFT与NTT"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/07/07/FFT/","path":"2021/07/07/FFT/","title":"FFT 与 NTT"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>FFT与NTT | AjiL's Blog</title>
+<title>FFT 与 NTT | AjiL's Blog</title>
   
 
 
@@ -60,7 +60,7 @@
     <div class="column">
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -77,7 +77,7 @@
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
     </div>
   </div>
 </div>
@@ -85,7 +85,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
 
@@ -100,10 +100,10 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -126,18 +126,18 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">159</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
         <span class="site-state-item-count">82</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -155,7 +155,7 @@
     <div class="sidebar-inner sidebar-blogroll">
       <div class="links-of-blogroll animated">
         <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          Links
+          链接
         </div>
         <ul class="links-of-blogroll-list">
             <li class="links-of-blogroll-item">
@@ -185,7 +185,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/07/FFT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -199,12 +199,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="FFT与NTT | AjiL's Blog">
+      <meta itemprop="name" content="FFT 与 NTT | AjiL's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          FFT与NTT
+          FFT 与 NTT
         </h1>
 
         <div class="post-meta-container">
@@ -213,19 +213,19 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
 
-      <time title="Created: 2021-07-07 15:37:32" itemprop="dateCreated datePublished" datetime="2021-07-07T15:37:32+10:00">2021-07-07</time>
+      <time title="创建时间：2021-07-07 15:37:32" itemprop="dateCreated datePublished" datetime="2021-07-07T15:37:32+10:00">2021-07-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">In</span>
+      <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
         </span>
-          , 
+          ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">多项式</span></a>
         </span>
@@ -240,76 +240,63 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><hr />
+    <div class="post-body" itemprop="articleBody"><hr>
 <span id="more"></span>
 <h2 id="概述">概述</h2>
-<p>FFT与NTT两个算法基本干的是同一件事:
-将多项式由系数表示法转化为点值表示法, 以及逆过程.</p>
-<p>两种表示法之间的转化在有关生成函数的题目中随处可见,
+<p>FFT 与 NTT 两个算法基本干的是同一件事:
+将多项式由系数表示法转化为点值表示法，以及逆过程.</p>
+<p>两种表示法之间的转化在有关生成函数的题目中随处可见，
 同时也可以用来快速求离散卷积.</p>
 <h2 id="点值表示法">点值表示法</h2>
-<p>设<span class="math inline">\(n-1\)</span>阶多项式<span
-class="math inline">\(A(x) = \sum^{n-1}_{i=0} a_ix^i\)</span>.
-这样由各项的系数组成的数列<span
-class="math inline">\(a_k\)</span>表示了多项式<span
-class="math inline">\(A(x)\)</span>.</p>
-<p>由拉格朗日插值法或矩阵相关定理可知,
-n个横坐标不同的点可以唯一确定一个阶数小于n的多项式, 则可以用:</p>
+<p>设<span class="math inline"> \(n-1\)</span> 阶多项式<span class="math inline"> \(A(x) = \sum^{n-1}_{i=0} a_ix^i\)</span>.
+这样由各项的系数组成的数列<span class="math inline"> \(a_k\)</span> 表示了多项式<span class="math inline"> \(A(x)\)</span>.</p>
+<p>由拉格朗日插值法或矩阵相关定理可知，
+n 个横坐标不同的点可以唯一确定一个阶数小于 n 的多项式，则可以用:</p>
 <p><span class="math display">\[
 (x_0,A(x_0)),(x_1,A(x_1))\cdots (x_n,A(x_n))
 \]</span></p>
-<p>这样的点值对序列来唯一确定<span
-class="math inline">\(A(x)\)</span>.</p>
-<p>这样表示的好处就是便于处理多项式之间的运算,
+<p>这样的点值对序列来唯一确定<span class="math inline"> \(A(x)\)</span>.</p>
+<p>这样表示的好处就是便于处理多项式之间的运算，
 只需要对值进行运算即可.</p>
 <h2 id="fft">FFT</h2>
-<p>使得快速傅里叶变换(Fast Fourier Transform,
-FFT)“快速”的原因在于FFT使用特定的一组横坐标来求对应的<span
-class="math inline">\(A(x)\)</span>, 并且发掘出了其中的内在联系.</p>
-<p>具体来讲, FFT使用的横坐标由傅里叶变换而来,
+<p>使得快速傅里叶变换 (Fast Fourier Transform,
+FFT)“快速” 的原因在于 FFT 使用特定的一组横坐标来求对应的<span class="math inline"> \(A(x)\)</span>, 并且发掘出了其中的内在联系.</p>
+<p>具体来讲，FFT 使用的横坐标由傅里叶变换而来，
 是在复平面单位圆上的复数.</p>
-<p>设<span class="math inline">\(\omega_n = e^{-2\pi {\rm i}/n} =
-cos\frac{2\pi}{n} - {\rm i}sin\frac{2\pi}{n}\)</span>. 取<span
-class="math inline">\(\omega_n^0,
-\omega_n^1,\cdots,\omega_n^{n-1}\)</span>为横坐标. 由复数有关性质,
+<p>设<span class="math inline"> \(\omega_n = e^{-2\pi {\rm i}/n} =
+cos\frac{2\pi}{n} - {\rm i}sin\frac{2\pi}{n}\)</span>. 取<span class="math inline"> \(\omega_n^0,
+\omega_n^1,\cdots,\omega_n^{n-1}\)</span> 为横坐标。由复数有关性质，
 有:</p>
 <p><span class="math display">\[
 \omega_{2n}^{2k} = \omega_n^k \\
 \omega_{2n}^{k+n} = -\omega_{2n}^{k}
 \]</span></p>
 <p>(这两条性质画个单位圆把点标上去就懂了)</p>
-<p>将<span class="math inline">\(A(x)\)</span>按奇偶拆成两个多项式:</p>
+<p>将<span class="math inline"> \(A(x)\)</span> 按奇偶拆成两个多项式:</p>
 <p><span class="math display">\[ \begin{aligned}
 A(x) = &amp; a_0 + a_1x + \cdots + a_{2n-1}x^{2n-1} \\
 = &amp; (a_0 + a_2x^2 + \cdots + a_{2n-2}x^{2n-2}) \\
 &amp; + (a_1x + \cdots + a_{2n-1}x^{2n-1}) \\
 = &amp; A_0(x^2) + xA_1(x^2)
 \end{aligned} \]</span></p>
-<p>代入<span class="math inline">\(\omega_n^k\)</span>, 有:</p>
+<p>代入<span class="math inline"> \(\omega_n^k\)</span>, 有:</p>
 <p><span class="math display">\[ \begin{aligned}
 A(\omega_n^k) &amp; = A_0(\omega_n^{2k}) + \omega_n^kA_1(\omega_n^{2k})
 \\
 &amp; = \color{red}{A_0(\omega^k_{n/2}) + \omega^k_nA_1(\omega^k_{n/2})}
 \end{aligned} \]</span></p>
-<p>代入<span class="math inline">\(\omega_n^{k+(n/2)}\)</span>, 有:</p>
+<p>代入<span class="math inline"> \(\omega_n^{k+(n/2)}\)</span>, 有:</p>
 <p><span class="math display">\[ \begin{aligned}
 A(\omega_n^k) &amp; = A_0(\omega_n^{2k+n}) +
 \omega_n^{k+(n/2)}A_1(\omega_n^{2k+n}) \\
 &amp; = \color{red}{A_0(\omega^k_{n/2}) - \omega^k_nA_1(\omega^k_{n/2})}
 \end{aligned} \]</span></p>
-<p>所以只要得到所有的<span
-class="math inline">\(A_0(\omega_{n/2}^k)\)</span>和<span
-class="math inline">\(A_1(\omega_{n/2}^k)\)</span>便可以得到所有的<span
-class="math inline">\(A(\omega_n^k)\)</span>, 而<span
-class="math inline">\(A_0(\omega_{n/2}^k)\)</span>和<span
-class="math inline">\(A_1(\omega_{n/2}^k)\)</span>则可以通过递归求出.</p>
-<p>每次递归都将多项式划分成两部分, 合并的时间复杂度为<span
-class="math inline">\(O(n)\)</span>, 所以整个算法的时间复杂度是<span
-class="math inline">\(O(n\log n)\)</span>.</p>
-<p>注意实现时先将系数扩充为<span class="math inline">\(2^n\)</span>阶,
+<p>所以只要得到所有的<span class="math inline"> \(A_0(\omega_{n/2}^k)\)</span> 和<span class="math inline"> \(A_1(\omega_{n/2}^k)\)</span> 便可以得到所有的<span class="math inline"> \(A(\omega_n^k)\)</span>, 而<span class="math inline"> \(A_0(\omega_{n/2}^k)\)</span> 和<span class="math inline"> \(A_1(\omega_{n/2}^k)\)</span> 则可以通过递归求出.</p>
+<p>每次递归都将多项式划分成两部分，合并的时间复杂度为<span class="math inline"> \(O(n)\)</span>, 所以整个算法的时间复杂度是<span class="math inline"> \(O(n\log n)\)</span>.</p>
+<p>注意实现时先将系数扩充为<span class="math inline"> \(2^n\)</span> 阶，
 这样更好划分多项式.</p>
 <h2 id="逆变换">逆变换</h2>
-<p>实际上, 若我们设矩阵:</p>
+<p>实际上，若我们设矩阵:</p>
 <p><span class="math display">\[
 X = \begin{bmatrix}
     1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1 \\
@@ -322,18 +309,15 @@ X = \begin{bmatrix}
 \omega_n^{(n-1)(n-1)}
     \end{bmatrix}
 \]</span></p>
-<p>则整个FFT可以写成:</p>
+<p>则整个 FFT 可以写成:</p>
 <p><span class="math display">\[
 X\vec{a} = \vec{y}
 \]</span></p>
-<p>其中<span class="math inline">\(\vec{a}\)</span>表示系数的列向量,
-<span class="math inline">\(\vec{y}\)</span>表示值的列向量.</p>
-<p>则逆变换意味着我们需要寻找<span
-class="math inline">\(X\)</span>的逆矩阵<span
-class="math inline">\(X^{-1}\)</span>.</p>
-<p>令矩阵B满足<span class="math inline">\(b_{ij} =
-\frac{1}{n}\omega_n^{-ij}\)</span>(下标从0开始), 则矩阵<span
-class="math inline">\(XB\)</span>的每一项满足:</p>
+<p>其中<span class="math inline"> \(\vec{a}\)</span> 表示系数的列向量，
+<span class="math inline">\(\vec{y}\)</span> 表示值的列向量.</p>
+<p>则逆变换意味着我们需要寻找<span class="math inline"> \(X\)</span> 的逆矩阵<span class="math inline"> \(X^{-1}\)</span>.</p>
+<p>令矩阵 B 满足<span class="math inline"> \(b_{ij} =
+\frac{1}{n}\omega_n^{-ij}\)</span>(下标从 0 开始), 则矩阵<span class="math inline"> \(XB\)</span> 的每一项满足:</p>
 <p><span class="math display">\[ \begin{aligned}
 z_{ij} &amp; = \frac{1}{n}\sum_{k=0}^{n-1} \omega_n^{ik}\omega_n^{-kj}
 \\
@@ -344,83 +328,57 @@ z_{ij} &amp; = \frac{1}{n}\sum_{k=0}^{n-1} \omega_n^{ik}\omega_n^{-kj}
 \frac{1-\omega_n^{n(i-j)}}{n(1-\omega_n^{i-j})}, i \neq j
 \end{cases}
 \end{aligned} \]</span></p>
-<p>当<span class="math inline">\(i \neq j\)</span>时上式始终为0,
-这说明<span class="math inline">\(B\)</span>确实是<span
-class="math inline">\(X\)</span>的逆矩阵.</p>
-<p>可以看出<span class="math inline">\(B\)</span>矩阵形式上与<span
-class="math inline">\(X\)</span>很相似,
-事实上逆FFT只需要将求值的横坐标由<span
-class="math inline">\(\omega_n^k\)</span>换为<span
-class="math inline">\(\omega_n^{-k}\)</span>, 然后各项乘<span
-class="math inline">\(1/n\)</span>即可.</p>
+<p>当<span class="math inline"> \(i \neq j\)</span> 时上式始终为 0,
+这说明<span class="math inline"> \(B\)</span> 确实是<span class="math inline"> \(X\)</span> 的逆矩阵.</p>
+<p>可以看出<span class="math inline"> \(B\)</span> 矩阵形式上与<span class="math inline"> \(X\)</span> 很相似，
+事实上逆 FFT 只需要将求值的横坐标由<span class="math inline"> \(\omega_n^k\)</span> 换为<span class="math inline"> \(\omega_n^{-k}\)</span>, 然后各项乘<span class="math inline"> \(1/n\)</span> 即可.</p>
 <p>实现代码:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> complex&lt;<span class="type">double</span>&gt; cpd;</span><br><span class="line">cpd t[];    <span class="comment">//临时数组</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">fft</span><span class="params">(cpd * <span class="type">const</span> f,<span class="type">int</span> len,<span class="type">int</span> iv)</span> </span>&#123;    <span class="comment">//多项式系数, 多项式阶数, 是否求逆</span></span><br><span class="line">    <span class="keyword">if</span>(len==<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">//递归边界</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> mlen = len&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">0</span>);i&lt;len;i+=<span class="number">2</span>) &#123;  <span class="comment">//划分多项式</span></span><br><span class="line">        t[i/<span class="number">2</span>] = f[i];</span><br><span class="line">        t[i/<span class="number">2</span>+mlen] = f[i<span class="number">+1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memcpy</span>(f,t,<span class="built_in">sizeof</span>(cpd)*len);</span><br><span class="line">    <span class="built_in">fft</span>(f,mlen,iv); <span class="built_in">fft</span>(f+mlen,mlen,iv);    <span class="comment">//递归</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">0</span>);i&lt;mlen;++i) &#123;</span><br><span class="line">        cpd w = &#123;<span class="built_in">cos</span>(<span class="number">2.</span>*Pi*i/len),-iv*<span class="built_in">sin</span>(<span class="number">2</span>*Pi*i/len)&#125;;  <span class="comment">//横坐标</span></span><br><span class="line">        t[i] = f[i] + w*f[i+mlen];</span><br><span class="line">        t[i+mlen] = f[i] - w*f[i+mlen];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memcpy</span>(f,t,<span class="built_in">sizeof</span>(cpd)*len);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> complex&lt;<span class="type">double</span>&gt; cpd;</span><br><span class="line">cpd t[];    <span class="comment">//临时数组</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">fft</span><span class="params">(cpd * <span class="type">const</span> f,<span class="type">int</span> len,<span class="type">int</span> iv)</span> </span>{    <span class="comment">//多项式系数, 多项式阶数, 是否求逆</span></span><br><span class="line">    <span class="keyword">if</span>(len==<span class="number">1</span>) {</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">//递归边界</span></span><br><span class="line">    }</span><br><span class="line">    <span class="type">int</span> mlen = len&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">0</span>);i&lt;len;i+=<span class="number">2</span>) {  <span class="comment">//划分多项式</span></span><br><span class="line">        t[i/<span class="number">2</span>] = f[i];</span><br><span class="line">        t[i/<span class="number">2</span>+mlen] = f[i<span class="number">+1</span>];</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">memcpy</span>(f,t,<span class="built_in">sizeof</span>(cpd)*len);</span><br><span class="line">    <span class="built_in">fft</span>(f,mlen,iv); <span class="built_in">fft</span>(f+mlen,mlen,iv);    <span class="comment">//递归</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">0</span>);i&lt;mlen;++i) {</span><br><span class="line">        cpd w = {<span class="built_in">cos</span>(<span class="number">2.</span>*Pi*i/len),-iv*<span class="built_in">sin</span>(<span class="number">2</span>*Pi*i/len)};  <span class="comment">//横坐标</span></span><br><span class="line">        t[i] = f[i] + w*f[i+mlen];</span><br><span class="line">        t[i+mlen] = f[i] - w*f[i+mlen];</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">memcpy</span>(f,t,<span class="built_in">sizeof</span>(cpd)*len);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="优化">优化</h2>
-<p>每次向下递归都需要将多项式划分, 时间开销比较大,
-我们可以直接一步调整到位, 然后向上回溯直接使用<strong>迭代实现</strong>.
+<p>每次向下递归都需要将多项式划分，时间开销比较大，
+我们可以直接一步调整到位，然后向上回溯直接使用<strong>迭代实现</strong>.
 这样可以减少很多的时间开销.</p>
-<p>通过观察可知, 每个系数<span
-class="math inline">\(a_k\)</span>的最后位置为<span
-class="math inline">\(k\)</span><strong>的二进制反转</strong>.</p>
+<p>通过观察可知，每个系数<span class="math inline"> \(a_k\)</span> 的最后位置为<span class="math inline"> \(k\)</span><strong> 的二进制反转</strong>.</p>
 <p>(事实上也可以通过理解得到这个结论:
 每次对奇偶项系数进行划分相当于将二进制的最后一位提到最高位后重新排序)</p>
-<p>同时为了提高精度并且减小时间开销,
-可以进行<strong>单位根预处理</strong>, 预处理出最小单位根的各个次方.
-(事实上精度是FFT的最大问题)</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> complex&lt;<span class="type">double</span>&gt; cpd;</span><br><span class="line"><span class="type">int</span> len;    <span class="comment">//扩充后长度</span></span><br><span class="line"><span class="type">int</span> r[];    <span class="comment">//位倒置后的数</span></span><br><span class="line">cpd pw[Mn]; <span class="comment">//单位根预处理</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;   <span class="comment">//初始化</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">hb</span><span class="params">(<span class="number">-1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span>(len=<span class="number">1</span>; len&lt;=n+m; len&lt;&lt;=<span class="number">1</span>, ++hb) ;   <span class="comment">//扩充长度</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;len;++i) &#123;</span><br><span class="line">        r[i] = (r[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>) | ((i&amp;<span class="number">1</span>)&lt;&lt;hb);  <span class="comment">//位倒置</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*单位根预处理*/</span></span><br><span class="line">    pw[<span class="number">0</span>] = <span class="built_in">cpd</span>(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;len;++i) &#123;</span><br><span class="line">        pw[i] = <span class="built_in">polar</span>(<span class="number">1.L</span>,-Pi*i/len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">fft</span><span class="params">(cpd * <span class="type">const</span> f,<span class="type">int</span> inv)</span> </span>&#123;   <span class="comment">//多项式, 是否求逆</span></span><br><span class="line">    <span class="keyword">if</span>(inv==<span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="comment">//若求逆则直接将数组倒置, 这样就不用多算一次单位根了</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;(len&gt;&gt;<span class="number">1</span>);++i) &#123;</span><br><span class="line">            <span class="built_in">swap</span>(f[i],f[len-i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;len;++i) &#123;   <span class="comment">//一步调整</span></span><br><span class="line">        <span class="keyword">if</span>(i&lt;r[i]) &#123;        <span class="comment">//不加这个if则会交换两次</span></span><br><span class="line">            <span class="built_in">swap</span>(f[i],f[r[i]]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">ml</span>(<span class="number">1</span>);ml&lt;len;ml&lt;&lt;=<span class="number">1</span>) &#123;  <span class="comment">//当前处理长度的一半</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">p</span>(<span class="number">0</span>);p&lt;len;p+=(ml&lt;&lt;<span class="number">1</span>)) &#123;    <span class="comment">//当前处理位置起点</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(p);i&lt;(p|ml);++i) &#123;</span><br><span class="line">                cpd w = pw[(i^p)*(len/ml)]; <span class="comment">//取横坐标</span></span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                一个小优化: 减少复数乘法的运算次数</span></span><br><span class="line"><span class="comment">                */</span> </span><br><span class="line">                cpd x = f[i], y = w*f[i|ml];</span><br><span class="line">                f[i] = x+y;</span><br><span class="line">                f[i|ml] = x-y;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同时为了提高精度并且减小时间开销，
+可以进行<strong>单位根预处理</strong> , 预处理出最小单位根的各个次方.
+(事实上精度是 FFT 的最大问题)</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> complex&lt;<span class="type">double</span>&gt; cpd;</span><br><span class="line"><span class="type">int</span> len;    <span class="comment">//扩充后长度</span></span><br><span class="line"><span class="type">int</span> r[];    <span class="comment">//位倒置后的数</span></span><br><span class="line">cpd pw[Mn]; <span class="comment">//单位根预处理</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span> </span>{   <span class="comment">//初始化</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">hb</span><span class="params">(<span class="number">-1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span>(len=<span class="number">1</span>; len&lt;=n+m; len&lt;&lt;=<span class="number">1</span>, ++hb) ;   <span class="comment">//扩充长度</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;len;++i) {</span><br><span class="line">        r[i] = (r[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>) | ((i&amp;<span class="number">1</span>)&lt;&lt;hb);  <span class="comment">//位倒置</span></span><br><span class="line">    }</span><br><span class="line">    <span class="comment">/*单位根预处理*/</span></span><br><span class="line">    pw[<span class="number">0</span>] = <span class="built_in">cpd</span>(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;len;++i) {</span><br><span class="line">        pw[i] = <span class="built_in">polar</span>(<span class="number">1.L</span>,-Pi*i/len);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">fft</span><span class="params">(cpd * <span class="type">const</span> f,<span class="type">int</span> inv)</span> </span>{   <span class="comment">//多项式, 是否求逆</span></span><br><span class="line">    <span class="keyword">if</span>(inv==<span class="number">-1</span>) {</span><br><span class="line">        <span class="comment">//若求逆则直接将数组倒置, 这样就不用多算一次单位根了</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;(len&gt;&gt;<span class="number">1</span>);++i) {</span><br><span class="line">            <span class="built_in">swap</span>(f[i],f[len-i]);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;len;++i) {   <span class="comment">//一步调整</span></span><br><span class="line">        <span class="keyword">if</span>(i&lt;r[i]) {        <span class="comment">//不加这个if则会交换两次</span></span><br><span class="line">            <span class="built_in">swap</span>(f[i],f[r[i]]);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">ml</span>(<span class="number">1</span>);ml&lt;len;ml&lt;&lt;=<span class="number">1</span>) {  <span class="comment">//当前处理长度的一半</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">p</span>(<span class="number">0</span>);p&lt;len;p+=(ml&lt;&lt;<span class="number">1</span>)) {    <span class="comment">//当前处理位置起点</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(p);i&lt;(p|ml);++i) {</span><br><span class="line">                cpd w = pw[(i^p)*(len/ml)]; <span class="comment">//取横坐标</span></span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                一个小优化: 减少复数乘法的运算次数</span></span><br><span class="line"><span class="comment">                */</span> </span><br><span class="line">                cpd x = f[i], y = w*f[i|ml];</span><br><span class="line">                f[i] = x+y;</span><br><span class="line">                f[i|ml] = x-y;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="ntt">NTT</h2>
-<p>数论变换(Number Theory Transform, NTT)的思想与FFT差不多,
+<p>数论变换 (Number Theory Transform, NTT) 的思想与 FFT 差不多，
 区别在于加上取模的操作后可以利用数论的一些概念来代替复数.</p>
-<p>首先需要介绍”原根”的概念:</p>
+<p>首先需要介绍” 原根” 的概念:</p>
 <blockquote>
-<p>设<span class="math inline">\(m\)</span>是正整数，<span
-class="math inline">\(a\)</span>是整数，若<span
-class="math inline">\(a\)</span>模<span
-class="math inline">\(m\)</span>的阶等于<span
-class="math inline">\(\phi(m)\)</span>，则称<span
-class="math inline">\(a\)</span>为模<span
-class="math inline">\(m\)</span>的一个原根.</p>
+<p>设<span class="math inline"> \(m\)</span> 是正整数，<span class="math inline">\(a\)</span> 是整数，若<span class="math inline"> \(a\)</span> 模<span class="math inline"> \(m\)</span> 的阶等于<span class="math inline"> \(\phi(m)\)</span>，则称<span class="math inline"> \(a\)</span> 为模<span class="math inline"> \(m\)</span> 的一个原根.</p>
 </blockquote>
-<p>说人话就是对于所有<span
-class="math inline">\([1,\phi(m)]\)</span>的两个不同整数<span
-class="math inline">\(i,j\)</span>, 有<span class="math inline">\(a^i
+<p>说人话就是对于所有<span class="math inline"> \([1,\phi(m)]\)</span> 的两个不同整数<span class="math inline"> \(i,j\)</span>, 有<span class="math inline"> \(a^i
 \not\equiv a^j(mod\ m)\)</span>.</p>
-<p>设<span class="math inline">\(g\)</span>为素数<span
-class="math inline">\(P\)</span>的一个原根, 令<span
-class="math inline">\(\omega_n=g^{(P-1)/n}\ mod\ P\)</span>,
-则由原根的性质, 可以得到一些与FFT相似的性质:</p>
+<p>设<span class="math inline"> \(g\)</span> 为素数<span class="math inline"> \(P\)</span> 的一个原根，令<span class="math inline"> \(\omega_n=g^{(P-1)/n}\ mod\ P\)</span>,
+则由原根的性质，可以得到一些与 FFT 相似的性质:</p>
 <p><span class="math display">\[
 \omega_{2n}^{2k} \equiv \omega_{n}^k (mod\ P)\tag{1}
 \]</span></p>
-<p>这点十分显然, 分数上下约分即可.</p>
+<p>这点十分显然，分数上下约分即可.</p>
 <p><span class="math display">\[
 \omega_{2n}^{k+n} \equiv -\omega_{2n}^{k}(mod\ P)\tag{2}
 \]</span></p>
-<p>等同于证明<span class="math inline">\(g^{(P-1)/2}\equiv -1(mod\
-P)\)</span>. 由数论知识可知<span
-class="math inline">\(g^{(P-1)/2}\)</span>只有可能是<span
-class="math inline">\(\pm 1\)</span>,
-而若其等于1则与原根的定义相矛盾(<span
-class="math inline">\(g^{P-1}\)</span>由费马小定理可知等于1), 所以<span
-class="math inline">\(g^{(P-1)/2}\equiv -1(mod\ P)\)</span>.</p>
-<p>根据这两条性质在<span class="math inline">\(mod\
-P\)</span>的条件下可以令<span
-class="math inline">\(\omega_n=g^{(P-1)/n}\ mod\ P\)</span>进行变换.</p>
-<p>需要注意的是<span
-class="math inline">\(\frac{P-1}{n}\)</span>必须是整数, 所以<span
-class="math inline">\(P\)</span>需要满足<span class="math inline">\(k
-\times 2^m+1\)</span>的形式, 同时中间的<span
-class="math inline">\(m\)</span>需要足够大使得<span
-class="math inline">\(2^m \geq n\)</span>.</p>
+<p>等同于证明<span class="math inline"> \(g^{(P-1)/2}\equiv -1(mod\
+P)\)</span>. 由数论知识可知<span class="math inline"> \(g^{(P-1)/2}\)</span> 只有可能是<span class="math inline"> \(\pm 1\)</span>,
+而若其等于 1 则与原根的定义相矛盾 (<span class="math inline">\(g^{P-1}\)</span> 由费马小定理可知等于 1), 所以<span class="math inline"> \(g^{(P-1)/2}\equiv -1(mod\ P)\)</span>.</p>
+<p>根据这两条性质在<span class="math inline"> \(mod\
+P\)</span> 的条件下可以令<span class="math inline"> \(\omega_n=g^{(P-1)/n}\ mod\ P\)</span> 进行变换.</p>
+<p>需要注意的是<span class="math inline"> \(\frac{P-1}{n}\)</span> 必须是整数，所以<span class="math inline"> \(P\)</span> 需要满足<span class="math inline"> \(k
+\times 2^m+1\)</span> 的形式，同时中间的<span class="math inline"> \(m\)</span> 需要足够大使得<span class="math inline"> \(2^m \geq n\)</span>.</p>
 <p>常见的模数有:</p>
 <p><span class="math display">\[ \begin{aligned}
 998244353 &amp; = 119 \times 2^{23} + 1 \\
 1004535809 &amp; = 479 \times 2^{21} + 1 \\
 469762049 &amp; = 7 \times 2^{26} + 1
 \end{aligned} \]</span></p>
-<p>它们都有一个原根<span class="math inline">\(3\)</span>.</p>
+<p>它们都有一个原根<span class="math inline"> \(3\)</span>.</p>
 <p>实现代码:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"><span class="function"><span class="type">const</span> LL <span class="title">MP</span><span class="params">(<span class="number">7</span>*<span class="number">17</span>*(<span class="number">1</span>&lt;&lt;<span class="number">23</span>)<span class="number">+1</span>)</span></span>;    <span class="comment">//998244353</span></span><br><span class="line"><span class="function"><span class="type">const</span> LL <span class="title">G</span><span class="params">(<span class="number">3</span>)</span>, <span class="title">Gi</span><span class="params">(<span class="number">332748118</span>)</span></span>;    <span class="comment">//原根及其逆元</span></span><br><span class="line"><span class="function">LL <span class="title">ksm</span><span class="params">(LL a,LL b)</span> </span>&#123;    <span class="comment">//快速幂</span></span><br><span class="line">    <span class="function">LL <span class="title">ret</span><span class="params">(<span class="number">1</span>)</span>,<span class="title">tmp</span><span class="params">(a%MP)</span></span>;</span><br><span class="line">    <span class="keyword">while</span>(b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) &#123;</span><br><span class="line">            ret = ret*tmp%MP;</span><br><span class="line">        &#125;</span><br><span class="line">        tmp = tmp*tmp%MP;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ntt</span><span class="params">(LL * <span class="type">const</span> f,<span class="type">int</span> len,<span class="type">bool</span> iv)</span> </span>&#123;    <span class="comment">//同FFT</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;len;++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(i&lt;r[i]) &#123;</span><br><span class="line">            <span class="built_in">swap</span>(f[i],f[r[i]]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">l</span>(<span class="number">2</span>);l&lt;=len;l&lt;&lt;=<span class="number">1</span>) &#123;</span><br><span class="line">        LL wn = <span class="built_in">ksm</span>(iv?Gi:G,(MP<span class="number">-1</span>)/l);</span><br><span class="line">        <span class="type">int</span> ml = l&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">p</span>(<span class="number">0</span>);p&lt;len;p+=l) &#123;</span><br><span class="line">            LL w = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(p);i&lt;p+ml;++i, w=w*wn%MP) &#123;	<span class="comment">//注意取模</span></span><br><span class="line">                LL x = f[i], y = w*f[i|ml]%MP;</span><br><span class="line">                f[i] = (x+y)%MP;</span><br><span class="line">                f[i|ml] = (x-y+MP)%MP;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"><span class="function"><span class="type">const</span> LL <span class="title">MP</span><span class="params">(<span class="number">7</span>*<span class="number">17</span>*(<span class="number">1</span>&lt;&lt;<span class="number">23</span>)<span class="number">+1</span>)</span></span>;    <span class="comment">//998244353</span></span><br><span class="line"><span class="function"><span class="type">const</span> LL <span class="title">G</span><span class="params">(<span class="number">3</span>)</span>, <span class="title">Gi</span><span class="params">(<span class="number">332748118</span>)</span></span>;    <span class="comment">//原根及其逆元</span></span><br><span class="line"><span class="function">LL <span class="title">ksm</span><span class="params">(LL a,LL b)</span> </span>{    <span class="comment">//快速幂</span></span><br><span class="line">    <span class="function">LL <span class="title">ret</span><span class="params">(<span class="number">1</span>)</span>,<span class="title">tmp</span><span class="params">(a%MP)</span></span>;</span><br><span class="line">    <span class="keyword">while</span>(b) {</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) {</span><br><span class="line">            ret = ret*tmp%MP;</span><br><span class="line">        }</span><br><span class="line">        tmp = tmp*tmp%MP;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ntt</span><span class="params">(LL * <span class="type">const</span> f,<span class="type">int</span> len,<span class="type">bool</span> iv)</span> </span>{    <span class="comment">//同FFT</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;len;++i) {</span><br><span class="line">        <span class="keyword">if</span>(i&lt;r[i]) {</span><br><span class="line">            <span class="built_in">swap</span>(f[i],f[r[i]]);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">l</span>(<span class="number">2</span>);l&lt;=len;l&lt;&lt;=<span class="number">1</span>) {</span><br><span class="line">        LL wn = <span class="built_in">ksm</span>(iv?Gi:G,(MP<span class="number">-1</span>)/l);</span><br><span class="line">        <span class="type">int</span> ml = l&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">p</span>(<span class="number">0</span>);p&lt;len;p+=l) {</span><br><span class="line">            LL w = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(p);i&lt;p+ml;++i, w=w*wn%MP) {	<span class="comment">//注意取模</span></span><br><span class="line">                LL x = f[i], y = w*f[i|ml]%MP;</span><br><span class="line">                f[i] = (x+y)%MP;</span><br><span class="line">                f[i|ml] = (x-y+MP)%MP;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="用途">用途</h2>
 <h3 id="卷积">卷积</h3>
 <p>设两个多项式:</p>
@@ -434,11 +392,10 @@ B(x) = \sum_{i=0}^{m-1} b_ix^i
 = &amp; \sum_{i=0}^{n+m-2} (\sum_{j=0}^i a_jb_{i-j}) x^i
 \end{aligned} \]</span></p>
 <p>注意到括号里的系数便是两个多项式系数组成的数列的卷积.
-可以使用FFT将两个多项式变成<strong>相同的</strong>点值表示,
-值相乘后再逆变换便得到了所有位置的卷积. 时间复杂度为<span
-class="math inline">\(O(n\log n)\)</span></p>
+可以使用 FFT 将两个多项式变成<strong>相同的</strong>点值表示，
+值相乘后再逆变换便得到了所有位置的卷积。时间复杂度为<span class="math inline"> \(O(n\log n)\)</span></p>
 <h3 id="大数乘法">大数乘法</h3>
-<p>事实上大数乘法是卷积的特殊形式, 只需要卷积后再处理进位即可.</p>
+<p>事实上大数乘法是卷积的特殊形式，只需要卷积后再处理进位即可.</p>
 
     </div>
 
@@ -460,8 +417,8 @@ class="math inline">\(O(n\log n)\)</span></p>
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/07/11/luogu4139/" rel="next" title="(luogu4139)上帝与集合的正确用法">
-                  (luogu4139)上帝与集合的正确用法 <i class="fa fa-angle-right"></i>
+                <a href="/2021/07/11/luogu4139/" rel="next" title="(luogu4139) 上帝与集合的正确用法">
+                  (luogu4139) 上帝与集合的正确用法 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -474,6 +431,7 @@ class="math inline">\(O(n\log n)\)</span></p>
 
 
 
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -488,7 +446,7 @@ class="math inline">\(O(n\log n)\)</span></p>
     </span>
     <span class="author" itemprop="copyrightHolder">AjiL</span>
   </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
@@ -501,7 +459,7 @@ class="math inline">\(O(n\log n)\)</span></p>
     <span class="toggle-line"></span>
   </div>
   <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
@@ -513,6 +471,8 @@ class="math inline">\(O(n\log n)\)</span></p>
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -533,6 +493,10 @@ class="math inline">\(O(n\log n)\)</span></p>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"XajilX","repo":"gitalk_comments","client_id":"Ov23lidC06Ozg0VieeHH","client_secret":"828218305f3333d7f9ea63d9943a1329c9a06f13","admin_user":"XajilX","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"e9dfa0b8490d44edccb99ae2f6aa110e"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 </html>

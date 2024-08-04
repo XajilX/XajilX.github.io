@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -17,13 +17,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="article">
 <meta property="og:title" content="Compiler -- Opt">
 <meta property="og:url" content="http://example.com/2023/11/22/cs143-opt/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-22T04:37:14.000Z">
 <meta property="article:modified_time" content="2024-08-03T12:36:17.507Z">
 <meta property="article:author" content="AjiL">
@@ -35,7 +35,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2023/11/22/cs143-opt/","path":"2023/11/22/cs143-opt/","title":"Compiler -- Opt"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/11/22/cs143-opt/","path":"2023/11/22/cs143-opt/","title":"Compiler -- Opt"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Compiler -- Opt | AjiL's Blog</title>
@@ -60,7 +60,7 @@
     <div class="column">
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -77,7 +77,7 @@
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
     </div>
   </div>
 </div>
@@ -85,7 +85,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
 
@@ -100,10 +100,10 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -126,18 +126,18 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">159</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
         <span class="site-state-item-count">82</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -155,7 +155,7 @@
     <div class="sidebar-inner sidebar-blogroll">
       <div class="links-of-blogroll animated">
         <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          Links
+          链接
         </div>
         <ul class="links-of-blogroll-list">
             <li class="links-of-blogroll-item">
@@ -185,7 +185,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/22/cs143-opt/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -213,19 +213,19 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
 
-      <time title="Created: 2023-11-22 15:37:14" itemprop="dateCreated datePublished" datetime="2023-11-22T15:37:14+11:00">2023-11-22</time>
+      <time title="创建时间：2023-11-22 15:37:14" itemprop="dateCreated datePublished" datetime="2023-11-22T15:37:14+11:00">2023-11-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">In</span>
+      <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
         </span>
-          , 
+          ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">编译原理</span></a>
         </span>
@@ -240,10 +240,10 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><hr />
+    <div class="post-body" itemprop="articleBody"><hr>
 <span id="more"></span>
 <h2 id="概述">概述</h2>
-<p>代码优化通过对代码进行改写以寻找正确且更优的代码。这里的“更优”通常指的是运行时间更短，有时也会优化可执行文件大小，耗电量等方面。</p>
+<p>代码优化通过对代码进行改写以寻找正确且更优的代码。这里的 “更优” 通常指的是运行时间更短，有时也会优化可执行文件大小，耗电量等方面。</p>
 <p>通常在现代编译器中，代码优化部分的代码量占比最大。</p>
 <h2 id="中间表示">中间表示</h2>
 <p>通常来讲，中间表示（Intermediate Representation, abbr.
@@ -251,9 +251,9 @@ IR）是一种介于源语言与汇编语言之间的用于进行代码优化的
 AST，它包含了更多程序运行时的细节，因此能够挖掘出更多可供优化的地方；相较于汇编语言，它省略了许多与机器架构相关的细节，因此在
 IR 上进行的优化不受架构限制。</p>
 <p>各个编译器的中间表示可能是不同的，但通常都是某种三地址码（three-address
-code）。三地址码中每条指令最多包含一个操作两个操作地址以及一个结果地址，例如表达式<code>x + y * 2</code>翻译成三地址码即为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t1 = y * 2</span><br><span class="line">t2 = x + t1</span><br></pre></td></tr></table></figure>
-<p>三地址码中的“地址”可以是常量（<code>2</code>）、源代码中的变量名（<code>x</code>,
+code）。三地址码中每条指令最多包含一个操作两个操作地址以及一个结果地址，例如表达式 <code>x + y * 2</code> 翻译成三地址码即为：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t1 = y * 2</span><br><span class="line">t2 = x + t1</span><br></pre></td></tr></tbody></table></figure>
+<p>三地址码中的 “地址” 可以是常量（<code>2</code>）、源代码中的变量名（<code>x</code>,
 <code>y</code>）、以及生成的临时变量（<code>t1</code>,
 <code>t2</code>），其中临时变量可以看成是汇编语言中的寄存器。</p>
 <h2 id="控制流图">控制流图</h2>
@@ -270,44 +270,36 @@ block）为结点组成的图，基础块是一个以标签开始，以跳转语
 <h2 id="局部优化">局部优化</h2>
 <p>局部优化主要是对指令的简单修改，例如：</p>
 <ul>
-<li>简化算术：对于某些算术指令例如<code>x = x + 0</code>、<code>x = x * 1</code>可以利用数学方法简化或消除；</li>
+<li>简化算术：对于某些算术指令例如 <code>x = x + 0</code>、<code>x = x * 1</code> 可以利用数学方法简化或消除；</li>
 <li>常量折叠：对于某些算术指令，若操作数两边都是整数则可以直接在编译器计算出结果，需要注意不同架构可能位数不同导致常量的表示不同；</li>
-<li>相同子表达式约分：对于某些指令如<code>x = y + z;  ...; w = y + z</code>，若<code>x</code>、<code>y</code>和<code>z</code>在中间没有改动，则可以将后面的的指令改为<code>w = x</code>；</li>
-<li>复制传播：若有指令<code>w = x</code>，可以将<code>w</code>改动前的指令中的<code>w</code>改为<code>x</code>（若<code>x</code>为常量称作常量传播）；</li>
+<li>相同子表达式约分：对于某些指令如 <code>x = y + z;  ...; w = y + z</code>，若 <code>x</code>、<code>y</code> 和 <code>z</code> 在中间没有改动，则可以将后面的的指令改为 <code>w = x</code>；</li>
+<li>复制传播：若有指令 <code>w = x</code>，可以将 <code>w</code> 改动前的指令中的 <code>w</code> 改为 <code>x</code>（若 <code>x</code> 为常量称作常量传播）；</li>
 <li>消除死代码：若某变量赋值后没有被引用，则称该赋值指令为死代码，可以消去；</li>
 </ul>
 <p>有时将代码改写成单赋值形式更好处理局部优化，即每个变量在等号左边仅出现一次，这样变量在赋值后即为定值。</p>
 <p>需要注意的是每种优化方法本身并不会带来很大的作用，往往需要多种方法同时作用才能有较好的优化效果。编译器优化时通常是反复运用多种优化方法，直至无法进行优化或迭代次数达到上限。</p>
 <h2 id="窥孔优化">窥孔优化</h2>
 <p>窥孔（peephole）是指基础块中的一段指令，窥孔优化就是将一小段指令替换成作用相同但是更优的另外一段指令，例如两段指令：
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">addiu $a $a x</span><br><span class="line">addiu $a $a y</span><br></pre></td></tr></table></figure> 可以替换成一段指令： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addiu $a $a x+y</span><br></pre></td></tr></table></figure>
-大多数局部优化的方法都可以表达为窥孔优化的形式。</p>
+</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">addiu $a $a x</span><br><span class="line">addiu $a $a y</span><br></pre></td></tr></tbody></table></figure> 可以替换成一段指令： <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addiu $a $a x+y</span><br></pre></td></tr></tbody></table></figure>
+大多数局部优化的方法都可以表达为窥孔优化的形式。<p></p>
 <h2 id="数据流分析">数据流分析</h2>
 <p>某些在局部优化中使用的优化方法同样可以在全局优化中使用，例如死代码消除和常量传播。但是对于全局优化来说需要分析变量在整个控制流图中的状态才能进行优化。例如对于死代码消除，需要确定在后续的结点中该变量都不会被使用才能进行消除。这类分析便称为数据流分析（data-flow
 analysis）。</p>
 <p>通常来讲，对程序的数据流分析都可以表述为对每条语句通过其相邻语句执行某些规则来更新其中与特定优化方式相关的信息。</p>
 <h3 id="常量传播">常量传播</h3>
-<p>对于语句<span class="math inline">\(s\)</span>和变量<span
-class="math inline">\(x\)</span>，可以在语句前后定义状态函数<span
-class="math inline">\(C_\mathrm{in}(s, x)\)</span>和<span
-class="math inline">\(C_\mathrm{out}(s,
+<p>对于语句<span class="math inline"> \(s\)</span> 和变量<span class="math inline"> \(x\)</span>，可以在语句前后定义状态函数<span class="math inline"> \(C_\mathrm{in}(s, x)\)</span> 和<span class="math inline"> \(C_\mathrm{out}(s,
 x)\)</span>，一共有三种状态：</p>
 <ul>
-<li>语句未执行或未知，用<span
-class="math inline">\(\bot\)</span>表示；</li>
-<li>变量值为一常数<span class="math inline">\(c\)</span>；</li>
-<li>变量值不是常数，用<span
-class="math inline">\(\top\)</span>表示。</li>
+<li>语句未执行或未知，用<span class="math inline"> \(\bot\)</span> 表示；</li>
+<li>变量值为一常数<span class="math inline"> \(c\)</span>；</li>
+<li>变量值不是常数，用<span class="math inline"> \(\top\)</span> 表示。</li>
 </ul>
-<p>对于语句<span class="math inline">\(s\)</span>和变量<span
-class="math inline">\(x\)</span>，若其有前驱语句<span
-class="math inline">\(p_1,\cdots,p_n\)</span>，则有如下规则：</p>
+<p>对于语句<span class="math inline"> \(s\)</span> 和变量<span class="math inline"> \(x\)</span>，若其有前驱语句<span class="math inline"> \(p_1,\cdots,p_n\)</span>，则有如下规则：</p>
 <ol type="1">
 <li><span class="math inline">\((\exists i . C_\mathrm{out}(p_i,x) =
 \top) \Rightarrow (C_\mathrm{in}(s, x) = \top)\)</span></li>
 <li><span class="math inline">\((\exists (i,j). C_\mathrm{out}(p_i,x) =
-c \neq d = C_\mathrm{out}(p_j,x))\)</span> <span
-class="math inline">\(\Rightarrow (C_\mathrm{in}(s, x) =
+c \neq d = C_\mathrm{out}(p_j,x))\)</span> <span class="math inline">\(\Rightarrow (C_\mathrm{in}(s, x) =
 \top)\)</span></li>
 <li><span class="math inline">\((\exists i. C_\mathrm{out}(p_i,x) = c)
 \land\)</span> <span class="math inline">\((\forall j \neq
@@ -324,38 +316,23 @@ C_\mathrm{out}(\{x = f(\cdots)\},x) = \top\)</span></li>
 <li><span class="math inline">\(x\neq y \Rightarrow C_\mathrm{out}(\{y =
 \cdots\}, x) = C_\mathrm{in}(\{y = \cdots\}, x)\)</span></li>
 </ol>
-<p>其中的省略号代表其它与变量<span
-class="math inline">\(x\)</span>无关的语句。</p>
+<p>其中的省略号代表其它与变量<span class="math inline"> \(x\)</span> 无关的语句。</p>
 <p>对于某个程序，按如下步骤即可求出某个变量在每个位置的状态：</p>
 <ol type="1">
-<li>对于程序的入口<span class="math inline">\(e\)</span>，设置<span
-class="math inline">\(C_\mathrm{in}(e, x) =
-\top\)</span>，其它位置设为<span
-class="math inline">\(\bot\)</span>；</li>
+<li>对于程序的入口<span class="math inline"> \(e\)</span>，设置<span class="math inline"> \(C_\mathrm{in}(e, x) =
+\top\)</span>，其它位置设为<span class="math inline"> \(\bot\)</span>；</li>
 <li>重复运用如上的规则直至所有位置都符合如上规则。</li>
 </ol>
-<p>同时对于三种状态，有<span class="math inline">\(\bot &lt; c &lt;
+<p>同时对于三种状态，有<span class="math inline"> \(\bot &lt; c &lt;
 \top\)</span>，小的状态只能变为大的状态，因此每个位置的状态最多只会变两次，由此即可证明如上的算法最终总会结束。</p>
 <h3 id="生存期分析">生存期分析</h3>
-<p>对于一个变量<span
-class="math inline">\(x\)</span>，当满足如下条件时称该变量在语句<span
-class="math inline">\(s\)</span>处存活：</p>
+<p>对于一个变量<span class="math inline"> \(x\)</span>，当满足如下条件时称该变量在语句<span class="math inline"> \(s\)</span> 处存活：</p>
 <ul>
-<li>存在一个使用了变量<span class="math inline">\(x\)</span>的语句<span
-class="math inline">\(s&#39;\)</span>；</li>
-<li>存在一条从<span class="math inline">\(s\)</span>到<span
-class="math inline">\(s&#39;\)</span>的路径，且路径上没有对<span
-class="math inline">\(x\)</span>赋值的语句；</li>
+<li>存在一个使用了变量<span class="math inline"> \(x\)</span> 的语句<span class="math inline"> \(s'\)</span>；</li>
+<li>存在一条从<span class="math inline"> \(s\)</span> 到<span class="math inline"> \(s'\)</span> 的路径，且路径上没有对<span class="math inline"> \(x\)</span> 赋值的语句；</li>
 </ul>
 <p>一个变量在程序中存活的所有位置即为该变量的生存期。需要注意与前面所述的作用域的区别：作用域是变量在编译期的特征，而生存期时变量在运行时的特征。</p>
-<p>同样地，对于语句<span class="math inline">\(s\)</span>和变量<span
-class="math inline">\(x\)</span>，可以定义函数<span
-class="math inline">\(L_\mathrm{in}(s, x)\)</span>和<span
-class="math inline">\(L_\mathrm{out}(s, x)\)</span>来分析变量<span
-class="math inline">\(x\)</span>的生存期，其取值为布尔值，且对于语句<span
-class="math inline">\(p\)</span>及其后继语句<span
-class="math inline">\(s_1,\cdots,s_n\)</span>和变量<span
-class="math inline">\(x\)</span>有如下规则：</p>
+<p>同样地，对于语句<span class="math inline"> \(s\)</span> 和变量<span class="math inline"> \(x\)</span>，可以定义函数<span class="math inline"> \(L_\mathrm{in}(s, x)\)</span> 和<span class="math inline"> \(L_\mathrm{out}(s, x)\)</span> 来分析变量<span class="math inline"> \(x\)</span> 的生存期，其取值为布尔值，且对于语句<span class="math inline"> \(p\)</span> 及其后继语句<span class="math inline"> \(s_1,\cdots,s_n\)</span> 和变量<span class="math inline"> \(x\)</span> 有如下规则：</p>
 <ol type="1">
 <li><span class="math inline">\(L_\mathrm{out}(p, x) \Leftrightarrow
 \exists i.L_\mathrm{in}(s_i, x)\)</span>；</li>
@@ -388,32 +365,20 @@ RIG），图中每条边的端点不能被分配在同一个寄存器中。这�
 <li>从栈中重复将其中的结点出栈，还原并为结点选择颜色。</li>
 </ol>
 <p>算法运行当中可能无法删除结点，此时可认为原图无法进行 k
-着色，需要将临时变量溢出（spill）到内存当中。将某一临时变量<span
-class="math inline">\(t\)</span>溢出到内存的方法如下：</p>
+着色，需要将临时变量溢出（spill）到内存当中。将某一临时变量<span class="math inline"> \(t\)</span> 溢出到内存的方法如下：</p>
 <ul>
-<li>为临时变量开辟一个内存空间，假设地址为<code>ta</code>；</li>
-<li>对于每个读取变量<span
-class="math inline">\(t\)</span>的指令，新建一个临时变量<span
-class="math inline">\(t_i\)</span>并将<span
-class="math inline">\(t\)</span>改为<span
-class="math inline">\(t_i\)</span>，在指令前面添加一条指令<code>ti = load ta</code>；</li>
-<li>对于每个写入变量<span
-class="math inline">\(t\)</span>的指令，新建一个临时变量<span
-class="math inline">\(t_i\)</span>并将<span
-class="math inline">\(t\)</span>改为<span
-class="math inline">\(t_i\)</span>，在指令后面添加一条指令<code>store ti, ta</code>；</li>
+<li>为临时变量开辟一个内存空间，假设地址为 <code>ta</code>；</li>
+<li>对于每个读取变量<span class="math inline"> \(t\)</span> 的指令，新建一个临时变量<span class="math inline"> \(t_i\)</span> 并将<span class="math inline"> \(t\)</span> 改为<span class="math inline"> \(t_i\)</span>，在指令前面添加一条指令 <code>ti = load ta</code>；</li>
+<li>对于每个写入变量<span class="math inline"> \(t\)</span> 的指令，新建一个临时变量<span class="math inline"> \(t_i\)</span> 并将<span class="math inline"> \(t\)</span> 改为<span class="math inline"> \(t_i\)</span>，在指令后面添加一条指令 <code>store ti, ta</code>；</li>
 </ul>
-<p>此时临时变量<span
-class="math inline">\(t\)</span>被分为了许多的新的临时变量<span
-class="math inline">\(t_i\)</span>，且每个<span
-class="math inline">\(t_i\)</span>的生存期都很短，更有机会成功进行寄存器分配。</p>
+<p>此时临时变量<span class="math inline"> \(t\)</span> 被分为了许多的新的临时变量<span class="math inline"> \(t_i\)</span>，且每个<span class="math inline"> \(t_i\)</span> 的生存期都很短，更有机会成功进行寄存器分配。</p>
 <p>选择合适的临时变量溢出使得溢出代价最小化同样是一个 NP
 问题，因此只能使用启发式方法来寻找近似的最优方案。</p>
 <h2 id="缓存优化">缓存优化</h2>
-<p>对于如下的程序： <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">100</span>; ++j) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) &#123;</span><br><span class="line">    a[i] *= b[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-如果缓存不能将数组<code>a</code>和<code>b</code>全部存下可能会造成大量的缓存失效，导致运行速度缓慢。</p>
-<p>若将两层循环调换： <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">100</span>; ++j) &#123;</span><br><span class="line">    a[i] *= b[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-可以避免大部分的缓存失效从而提升运行速度。</p>
+<p>对于如下的程序： </p><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">100</span>; ++j) {</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) {</span><br><span class="line">    a[i] *= b[i];</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+如果缓存不能将数组 <code>a</code> 和 <code>b</code> 全部存下可能会造成大量的缓存失效，导致运行速度缓慢。<p></p>
+<p>若将两层循环调换： </p><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) {</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">100</span>; ++j) {</span><br><span class="line">    a[i] *= b[i];</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+可以避免大部分的缓存失效从而提升运行速度。<p></p>
 <p>一部分编译器可以进行如上的循环调换优化从而使程序更加地缓存友好，但大多数的缓存优化仍需要程序员手动进行。</p>
 
     </div>
@@ -447,6 +412,7 @@ class="math inline">\(t_i\)</span>的生存期都很短，更有机会成功进�
 
 
 
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -461,7 +427,7 @@ class="math inline">\(t_i\)</span>的生存期都很短，更有机会成功进�
     </span>
     <span class="author" itemprop="copyrightHolder">AjiL</span>
   </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
@@ -474,7 +440,7 @@ class="math inline">\(t_i\)</span>的生存期都很短，更有机会成功进�
     <span class="toggle-line"></span>
   </div>
   <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
@@ -486,6 +452,8 @@ class="math inline">\(t_i\)</span>的生存期都很短，更有机会成功进�
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -506,6 +474,10 @@ class="math inline">\(t_i\)</span>的生存期都很短，更有机会成功进�
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"XajilX","repo":"gitalk_comments","client_id":"Ov23lidC06Ozg0VieeHH","client_secret":"828218305f3333d7f9ea63d9943a1329c9a06f13","admin_user":"XajilX","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"195a60a3567fbf0e97dec311f2a2a9cf"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 </html>

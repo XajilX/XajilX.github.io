@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -17,13 +17,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="article">
-<meta property="og:title" content="tarjan求scc及其应用">
+<meta property="og:title" content="tarjan 求 scc 及其应用">
 <meta property="og:url" content="http://example.com/2017/10/25/tarjan/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-10-24T13:00:00.000Z">
 <meta property="article:modified_time" content="2024-08-03T12:36:17.507Z">
 <meta property="article:author" content="AjiL">
@@ -37,10 +37,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2017/10/25/tarjan/","path":"2017/10/25/tarjan/","title":"tarjan求scc及其应用"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2017/10/25/tarjan/","path":"2017/10/25/tarjan/","title":"tarjan 求 scc 及其应用"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>tarjan求scc及其应用 | AjiL's Blog</title>
+<title>tarjan 求 scc 及其应用 | AjiL's Blog</title>
   
 
 
@@ -62,7 +62,7 @@
     <div class="column">
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -79,7 +79,7 @@
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
     </div>
   </div>
 </div>
@@ -87,7 +87,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
 
@@ -102,17 +102,17 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFscc%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">什么是scc(强连通分量):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%B1%82%E6%9C%89%E5%90%91%E5%9B%BE%E7%9A%84scc"><span class="nav-number">2.</span> <span class="nav-text">如何求有向图的scc:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tarjan%E7%AE%97%E6%B3%95%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">tarjan算法的作用:</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFscc%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">什么是 scc (强连通分量):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%B1%82%E6%9C%89%E5%90%91%E5%9B%BE%E7%9A%84scc"><span class="nav-number">2.</span> <span class="nav-text">如何求有向图的 scc:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tarjan%E7%AE%97%E6%B3%95%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">tarjan 算法的作用:</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -128,18 +128,18 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">159</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
         <span class="site-state-item-count">82</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -157,7 +157,7 @@
     <div class="sidebar-inner sidebar-blogroll">
       <div class="links-of-blogroll animated">
         <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          Links
+          链接
         </div>
         <ul class="links-of-blogroll-list">
             <li class="links-of-blogroll-item">
@@ -187,7 +187,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2017/10/25/tarjan/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -201,12 +201,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="tarjan求scc及其应用 | AjiL's Blog">
+      <meta itemprop="name" content="tarjan 求 scc 及其应用 | AjiL's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          tarjan求scc及其应用
+          tarjan 求 scc 及其应用
         </h1>
 
         <div class="post-meta-container">
@@ -215,23 +215,23 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
 
-      <time title="Created: 2017-10-25 00:00:00" itemprop="dateCreated datePublished" datetime="2017-10-25T00:00:00+11:00">2017-10-25</time>
+      <time title="创建时间：2017-10-25 00:00:00" itemprop="dateCreated datePublished" datetime="2017-10-25T00:00:00+11:00">2017-10-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">In</span>
+      <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
         </span>
-          , 
+          ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">图论</span></a>
         </span>
-          , 
+          ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/%E5%9B%BE%E8%AE%BA/scc/" itemprop="url" rel="index"><span itemprop="name">scc</span></a>
         </span>
@@ -246,26 +246,26 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><hr />
+    <div class="post-body" itemprop="articleBody"><hr>
 <span id="more"></span>
-<h2 id="什么是scc强连通分量">什么是scc(强连通分量):</h2>
-<p>在有向图中, 如果若干个点相互可达,
+<h2 id="什么是scc强连通分量">什么是 scc (强连通分量):</h2>
+<p>在有向图中，如果若干个点相互可达，
 则这几个点构成的集合称为有向图的一个强连通分量</p>
-<p>如果把这个图中所有的极大强连通分量变为一个点,
-这个图叫scc图。这个图中不存在有向环, 所以scc图是一个DAG</p>
-<h2 id="如何求有向图的scc">如何求有向图的scc:</h2>
-<p>一般使用tarjan算法</p>
-<p>tarjan借助<strong>dfs</strong>,
-在dfs时记录访问的结点v的<strong>时间戳</strong>(pre),
-并设<strong>v及其后代在dfs树上能追溯到的最早的祖先结点</strong>为low,
-当回溯时如果pre==low, 则说明找到一个scc。</p>
-<p>用一个栈辅助存储dfs中子树的结点, 当找到scc时将栈中的结点弹出,
-弹出的结点即是scc中的结点。</p>
-<p><strong>—-代码—-</strong> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">t</span><span class="params">(<span class="number">0</span>)</span></span>; <span class="comment">//时间戳</span></span><br><span class="line"><span class="type">int</span> pre[Mn], low[Mn], scc[Mn] <span class="comment">//pre,low,结点的scc编号</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">scn</span><span class="params">(<span class="number">0</span>)</span></span>; <span class="comment">//scc计数器</span></span><br><span class="line">stack&lt;<span class="type">int</span>&gt; S; <span class="comment">//辅助存储</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">tarjan</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    pre[x] = ++t;</span><br><span class="line">    low[x] = t;</span><br><span class="line">    S.<span class="built_in">push</span>(x);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">0</span>);i&lt;G[x].<span class="built_in">size</span>();++i)	<span class="comment">//遍历有向边</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="type">int</span>&amp; <span class="title">v</span><span class="params">(G[x][i])</span></span>;</span><br><span class="line">        <span class="keyword">if</span>(!pre[v]) <span class="comment">//如果未访问, 即访问到的是子结点</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">tarjan</span>(v); <span class="comment">//dfs</span></span><br><span class="line">            low[x] = <span class="built_in">min</span>(low[x],low[v]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(!scc[v]) <span class="comment">//如果访问到的是祖先节点</span></span><br><span class="line">            low[x] = <span class="built_in">min</span>(low[x],pre[v]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(pre[x]==low[x])</span><br><span class="line">    &#123;</span><br><span class="line">        ++scn;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="type">int</span> <span class="title">u</span><span class="params">(S.top())</span></span>; S.<span class="built_in">pop</span>();</span><br><span class="line">            scc[u] = scn;</span><br><span class="line">            <span class="keyword">if</span>(u==x)	<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="tarjan算法的作用">tarjan算法的作用:</h2>
-<p>首先, scc是由一个或多个环组成的, 可以用tarjan来寻找有向图中的环</p>
-<p>最主要的是, 将有向图缩点形成的scc图是一个DAG, 对于有向非DAG的最优解,
-可以先用tarjan将图缩成DAG, 然后使用dp解决</p>
+<p>如果把这个图中所有的极大强连通分量变为一个点，
+这个图叫 scc 图。这个图中不存在有向环，所以 scc 图是一个 DAG</p>
+<h2 id="如何求有向图的scc">如何求有向图的 scc:</h2>
+<p>一般使用 tarjan 算法</p>
+<p>tarjan 借助 <strong>dfs</strong>,
+在 dfs 时记录访问的结点 v 的<strong>时间戳</strong> (pre),
+并设 <strong>v 及其后代在 dfs 树上能追溯到的最早的祖先结点</strong>为 low,
+当回溯时如果 pre==low, 则说明找到一个 scc。</p>
+<p>用一个栈辅助存储 dfs 中子树的结点，当找到 scc 时将栈中的结点弹出，
+弹出的结点即是 scc 中的结点。</p>
+<p><strong>—- 代码 —-</strong> </p><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">t</span><span class="params">(<span class="number">0</span>)</span></span>; <span class="comment">//时间戳</span></span><br><span class="line"><span class="type">int</span> pre[Mn], low[Mn], scc[Mn] <span class="comment">//pre,low,结点的scc编号</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">scn</span><span class="params">(<span class="number">0</span>)</span></span>; <span class="comment">//scc计数器</span></span><br><span class="line">stack&lt;<span class="type">int</span>&gt; S; <span class="comment">//辅助存储</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">tarjan</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    pre[x] = ++t;</span><br><span class="line">    low[x] = t;</span><br><span class="line">    S.<span class="built_in">push</span>(x);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">0</span>);i&lt;G[x].<span class="built_in">size</span>();++i)	<span class="comment">//遍历有向边</span></span><br><span class="line">    {</span><br><span class="line">        <span class="function"><span class="type">int</span>&amp; <span class="title">v</span><span class="params">(G[x][i])</span></span>;</span><br><span class="line">        <span class="keyword">if</span>(!pre[v]) <span class="comment">//如果未访问, 即访问到的是子结点</span></span><br><span class="line">        {</span><br><span class="line">            <span class="built_in">tarjan</span>(v); <span class="comment">//dfs</span></span><br><span class="line">            low[x] = <span class="built_in">min</span>(low[x],low[v]);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(!scc[v]) <span class="comment">//如果访问到的是祖先节点</span></span><br><span class="line">            low[x] = <span class="built_in">min</span>(low[x],pre[v]);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span>(pre[x]==low[x])</span><br><span class="line">    {</span><br><span class="line">        ++scn;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">        {</span><br><span class="line">            <span class="function"><span class="type">int</span> <span class="title">u</span><span class="params">(S.top())</span></span>; S.<span class="built_in">pop</span>();</span><br><span class="line">            scc[u] = scn;</span><br><span class="line">            <span class="keyword">if</span>(u==x)	<span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="tarjan算法的作用">tarjan 算法的作用:</h2>
+<p>首先，scc 是由一个或多个环组成的，可以用 tarjan 来寻找有向图中的环</p>
+<p>最主要的是，将有向图缩点形成的 scc 图是一个 DAG, 对于有向非 DAG 的最优解，
+可以先用 tarjan 将图缩成 DAG, 然后使用 dp 解决</p>
 
     </div>
 
@@ -284,13 +284,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2017/10/25/topo-sort/" rel="prev" title="拓扑排序及应用">
-                  <i class="fa fa-angle-left"></i> 拓扑排序及应用
+                <a href="/2017/10/24/luogu1010/" rel="prev" title="(luogu1010) 幂次方">
+                  <i class="fa fa-angle-left"></i> (luogu1010) 幂次方
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2017/10/25/DAGviaDP/" rel="next" title="浅谈dp与DAG的关系">
-                  浅谈dp与DAG的关系 <i class="fa fa-angle-right"></i>
+                <a href="/2017/10/25/topo-sort/" rel="next" title="拓扑排序及应用">
+                  拓扑排序及应用 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -303,6 +303,7 @@
 
 
 
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -317,7 +318,7 @@
     </span>
     <span class="author" itemprop="copyrightHolder">AjiL</span>
   </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
@@ -330,7 +331,7 @@
     <span class="toggle-line"></span>
   </div>
   <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
@@ -342,6 +343,8 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -362,6 +365,10 @@
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"XajilX","repo":"gitalk_comments","client_id":"Ov23lidC06Ozg0VieeHH","client_secret":"828218305f3333d7f9ea63d9943a1329c9a06f13","admin_user":"XajilX","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"00b693f5357ca46f27ddbcfecd33c1fe"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 </html>

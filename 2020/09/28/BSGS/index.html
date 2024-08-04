@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -17,13 +17,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="article">
-<meta property="og:title" content="BSGS求离散对数">
+<meta property="og:title" content="BSGS 求离散对数">
 <meta property="og:url" content="http://example.com/2020/09/28/BSGS/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-28T05:20:30.000Z">
 <meta property="article:modified_time" content="2024-08-03T12:36:17.497Z">
 <meta property="article:author" content="AjiL">
@@ -35,10 +35,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2020/09/28/BSGS/","path":"2020/09/28/BSGS/","title":"BSGS求离散对数"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/09/28/BSGS/","path":"2020/09/28/BSGS/","title":"BSGS 求离散对数"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>BSGS求离散对数 | AjiL's Blog</title>
+<title>BSGS 求离散对数 | AjiL's Blog</title>
   
 
 
@@ -60,7 +60,7 @@
     <div class="column">
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -77,7 +77,7 @@
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
     </div>
   </div>
 </div>
@@ -85,7 +85,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
 
@@ -100,10 +100,10 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -126,18 +126,18 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">159</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
         <span class="site-state-item-count">82</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -155,7 +155,7 @@
     <div class="sidebar-inner sidebar-blogroll">
       <div class="links-of-blogroll animated">
         <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          Links
+          链接
         </div>
         <ul class="links-of-blogroll-list">
             <li class="links-of-blogroll-item">
@@ -185,7 +185,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/28/BSGS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -199,12 +199,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="BSGS求离散对数 | AjiL's Blog">
+      <meta itemprop="name" content="BSGS 求离散对数 | AjiL's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          BSGS求离散对数
+          BSGS 求离散对数
         </h1>
 
         <div class="post-meta-container">
@@ -213,19 +213,19 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
 
-      <time title="Created: 2020-09-28 15:20:30" itemprop="dateCreated datePublished" datetime="2020-09-28T15:20:30+10:00">2020-09-28</time>
+      <time title="创建时间：2020-09-28 15:20:30" itemprop="dateCreated datePublished" datetime="2020-09-28T15:20:30+10:00">2020-09-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">In</span>
+      <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
         </span>
-          , 
+          ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/note/%E6%95%B0%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">数论</span></a>
         </span>
@@ -240,119 +240,86 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><hr />
+    <div class="post-body" itemprop="articleBody"><hr>
 <span id="more"></span>
 <h2 id="概述">概述:</h2>
-<p>BSGS(Baby-Step-Giant-Step)算法解决的是这样一个问题: 当<span
-class="math inline">\((a,p)=1\)</span>时, 求最小的<span
-class="math inline">\(x\)</span>, 使得<span class="math inline">\(a^x
-\equiv b(mod\ p)\)</span>. 这个<span
-class="math inline">\(x\)</span>即为离散对数<span
-class="math inline">\(log_ab\)</span>.</p>
-<p>先考虑最简单的情况, 即<span
-class="math inline">\(p\)</span>为素数.</p>
-<p>根据费马小定理, 这时只需检查<span class="math inline">\(0, 1, ...,
-p-1\)</span>是否为解即可. 因为<span class="math inline">\(a^{p-1} \equiv
-1(mod\ p)\)</span>, 当<span class="math inline">\(x\)</span>超过<span
-class="math inline">\(p-1\)</span>时<span
-class="math inline">\(a^x\)</span>就循环了.</p>
-<p>直接检查复杂度为<span class="math inline">\(O(p)\)</span>,
+<p>BSGS (Baby-Step-Giant-Step) 算法解决的是这样一个问题：当<span class="math inline"> \((a,p)=1\)</span> 时，求最小的<span class="math inline"> \(x\)</span>, 使得<span class="math inline"> \(a^x
+\equiv b(mod\ p)\)</span>. 这个<span class="math inline"> \(x\)</span> 即为离散对数<span class="math inline"> \(log_ab\)</span>.</p>
+<p>先考虑最简单的情况，即<span class="math inline"> \(p\)</span> 为素数.</p>
+<p>根据费马小定理，这时只需检查<span class="math inline"> \(0, 1, ...,
+p-1\)</span> 是否为解即可。因为<span class="math inline"> \(a^{p-1} \equiv
+1(mod\ p)\)</span>, 当<span class="math inline"> \(x\)</span> 超过<span class="math inline"> \(p-1\)</span> 时<span class="math inline"> \(a^x\)</span> 就循环了.</p>
+<p>直接检查复杂度为<span class="math inline"> \(O(p)\)</span>,
 显然不太够.</p>
 <h2 id="实现">实现:</h2>
-<p>可以利用分块的思想. 设置一个块的大小<span
-class="math inline">\(m\)</span>. 对于前<span
-class="math inline">\(m\)</span>项, 即<span class="math inline">\(a^0,
-a^1, ..., a^{m-1}\)</span>, 直接判断是否为b. 若相等则直接返回,
-否则将<span class="math inline">\(a^i\ mod\ p\)</span>存入<span
-class="math inline">\(e_i\)</span>之中. 最后求出<span
-class="math inline">\(a^m\)</span>的逆<span
-class="math inline">\(a^{-m}\)</span>.</p>
-<p>然后考虑下一个块<span class="math inline">\(a^m, a^{m+1}, ...,
-a^{2m-1}\)</span>, 若它们之中有解, 则说明存在<span
-class="math inline">\(e_i \times a^m \equiv b(mod\ p)\)</span>,
-左乘<span class="math inline">\(a^{-m}\)</span>即有<span
-class="math inline">\(e_i \equiv b \times a^{-m}(mod\ p)\)</span>,
-即我们只需要检查<span class="math inline">\(e_i\)</span>中是否存在<span
-class="math inline">\(b \times a^{-m}\)</span>即可.</p>
-<p>以此类推, 在第一个块求得<span class="math inline">\(e_i\)</span>之后,
-后面的块只需要检查<span
-class="math inline">\(e_i\)</span>之中是否存在<span
-class="math inline">\(b \times a^{-im}\)</span>即可.</p>
-<p>若使用std::map存储<span class="math inline">\(e_i\)</span>,
-时间复杂度即为<span class="math inline">\(O((m+p/m)log\ p)\)</span>,
-当<span class="math inline">\(m = p^{1/2}\)</span>时时间最优,
-此时时间复杂度为<span class="math inline">\(O(p^{1/2}log\ p)\)</span>,
-若采用哈希表存储<span
-class="math inline">\(e_i\)</span>的话平均时间复杂度即为<span
-class="math inline">\(O(\sqrt{p})\)</span></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">BSGS</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> p,<span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> m = <span class="built_in">ceil</span>(<span class="built_in">sqrt</span>(p));</span><br><span class="line">    unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; e;</span><br><span class="line">    e[<span class="number">1</span>] = <span class="number">0</span>;   <span class="comment">//a^0 = 1</span></span><br><span class="line">    <span class="type">int</span> x = a%p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;m;++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(x==b) &#123;</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!e.<span class="built_in">count</span>(x)) &#123;</span><br><span class="line">            e[x] = i;   <span class="comment">//a^i = x</span></span><br><span class="line">        &#125;</span><br><span class="line">        x = x*a%p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> anm = <span class="built_in">inv</span>(x,p); <span class="comment">//inv为求逆元</span></span><br><span class="line">    x = (b*anm)%p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=m;++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(e.<span class="built_in">count</span>(x)) &#123;</span><br><span class="line">            <span class="keyword">return</span> i*m + e[x];</span><br><span class="line">        &#125;</span><br><span class="line">        x = (x*anm)%p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当<span class="math inline">\(p\)</span>不是素数时解法大致相同,
-只是证明部分的费马小定理换成更为普适的欧拉定理, 且上界为<span
-class="math inline">\(\phi(p)\)</span>.
+<p>可以利用分块的思想。设置一个块的大小<span class="math inline"> \(m\)</span>. 对于前<span class="math inline"> \(m\)</span> 项，即<span class="math inline"> \(a^0,
+a^1, ..., a^{m-1}\)</span>, 直接判断是否为 b. 若相等则直接返回，
+否则将<span class="math inline"> \(a^i\ mod\ p\)</span> 存入<span class="math inline"> \(e_i\)</span> 之中。最后求出<span class="math inline"> \(a^m\)</span> 的逆<span class="math inline"> \(a^{-m}\)</span>.</p>
+<p>然后考虑下一个块<span class="math inline"> \(a^m, a^{m+1}, ...,
+a^{2m-1}\)</span>, 若它们之中有解，则说明存在<span class="math inline"> \(e_i \times a^m \equiv b(mod\ p)\)</span>,
+左乘<span class="math inline"> \(a^{-m}\)</span> 即有<span class="math inline"> \(e_i \equiv b \times a^{-m}(mod\ p)\)</span>,
+即我们只需要检查<span class="math inline"> \(e_i\)</span> 中是否存在<span class="math inline"> \(b \times a^{-m}\)</span> 即可.</p>
+<p>以此类推，在第一个块求得<span class="math inline"> \(e_i\)</span> 之后，
+后面的块只需要检查<span class="math inline"> \(e_i\)</span> 之中是否存在<span class="math inline"> \(b \times a^{-im}\)</span> 即可.</p>
+<p>若使用 std::map 存储<span class="math inline"> \(e_i\)</span>,
+时间复杂度即为<span class="math inline"> \(O((m+p/m)log\ p)\)</span>,
+当<span class="math inline"> \(m = p^{1/2}\)</span> 时时间最优，
+此时时间复杂度为<span class="math inline"> \(O(p^{1/2}log\ p)\)</span>,
+若采用哈希表存储<span class="math inline"> \(e_i\)</span> 的话平均时间复杂度即为<span class="math inline"> \(O(\sqrt{p})\)</span></p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">BSGS</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> p,<span class="type">int</span> b)</span> </span>{</span><br><span class="line">    <span class="type">int</span> m = <span class="built_in">ceil</span>(<span class="built_in">sqrt</span>(p));</span><br><span class="line">    unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; e;</span><br><span class="line">    e[<span class="number">1</span>] = <span class="number">0</span>;   <span class="comment">//a^0 = 1</span></span><br><span class="line">    <span class="type">int</span> x = a%p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;m;++i) {</span><br><span class="line">        <span class="keyword">if</span>(x==b) {</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(!e.<span class="built_in">count</span>(x)) {</span><br><span class="line">            e[x] = i;   <span class="comment">//a^i = x</span></span><br><span class="line">        }</span><br><span class="line">        x = x*a%p;</span><br><span class="line">    }</span><br><span class="line">    <span class="type">int</span> anm = <span class="built_in">inv</span>(x,p); <span class="comment">//inv为求逆元</span></span><br><span class="line">    x = (b*anm)%p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=m;++i) {</span><br><span class="line">        <span class="keyword">if</span>(e.<span class="built_in">count</span>(x)) {</span><br><span class="line">            <span class="keyword">return</span> i*m + e[x];</span><br><span class="line">        }</span><br><span class="line">        x = (x*anm)%p;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>当<span class="math inline"> \(p\)</span> 不是素数时解法大致相同，
+只是证明部分的费马小定理换成更为普适的欧拉定理，且上界为<span class="math inline"> \(\phi(p)\)</span>.
 同时求逆元时使用扩展欧几里得算法.</p>
-<p>(实际实现时上界仍然为p, 因为求<span
-class="math inline">\(\phi(p)\)</span>的时间复杂度较高)</p>
+<p>(实际实现时上界仍然为 p, 因为求<span class="math inline"> \(\phi(p)\)</span> 的时间复杂度较高)</p>
 <h2 id="扩展">扩展:</h2>
-<p>当<span class="math inline">\((a,p) \ne 1\)</span>时,
-上面的普通BSGS将会失效, 因为此时无法求得逆元.</p>
-<p>此时需要将其转化为<span class="math inline">\((a,p) =
-1\)</span>的形式.</p>
+<p>当<span class="math inline"> \((a,p) \ne 1\)</span> 时，
+上面的普通 BSGS 将会失效，因为此时无法求得逆元.</p>
+<p>此时需要将其转化为<span class="math inline"> \((a,p) =
+1\)</span> 的形式.</p>
 <p>首先给出一个定理:</p>
 <p><span class="math display">\[ \frac{a}{d} \equiv \frac{b}{d} (mod\
 \frac{m}{d})\ (1)\]</span></p>
-<p>其中<span class="math inline">\(d | (a,b,m)\)</span>(证明见最下).</p>
-<p>若<span class="math inline">\(d \nmid b\)</span>, 除了<span
-class="math inline">\(b=1\)</span>的情况下<span
-class="math inline">\(x=0\)</span>, 否则根据裴蜀定理, 原式无解, 返回-1.
+<p>其中<span class="math inline"> \(d | (a,b,m)\)</span>(证明见最下).</p>
+<p>若<span class="math inline"> \(d \nmid b\)</span>, 除了<span class="math inline"> \(b=1\)</span> 的情况下<span class="math inline"> \(x=0\)</span>, 否则根据裴蜀定理，原式无解，返回 - 1.
 (<span class="math inline">\(a \cdot a^{x-1} +py = b\)</span>)
 否则可以利用这个公式将原式:</p>
 <p><span class="math display">\[ a^x \equiv b (mod\ p) \]</span></p>
 <p>化为:</p>
 <p><span class="math display">\[ a^{x-1} \cdot \frac{a}{d} \equiv
 \frac{b}{d} (mod\ \frac{p}{d}) \]</span></p>
-<p>其中<span class="math inline">\(d = (a,p)\)</span>.</p>
-<p>继续变换, 可得:</p>
+<p>其中<span class="math inline"> \(d = (a,p)\)</span>.</p>
+<p>继续变换，可得:</p>
 <p><span class="math display">\[ a^{x-k} \cdot
 \frac{a^k}{\prod^{k}_{i}d_i} \equiv \frac{b}{\prod^{k}_{i}d_i}(mod\
 \frac{p}{\prod^{k}_{i}d_i}) \]</span></p>
-<p>其中<span class="math inline">\(d_i\)</span>为每次变换时的<span
-class="math inline">\((a,\frac{p}{\prod^{i-1}_{j}d_j})\)</span></p>
-<p>此时<span
-class="math inline">\((a,\frac{p}{\prod^{k}_{i}d_i})=1\)</span>. 令<span
-class="math inline">\(c = \frac{a^k}{\prod^{k}_{i}d_i}\)</span>, <span
-class="math inline">\(b&#39; = \frac{b}{\prod^{k}_{i}d_i}\)</span>,
-<span class="math inline">\(p&#39; =
+<p>其中<span class="math inline"> \(d_i\)</span> 为每次变换时的<span class="math inline"> \((a,\frac{p}{\prod^{i-1}_{j}d_j})\)</span></p>
+<p>此时<span class="math inline"> \((a,\frac{p}{\prod^{k}_{i}d_i})=1\)</span>. 令<span class="math inline"> \(c = \frac{a^k}{\prod^{k}_{i}d_i}\)</span>, <span class="math inline">\(b' = \frac{b}{\prod^{k}_{i}d_i}\)</span>,
+<span class="math inline">\(p' =
 \frac{p}{\prod^{k}_{i}d_i}\)</span>, 上式可写为:</p>
 <p><span class="math display">\[ \begin{aligned}
-&amp; a^{x-k} \cdot c \equiv b&#39;(mod\ p&#39;) \\
-\Rightarrow &amp; a^{x-k} \equiv b&#39; \cdot c^{-1}(mod\ p&#39;)
+&amp; a^{x-k} \cdot c \equiv b'(mod\ p') \\
+\Rightarrow &amp; a^{x-k} \equiv b' \cdot c^{-1}(mod\ p')
 \end{aligned} \]</span></p>
-<p>这样, 我们就把<span class="math inline">\((a,p) \neq
-1\)</span>的情况转化为了<span class="math inline">\((a,p) =
-1\)</span>的情况, 然后用普通的BSGS解决就行了.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">exbsgs</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> p,<span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> c = <span class="number">1</span>,g,<span class="built_in">k</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">while</span>((g=<span class="built_in">gcd</span>(a,p))!=<span class="number">1</span>) &#123;    <span class="comment">//将(a,p) != 1的情况化归</span></span><br><span class="line">        <span class="keyword">if</span>(b%g!=<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        c = c*(a/g)%p;</span><br><span class="line">        b /= g;</span><br><span class="line">        p /= g;</span><br><span class="line">        ++k;</span><br><span class="line">        <span class="keyword">if</span>(b == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> k;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    b = b*<span class="built_in">inv</span>(c,p)%p;</span><br><span class="line">    <span class="comment">/* 普通BSGS流程 */</span></span><br><span class="line">    <span class="type">int</span> m = <span class="built_in">ceil</span>(<span class="built_in">sqrt</span>(p));</span><br><span class="line">    unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; e;</span><br><span class="line">    e[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> x = a%p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;m;++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(x==b) &#123;</span><br><span class="line">            <span class="keyword">return</span> i+k; <span class="comment">//记得答案要+k, 因为普通BSGS求得的是x-k</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!e.<span class="built_in">count</span>(x)) &#123;</span><br><span class="line">            e[x] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        x = x*a%p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> anm = <span class="built_in">inv</span>(x,p);</span><br><span class="line">    x = (b*anm)%p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=m;++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(e.<span class="built_in">count</span>(x)) &#123;</span><br><span class="line">            <span class="keyword">return</span> i*m + e[x] + k;  <span class="comment">//同上</span></span><br><span class="line">        &#125;</span><br><span class="line">        x = (x*anm)%p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，我们就把<span class="math inline"> \((a,p) \neq
+1\)</span> 的情况转化为了<span class="math inline"> \((a,p) =
+1\)</span> 的情况，然后用普通的 BSGS 解决就行了.</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">exbsgs</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> p,<span class="type">int</span> b)</span> </span>{</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">1</span>) {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="type">int</span> c = <span class="number">1</span>,g,<span class="built_in">k</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">while</span>((g=<span class="built_in">gcd</span>(a,p))!=<span class="number">1</span>) {    <span class="comment">//将(a,p) != 1的情况化归</span></span><br><span class="line">        <span class="keyword">if</span>(b%g!=<span class="number">0</span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        }</span><br><span class="line">        c = c*(a/g)%p;</span><br><span class="line">        b /= g;</span><br><span class="line">        p /= g;</span><br><span class="line">        ++k;</span><br><span class="line">        <span class="keyword">if</span>(b == <span class="number">1</span>) {</span><br><span class="line">            <span class="keyword">return</span> k;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    b = b*<span class="built_in">inv</span>(c,p)%p;</span><br><span class="line">    <span class="comment">/* 普通BSGS流程 */</span></span><br><span class="line">    <span class="type">int</span> m = <span class="built_in">ceil</span>(<span class="built_in">sqrt</span>(p));</span><br><span class="line">    unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; e;</span><br><span class="line">    e[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> x = a%p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;m;++i) {</span><br><span class="line">        <span class="keyword">if</span>(x==b) {</span><br><span class="line">            <span class="keyword">return</span> i+k; <span class="comment">//记得答案要+k, 因为普通BSGS求得的是x-k</span></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(!e.<span class="built_in">count</span>(x)) {</span><br><span class="line">            e[x] = i;</span><br><span class="line">        }</span><br><span class="line">        x = x*a%p;</span><br><span class="line">    }</span><br><span class="line">    <span class="type">int</span> anm = <span class="built_in">inv</span>(x,p);</span><br><span class="line">    x = (b*anm)%p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=m;++i) {</span><br><span class="line">        <span class="keyword">if</span>(e.<span class="built_in">count</span>(x)) {</span><br><span class="line">            <span class="keyword">return</span> i*m + e[x] + k;  <span class="comment">//同上</span></span><br><span class="line">        }</span><br><span class="line">        x = (x*anm)%p;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="证明">证明:</h2>
-<p>首先是公式<span class="math inline">\((1)\)</span>:</p>
+<p>首先是公式<span class="math inline"> \((1)\)</span>:</p>
 <p><span class="math display">\[ \begin{aligned}
 &amp; a \equiv b(mod\ m) \\
 \Rightarrow &amp; a-b = km (k \in \mathbb{Z}) \\
 \Rightarrow &amp; \frac{a}{d} - \frac{b}{d} = k \cdot \frac{m}{d} \\
 \Rightarrow &amp; \frac{a}{d} \equiv \frac{b}{d} (mod\ \frac{m}{d})
 \end{aligned} \]</span></p>
-<p>接着是文字证明为何<span class="math inline">\(c\)</span>在<span
-class="math inline">\(mod\ p&#39;\)</span>意义下有逆元:</p>
-<p>通过化归的过程, 有: <span class="math inline">\((a,p&#39;) =
+<p>接着是文字证明为何<span class="math inline"> \(c\)</span> 在<span class="math inline"> \(mod\ p'\)</span> 意义下有逆元:</p>
+<p>通过化归的过程，有: <span class="math inline">\((a,p') =
 1\)</span></p>
-<p>这意味着对<span
-class="math inline">\(a,p&#39;\)</span>进行质因数分解后,
+<p>这意味着对<span class="math inline"> \(a,p'\)</span> 进行质因数分解后，
 它们两个没有相同的质因数.</p>
-<p>同时<span class="math inline">\(c =
-\frac{a^k}{\prod^{k}_{i}d_i}\)</span>, 不会从<span
-class="math inline">\(a\)</span>中产生新的质因数, 所以<span
-class="math inline">\(c,p&#39;\)</span>也没有相同的质因数, <span
-class="math inline">\((c,p&#39;) = 1\)</span>, <span
-class="math inline">\(c\)</span>在<span class="math inline">\(mod\
-p&#39;\)</span>意义下逆元存在.</p>
+<p>同时<span class="math inline"> \(c =
+\frac{a^k}{\prod^{k}_{i}d_i}\)</span>, 不会从<span class="math inline"> \(a\)</span> 中产生新的质因数，所以<span class="math inline"> \(c,p'\)</span> 也没有相同的质因数，<span class="math inline">\((c,p') = 1\)</span>, <span class="math inline">\(c\)</span> 在<span class="math inline"> \(mod\
+p'\)</span> 意义下逆元存在.</p>
 
     </div>
 
@@ -388,6 +355,7 @@ p&#39;\)</span>意义下逆元存在.</p>
 
 
 
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -402,7 +370,7 @@ p&#39;\)</span>意义下逆元存在.</p>
     </span>
     <span class="author" itemprop="copyrightHolder">AjiL</span>
   </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
@@ -415,7 +383,7 @@ p&#39;\)</span>意义下逆元存在.</p>
     <span class="toggle-line"></span>
   </div>
   <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
@@ -427,6 +395,8 @@ p&#39;\)</span>意义下逆元存在.</p>
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -447,6 +417,10 @@ p&#39;\)</span>意义下逆元存在.</p>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"XajilX","repo":"gitalk_comments","client_id":"Ov23lidC06Ozg0VieeHH","client_secret":"828218305f3333d7f9ea63d9943a1329c9a06f13","admin_user":"XajilX","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"6e7ec1d376423a12976a904aa194638e"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 </html>
