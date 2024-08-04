@@ -1,129 +1,44 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.ico?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="编译原理,">
-
-
-
-
-
-
-
-
-
-
-<meta name="keywords" content="编译原理">
-<meta property="og:type" content="article">
+    <meta property="og:type" content="article">
 <meta property="og:title" content="Compiler -- Lexer">
-<meta property="og:url" content="http://yoursite.com/2023/11/08/cs143-lexer/index.html">
+<meta property="og:url" content="http://example.com/2023/11/08/cs143-lexer/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-08-03T12:36:17.507Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-11-08T08:39:10.000Z">
+<meta property="article:modified_time" content="2024-08-03T12:36:17.507Z">
+<meta property="article:author" content="AjiL">
+<meta property="article:tag" content="编译原理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Compiler -- Lexer">
+
+
+<link rel="canonical" href="http://example.com/2023/11/08/cs143-lexer/">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2023/11/08/cs143-lexer/","path":"2023/11/08/cs143-lexer/","title":"Compiler -- Lexer"}</script>
 
-
-
-  <link rel="canonical" href="http://yoursite.com/2023/11/08/cs143-lexer/">
-
-
-
-
-
-  <title>Compiler -- Lexer | AjiL's Blog</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Compiler -- Lexer | AjiL's Blog</title>
   
 
 
@@ -133,684 +48,456 @@
 
 
 
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">AjiL's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">AjiL's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
   </div>
 </div>
 
+
+
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
 </nav>
 
 
 
- </div>
-    </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/11/08/cs143-lexer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="AjiL">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AjiL's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
+</header>
         
-        
-          <h1 class="post-title" itemprop="name headline">Compiler -- Lexer</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-11-08T19:39:10+11:00">
-                2023-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/" itemprop="url" rel="index">
-                    <span itemprop="name">note</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/编译原理/" itemprop="url" rel="index">
-                    <span itemprop="name">编译原理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <hr>
-<a id="more"></a>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>词法分析读取源代码中的字符，识别其中的子串为不同类型的词素（lexeme），生成其对应的 token 传递给语法解析器。</p>
-<p>通常来讲，除了生成 token，词法分析器还会清除空白、注释，发现非法字符，生成符号表记录标识符，记录行号以便生成报错信息等。</p>
-<h2 id="Lexeme-Token-amp-Token-class"><a href="#Lexeme-Token-amp-Token-class" class="headerlink" title="Lexeme, Token &amp; Token class"></a>Lexeme, Token &amp; Token class</h2><p>一个 token 通常包括两个部分：该 token 所属的 <strong>token 类（token class）</strong>以及该 token 代表的子串，也即<strong>词素（lexeme）</strong>。例如<code>&lt;Identifier, a&gt;</code>，<code>&lt;keyword, if&gt;</code>等。</p>
-<p>一个 token 类表示了一个字符串集合，这些字符串通常具有相近的含义。例如标识符，某个关键字，字面常量等。词素 则表示了能被识别为某个 token 类的字符串。</p>
-<p>为了识别与分类词素，需要一些方法来定义 token 类的识别模式（pattern）。常用的方法是使用<strong>正则语言（Regular Language）</strong>。</p>
-<h2 id="正则语言与正则表达式"><a href="#正则语言与正则表达式" class="headerlink" title="正则语言与正则表达式"></a>正则语言与正则表达式</h2><p>数学上定义的“语言”（language）由两个集合所组成：<strong>字符集（alphabet）</strong>与定义在该字符集上的<strong>字符串（string）</strong>集。</p>
-<p>其中字符集为一个包含若干符号的有限集，一般用希腊字母$\Sigma$表示，常见的例如 ASCII 字符集和 Unicode 字符集；字符串为一个由字符集$\Sigma$中的符号组成的有限序列；而语言中的字符串集可以是任意的由若干定义在$\Sigma$上的字符串组成的可数集。</p>
-<p>从该定义中可以看出，每个 token 类都可以视作一个语言。</p>
-<p>对于定义在相同字符集的两个语言$L$, $M$，有如下运算：</p>
-<ul>
-<li><strong>并（union）</strong>：$L \cup M = \{s \mid s \in L \lor s \in M\}$</li>
-<li><strong>连接（concatenation）</strong>：$LM = \{st \mid s \in L \land t \in M\}$</li>
-<li><strong>克林闭包（Kleene closure）</strong>：$L* = \bigcup_{i=0}^{\infty} L^i$</li>
-</ul>
-<p>其中$L^i$意为语言$L$自身连接$i$次，$i=0$时即为仅包含空串的语言，记为$\{\epsilon\}$；对应地，空字符串记为$\epsilon$。</p>
-<p>定义在$\Sigma$上的正则语言可如下定义：</p>
-<ul>
-<li>仅包含空串$\{\epsilon\}$和仅包含单个字符$\{c\}(c\in \Sigma)$的语言为正则语言；</li>
-<li>若$L$为正则语言，则其克林闭包$L*$为正则语言；</li>
-<li>若$L, M$均为正则语言，则其并$L \cup M$与连接$LM$为正则语言。</li>
-</ul>
-<p>可以通过定义如下的记号代表一个正则语言，即<strong>正则表达式（REGular EXpression, abbr. regex）</strong>：</p>
-<ul>
-<li>空串$\epsilon$代表的语言$L(\epsilon) = \{\epsilon\}$；</li>
-<li>字符$\mathbf{a}(a\in \Sigma)$代表的语言$L(\mathbf{a}) = \{a\}$；</li>
-<li>$(r)|(s)$代表并$L(r) \cup L(s)$；</li>
-<li>$(r)(s)$代表连接$L(r)L(s)$；</li>
-<li>$(r)\ast$代表克林闭包$(L(r))\ast$；</li>
-<li>$(r)$代表语言$L(r)$，该规则表示在表达式左右添加括号不改变其含义。</li>
-</ul>
-<p>同时为了消除括号，通常各运算有如下优先级与结合性：</p>
-<ol>
-<li>一元运算$\ast$优先级最高，左结合；</li>
-<li>连接运算优先级次高，左结合；</li>
-<li>并运算优先级最低，左结合。</li>
-</ol>
-<p>通常来讲编程语言中的 token 类都是正则语言。例如，对于 C 语言中的标识符，可以用正则表达式表达为（不考虑保留字）：</p>
-<script type="math/tex; mode=display">(\mathrm{letter} \mid \_)(\mathrm{letter} \mid \mathrm{digit} \mid \_ )*</script><p>其中$\mathrm{letter}$表示英文字母，$\mathrm{digit}$表示数字。</p>
-<h2 id="token-识别"><a href="#token-识别" class="headerlink" title="token 识别"></a>token 识别</h2><p>定义了正则语言与正则表达式后，token 的识别过程可以表述为如下的步骤：</p>
-<ol>
-<li>写出各个 token 类的正则表达式$R_i$，同时记一个正则表达式$R$为所有$R_i$的并，即：<script type="math/tex; mode=display">R = R_1 \mid R_2 \mid \cdots \mid R_m</script></li>
-<li>设输入为$x_1 \cdots x_n$，对所有$i \in [1, n]$，检查是否有：<script type="math/tex; mode=display">x_1 \cdots x_i \in L(R)</script></li>
-<li>若找到一个$i$满足上述条件则说明必有至少一个$j\in[1,m]$，<script type="math/tex; mode=display">x_1 \cdots x_i \in L(R_j)</script>将其记录为 token，对应$R_j$的 token 类；</li>
-<li>将$x_1 \cdots x_i$移除输入，返回步骤2继续寻找，直至输入为空。</li>
-</ol>
-<p>对于冲突，有如下策略：</p>
-<ul>
-<li>对于不同长度的满足步骤 2 中条件的前缀，选择最长的前缀，例如将 <code>==</code> 视为一个 token 而不是两个<code>=</code>；</li>
-<li>对于不同的，满足步骤 3 中条件的$R_j$，选择最小的$j$，也即将排列顺序视为优先级，例如将某些词素视为关键字而非标识符；</li>
-<li>设置错误类以避免失配的情况，如非法字符，非法标识符等。</li>
-</ul>
-<p>识别算法的实现通常使用<strong>有限状态机（Finite Automaton）</strong>。</p>
-<h2 id="有限状态机"><a href="#有限状态机" class="headerlink" title="有限状态机"></a>有限状态机</h2><p>有限状态机包含了以下部分：</p>
-<ul>
-<li>一个输入字符集$\Sigma$；</li>
-<li>一个状态有限集$S$；</li>
-<li>一个初始状态$s_0 \in S$；</li>
-<li>一个接受状态集$F \subseteq S$；</li>
-<li>一个转移集合$S \to^a S$，其中$a \in \Sigma \cup \{\epsilon\}$</li>
-</ul>
-<p>有限状态机可以表示为一个有向图，其中的结点即为状态，边即为转移，边上有标号$a$。</p>
-<p>有限状态机可分为<strong>非确定性有限状态机（Nondeterministic ~, abbr. NFA）</strong>与<strong>确定性有限状态机（Deterministic ~, abbr. DFA）</strong>。其中 DFA 除了上述部分外，还有以下约束：</p>
-<ul>
-<li>对于每个状态$s \in S$与每个字符$a \in \Sigma$，至多有一个转移；</li>
-<li>空串$\epsilon$不允许出现在标号上。</li>
-</ul>
-<p>每个有限状态机都对应一个正则语言或空语言（即字符串集合为空集），使用有限状态机可以识别某个字符串是否属于对应的正则语言，方法如下：</p>
-<ol>
-<li>从初始状态开始进行转移；</li>
-<li>除了空串外，若要进行标号为$a$的转移，从字符串中“消耗”一个字符$a$，并转移到另一个状态，标号为$\epsilon$的转移不“消耗”字符直接转移；</li>
-<li>若字符串“消耗”完毕后可到达接受状态$f \in F$，则称状态机接受该字符串，该字符串属于对应的正则语言；</li>
-<li>若字符串“消耗”完毕后无法到达接受状态或无法进行任何转移，则称状态机拒绝该字符串，该字符串不属于对应的正则语言。</li>
-</ol>
-<p>通过将某些状态的集合看作一种状态，可以将 NFA 转化为 DFA 。至于如何通过正则表达式生成有限状态机以及如何将 NFA 转化为 DFA <a href="/2023/09/28/loj118/">前面的博文</a>已经提过了，这里不再赘述。</p>
-<h2 id="Lab"><a href="#Lab" class="headerlink" title="Lab"></a>Lab</h2><p>作业二中需要使用 flex 生成 COOL 语言的 Lexer。首先需要定义各个 token 类的正则表达式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">CLASS       (class)</span><br><span class="line">ELSE        (else)</span><br><span class="line">FI          (fi)</span><br><span class="line">IF          (if)</span><br><span class="line">IN          (in)</span><br><span class="line">INHERITS    (inherits)</span><br><span class="line">LET         (let)</span><br><span class="line">LOOP        (loop)</span><br><span class="line">POOL        (pool)</span><br><span class="line">THEN        (then)</span><br><span class="line">WHILE       (while)</span><br><span class="line">CASE        (case)</span><br><span class="line">ESAC        (esac)</span><br><span class="line">OF          (of)</span><br><span class="line">DARROW      =&gt;</span><br><span class="line">NEW         (new)</span><br><span class="line">ISVOID      (isvoid)</span><br><span class="line">ASSIGN      &lt;-	</span><br><span class="line">NOT         (not)</span><br><span class="line">LE          &lt;=</span><br><span class="line"></span><br><span class="line">TRUE        t(rue)</span><br><span class="line">FALSE       f(alse)</span><br><span class="line"></span><br><span class="line">OBJID       [a-z][_0-9a-zA-Z]*  // 对象标识符</span><br><span class="line">TYPID       [A-Z][_0-9a-zA-Z]*  // 类型标识符</span><br><span class="line"></span><br><span class="line">ILCMT       --.*    // inline comment</span><br><span class="line">CMTST       &quot;(*&quot;</span><br><span class="line">CMTED       &quot;*)&quot;</span><br><span class="line">INT         [0-9]+  // 整型字面量</span><br><span class="line"></span><br><span class="line">SGN         [\(\)\&#123;\&#125;;:,\.&lt;=\+\-\*/~@]  // 单字符 token</span><br><span class="line">SKIP_SGN    [ \t\f\r\v]     // 空白字符</span><br></pre></td></tr></table></figure>
-<p>按照作业要求各关键字是大小写不敏感的，新版的 flex 可以使用 (?:) 组来进行大小写不敏感匹配，但我这里用的是老版本的所以没有使用。</p>
-<p>然后是生成 token。先写出关键字的 token 生成。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;CLASS&#125; &#123; return (CLASS); &#125;</span><br><span class="line">&#123;ELSE&#125;  &#123; return (ELSE); &#125;</span><br><span class="line">&#123;FI&#125;    &#123; return (FI); &#125;</span><br><span class="line">&#123;IF&#125;    &#123; return (IF); &#125;</span><br><span class="line">&#123;IN&#125;    &#123; return (IN); &#125;</span><br><span class="line">&#123;INHERITS&#125;  &#123; return (INHERITS); &#125;</span><br><span class="line">&#123;LET&#125;   &#123; return (LET); &#125;</span><br><span class="line">&#123;LOOP&#125;  &#123; return (LOOP); &#125;</span><br><span class="line">&#123;POOL&#125;  &#123; return (POOL); &#125;</span><br><span class="line">&#123;THEN&#125;  &#123; return (THEN); &#125;</span><br><span class="line">&#123;WHILE&#125; &#123; return (WHILE); &#125;</span><br><span class="line">&#123;CASE&#125;  &#123; return (CASE); &#125;</span><br><span class="line">&#123;ESAC&#125;  &#123; return (ESAC); &#125;</span><br><span class="line">&#123;OF&#125;    &#123; return (OF); &#125;</span><br><span class="line">&#123;DARROW&#125;    &#123; return (DARROW); &#125;</span><br><span class="line">&#123;NEW&#125;       &#123; return (NEW); &#125;</span><br><span class="line">&#123;ISVOID&#125;    &#123; return (ISVOID); &#125;</span><br><span class="line">&#123;ASSIGN&#125;    &#123; return (ASSIGN); &#125;</span><br><span class="line">&#123;NOT&#125;   &#123; return (NOT); &#125;</span><br><span class="line">&#123;LE&#125;    &#123; return (LE); &#125;</span><br></pre></td></tr></table></figure>
-<p>然后是单字符 token：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;SGN&#125; &#123;</span><br><span class="line">    return yytext[0];</span><br><span class="line">&#125;</span><br><span class="line">&#123;SKIP_SGN&#125; &#123;&#125;</span><br><span class="line">\n &#123; ++curr_lineno; &#125;</span><br><span class="line">. &#123;</span><br><span class="line">    cool_yylval.error_msg = yytext;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>需要注意的是这几项需要写在最后，<code>.</code>是用来兜底代表非法字符的；并且换行符需要单独处理，因为需要保存行号。</p>
-<p>接下来是字面量和标识符：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;TRUE&#125; &#123;</span><br><span class="line">    cool_yylval.boolean = true;</span><br><span class="line">    return (BOOL_CONST);</span><br><span class="line">&#125;</span><br><span class="line">&#123;FALSE&#125; &#123;</span><br><span class="line">    cool_yylval.boolean = false;</span><br><span class="line">    return (BOOL_CONST);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;OBJID&#125; &#123;</span><br><span class="line">    cool_yylval.symbol = idtable.add_string(yytext);</span><br><span class="line">    return (OBJECTID);</span><br><span class="line">&#125;</span><br><span class="line">&#123;TYPID&#125; &#123;</span><br><span class="line">    cool_yylval.symbol = idtable.add_string(yytext);</span><br><span class="line">    return (TYPEID);</span><br><span class="line">&#125;</span><br><span class="line">&#123;INT&#125; &#123;</span><br><span class="line">    cool_yylval.symbol = inttable.add_string(yytext);</span><br><span class="line">    return (INT_CONST);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这几项需要写在关键字后面，因为关键字不应该被识别为标识符。</p>
-<p>再然后是注释：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;ILCMT&#125; &#123;&#125;</span><br><span class="line"></span><br><span class="line">&#123;CMTST&#125; &#123; BEGIN(COMMENT); &#125;</span><br><span class="line">&lt;COMMENT&gt;\n &#123; ++curr_lineno; &#125;</span><br><span class="line">&lt;COMMENT&gt;&#123;CMTED&#125; &#123; BEGIN(INITIAL); &#125;</span><br><span class="line">&lt;COMMENT&gt;. &#123;&#125;</span><br><span class="line"></span><br><span class="line">&lt;COMMENT&gt;&lt;&lt;EOF&gt;&gt; &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    cool_yylval.error_msg = &quot;EOF in comment&quot;;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&#123;CMTED&#125; &#123;</span><br><span class="line">    cool_yylval.error_msg = &quot;Unmatched *)&quot;;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>行内注释比较简单，关键是多行注释，由于多行注释内的语法与注释外不一样，所以使用到了状态 State。</p>
-<p>状态需要先定义，在定义段中使用<code>%x COMMENT</code>可以定义<code>COMMENT</code>状态，使用<code>BEGIN(COMMENT)</code>可以切换到该状态，使用<code>BEGIN(INITIAL)</code>切换回初始状态，在正则表达式前加上<code>&lt;COMMENT&gt;</code>可以指定在某状态内的匹配操作。</p>
-<p>最后是字符串，和注释一样使用到了状态：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">\&quot; &#123;</span><br><span class="line">    BEGIN(STRING);</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\[^ntbf] &#123;</span><br><span class="line">    push_char_safe(yytext[1]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\\n &#123;</span><br><span class="line">    push_char_safe(&apos;\n&apos;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\t &#123;</span><br><span class="line">    push_char_safe(&apos;\t&apos;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\b  &#123;</span><br><span class="line">    push_char_safe(&apos;\b&apos;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\f &#123;</span><br><span class="line">    push_char_safe(&apos;\f&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\\\n &#123;</span><br><span class="line">    push_char_safe(&apos;\n&apos;);</span><br><span class="line">    ++curr_lineno;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\&quot; &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    int len = string_buf_ptr - string_buf;</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">    if(is_strlen_exceed) &#123;</span><br><span class="line">    cool_yylval.error_msg = &quot;String constant too long&quot;;</span><br><span class="line">    is_strlen_exceed = false;</span><br><span class="line">    return (ERROR);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">    cool_yylval.symbol = stringtable.add_string(string_buf, len);</span><br><span class="line">        return (STR_CONST);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\n &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    is_strlen_exceed = false;</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">    cool_yylval.error_msg = &quot;Unterminated string constant&quot;;</span><br><span class="line">    ++curr_lineno;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;&lt;&lt;EOF&gt;&gt; &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    cool_yylval.error_msg = &quot;EOF in string constant&quot;;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\0 &#123;</span><br><span class="line">    cool_yylval.error_msg = &quot;String contains null character&quot;;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;. &#123;</span><br><span class="line">    push_char_safe(yytext[0]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>和注释一样需要在定义段中加上<code>%x STRING</code>定义状态。同时这里使用了一个自定义的函数<code>push_char_safe</code>：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *string_buf_ptr;</span><br><span class="line">Boolean is_strlen_exceed;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_char_safe</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(string_buf_ptr - string_buf &lt; MAX_STR_CONST) &#123;</span><br><span class="line">        *(string_buf_ptr++) = c;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        is_strlen_exceed = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该函数需定义在定义段的代码块中。</p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/编译原理/" rel="tag"># 编译原理</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2023/11/08/cs143-intro/" rel="next" title="Compiler -- Intro">
-                <i class="fa fa-chevron-left"></i> Compiler -- Intro
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2023/11/13/cs143-parser/" rel="prev" title="Compiler -- Parser">
-                Compiler -- Parser <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
   
-  
-  
-  </article>
+  <aside class="sidebar">
 
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lexeme-token-token-class"><span class="nav-number">2.</span> <span class="nav-text">Lexeme, Token &amp; Token class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%AF%AD%E8%A8%80%E4%B8%8E%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">正则语言与正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#token-%E8%AF%86%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">token 识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="nav-number">5.</span> <span class="nav-text">有限状态机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lab"><span class="nav-number">6.</span> <span class="nav-text">Lab</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-    <div class="post-spread">
-      
-    </div>
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AjiL"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">AjiL</p>
+  <div class="site-description" itemprop="description">El Psy Kongroo</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">82</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/XajilX" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;XajilX" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
   </div>
 
-
-          </div>
-          
-
-
-          
-  
-
-
         </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+      </div>
     </div>
-  </div>
 
-  <aside id="sidebar" class="sidebar">
     
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="http://www.tonyjam.cn/" title="http:&#x2F;&#x2F;www.tonyjam.cn&#x2F;" rel="noopener" target="_blank">TonyJam</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://zmyjoe.github.io/" title="https:&#x2F;&#x2F;zmyjoe.github.io&#x2F;" rel="noopener" target="_blank">ZmyJoe</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://halc.top/" title="https:&#x2F;&#x2F;halc.top&#x2F;" rel="noopener" target="_blank">HalcyonAzu</a>
+            </li>
         </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="AjiL">
-            
-              <p class="site-author-name" itemprop="name">AjiL</p>
-              <p class="site-description motion-element" itemprop="description">El Psy Kongroo</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">159</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">52</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">82</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          <div class="links-of-author motion-element">
-            
-          </div>
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-globe"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.tonyjam.cn/" title="TonyJam" target="_blank">TonyJam</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://zmyjoe.github.io/" title="ZmyJoe" target="_blank">ZmyJoe</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://halc.top/" title="HalcyonAzu" target="_blank">HalcyonAzu</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lexeme-Token-amp-Token-class"><span class="nav-number">2.</span> <span class="nav-text">Lexeme, Token &amp; Token class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则语言与正则表达式"><span class="nav-number">3.</span> <span class="nav-text">正则语言与正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#token-识别"><span class="nav-number">4.</span> <span class="nav-text">token 识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有限状态机"><span class="nav-number">5.</span> <span class="nav-text">有限状态机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lab"><span class="nav-number">6.</span> <span class="nav-text">Lab</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
+      </div>
     </div>
   </aside>
 
 
-        
-      </div>
-    </main>
+    </div>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">AjiL</span>
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/08/cs143-lexer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="AjiL">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AjiL's Blog">
+      <meta itemprop="description" content="El Psy Kongroo">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Compiler -- Lexer | AjiL's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Compiler -- Lexer
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-11-08 19:39:10" itemprop="dateCreated datePublished" datetime="2023-11-08T19:39:10+11:00">2023-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">编译原理</span></a>
+        </span>
+    </span>
 
   
 </div>
 
+        </div>
+      </header>
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><hr />
+<span id="more"></span>
+<h2 id="概述">概述</h2>
+<p>词法分析读取源代码中的字符，识别其中的子串为不同类型的词素（lexeme），生成其对应的
+token 传递给语法解析器。</p>
+<p>通常来讲，除了生成
+token，词法分析器还会清除空白、注释，发现非法字符，生成符号表记录标识符，记录行号以便生成报错信息等。</p>
+<h2 id="lexeme-token-token-class">Lexeme, Token &amp; Token class</h2>
+<p>一个 token 通常包括两个部分：该 token 所属的 <strong>token 类（token
+class）</strong>以及该 token
+代表的子串，也即<strong>词素（lexeme）</strong>。例如<code>&lt;Identifier, a&gt;</code>，<code>&lt;keyword, if&gt;</code>等。</p>
+<p>一个 token
+类表示了一个字符串集合，这些字符串通常具有相近的含义。例如标识符，某个关键字，字面常量等。词素
+则表示了能被识别为某个 token 类的字符串。</p>
+<p>为了识别与分类词素，需要一些方法来定义 token
+类的识别模式（pattern）。常用的方法是使用<strong>正则语言（Regular
+Language）</strong>。</p>
+<h2 id="正则语言与正则表达式">正则语言与正则表达式</h2>
+<p>数学上定义的“语言”（language）由两个集合所组成：<strong>字符集（alphabet）</strong>与定义在该字符集上的<strong>字符串（string）</strong>集。</p>
+<p>其中字符集为一个包含若干符号的有限集，一般用希腊字母<span
+class="math inline">\(\Sigma\)</span>表示，常见的例如 ASCII 字符集和
+Unicode 字符集；字符串为一个由字符集<span
+class="math inline">\(\Sigma\)</span>中的符号组成的有限序列；而语言中的字符串集可以是任意的由若干定义在<span
+class="math inline">\(\Sigma\)</span>上的字符串组成的可数集。</p>
+<p>从该定义中可以看出，每个 token 类都可以视作一个语言。</p>
+<p>对于定义在相同字符集的两个语言<span class="math inline">\(L\)</span>,
+<span class="math inline">\(M\)</span>，有如下运算：</p>
+<ul>
+<li><strong>并（union）</strong>：<span class="math inline">\(L \cup M =
+\{s \mid s \in L \lor s \in M\}\)</span></li>
+<li><strong>连接（concatenation）</strong>：<span
+class="math inline">\(LM = \{st \mid s \in L \land t \in
+M\}\)</span></li>
+<li><strong>克林闭包（Kleene closure）</strong>：<span
+class="math inline">\(L* = \bigcup_{i=0}^{\infty} L^i\)</span></li>
+</ul>
+<p>其中<span class="math inline">\(L^i\)</span>意为语言<span
+class="math inline">\(L\)</span>自身连接<span
+class="math inline">\(i\)</span>次，<span
+class="math inline">\(i=0\)</span>时即为仅包含空串的语言，记为<span
+class="math inline">\(\{\epsilon\}\)</span>；对应地，空字符串记为<span
+class="math inline">\(\epsilon\)</span>。</p>
+<p>定义在<span
+class="math inline">\(\Sigma\)</span>上的正则语言可如下定义：</p>
+<ul>
+<li>仅包含空串<span
+class="math inline">\(\{\epsilon\}\)</span>和仅包含单个字符<span
+class="math inline">\(\{c\}(c\in \Sigma)\)</span>的语言为正则语言；</li>
+<li>若<span
+class="math inline">\(L\)</span>为正则语言，则其克林闭包<span
+class="math inline">\(L*\)</span>为正则语言；</li>
+<li>若<span class="math inline">\(L, M\)</span>均为正则语言，则其并<span
+class="math inline">\(L \cup M\)</span>与连接<span
+class="math inline">\(LM\)</span>为正则语言。</li>
+</ul>
+<p>可以通过定义如下的记号代表一个正则语言，即<strong>正则表达式（REGular
+EXpression, abbr. regex）</strong>：</p>
+<ul>
+<li>空串<span class="math inline">\(\epsilon\)</span>代表的语言<span
+class="math inline">\(L(\epsilon) = \{\epsilon\}\)</span>；</li>
+<li>字符<span class="math inline">\(\mathbf{a}(a\in
+\Sigma)\)</span>代表的语言<span class="math inline">\(L(\mathbf{a}) =
+\{a\}\)</span>；</li>
+<li><span class="math inline">\((r)|(s)\)</span>代表并<span
+class="math inline">\(L(r) \cup L(s)\)</span>；</li>
+<li><span class="math inline">\((r)(s)\)</span>代表连接<span
+class="math inline">\(L(r)L(s)\)</span>；</li>
+<li><span class="math inline">\((r)\ast\)</span>代表克林闭包<span
+class="math inline">\((L(r))\ast\)</span>；</li>
+<li><span class="math inline">\((r)\)</span>代表语言<span
+class="math inline">\(L(r)\)</span>，该规则表示在表达式左右添加括号不改变其含义。</li>
+</ul>
+<p>同时为了消除括号，通常各运算有如下优先级与结合性：</p>
+<ol type="1">
+<li>一元运算<span
+class="math inline">\(\ast\)</span>优先级最高，左结合；</li>
+<li>连接运算优先级次高，左结合；</li>
+<li>并运算优先级最低，左结合。</li>
+</ol>
+<p>通常来讲编程语言中的 token 类都是正则语言。例如，对于 C
+语言中的标识符，可以用正则表达式表达为（不考虑保留字）：</p>
+<p><span class="math display">\[(\mathrm{letter} \mid
+\_)(\mathrm{letter} \mid \mathrm{digit} \mid \_ )*\]</span></p>
+<p>其中<span
+class="math inline">\(\mathrm{letter}\)</span>表示英文字母，<span
+class="math inline">\(\mathrm{digit}\)</span>表示数字。</p>
+<h2 id="token-识别">token 识别</h2>
+<p>定义了正则语言与正则表达式后，token
+的识别过程可以表述为如下的步骤：</p>
+<ol type="1">
+<li>写出各个 token 类的正则表达式<span
+class="math inline">\(R_i\)</span>，同时记一个正则表达式<span
+class="math inline">\(R\)</span>为所有<span
+class="math inline">\(R_i\)</span>的并，即： <span
+class="math display">\[R = R_1 \mid R_2 \mid \cdots \mid
+R_m\]</span></li>
+<li>设输入为<span class="math inline">\(x_1 \cdots
+x_n\)</span>，对所有<span class="math inline">\(i \in [1,
+n]\)</span>，检查是否有： <span class="math display">\[x_1 \cdots x_i
+\in L(R)\]</span></li>
+<li>若找到一个<span
+class="math inline">\(i\)</span>满足上述条件则说明必有至少一个<span
+class="math inline">\(j\in[1,m]\)</span>， <span
+class="math display">\[x_1 \cdots x_i \in L(R_j)\]</span> 将其记录为
+token，对应<span class="math inline">\(R_j\)</span>的 token 类；</li>
+<li>将<span class="math inline">\(x_1 \cdots
+x_i\)</span>移除输入，返回步骤2继续寻找，直至输入为空。</li>
+</ol>
+<p>对于冲突，有如下策略：</p>
+<ul>
+<li>对于不同长度的满足步骤 2 中条件的前缀，选择最长的前缀，例如将
+<code>==</code> 视为一个 token 而不是两个<code>=</code>；</li>
+<li>对于不同的，满足步骤 3 中条件的<span
+class="math inline">\(R_j\)</span>，选择最小的<span
+class="math inline">\(j\)</span>，也即将排列顺序视为优先级，例如将某些词素视为关键字而非标识符；</li>
+<li>设置错误类以避免失配的情况，如非法字符，非法标识符等。</li>
+</ul>
+<p>识别算法的实现通常使用<strong>有限状态机（Finite
+Automaton）</strong>。</p>
+<h2 id="有限状态机">有限状态机</h2>
+<p>有限状态机包含了以下部分：</p>
+<ul>
+<li>一个输入字符集<span class="math inline">\(\Sigma\)</span>；</li>
+<li>一个状态有限集<span class="math inline">\(S\)</span>；</li>
+<li>一个初始状态<span class="math inline">\(s_0 \in S\)</span>；</li>
+<li>一个接受状态集<span class="math inline">\(F \subseteq
+S\)</span>；</li>
+<li>一个转移集合<span class="math inline">\(S \to^a
+S\)</span>，其中<span class="math inline">\(a \in \Sigma \cup
+\{\epsilon\}\)</span></li>
+</ul>
+<p>有限状态机可以表示为一个有向图，其中的结点即为状态，边即为转移，边上有标号<span
+class="math inline">\(a\)</span>。</p>
+<p>有限状态机可分为<strong>非确定性有限状态机（Nondeterministic ~, abbr.
+NFA）</strong>与<strong>确定性有限状态机（Deterministic ~, abbr.
+DFA）</strong>。其中 DFA 除了上述部分外，还有以下约束：</p>
+<ul>
+<li>对于每个状态<span class="math inline">\(s \in
+S\)</span>与每个字符<span class="math inline">\(a \in
+\Sigma\)</span>，至多有一个转移；</li>
+<li>空串<span
+class="math inline">\(\epsilon\)</span>不允许出现在标号上。</li>
+</ul>
+<p>每个有限状态机都对应一个正则语言或空语言（即字符串集合为空集），使用有限状态机可以识别某个字符串是否属于对应的正则语言，方法如下：</p>
+<ol type="1">
+<li>从初始状态开始进行转移；</li>
+<li>除了空串外，若要进行标号为<span
+class="math inline">\(a\)</span>的转移，从字符串中“消耗”一个字符<span
+class="math inline">\(a\)</span>，并转移到另一个状态，标号为<span
+class="math inline">\(\epsilon\)</span>的转移不“消耗”字符直接转移；</li>
+<li>若字符串“消耗”完毕后可到达接受状态<span class="math inline">\(f \in
+F\)</span>，则称状态机接受该字符串，该字符串属于对应的正则语言；</li>
+<li>若字符串“消耗”完毕后无法到达接受状态或无法进行任何转移，则称状态机拒绝该字符串，该字符串不属于对应的正则语言。</li>
+</ol>
+<p>通过将某些状态的集合看作一种状态，可以将 NFA 转化为 DFA
+。至于如何通过正则表达式生成有限状态机以及如何将 NFA 转化为 DFA <a
+href="/2023/09/28/loj118/">前面的博文</a>已经提过了，这里不再赘述。</p>
+<h2 id="lab">Lab</h2>
+<p>作业二中需要使用 flex 生成 COOL 语言的 Lexer。首先需要定义各个 token
+类的正则表达式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">CLASS       (class)</span><br><span class="line">ELSE        (else)</span><br><span class="line">FI          (fi)</span><br><span class="line">IF          (if)</span><br><span class="line">IN          (in)</span><br><span class="line">INHERITS    (inherits)</span><br><span class="line">LET         (let)</span><br><span class="line">LOOP        (loop)</span><br><span class="line">POOL        (pool)</span><br><span class="line">THEN        (then)</span><br><span class="line">WHILE       (while)</span><br><span class="line">CASE        (case)</span><br><span class="line">ESAC        (esac)</span><br><span class="line">OF          (of)</span><br><span class="line">DARROW      =&gt;</span><br><span class="line">NEW         (new)</span><br><span class="line">ISVOID      (isvoid)</span><br><span class="line">ASSIGN      &lt;-    </span><br><span class="line">NOT         (not)</span><br><span class="line">LE          &lt;=</span><br><span class="line"></span><br><span class="line">TRUE        t(rue)</span><br><span class="line">FALSE       f(alse)</span><br><span class="line"></span><br><span class="line">OBJID       [a-z][_0-9a-zA-Z]*  // 对象标识符</span><br><span class="line">TYPID       [A-Z][_0-9a-zA-Z]*  // 类型标识符</span><br><span class="line"></span><br><span class="line">ILCMT       --.*    // inline comment</span><br><span class="line">CMTST       &quot;(*&quot;</span><br><span class="line">CMTED       &quot;*)&quot;</span><br><span class="line">INT         [0-9]+  // 整型字面量</span><br><span class="line"></span><br><span class="line">SGN         [\(\)\&#123;\&#125;;:,\.&lt;=\+\-\*/~@]  // 单字符 token</span><br><span class="line">SKIP_SGN    [ \t\f\r\v]     // 空白字符</span><br></pre></td></tr></table></figure>
+<p>按照作业要求各关键字是大小写不敏感的，新版的 flex 可以使用 (?:)
+组来进行大小写不敏感匹配，但我这里用的是老版本的所以没有使用。</p>
+<p>然后是生成 token。先写出关键字的 token 生成。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;CLASS&#125; &#123; return (CLASS); &#125;</span><br><span class="line">&#123;ELSE&#125;  &#123; return (ELSE); &#125;</span><br><span class="line">&#123;FI&#125;    &#123; return (FI); &#125;</span><br><span class="line">&#123;IF&#125;    &#123; return (IF); &#125;</span><br><span class="line">&#123;IN&#125;    &#123; return (IN); &#125;</span><br><span class="line">&#123;INHERITS&#125;  &#123; return (INHERITS); &#125;</span><br><span class="line">&#123;LET&#125;   &#123; return (LET); &#125;</span><br><span class="line">&#123;LOOP&#125;  &#123; return (LOOP); &#125;</span><br><span class="line">&#123;POOL&#125;  &#123; return (POOL); &#125;</span><br><span class="line">&#123;THEN&#125;  &#123; return (THEN); &#125;</span><br><span class="line">&#123;WHILE&#125; &#123; return (WHILE); &#125;</span><br><span class="line">&#123;CASE&#125;  &#123; return (CASE); &#125;</span><br><span class="line">&#123;ESAC&#125;  &#123; return (ESAC); &#125;</span><br><span class="line">&#123;OF&#125;    &#123; return (OF); &#125;</span><br><span class="line">&#123;DARROW&#125;    &#123; return (DARROW); &#125;</span><br><span class="line">&#123;NEW&#125;       &#123; return (NEW); &#125;</span><br><span class="line">&#123;ISVOID&#125;    &#123; return (ISVOID); &#125;</span><br><span class="line">&#123;ASSIGN&#125;    &#123; return (ASSIGN); &#125;</span><br><span class="line">&#123;NOT&#125;   &#123; return (NOT); &#125;</span><br><span class="line">&#123;LE&#125;    &#123; return (LE); &#125;</span><br></pre></td></tr></table></figure>
+<p>然后是单字符 token：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;SGN&#125; &#123;</span><br><span class="line">    return yytext[0];</span><br><span class="line">&#125;</span><br><span class="line">&#123;SKIP_SGN&#125; &#123;&#125;</span><br><span class="line">\n &#123; ++curr_lineno; &#125;</span><br><span class="line">. &#123;</span><br><span class="line">    cool_yylval.error_msg = yytext;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>需要注意的是这几项需要写在最后，<code>.</code>是用来兜底代表非法字符的；并且换行符需要单独处理，因为需要保存行号。</p>
+<p>接下来是字面量和标识符：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;TRUE&#125; &#123;</span><br><span class="line">    cool_yylval.boolean = true;</span><br><span class="line">    return (BOOL_CONST);</span><br><span class="line">&#125;</span><br><span class="line">&#123;FALSE&#125; &#123;</span><br><span class="line">    cool_yylval.boolean = false;</span><br><span class="line">    return (BOOL_CONST);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;OBJID&#125; &#123;</span><br><span class="line">    cool_yylval.symbol = idtable.add_string(yytext);</span><br><span class="line">    return (OBJECTID);</span><br><span class="line">&#125;</span><br><span class="line">&#123;TYPID&#125; &#123;</span><br><span class="line">    cool_yylval.symbol = idtable.add_string(yytext);</span><br><span class="line">    return (TYPEID);</span><br><span class="line">&#125;</span><br><span class="line">&#123;INT&#125; &#123;</span><br><span class="line">    cool_yylval.symbol = inttable.add_string(yytext);</span><br><span class="line">    return (INT_CONST);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这几项需要写在关键字后面，因为关键字不应该被识别为标识符。</p>
+<p>再然后是注释：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;ILCMT&#125; &#123;&#125;</span><br><span class="line"></span><br><span class="line">&#123;CMTST&#125; &#123; BEGIN(COMMENT); &#125;</span><br><span class="line">&lt;COMMENT&gt;\n &#123; ++curr_lineno; &#125;</span><br><span class="line">&lt;COMMENT&gt;&#123;CMTED&#125; &#123; BEGIN(INITIAL); &#125;</span><br><span class="line">&lt;COMMENT&gt;. &#123;&#125;</span><br><span class="line"></span><br><span class="line">&lt;COMMENT&gt;&lt;&lt;EOF&gt;&gt; &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    cool_yylval.error_msg = &quot;EOF in comment&quot;;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&#123;CMTED&#125; &#123;</span><br><span class="line">    cool_yylval.error_msg = &quot;Unmatched *)&quot;;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>行内注释比较简单，关键是多行注释，由于多行注释内的语法与注释外不一样，所以使用到了状态
+State。</p>
+<p>状态需要先定义，在定义段中使用<code>%x COMMENT</code>可以定义<code>COMMENT</code>状态，使用<code>BEGIN(COMMENT)</code>可以切换到该状态，使用<code>BEGIN(INITIAL)</code>切换回初始状态，在正则表达式前加上<code>&lt;COMMENT&gt;</code>可以指定在某状态内的匹配操作。</p>
+<p>最后是字符串，和注释一样使用到了状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">\&quot; &#123;</span><br><span class="line">    BEGIN(STRING);</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\[^ntbf] &#123;</span><br><span class="line">    push_char_safe(yytext[1]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\\n &#123;</span><br><span class="line">    push_char_safe(&#x27;\n&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\t &#123;</span><br><span class="line">    push_char_safe(&#x27;\t&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\b  &#123;</span><br><span class="line">    push_char_safe(&#x27;\b&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\\f &#123;</span><br><span class="line">    push_char_safe(&#x27;\f&#x27;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\\\n &#123;</span><br><span class="line">    push_char_safe(&#x27;\n&#x27;);</span><br><span class="line">    ++curr_lineno;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;STRING&gt;\&quot; &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    int len = string_buf_ptr - string_buf;</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">    if(is_strlen_exceed) &#123;</span><br><span class="line">    cool_yylval.error_msg = &quot;String constant too long&quot;;</span><br><span class="line">    is_strlen_exceed = false;</span><br><span class="line">    return (ERROR);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">    cool_yylval.symbol = stringtable.add_string(string_buf, len);</span><br><span class="line">        return (STR_CONST);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\n &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    is_strlen_exceed = false;</span><br><span class="line">    string_buf_ptr = string_buf;</span><br><span class="line">    cool_yylval.error_msg = &quot;Unterminated string constant&quot;;</span><br><span class="line">    ++curr_lineno;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;&lt;&lt;EOF&gt;&gt; &#123;</span><br><span class="line">    BEGIN(INITIAL);</span><br><span class="line">    cool_yylval.error_msg = &quot;EOF in string constant&quot;;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;\0 &#123;</span><br><span class="line">    cool_yylval.error_msg = &quot;String contains null character&quot;;</span><br><span class="line">    return (ERROR);</span><br><span class="line">&#125;</span><br><span class="line">&lt;STRING&gt;. &#123;</span><br><span class="line">    push_char_safe(yytext[0]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和注释一样需要在定义段中加上<code>%x STRING</code>定义状态。同时这里使用了一个自定义的函数<code>push_char_safe</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *string_buf_ptr;</span><br><span class="line">Boolean is_strlen_exceed;</span><br><span class="line"><span class="type">void</span> <span class="title function_">push_char_safe</span><span class="params">(<span class="type">char</span> c)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(string_buf_ptr - string_buf &lt; MAX_STR_CONST) &#123;</span><br><span class="line">        *(string_buf_ptr++) = c;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        is_strlen_exceed = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该函数需定义在定义段的代码块中。</p>
 
+    </div>
 
+    
+    
+    
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
-
-
-
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag"># 编译原理</a>
+          </div>
 
         
 
-
-
-
-
-
-
-        
-      </div>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/11/08/cs143-intro/" rel="prev" title="Compiler -- Intro">
+                  <i class="fa fa-angle-left"></i> Compiler -- Intro
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/11/13/cs143-parser/" rel="next" title="Compiler -- Parser">
+                  Compiler -- Parser <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
+  </article>
+</div>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
 
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">AjiL</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
+    </div>
+  </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
 
-
-
-
-
-
-
-
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
 
 
 
@@ -822,40 +509,12 @@
 
 
 
-
   
 
-  
-
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"></script>
-  
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
-  
-
-  
 
 </body>
 </html>

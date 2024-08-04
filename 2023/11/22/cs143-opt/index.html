@@ -1,129 +1,44 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.ico?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="编译原理,">
-
-
-
-
-
-
-
-
-
-
-<meta name="keywords" content="编译原理">
-<meta property="og:type" content="article">
+    <meta property="og:type" content="article">
 <meta property="og:title" content="Compiler -- Opt">
-<meta property="og:url" content="http://yoursite.com/2023/11/22/cs143-opt/index.html">
+<meta property="og:url" content="http://example.com/2023/11/22/cs143-opt/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-08-03T12:36:17.507Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-11-22T04:37:14.000Z">
+<meta property="article:modified_time" content="2024-08-03T12:36:17.507Z">
+<meta property="article:author" content="AjiL">
+<meta property="article:tag" content="编译原理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Compiler -- Opt">
+
+
+<link rel="canonical" href="http://example.com/2023/11/22/cs143-opt/">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2023/11/22/cs143-opt/","path":"2023/11/22/cs143-opt/","title":"Compiler -- Opt"}</script>
 
-
-
-  <link rel="canonical" href="http://yoursite.com/2023/11/22/cs143-opt/">
-
-
-
-
-
-  <title>Compiler -- Opt | AjiL's Blog</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Compiler -- Opt | AjiL's Blog</title>
   
 
 
@@ -133,240 +48,227 @@
 
 
 
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">AjiL's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">AjiL's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
   </div>
 </div>
 
+
+
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
 </nav>
 
 
 
- </div>
-    </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
+</header>
+        
+  
+  <aside class="sidebar">
 
-  <div id="posts" class="posts-expand">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">中间表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E6%B5%81%E5%9B%BE"><span class="nav-number">3.</span> <span class="nav-text">控制流图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E4%BC%98%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">局部优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AA%A5%E5%AD%94%E4%BC%98%E5%8C%96"><span class="nav-number">5.</span> <span class="nav-text">窥孔优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E5%88%86%E6%9E%90"><span class="nav-number">6.</span> <span class="nav-text">数据流分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E4%BC%A0%E6%92%AD"><span class="nav-number">6.1.</span> <span class="nav-text">常量传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E5%AD%98%E6%9C%9F%E5%88%86%E6%9E%90"><span class="nav-number">6.2.</span> <span class="nav-text">生存期分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E5%88%86%E9%85%8D"><span class="nav-number">7.</span> <span class="nav-text">寄存器分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E4%BC%98%E5%8C%96"><span class="nav-number">8.</span> <span class="nav-text">缓存优化</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AjiL"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">AjiL</p>
+  <div class="site-description" itemprop="description">El Psy Kongroo</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">82</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/XajilX" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;XajilX" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
     
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="http://www.tonyjam.cn/" title="http:&#x2F;&#x2F;www.tonyjam.cn&#x2F;" rel="noopener" target="_blank">TonyJam</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://zmyjoe.github.io/" title="https:&#x2F;&#x2F;zmyjoe.github.io&#x2F;" rel="noopener" target="_blank">ZmyJoe</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://halc.top/" title="https:&#x2F;&#x2F;halc.top&#x2F;" rel="noopener" target="_blank">HalcyonAzu</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
 
   
 
-  
+
+<div class="post-block">
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/11/22/cs143-opt/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/22/cs143-opt/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="AjiL">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="AjiL">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="AjiL's Blog">
+      <meta itemprop="description" content="El Psy Kongroo">
     </span>
 
-    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Compiler -- Opt | AjiL's Blog">
+      <meta itemprop="description" content="">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Compiler -- Opt
+        </h1>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">Compiler -- Opt</h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-11-22T15:37:14+11:00">
-                2023-11-22
-              </time>
-            
+      <time title="Created: 2023-11-22 15:37:14" itemprop="dateCreated datePublished" datetime="2023-11-22T15:37:14+11:00">2023-11-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">编译原理</span></a>
+        </span>
+    </span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/" itemprop="url" rel="index">
-                    <span itemprop="name">note</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/编译原理/" itemprop="url" rel="index">
-                    <span itemprop="name">编译原理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+</div>
 
         </div>
       </header>
-    
 
     
     
     
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <hr>
-<a id="more"></a>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>代码优化通过对代码进行改写以寻找正确且更优的代码。这里的“更优”通常指的是运行时间更短，有时也会优化可执行文件大小，耗电量等方面。</p>
+    <div class="post-body" itemprop="articleBody"><hr />
+<span id="more"></span>
+<h2 id="概述">概述</h2>
+<p>代码优化通过对代码进行改写以寻找正确且更优的代码。这里的“更优”通常指的是运行时间更短，有时也会优化可执行文件大小，耗电量等方面。</p>
 <p>通常在现代编译器中，代码优化部分的代码量占比最大。</p>
-<h2 id="中间表示"><a href="#中间表示" class="headerlink" title="中间表示"></a>中间表示</h2><p>通常来讲，中间表示（Intermediate Representation, abbr. IR）是一种介于源语言与汇编语言之间的用于进行代码优化的语言。相较于源语言和 AST，它包含了更多程序运行时的细节，因此能够挖掘出更多可供优化的地方；相较于汇编语言，它省略了许多与机器架构相关的细节，因此在 IR 上进行的优化不受架构限制。</p>
-<p>各个编译器的中间表示可能是不同的，但通常都是某种三地址码（three-address code）。三地址码中每条指令最多包含一个操作两个操作地址以及一个结果地址，例如表达式<code>x + y * 2</code>翻译成三地址码即为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t1 = y * 2</span><br><span class="line">t2 = x + t1</span><br></pre></td></tr></table></figure>
-<p>三地址码中的“地址”可以是常量（<code>2</code>）、源代码中的变量名（<code>x</code>, <code>y</code>）、以及生成的临时变量（<code>t1</code>, <code>t2</code>），其中临时变量可以看成是汇编语言中的寄存器。</p>
-<h2 id="控制流图"><a href="#控制流图" class="headerlink" title="控制流图"></a>控制流图</h2><p>代码优化的重点在于对控制流（control flow）的分析，控制流图是控制流分析的重要工具。</p>
-<p>具体来说，控制流图是由基础块（basic block）为结点组成的图，基础块是一个以标签开始，以跳转语句结束，中间不包含其它标签与跳转语句的一系列指令，因此控制流将会从基础块的第一条语句执行到最后一条语句；控制流图中的边代表了每个基础块后续的基础块。</p>
+<h2 id="中间表示">中间表示</h2>
+<p>通常来讲，中间表示（Intermediate Representation, abbr.
+IR）是一种介于源语言与汇编语言之间的用于进行代码优化的语言。相较于源语言和
+AST，它包含了更多程序运行时的细节，因此能够挖掘出更多可供优化的地方；相较于汇编语言，它省略了许多与机器架构相关的细节，因此在
+IR 上进行的优化不受架构限制。</p>
+<p>各个编译器的中间表示可能是不同的，但通常都是某种三地址码（three-address
+code）。三地址码中每条指令最多包含一个操作两个操作地址以及一个结果地址，例如表达式<code>x + y * 2</code>翻译成三地址码即为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t1 = y * 2</span><br><span class="line">t2 = x + t1</span><br></pre></td></tr></table></figure>
+<p>三地址码中的“地址”可以是常量（<code>2</code>）、源代码中的变量名（<code>x</code>,
+<code>y</code>）、以及生成的临时变量（<code>t1</code>,
+<code>t2</code>），其中临时变量可以看成是汇编语言中的寄存器。</p>
+<h2 id="控制流图">控制流图</h2>
+<p>代码优化的重点在于对控制流（control
+flow）的分析，控制流图是控制流分析的重要工具。</p>
+<p>具体来说，控制流图是由基础块（basic
+block）为结点组成的图，基础块是一个以标签开始，以跳转语句结束，中间不包含其它标签与跳转语句的一系列指令，因此控制流将会从基础块的第一条语句执行到最后一条语句；控制流图中的边代表了每个基础块后续的基础块。</p>
 <p>根据改写的范围可以将代码优化的手段分为三类：</p>
 <ul>
 <li>局部优化：对一个控制块中的代码进行改写；</li>
 <li>全局优化：对整个控制流图进行改写；</li>
 <li>跨过程优化：对子过程进入与返回的边界进行优化。</li>
 </ul>
-<h2 id="局部优化"><a href="#局部优化" class="headerlink" title="局部优化"></a>局部优化</h2><p>局部优化主要是对指令的简单修改，例如：</p>
+<h2 id="局部优化">局部优化</h2>
+<p>局部优化主要是对指令的简单修改，例如：</p>
 <ul>
 <li>简化算术：对于某些算术指令例如<code>x = x + 0</code>、<code>x = x * 1</code>可以利用数学方法简化或消除；</li>
 <li>常量折叠：对于某些算术指令，若操作数两边都是整数则可以直接在编译器计算出结果，需要注意不同架构可能位数不同导致常量的表示不同；</li>
@@ -376,436 +278,217 @@
 </ul>
 <p>有时将代码改写成单赋值形式更好处理局部优化，即每个变量在等号左边仅出现一次，这样变量在赋值后即为定值。</p>
 <p>需要注意的是每种优化方法本身并不会带来很大的作用，往往需要多种方法同时作用才能有较好的优化效果。编译器优化时通常是反复运用多种优化方法，直至无法进行优化或迭代次数达到上限。</p>
-<h2 id="窥孔优化"><a href="#窥孔优化" class="headerlink" title="窥孔优化"></a>窥孔优化</h2><p>窥孔（peephole）是指基础块中的一段指令，窥孔优化就是将一小段指令替换成作用相同但是更优的另外一段指令，例如两段指令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">addiu $a $a x</span><br><span class="line">addiu $a $a y</span><br></pre></td></tr></table></figure></p>
-<p>可以替换成一段指令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addiu $a $a x+y</span><br></pre></td></tr></table></figure></p>
-<p>大多数局部优化的方法都可以表达为窥孔优化的形式。</p>
-<h2 id="数据流分析"><a href="#数据流分析" class="headerlink" title="数据流分析"></a>数据流分析</h2><p>某些在局部优化中使用的优化方法同样可以在全局优化中使用，例如死代码消除和常量传播。但是对于全局优化来说需要分析变量在整个控制流图中的状态才能进行优化。例如对于死代码消除，需要确定在后续的结点中该变量都不会被使用才能进行消除。这类分析便称为数据流分析（data-flow analysis）。</p>
+<h2 id="窥孔优化">窥孔优化</h2>
+<p>窥孔（peephole）是指基础块中的一段指令，窥孔优化就是将一小段指令替换成作用相同但是更优的另外一段指令，例如两段指令：
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">addiu $a $a x</span><br><span class="line">addiu $a $a y</span><br></pre></td></tr></table></figure> 可以替换成一段指令： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addiu $a $a x+y</span><br></pre></td></tr></table></figure>
+大多数局部优化的方法都可以表达为窥孔优化的形式。</p>
+<h2 id="数据流分析">数据流分析</h2>
+<p>某些在局部优化中使用的优化方法同样可以在全局优化中使用，例如死代码消除和常量传播。但是对于全局优化来说需要分析变量在整个控制流图中的状态才能进行优化。例如对于死代码消除，需要确定在后续的结点中该变量都不会被使用才能进行消除。这类分析便称为数据流分析（data-flow
+analysis）。</p>
 <p>通常来讲，对程序的数据流分析都可以表述为对每条语句通过其相邻语句执行某些规则来更新其中与特定优化方式相关的信息。</p>
-<h3 id="常量传播"><a href="#常量传播" class="headerlink" title="常量传播"></a>常量传播</h3><p>对于语句$s$和变量$x$，可以在语句前后定义状态函数$C_\mathrm{in}(s, x)$和$C_\mathrm{out}(s, x)$，一共有三种状态：</p>
+<h3 id="常量传播">常量传播</h3>
+<p>对于语句<span class="math inline">\(s\)</span>和变量<span
+class="math inline">\(x\)</span>，可以在语句前后定义状态函数<span
+class="math inline">\(C_\mathrm{in}(s, x)\)</span>和<span
+class="math inline">\(C_\mathrm{out}(s,
+x)\)</span>，一共有三种状态：</p>
 <ul>
-<li>语句未执行或未知，用$\bot$表示；</li>
-<li>变量值为一常数$c$；</li>
-<li>变量值不是常数，用$\top$表示。</li>
+<li>语句未执行或未知，用<span
+class="math inline">\(\bot\)</span>表示；</li>
+<li>变量值为一常数<span class="math inline">\(c\)</span>；</li>
+<li>变量值不是常数，用<span
+class="math inline">\(\top\)</span>表示。</li>
 </ul>
-<p>对于语句$s$和变量$x$，若其有前驱语句$p_1,\cdots,p_n$，则有如下规则：</p>
-<ol>
-<li>$(\exists i . C_\mathrm{out}(p_i,x) = \top) \Rightarrow (C_\mathrm{in}(s, x) = \top)$</li>
-<li>$(\exists (i,j). C_\mathrm{out}(p_i,x) = c \neq d = C_\mathrm{out}(p_j,x))$<br>$\Rightarrow (C_\mathrm{in}(s, x) = \top)$</li>
-<li>$(\exists i. C_\mathrm{out}(p_i,x) = c) \land$<br>$(\forall j \neq i.C_\mathrm{out}(p_j,x) = c \lor C_\mathrm{out}(p_j,x) = \bot)$<br>$\Rightarrow (C_\mathrm{in}(s, x) = c)$</li>
-<li>$(\forall i.C_\mathrm{out}(p_i,x) = \bot) \Rightarrow (C_\mathrm{in}(s, x) = \bot) $</li>
-<li>$C_\mathrm{in}(s,x) = \bot \Rightarrow C_\mathrm{out}(s,x) = \bot$</li>
-<li>$C_\mathrm{out}(\{x = c\},x) = c$</li>
-<li>$f(\cdots)\notin c \Rightarrow C_\mathrm{out}(\{x = f(\cdots)\},x) = \top$</li>
-<li>$x\neq y \Rightarrow C_\mathrm{out}(\{y = \cdots\}, x) = C_\mathrm{in}(\{y = \cdots\}, x)$</li>
+<p>对于语句<span class="math inline">\(s\)</span>和变量<span
+class="math inline">\(x\)</span>，若其有前驱语句<span
+class="math inline">\(p_1,\cdots,p_n\)</span>，则有如下规则：</p>
+<ol type="1">
+<li><span class="math inline">\((\exists i . C_\mathrm{out}(p_i,x) =
+\top) \Rightarrow (C_\mathrm{in}(s, x) = \top)\)</span></li>
+<li><span class="math inline">\((\exists (i,j). C_\mathrm{out}(p_i,x) =
+c \neq d = C_\mathrm{out}(p_j,x))\)</span> <span
+class="math inline">\(\Rightarrow (C_\mathrm{in}(s, x) =
+\top)\)</span></li>
+<li><span class="math inline">\((\exists i. C_\mathrm{out}(p_i,x) = c)
+\land\)</span> <span class="math inline">\((\forall j \neq
+i.C_\mathrm{out}(p_j,x) = c \lor C_\mathrm{out}(p_j,x) = \bot)\)</span>
+<span class="math inline">\(\Rightarrow (C_\mathrm{in}(s, x) =
+c)\)</span></li>
+<li>$(i.C_(p_i,x) = ) (C_(s, x) = ) $</li>
+<li><span class="math inline">\(C_\mathrm{in}(s,x) = \bot \Rightarrow
+C_\mathrm{out}(s,x) = \bot\)</span></li>
+<li><span class="math inline">\(C_\mathrm{out}(\{x = c\},x) =
+c\)</span></li>
+<li><span class="math inline">\(f(\cdots)\notin c \Rightarrow
+C_\mathrm{out}(\{x = f(\cdots)\},x) = \top\)</span></li>
+<li><span class="math inline">\(x\neq y \Rightarrow C_\mathrm{out}(\{y =
+\cdots\}, x) = C_\mathrm{in}(\{y = \cdots\}, x)\)</span></li>
 </ol>
-<p>其中的省略号代表其它与变量$x$无关的语句。</p>
+<p>其中的省略号代表其它与变量<span
+class="math inline">\(x\)</span>无关的语句。</p>
 <p>对于某个程序，按如下步骤即可求出某个变量在每个位置的状态：</p>
-<ol>
-<li>对于程序的入口$e$，设置$C_\mathrm{in}(e, x) = \top$，其它位置设为$\bot$；</li>
+<ol type="1">
+<li>对于程序的入口<span class="math inline">\(e\)</span>，设置<span
+class="math inline">\(C_\mathrm{in}(e, x) =
+\top\)</span>，其它位置设为<span
+class="math inline">\(\bot\)</span>；</li>
 <li>重复运用如上的规则直至所有位置都符合如上规则。</li>
 </ol>
-<p>同时对于三种状态，有$\bot &lt; c &lt; \top$，小的状态只能变为大的状态，因此每个位置的状态最多只会变两次，由此即可证明如上的算法最终总会结束。</p>
-<h3 id="生存期分析"><a href="#生存期分析" class="headerlink" title="生存期分析"></a>生存期分析</h3><p>对于一个变量$x$，当满足如下条件时称该变量在语句$s$处存活：</p>
+<p>同时对于三种状态，有<span class="math inline">\(\bot &lt; c &lt;
+\top\)</span>，小的状态只能变为大的状态，因此每个位置的状态最多只会变两次，由此即可证明如上的算法最终总会结束。</p>
+<h3 id="生存期分析">生存期分析</h3>
+<p>对于一个变量<span
+class="math inline">\(x\)</span>，当满足如下条件时称该变量在语句<span
+class="math inline">\(s\)</span>处存活：</p>
 <ul>
-<li>存在一个使用了变量$x$的语句$s’$；</li>
-<li>存在一条从$s$到$s’$的路径，且路径上没有对$x$赋值的语句；</li>
+<li>存在一个使用了变量<span class="math inline">\(x\)</span>的语句<span
+class="math inline">\(s&#39;\)</span>；</li>
+<li>存在一条从<span class="math inline">\(s\)</span>到<span
+class="math inline">\(s&#39;\)</span>的路径，且路径上没有对<span
+class="math inline">\(x\)</span>赋值的语句；</li>
 </ul>
 <p>一个变量在程序中存活的所有位置即为该变量的生存期。需要注意与前面所述的作用域的区别：作用域是变量在编译期的特征，而生存期时变量在运行时的特征。</p>
-<p>同样地，对于语句$s$和变量$x$，可以定义函数$L_\mathrm{in}(s, x)$和$L_\mathrm{out}(s, x)$来分析变量$x$的生存期，其取值为布尔值，且对于语句$p$及其后继语句$s_1,\cdots,s_n$和变量$x$有如下规则：</p>
-<ol>
-<li>$L_\mathrm{out}(p, x) \Leftrightarrow \exists i.L_\mathrm{in}(s_i, x)$；</li>
-<li>$L_\mathrm{in}(\{\cdots = f(x)\}, x)$；</li>
-<li>$e \notin f(x) \Rightarrow \neg L_\mathrm{in}(\{x = e\}, x)$</li>
-<li>$L_\mathrm{in}(\{\cdots\}, x) \Leftrightarrow L_\mathrm{out}(\{\cdots\}, x)$</li>
+<p>同样地，对于语句<span class="math inline">\(s\)</span>和变量<span
+class="math inline">\(x\)</span>，可以定义函数<span
+class="math inline">\(L_\mathrm{in}(s, x)\)</span>和<span
+class="math inline">\(L_\mathrm{out}(s, x)\)</span>来分析变量<span
+class="math inline">\(x\)</span>的生存期，其取值为布尔值，且对于语句<span
+class="math inline">\(p\)</span>及其后继语句<span
+class="math inline">\(s_1,\cdots,s_n\)</span>和变量<span
+class="math inline">\(x\)</span>有如下规则：</p>
+<ol type="1">
+<li><span class="math inline">\(L_\mathrm{out}(p, x) \Leftrightarrow
+\exists i.L_\mathrm{in}(s_i, x)\)</span>；</li>
+<li><span class="math inline">\(L_\mathrm{in}(\{\cdots = f(x)\},
+x)\)</span>；</li>
+<li><span class="math inline">\(e \notin f(x) \Rightarrow \neg
+L_\mathrm{in}(\{x = e\}, x)\)</span></li>
+<li><span class="math inline">\(L_\mathrm{in}(\{\cdots\}, x)
+\Leftrightarrow L_\mathrm{out}(\{\cdots\}, x)\)</span></li>
 </ol>
 <p>对于某个程序，按如下步骤即可求出某个变量在每个位置的状态：</p>
-<ol>
+<ol type="1">
 <li>所有位置初始均设为 false；</li>
 <li>重复运用如上的规则直至所有位置都符合如上规则。</li>
 </ol>
 <p>同样地，每个位置状态只会改变一次，因此算法总会结束。</p>
-<h2 id="寄存器分配"><a href="#寄存器分配" class="headerlink" title="寄存器分配"></a>寄存器分配</h2><p>IR 中的临时变量的数量是无限制的，然而与其对应的各平台上的寄存器数量是有限制的，因此需要为临时变量分配寄存器使多个临时变量对应同一个寄存器并且互不干扰。</p>
-<p>如果将每个临时变量视作一个结点，在每个生存期重叠的临时变量间连接一条边，可以生成一个寄存器干涉图（Register Interference Graph, abbr. RIG），图中每条边的端点不能被分配在同一个寄存器中。这样便将寄存器分配的问题转化为了一个图着色问题，每种颜色便代表了一个寄存器。</p>
-<p>然而图着色问题是一个 NP 困难问题，因此几乎只能使用启发式方法来寻找近似的方案。其中一种寻找 k 着色的启发式的算法如下：</p>
-<ol>
-<li>寻找一个邻边数量少于 k 的结点，将其放入栈中并在图中删去该结点与其相连的边；</li>
+<h2 id="寄存器分配">寄存器分配</h2>
+<p>IR
+中的临时变量的数量是无限制的，然而与其对应的各平台上的寄存器数量是有限制的，因此需要为临时变量分配寄存器使多个临时变量对应同一个寄存器并且互不干扰。</p>
+<p>如果将每个临时变量视作一个结点，在每个生存期重叠的临时变量间连接一条边，可以生成一个寄存器干涉图（Register
+Interference Graph, abbr.
+RIG），图中每条边的端点不能被分配在同一个寄存器中。这样便将寄存器分配的问题转化为了一个图着色问题，每种颜色便代表了一个寄存器。</p>
+<p>然而图着色问题是一个 NP
+困难问题，因此几乎只能使用启发式方法来寻找近似的方案。其中一种寻找 k
+着色的启发式的算法如下：</p>
+<ol type="1">
+<li>寻找一个邻边数量少于 k
+的结点，将其放入栈中并在图中删去该结点与其相连的边；</li>
 <li>重复该过程直至图为空图；</li>
 <li>从栈中重复将其中的结点出栈，还原并为结点选择颜色。</li>
 </ol>
-<p>算法运行当中可能无法删除结点，此时可认为原图无法进行 k 着色，需要将临时变量溢出（spill）到内存当中。将某一临时变量$t$溢出到内存的方法如下：</p>
+<p>算法运行当中可能无法删除结点，此时可认为原图无法进行 k
+着色，需要将临时变量溢出（spill）到内存当中。将某一临时变量<span
+class="math inline">\(t\)</span>溢出到内存的方法如下：</p>
 <ul>
 <li>为临时变量开辟一个内存空间，假设地址为<code>ta</code>；</li>
-<li>对于每个读取变量$t$的指令，新建一个临时变量$t_i$并将$t$改为$t_i$，在指令前面添加一条指令<code>ti = load ta</code>；</li>
-<li>对于每个写入变量$t$的指令，新建一个临时变量$t_i$并将$t$改为$t_i$，在指令后面添加一条指令<code>store ti, ta</code>；</li>
+<li>对于每个读取变量<span
+class="math inline">\(t\)</span>的指令，新建一个临时变量<span
+class="math inline">\(t_i\)</span>并将<span
+class="math inline">\(t\)</span>改为<span
+class="math inline">\(t_i\)</span>，在指令前面添加一条指令<code>ti = load ta</code>；</li>
+<li>对于每个写入变量<span
+class="math inline">\(t\)</span>的指令，新建一个临时变量<span
+class="math inline">\(t_i\)</span>并将<span
+class="math inline">\(t\)</span>改为<span
+class="math inline">\(t_i\)</span>，在指令后面添加一条指令<code>store ti, ta</code>；</li>
 </ul>
-<p>此时临时变量$t$被分为了许多的新的临时变量$t_i$，且每个$t_i$的生存期都很短，更有机会成功进行寄存器分配。</p>
-<p>选择合适的临时变量溢出使得溢出代价最小化同样是一个 NP 问题，因此只能使用启发式方法来寻找近似的最优方案。</p>
-<h2 id="缓存优化"><a href="#缓存优化" class="headerlink" title="缓存优化"></a>缓存优化</h2><p>对于如下的程序：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">100</span>; ++j) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) &#123;</span><br><span class="line">    a[i] *= b[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果缓存不能将数组<code>a</code>和<code>b</code>全部存下可能会造成大量的缓存失效，导致运行速度缓慢。</p>
-<p>若将两层循环调换：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">100</span>; ++j) &#123;</span><br><span class="line">    a[i] *= b[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>可以避免大部分的缓存失效从而提升运行速度。</p>
+<p>此时临时变量<span
+class="math inline">\(t\)</span>被分为了许多的新的临时变量<span
+class="math inline">\(t_i\)</span>，且每个<span
+class="math inline">\(t_i\)</span>的生存期都很短，更有机会成功进行寄存器分配。</p>
+<p>选择合适的临时变量溢出使得溢出代价最小化同样是一个 NP
+问题，因此只能使用启发式方法来寻找近似的最优方案。</p>
+<h2 id="缓存优化">缓存优化</h2>
+<p>对于如下的程序： <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">100</span>; ++j) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) &#123;</span><br><span class="line">    a[i] *= b[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+如果缓存不能将数组<code>a</code>和<code>b</code>全部存下可能会造成大量的缓存失效，导致运行速度缓慢。</p>
+<p>若将两层循环调换： <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">100</span>; ++j) &#123;</span><br><span class="line">    a[i] *= b[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+可以避免大部分的缓存失效从而提升运行速度。</p>
 <p>一部分编译器可以进行如上的循环调换优化从而使程序更加地缓存友好，但大多数的缓存优化仍需要程序员手动进行。</p>
 
-      
     </div>
-    
-    
-    
 
     
-
     
-
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/编译原理/" rel="tag"># 编译原理</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2023/11/19/cs143-codegen/" rel="next" title="Compiler -- Codegen">
-                <i class="fa fa-chevron-left"></i> Compiler -- Codegen
-              </a>
-            
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag"># 编译原理</a>
           </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  
-
-
-        </div>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
 
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="AjiL">
-            
-              <p class="site-author-name" itemprop="name">AjiL</p>
-              <p class="site-description motion-element" itemprop="description">El Psy Kongroo</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">159</span>
-                  <span class="site-state-item-name">日志</span>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/11/19/cs143-codegen/" rel="prev" title="Compiler -- Codegen">
+                  <i class="fa fa-angle-left"></i> Compiler -- Codegen
                 </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">52</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">82</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          <div class="links-of-author motion-element">
-            
-          </div>
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-globe"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.tonyjam.cn/" title="TonyJam" target="_blank">TonyJam</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://zmyjoe.github.io/" title="ZmyJoe" target="_blank">ZmyJoe</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://halc.top/" title="HalcyonAzu" target="_blank">HalcyonAzu</a>
-                  </li>
-                
-              </ul>
             </div>
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中间表示"><span class="nav-number">2.</span> <span class="nav-text">中间表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制流图"><span class="nav-number">3.</span> <span class="nav-text">控制流图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部优化"><span class="nav-number">4.</span> <span class="nav-text">局部优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#窥孔优化"><span class="nav-number">5.</span> <span class="nav-text">窥孔优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据流分析"><span class="nav-number">6.</span> <span class="nav-text">数据流分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常量传播"><span class="nav-number">6.1.</span> <span class="nav-text">常量传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生存期分析"><span class="nav-number">6.2.</span> <span class="nav-text">生存期分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寄存器分配"><span class="nav-number">7.</span> <span class="nav-text">寄存器分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存优化"><span class="nav-number">8.</span> <span class="nav-text">缓存优化</span></a></li></ol></div>
-            
-
+            <div class="post-nav-item">
+            </div>
           </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">AjiL</span>
-
-  
+    </footer>
+  </article>
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
 
 
 
 
-        
+</div>
+  </main>
 
+  <footer class="footer">
+    <div class="footer-inner">
 
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">AjiL</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
+    </div>
+  </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
 
-
-
-
-
-
-
-
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
 
 
 
@@ -817,40 +500,12 @@
 
 
 
-
   
 
-  
-
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"></script>
-  
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
-  
-
-  
 
 </body>
 </html>

@@ -1,131 +1,44 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.ico?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="cdq分治,">
-
-
-
-
-
-
-
-
-
-
-<meta name="keywords" content="cdq分治">
-<meta property="og:type" content="article">
+    <meta property="og:type" content="article">
 <meta property="og:title" content="cdq分治">
-<meta property="og:url" content="http://yoursite.com/2021/09/16/cdqdc/index.html">
+<meta property="og:url" content="http://example.com/2021/09/16/cdqdc/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190714152406153.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDQxNjQx,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2024-08-03T12:36:17.497Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-09-16T01:30:42.000Z">
+<meta property="article:modified_time" content="2024-08-03T12:36:17.497Z">
+<meta property="article:author" content="AjiL">
+<meta property="article:tag" content="cdq分治">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cdq分治">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190714152406153.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDQxNjQx,size_16,color_FFFFFF,t_70">
+
+
+<link rel="canonical" href="http://example.com/2021/09/16/cdqdc/">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2021/09/16/cdqdc/","path":"2021/09/16/cdqdc/","title":"cdq分治"}</script>
 
-
-
-  <link rel="canonical" href="http://yoursite.com/2021/09/16/cdqdc/">
-
-
-
-
-
-  <title>cdq分治 | AjiL's Blog</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>cdq分治 | AjiL's Blog</title>
   
 
 
@@ -135,602 +48,300 @@
 
 
 
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">AjiL's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">AjiL's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
   </div>
 </div>
 
+
+
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
 </nav>
 
 
 
- </div>
-    </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/16/cdqdc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="AjiL">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AjiL's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
+</header>
         
-        
-          <h1 class="post-title" itemprop="name headline">cdq分治</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-16T11:30:42+10:00">
-                2021-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/solution/" itemprop="url" rel="index">
-                    <span itemprop="name">solution</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/solution/cdq分治/" itemprop="url" rel="index">
-                    <span itemprop="name">cdq分治</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <hr>
-
-<a id="more"></a>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h2><p>cdq分治是一类<strong>分治</strong>思想, 和<a href="/2021/03/29/GlobalBinary/">整体二分</a>类似, 在一些<strong>可离线</strong>的题目中可以替代一些复杂的数据结构. </p>
-<p>cdq分治的一个重要思想是<strong>用一个子问题来计算另一个子问题的贡献</strong>. </p>
-<p>以<a href="https://www.luogu.com.cn/problem/P3810" target="_blank" rel="noopener">三维偏序</a>为例: </p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现:"></a>实现:</h2><p>与二维偏序一样, 首先需要按第一维进行排序, 保证第一维的有序. </p>
-<p>由于第一维有序, 此时对整个区间进行分治, <strong>将左区间的信息统计到右区间的贡献</strong>, 便可以消除第一维的影响. </p>
-<p>同时由于已经进行了分治, 第二维可以使用归并排序, 统计第三维信息时使用<strong>树状数组</strong>即可. </p>
-<p>至于这样分治为什么行: </p>
-<p><img src="https://img-blog.csdnimg.cn/20190714152406153.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDQxNjQx,size_16,color_FFFFFF,t_70" alt></p>
-<p>从图中可以看出, 对于每一个点, 分治的过程相当于将这个点左边的区间分成了若干块, 合起来便是这个点左边区间的贡献. </p>
-<p>需要注意原例题中需要去重. </p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">const int Mn(100500),Mk(200500);</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">qrd</span><span class="params">(T&amp; x)</span> </span>&#123;</span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> c = getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">        c = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">        x = x*<span class="number">10</span> + c-<span class="string">'0'</span>;</span><br><span class="line">        c = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lb</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;  <span class="comment">//lowbit</span></span><br><span class="line">    <span class="keyword">return</span> x&amp;-x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,k;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">trip</span> &#123;</span>   <span class="comment">//三维数点</span></span><br><span class="line">    <span class="keyword">int</span> x,y,z,w,ans;</span><br><span class="line">    <span class="comment">//三个维度, 重复次数, 偏序对数</span></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> trip&amp; rhs) <span class="keyword">const</span> &#123;   <span class="comment">//排序</span></span><br><span class="line">        <span class="keyword">if</span>(x==rhs.x) &#123;</span><br><span class="line">            <span class="keyword">if</span>(y==rhs.y) &#123;</span><br><span class="line">                <span class="keyword">return</span> z&lt;rhs.z;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> y&lt;rhs.y;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> x&lt;rhs.x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> == (<span class="keyword">const</span> trip&amp; rhs) <span class="keyword">const</span> &#123;  <span class="comment">//判重</span></span><br><span class="line">        <span class="keyword">return</span> x==rhs.x &amp;&amp; y==rhs.y &amp;&amp; z==rhs.z;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> != (<span class="keyword">const</span> trip&amp; rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> !(*<span class="keyword">this</span> == rhs);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;atr[Mn],tmp[Mn];   <span class="comment">//原数组, 临时数组</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ans[Mn],c[Mk];  <span class="comment">//答案, 树状数组</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mdf</span><span class="params">(<span class="keyword">int</span> mx,<span class="keyword">int</span> mk)</span> </span>&#123;   <span class="comment">//修改</span></span><br><span class="line">    <span class="keyword">while</span>(mx&lt;=k) &#123;</span><br><span class="line">        c[mx] += mk;</span><br><span class="line">        mx += lb(mx);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qry</span><span class="params">(<span class="keyword">int</span> qx)</span> </span>&#123;   <span class="comment">//查询</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">ret</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">while</span>(qx) &#123;</span><br><span class="line">        ret += c[qx];</span><br><span class="line">        qx -= lb(qx);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cdq</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;     <span class="comment">//cdq主过程</span></span><br><span class="line">    <span class="keyword">if</span>(l==r) &#123;  <span class="comment">//边界</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    int mid((l+r)/2);</span><br><span class="line">    cdq(l,mid), cdq(mid+<span class="number">1</span>,r);   <span class="comment">//向下划分</span></span><br><span class="line">    <span class="comment">//归并</span></span><br><span class="line">    <span class="built_in">memset</span>(c+<span class="number">1</span>,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * k);  <span class="comment">//注意清空树状数组</span></span><br><span class="line">    int pl(l),pr(mid+1);    //左右指针, 归并时使用</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">ctmp</span><span class="params">(l<span class="number">-1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span>(;pr&lt;=r;++pr) &#123;</span><br><span class="line">        <span class="function">trip&amp; <span class="title">rt</span><span class="params">(atr[pr])</span></span>;</span><br><span class="line">        <span class="keyword">while</span>(pl&lt;=mid &amp;&amp; atr[pl].y&lt;=rt.y) &#123;</span><br><span class="line">            mdf(atr[pl].z,atr[pl].w);   <span class="comment">//计入贡献</span></span><br><span class="line">            tmp[++ctmp] = atr[pl++];    <span class="comment">//归并排序</span></span><br><span class="line">        &#125;</span><br><span class="line">        rt.ans += qry(rt.z);    <span class="comment">//统计贡献</span></span><br><span class="line">        tmp[++ctmp] = atr[pr];  <span class="comment">//归并排序</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(pl&lt;=mid) &#123;    <span class="comment">//左边剩余结点归并</span></span><br><span class="line">        tmp[++ctmp] = atr[pl++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memcpy</span>(atr+l,tmp+l,<span class="keyword">sizeof</span>(trip)*(r-l+<span class="number">1</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    qrd(n), qrd(k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i(<span class="number">1</span>);i&lt;=n;++i) &#123;</span><br><span class="line">        <span class="function">trip&amp; <span class="title">nt</span><span class="params">(atr[i])</span></span>;</span><br><span class="line">        qrd(nt.x), qrd(nt.y), qrd(nt.z);</span><br><span class="line">        nt.w = <span class="number">1</span>;</span><br><span class="line">        nt.ans = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(atr+<span class="number">1</span>,atr+n+<span class="number">1</span>);    <span class="comment">//排序</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">cnt</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i(<span class="number">2</span>);i&lt;=n;++i) &#123;    <span class="comment">//去重</span></span><br><span class="line">        <span class="function">trip&amp; <span class="title">nt</span><span class="params">(atr[i])</span></span>;</span><br><span class="line">        <span class="keyword">if</span>(nt==atr[cnt]) &#123;</span><br><span class="line">            ++atr[cnt].w;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            atr[++cnt] = nt;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cdq(<span class="number">1</span>,cnt);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i(<span class="number">1</span>);i&lt;=cnt;++i) &#123;</span><br><span class="line">        <span class="function">trip&amp; <span class="title">nt</span><span class="params">(atr[i])</span></span>;</span><br><span class="line">        ans[nt.ans+nt.w<span class="number">-1</span>] += nt.w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i(<span class="number">0</span>);i&lt;n;++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/cdq分治/" rel="tag"># cdq分治</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2021/09/15/luogu4198/" rel="next" title="(luogu4198)楼房重建">
-                <i class="fa fa-chevron-left"></i> (luogu4198)楼房重建
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/09/29/luogu6162/" rel="prev" title="(luogu6162)四角链">
-                (luogu6162)四角链 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
   
-  
-  
-  </article>
+  <aside class="sidebar">
 
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">实现:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码:</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-    <div class="post-spread">
-      
-    </div>
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AjiL"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">AjiL</p>
+  <div class="site-description" itemprop="description">El Psy Kongroo</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">82</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/XajilX" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;XajilX" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
   </div>
 
-
-          </div>
-          
-
-
-          
-  
-
-
         </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+      </div>
     </div>
-  </div>
 
-  <aside id="sidebar" class="sidebar">
     
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="http://www.tonyjam.cn/" title="http:&#x2F;&#x2F;www.tonyjam.cn&#x2F;" rel="noopener" target="_blank">TonyJam</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://zmyjoe.github.io/" title="https:&#x2F;&#x2F;zmyjoe.github.io&#x2F;" rel="noopener" target="_blank">ZmyJoe</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://halc.top/" title="https:&#x2F;&#x2F;halc.top&#x2F;" rel="noopener" target="_blank">HalcyonAzu</a>
+            </li>
         </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="AjiL">
-            
-              <p class="site-author-name" itemprop="name">AjiL</p>
-              <p class="site-description motion-element" itemprop="description">El Psy Kongroo</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">159</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">52</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">82</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          <div class="links-of-author motion-element">
-            
-          </div>
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-globe"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.tonyjam.cn/" title="TonyJam" target="_blank">TonyJam</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://zmyjoe.github.io/" title="ZmyJoe" target="_blank">ZmyJoe</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://halc.top/" title="HalcyonAzu" target="_blank">HalcyonAzu</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码:</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
+      </div>
     </div>
   </aside>
 
 
-        
-      </div>
-    </main>
+    </div>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">AjiL</span>
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/16/cdqdc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="AjiL">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AjiL's Blog">
+      <meta itemprop="description" content="El Psy Kongroo">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="cdq分治 | AjiL's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          cdq分治
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-16 11:30:42" itemprop="dateCreated datePublished" datetime="2021-09-16T11:30:42+10:00">2021-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/solution/" itemprop="url" rel="index"><span itemprop="name">solution</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/solution/cdq%E5%88%86%E6%B2%BB/" itemprop="url" rel="index"><span itemprop="name">cdq分治</span></a>
+        </span>
+    </span>
 
   
 </div>
 
+        </div>
+      </header>
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><hr>
+<span id="more"></span>
+<h2 id="概述">概述:</h2>
+<p>cdq分治是一类<strong>分治</strong>思想, 和<a
+href="/2021/03/29/GlobalBinary/">整体二分</a>类似,
+在一些<strong>可离线</strong>的题目中可以替代一些复杂的数据结构.</p>
+<p>cdq分治的一个重要思想是<strong>用一个子问题来计算另一个子问题的贡献</strong>.</p>
+<p>以<a
+href="https://www.luogu.com.cn/problem/P3810">三维偏序</a>为例:</p>
+<h2 id="实现">实现:</h2>
+<p>与二维偏序一样, 首先需要按第一维进行排序, 保证第一维的有序.</p>
+<p>由于第一维有序, 此时对整个区间进行分治,
+<strong>将左区间的信息统计到右区间的贡献</strong>,
+便可以消除第一维的影响.</p>
+<p>同时由于已经进行了分治, 第二维可以使用归并排序,
+统计第三维信息时使用<strong>树状数组</strong>即可.</p>
+<p>至于这样分治为什么行:</p>
+<p><img
+src="https://img-blog.csdnimg.cn/20190714152406153.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDQxNjQx,size_16,color_FFFFFF,t_70" /></p>
+<p>从图中可以看出, 对于每一个点,
+分治的过程相当于将这个点左边的区间分成了若干块,
+合起来便是这个点左边区间的贡献.</p>
+<p>需要注意原例题中需要去重.</p>
+<h2 id="代码">代码:</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"><span class="function"><span class="type">const</span> <span class="type">int</span> <span class="title">Mn</span><span class="params">(<span class="number">100500</span>)</span>,<span class="title">Mk</span><span class="params">(<span class="number">200500</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">qrd</span><span class="params">(T&amp; x)</span> </span>&#123;</span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> c = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">        c = <span class="built_in">getchar</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">        x = x*<span class="number">10</span> + c-<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        c = <span class="built_in">getchar</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">lb</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;  <span class="comment">//lowbit</span></span><br><span class="line">    <span class="keyword">return</span> x&amp;-x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,k;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">trip</span> &#123;   <span class="comment">//三维数点</span></span><br><span class="line">    <span class="type">int</span> x,y,z,w,ans;</span><br><span class="line">    <span class="comment">//三个维度, 重复次数, 偏序对数</span></span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span> &lt; (<span class="type">const</span> trip&amp; rhs) <span class="type">const</span> &#123;   <span class="comment">//排序</span></span><br><span class="line">        <span class="keyword">if</span>(x==rhs.x) &#123;</span><br><span class="line">            <span class="keyword">if</span>(y==rhs.y) &#123;</span><br><span class="line">                <span class="keyword">return</span> z&lt;rhs.z;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> y&lt;rhs.y;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> x&lt;rhs.x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span> == (<span class="type">const</span> trip&amp; rhs) <span class="type">const</span> &#123;  <span class="comment">//判重</span></span><br><span class="line">        <span class="keyword">return</span> x==rhs.x &amp;&amp; y==rhs.y &amp;&amp; z==rhs.z;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span> != (<span class="type">const</span> trip&amp; rhs) <span class="type">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> !(*<span class="keyword">this</span> == rhs);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;atr[Mn],tmp[Mn];   <span class="comment">//原数组, 临时数组</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> ans[Mn],c[Mk];  <span class="comment">//答案, 树状数组</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">mdf</span><span class="params">(<span class="type">int</span> mx,<span class="type">int</span> mk)</span> </span>&#123;   <span class="comment">//修改</span></span><br><span class="line">    <span class="keyword">while</span>(mx&lt;=k) &#123;</span><br><span class="line">        c[mx] += mk;</span><br><span class="line">        mx += <span class="built_in">lb</span>(mx);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">qry</span><span class="params">(<span class="type">int</span> qx)</span> </span>&#123;   <span class="comment">//查询</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">ret</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">while</span>(qx) &#123;</span><br><span class="line">        ret += c[qx];</span><br><span class="line">        qx -= <span class="built_in">lb</span>(qx);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cdq</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span> </span>&#123;     <span class="comment">//cdq主过程</span></span><br><span class="line">    <span class="keyword">if</span>(l==r) &#123;  <span class="comment">//边界</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">mid</span><span class="params">((l+r)/<span class="number">2</span>)</span></span>;</span><br><span class="line">    <span class="built_in">cdq</span>(l,mid), <span class="built_in">cdq</span>(mid<span class="number">+1</span>,r);   <span class="comment">//向下划分</span></span><br><span class="line">    <span class="comment">//归并</span></span><br><span class="line">    <span class="built_in">memset</span>(c<span class="number">+1</span>,<span class="number">0</span>,<span class="built_in">sizeof</span>(<span class="type">int</span>) * k);  <span class="comment">//注意清空树状数组</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">pl</span><span class="params">(l)</span>,<span class="title">pr</span><span class="params">(mid<span class="number">+1</span>)</span></span>;    <span class="comment">//左右指针, 归并时使用</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">ctmp</span><span class="params">(l<span class="number">-1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span>(;pr&lt;=r;++pr) &#123;</span><br><span class="line">        <span class="function">trip&amp; <span class="title">rt</span><span class="params">(atr[pr])</span></span>;</span><br><span class="line">        <span class="keyword">while</span>(pl&lt;=mid &amp;&amp; atr[pl].y&lt;=rt.y) &#123;</span><br><span class="line">            <span class="built_in">mdf</span>(atr[pl].z,atr[pl].w);   <span class="comment">//计入贡献</span></span><br><span class="line">            tmp[++ctmp] = atr[pl++];    <span class="comment">//归并排序</span></span><br><span class="line">        &#125;</span><br><span class="line">        rt.ans += <span class="built_in">qry</span>(rt.z);    <span class="comment">//统计贡献</span></span><br><span class="line">        tmp[++ctmp] = atr[pr];  <span class="comment">//归并排序</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(pl&lt;=mid) &#123;    <span class="comment">//左边剩余结点归并</span></span><br><span class="line">        tmp[++ctmp] = atr[pl++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memcpy</span>(atr+l,tmp+l,<span class="built_in">sizeof</span>(trip)*(r-l<span class="number">+1</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">qrd</span>(n), <span class="built_in">qrd</span>(k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=n;++i) &#123;</span><br><span class="line">        <span class="function">trip&amp; <span class="title">nt</span><span class="params">(atr[i])</span></span>;</span><br><span class="line">        <span class="built_in">qrd</span>(nt.x), <span class="built_in">qrd</span>(nt.y), <span class="built_in">qrd</span>(nt.z);</span><br><span class="line">        nt.w = <span class="number">1</span>;</span><br><span class="line">        nt.ans = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(atr<span class="number">+1</span>,atr+n<span class="number">+1</span>);    <span class="comment">//排序</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">cnt</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">2</span>);i&lt;=n;++i) &#123;    <span class="comment">//去重</span></span><br><span class="line">        <span class="function">trip&amp; <span class="title">nt</span><span class="params">(atr[i])</span></span>;</span><br><span class="line">        <span class="keyword">if</span>(nt==atr[cnt]) &#123;</span><br><span class="line">            ++atr[cnt].w;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            atr[++cnt] = nt;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cdq</span>(<span class="number">1</span>,cnt);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=cnt;++i) &#123;</span><br><span class="line">        <span class="function">trip&amp; <span class="title">nt</span><span class="params">(atr[i])</span></span>;</span><br><span class="line">        ans[nt.ans+nt.w<span class="number">-1</span>] += nt.w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">0</span>);i&lt;n;++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+    </div>
 
+    
+    
+    
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
-
-
-
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cdq%E5%88%86%E6%B2%BB/" rel="tag"># cdq分治</a>
+          </div>
 
         
 
-
-
-
-
-
-
-        
-      </div>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/15/luogu4198/" rel="prev" title="(luogu4198)楼房重建">
+                  <i class="fa fa-angle-left"></i> (luogu4198)楼房重建
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/09/29/luogu6162/" rel="next" title="(luogu6162)四角链">
+                  (luogu6162)四角链 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
+  </article>
+</div>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
 
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">AjiL</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
+    </div>
+  </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
 
-
-
-
-
-
-
-
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
 
 
 
@@ -742,20 +353,12 @@
 
 
 
-
   
 
-  
-
-  
-
-  
-  
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
-  
-
-  
 
 </body>
 </html>

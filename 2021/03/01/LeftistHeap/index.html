@@ -1,129 +1,45 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.ico?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="数据结构,可并堆,">
-
-
-
-
-
-
-
-
-
-
-<meta name="keywords" content="数据结构,可并堆">
-<meta property="og:type" content="article">
+    <meta property="og:type" content="article">
 <meta property="og:title" content="左偏树(左偏堆)">
-<meta property="og:url" content="http://yoursite.com/2021/03/01/LeftistHeap/index.html">
+<meta property="og:url" content="http://example.com/2021/03/01/LeftistHeap/index.html">
 <meta property="og:site_name" content="AjiL&#39;s Blog">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-08-03T12:36:17.497Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-03-01T10:19:01.000Z">
+<meta property="article:modified_time" content="2024-08-03T12:36:17.497Z">
+<meta property="article:author" content="AjiL">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="可并堆">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="左偏树(左偏堆)">
+
+
+<link rel="canonical" href="http://example.com/2021/03/01/LeftistHeap/">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2021/03/01/LeftistHeap/","path":"2021/03/01/LeftistHeap/","title":"左偏树(左偏堆)"}</script>
 
-
-
-  <link rel="canonical" href="http://yoursite.com/2021/03/01/LeftistHeap/">
-
-
-
-
-
-  <title>左偏树(左偏堆) | AjiL's Blog</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>左偏树(左偏堆) | AjiL's Blog</title>
   
 
 
@@ -133,628 +49,343 @@
 
 
 
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">AjiL's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">AjiL's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
   </div>
 </div>
 
+
+
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
 </nav>
 
 
 
- </div>
-    </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/01/LeftistHeap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="AjiL">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AjiL's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
+</header>
         
-        
-          <h1 class="post-title" itemprop="name headline">左偏树(左偏堆)</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-01T21:19:01+11:00">
-                2021-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/" itemprop="url" rel="index">
-                    <span itemprop="name">note</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <hr>
-<a id="more"></a>
-<h2 id="什么是左偏树-堆"><a href="#什么是左偏树-堆" class="headerlink" title="什么是左偏树(堆):"></a>什么是左偏树(堆):</h2><p>左偏树是一种比较常用的<strong>可并二叉堆</strong>. 支持在最坏$O(log\ n)$的时间复杂度内进行堆的合并操作. </p>
-<h2 id="相关定义"><a href="#相关定义" class="headerlink" title="相关定义:"></a>相关定义:</h2><p><em>外结点:</em> 左儿子或右儿子为空的结点. </p>
-<p><em>距离:</em> 一个结点到离它最近的外结点的距离. 特殊地, 外结点本身距离为0, 空结点距离为-1. </p>
-<h2 id="左偏树的性质及结论"><a href="#左偏树的性质及结论" class="headerlink" title="左偏树的性质及结论:"></a>左偏树的性质及结论:</h2><ol>
-<li><p>左偏树满足<strong>堆性质</strong>. </p>
-</li>
-<li><p>左偏树满足<strong>左偏性质</strong>, 即对于<strong>每个结点, 其左子结点距离$d_{ls}$大于等于右子结点距离$d_{rs}$</strong>. </p>
-</li>
-<li><p>由2, 结点$x$的距离$d_x = d_{rs} + 1$. </p>
-</li>
-<li><p>根结点距离为$d$的左偏树最少有$2^{n+1}-1$个结点, 此时该树为一个<strong>满二叉树</strong>. </p>
-</li>
-<li><p>同4, $n$个结点的左偏树距离最大为$log_2n$. </p>
-</li>
-</ol>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作:"></a>基本操作:</h2><p>左偏树最基本操作便是合并操作. </p>
-<p>定义函数<code>merge(x,y)</code>, 作用是将根为$x, y$的两个堆合并, 返回合并后堆的根. </p>
-<p>以小根堆为例, 基本步骤如下: </p>
-<ol>
-<li>若$x,y$其中有一个结点为空结点, 则返回另一个结点. 否则下一步</li>
-<li>若$v_x&lt;v_y$, 则以$x$作为合并后的根结点, 否则以$y$作为根结点. 为避免讨论, 当$v_x \geq v_y$时, 直接交换$x,y$. </li>
-<li>将$y$与$x$的左儿子进行合并, 即$ls_x=merge(ls_x,y)$. </li>
-<li>合并完成后维护左偏性质: 当$d_{ls}&lt;d_{rs}$时交换左右儿子. </li>
-</ol>
-<p>示例代码如下所示: </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sn[x][0]为左儿子, sn[x][1]为右儿子</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(a[i]&gt;a[j] || (a[i]==a[j] &amp;&amp; i&gt;j)) &#123;</span><br><span class="line">        swap(i,j);</span><br><span class="line">    &#125;</span><br><span class="line">    sn[i][<span class="number">1</span>] = merge(j,sn[i][<span class="number">1</span>]);</span><br><span class="line">    fa[sn[i][<span class="number">1</span>]] = i;</span><br><span class="line">    <span class="keyword">if</span>(d[sn[i][<span class="number">0</span>]]&lt;d[sn[i][<span class="number">1</span>]]) &#123;</span><br><span class="line">        swap(sn[i][<span class="number">0</span>],sn[i][<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    d[i] = d[sn[i][<span class="number">1</span>]] + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作:"></a>其他操作:</h2><p><strong>插入:</strong> 将插入结点当作左偏堆合并即可. </p>
-<p><strong>删除:</strong> 将根的左右子结点合并即可. </p>
-<p><strong>寻找所在堆的根结点:</strong> 直接沿着父结点向上寻找. </p>
-<p><strong>路径压缩优化找根:</strong></p>
-<p>类似于并查集, 每个结点记录一个值$rt$, 在递归找根时顺便压缩$rt$. </p>
-<p>需要注意的是删除根节点$x$时可能有部分结点$rt = x$, 此时要将$rt_x$指向左右子结点合并后的新根. </p>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h2><p>左偏树由于具有合并和找根的功能, 可以算作是并查集的”进化版”. </p>
-<p>同时由于具有权值, 可以用于树上的合并之中. </p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题:"></a>例题:</h2><p><a href="https://www.luogu.com.cn/problem/P3377" target="_blank" rel="noopener">(luogu3377)【模板】左偏树（可并堆）</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">int</span> <span class="title">Mn</span><span class="params">(<span class="number">100500</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>&amp; x,<span class="keyword">int</span>&amp; y)</span> </span>&#123;   <span class="comment">//交换</span></span><br><span class="line">    x ^= y ^= x ^= y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">qrd</span><span class="params">(<span class="keyword">int</span>&amp; x)</span> </span>&#123;  <span class="comment">//快读</span></span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> c = getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">        c = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">        x = x*<span class="number">10</span> + c-<span class="string">'0'</span>;</span><br><span class="line">        c = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> a[Mn];  <span class="comment">//权值</span></span><br><span class="line"><span class="keyword">int</span> fa[Mn], sn[Mn][<span class="number">2</span>];  <span class="comment">//根结点, 左右子结点</span></span><br><span class="line"><span class="keyword">int</span> d[Mn];  <span class="comment">//距离</span></span><br><span class="line"><span class="keyword">bool</span> isd[Mn];   <span class="comment">//是否被删除</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span> </span>&#123;    <span class="comment">//合并</span></span><br><span class="line">    <span class="keyword">if</span>(i==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(a[i]&gt;a[j] || (a[i]==a[j] &amp;&amp; i&gt;j)) &#123;</span><br><span class="line">        swap(i,j);</span><br><span class="line">    &#125;</span><br><span class="line">    sn[i][<span class="number">1</span>] = merge(j,sn[i][<span class="number">1</span>]);</span><br><span class="line">    fa[sn[i][<span class="number">1</span>]] = i;</span><br><span class="line">    <span class="keyword">if</span>(d[sn[i][<span class="number">0</span>]]&lt;d[sn[i][<span class="number">1</span>]]) &#123;</span><br><span class="line">        swap(sn[i][<span class="number">0</span>],sn[i][<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    d[i] = d[sn[i][<span class="number">1</span>]] + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;   <span class="comment">//找根(用到了路径压缩)</span></span><br><span class="line">    <span class="keyword">return</span> fa[x] == <span class="number">0</span> ? x : fa[x] = find(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    qrd(n), qrd(m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i(<span class="number">1</span>);i&lt;=n;++i) &#123;</span><br><span class="line">        qrd(a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(m--) &#123;</span><br><span class="line">        <span class="keyword">int</span> o;</span><br><span class="line">        qrd(o);</span><br><span class="line">        <span class="keyword">if</span>(o==<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> x,y;</span><br><span class="line">            qrd(x), qrd(y);</span><br><span class="line">            <span class="keyword">if</span>(!isd[x]&amp;&amp;!isd[y]) &#123;</span><br><span class="line">                <span class="keyword">int</span> rx = find(x);</span><br><span class="line">                <span class="keyword">int</span> ry = find(y);</span><br><span class="line">                <span class="keyword">if</span>(rx!=ry) &#123;    <span class="comment">//只有当两个数不在同一堆里才合并</span></span><br><span class="line">                    merge(rx,ry);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> x;</span><br><span class="line">            qrd(x);</span><br><span class="line">            <span class="keyword">if</span>(isd[x]) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> rx = find(x);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a[rx]);</span><br><span class="line">                isd[rx] = <span class="literal">true</span>;</span><br><span class="line">                fa[sn[rx][<span class="number">0</span>]] = fa[sn[rx][<span class="number">1</span>]] = <span class="number">0</span>;</span><br><span class="line">                fa[rx] = merge(sn[rx][<span class="number">0</span>],sn[rx][<span class="number">1</span>]);    <span class="comment">//将rx的根指向合并后的新根</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
-          
-            <a href="/tags/可并堆/" rel="tag"># 可并堆</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2021/02/20/luogu3293/" rel="next" title="(luogu3293)美味(SCOI2016)">
-                <i class="fa fa-chevron-left"></i> (luogu3293)美味(SCOI2016)
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/03/06/luogu2572/" rel="prev" title="(luogu2572)序列操作[SCOI2010]">
-                (luogu2572)序列操作[SCOI2010] <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
   
-  
-  
-  </article>
+  <aside class="sidebar">
 
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%B7%A6%E5%81%8F%E6%A0%91%E5%A0%86"><span class="nav-number">1.</span> <span class="nav-text">什么是左偏树(堆):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">相关定义:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A6%E5%81%8F%E6%A0%91%E7%9A%84%E6%80%A7%E8%B4%A8%E5%8F%8A%E7%BB%93%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">左偏树的性质及结论:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">基本操作:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">其他操作:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">作用:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">例题:</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-    <div class="post-spread">
-      
-    </div>
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AjiL"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">AjiL</p>
+  <div class="site-description" itemprop="description">El Psy Kongroo</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">82</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/XajilX" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;XajilX" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
   </div>
 
-
-          </div>
-          
-
-
-          
-  
-
-
         </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+      </div>
     </div>
-  </div>
 
-  <aside id="sidebar" class="sidebar">
     
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="http://www.tonyjam.cn/" title="http:&#x2F;&#x2F;www.tonyjam.cn&#x2F;" rel="noopener" target="_blank">TonyJam</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://zmyjoe.github.io/" title="https:&#x2F;&#x2F;zmyjoe.github.io&#x2F;" rel="noopener" target="_blank">ZmyJoe</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://halc.top/" title="https:&#x2F;&#x2F;halc.top&#x2F;" rel="noopener" target="_blank">HalcyonAzu</a>
+            </li>
         </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="AjiL">
-            
-              <p class="site-author-name" itemprop="name">AjiL</p>
-              <p class="site-description motion-element" itemprop="description">El Psy Kongroo</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">159</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">52</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">82</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          <div class="links-of-author motion-element">
-            
-          </div>
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-globe"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.tonyjam.cn/" title="TonyJam" target="_blank">TonyJam</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://zmyjoe.github.io/" title="ZmyJoe" target="_blank">ZmyJoe</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://halc.top/" title="HalcyonAzu" target="_blank">HalcyonAzu</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是左偏树-堆"><span class="nav-number">1.</span> <span class="nav-text">什么是左偏树(堆):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关定义"><span class="nav-number">2.</span> <span class="nav-text">相关定义:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#左偏树的性质及结论"><span class="nav-number">3.</span> <span class="nav-text">左偏树的性质及结论:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">4.</span> <span class="nav-text">基本操作:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他操作"><span class="nav-number">5.</span> <span class="nav-text">其他操作:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">6.</span> <span class="nav-text">作用:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">7.</span> <span class="nav-text">例题:</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
+      </div>
     </div>
   </aside>
 
 
-        
-      </div>
-    </main>
+    </div>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">AjiL</span>
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/01/LeftistHeap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="AjiL">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AjiL's Blog">
+      <meta itemprop="description" content="El Psy Kongroo">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="左偏树(左偏堆) | AjiL's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          左偏树(左偏堆)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-01 21:19:01" itemprop="dateCreated datePublished" datetime="2021-03-01T21:19:01+11:00">2021-03-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
 
   
 </div>
 
+        </div>
+      </header>
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><hr />
+<span id="more"></span>
+<h2 id="什么是左偏树堆">什么是左偏树(堆):</h2>
+<p>左偏树是一种比较常用的<strong>可并二叉堆</strong>. 支持在最坏<span
+class="math inline">\(O(log\
+n)\)</span>的时间复杂度内进行堆的合并操作.</p>
+<h2 id="相关定义">相关定义:</h2>
+<p><em>外结点:</em> 左儿子或右儿子为空的结点.</p>
+<p><em>距离:</em> 一个结点到离它最近的外结点的距离. 特殊地,
+外结点本身距离为0, 空结点距离为-1.</p>
+<h2 id="左偏树的性质及结论">左偏树的性质及结论:</h2>
+<ol type="1">
+<li><p>左偏树满足<strong>堆性质</strong>.</p></li>
+<li><p>左偏树满足<strong>左偏性质</strong>, 即对于<strong>每个结点,
+其左子结点距离<span
+class="math inline">\(d_{ls}\)</span>大于等于右子结点距离<span
+class="math inline">\(d_{rs}\)</span></strong>.</p></li>
+<li><p>由2, 结点<span class="math inline">\(x\)</span>的距离<span
+class="math inline">\(d_x = d_{rs} + 1\)</span>.</p></li>
+<li><p>根结点距离为<span
+class="math inline">\(d\)</span>的左偏树最少有<span
+class="math inline">\(2^{n+1}-1\)</span>个结点,
+此时该树为一个<strong>满二叉树</strong>.</p></li>
+<li><p>同4, <span
+class="math inline">\(n\)</span>个结点的左偏树距离最大为<span
+class="math inline">\(log_2n\)</span>.</p></li>
+</ol>
+<h2 id="基本操作">基本操作:</h2>
+<p>左偏树最基本操作便是合并操作.</p>
+<p>定义函数<code>merge(x,y)</code>, 作用是将根为<span
+class="math inline">\(x, y\)</span>的两个堆合并, 返回合并后堆的根.</p>
+<p>以小根堆为例, 基本步骤如下:</p>
+<ol type="1">
+<li>若<span class="math inline">\(x,y\)</span>其中有一个结点为空结点,
+则返回另一个结点. 否则下一步</li>
+<li>若<span class="math inline">\(v_x&lt;v_y\)</span>, 则以<span
+class="math inline">\(x\)</span>作为合并后的根结点, 否则以<span
+class="math inline">\(y\)</span>作为根结点. 为避免讨论, 当<span
+class="math inline">\(v_x \geq v_y\)</span>时, 直接交换<span
+class="math inline">\(x,y\)</span>.</li>
+<li>将<span class="math inline">\(y\)</span>与<span
+class="math inline">\(x\)</span>的左儿子进行合并, 即<span
+class="math inline">\(ls_x=merge(ls_x,y)\)</span>.</li>
+<li>合并完成后维护左偏性质: 当<span
+class="math inline">\(d_{ls}&lt;d_{rs}\)</span>时交换左右儿子.</li>
+</ol>
+<p>示例代码如下所示:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sn[x][0]为左儿子, sn[x][1]为右儿子</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> i,<span class="type">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(a[i]&gt;a[j] || (a[i]==a[j] &amp;&amp; i&gt;j)) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(i,j);</span><br><span class="line">    &#125;</span><br><span class="line">    sn[i][<span class="number">1</span>] = <span class="built_in">merge</span>(j,sn[i][<span class="number">1</span>]);</span><br><span class="line">    fa[sn[i][<span class="number">1</span>]] = i;</span><br><span class="line">    <span class="keyword">if</span>(d[sn[i][<span class="number">0</span>]]&lt;d[sn[i][<span class="number">1</span>]]) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(sn[i][<span class="number">0</span>],sn[i][<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    d[i] = d[sn[i][<span class="number">1</span>]] + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="其他操作">其他操作:</h2>
+<p><strong>插入:</strong> 将插入结点当作左偏堆合并即可.</p>
+<p><strong>删除:</strong> 将根的左右子结点合并即可.</p>
+<p><strong>寻找所在堆的根结点:</strong> 直接沿着父结点向上寻找.</p>
+<p><strong>路径压缩优化找根:</strong></p>
+<p>类似于并查集, 每个结点记录一个值<span
+class="math inline">\(rt\)</span>, 在递归找根时顺便压缩<span
+class="math inline">\(rt\)</span>.</p>
+<p>需要注意的是删除根节点<span
+class="math inline">\(x\)</span>时可能有部分结点<span
+class="math inline">\(rt = x\)</span>, 此时要将<span
+class="math inline">\(rt_x\)</span>指向左右子结点合并后的新根.</p>
+<h2 id="作用">作用:</h2>
+<p>左偏树由于具有合并和找根的功能, 可以算作是并查集的"进化版".</p>
+<p>同时由于具有权值, 可以用于树上的合并之中.</p>
+<h2 id="例题">例题:</h2>
+<p><a
+href="https://www.luogu.com.cn/problem/P3377">(luogu3377)【模板】左偏树（可并堆）</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">const</span> <span class="type">int</span> <span class="title">Mn</span><span class="params">(<span class="number">100500</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span>&amp; x,<span class="type">int</span>&amp; y)</span> </span>&#123;   <span class="comment">//交换</span></span><br><span class="line">    x ^= y ^= x ^= y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">qrd</span><span class="params">(<span class="type">int</span>&amp; x)</span> </span>&#123;  <span class="comment">//快读</span></span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> c = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">        c = <span class="built_in">getchar</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">        x = x*<span class="number">10</span> + c-<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        c = <span class="built_in">getchar</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> a[Mn];  <span class="comment">//权值</span></span><br><span class="line"><span class="type">int</span> fa[Mn], sn[Mn][<span class="number">2</span>];  <span class="comment">//根结点, 左右子结点</span></span><br><span class="line"><span class="type">int</span> d[Mn];  <span class="comment">//距离</span></span><br><span class="line"><span class="type">bool</span> isd[Mn];   <span class="comment">//是否被删除</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> i,<span class="type">int</span> j)</span> </span>&#123;    <span class="comment">//合并</span></span><br><span class="line">    <span class="keyword">if</span>(i==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(a[i]&gt;a[j] || (a[i]==a[j] &amp;&amp; i&gt;j)) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(i,j);</span><br><span class="line">    &#125;</span><br><span class="line">    sn[i][<span class="number">1</span>] = <span class="built_in">merge</span>(j,sn[i][<span class="number">1</span>]);</span><br><span class="line">    fa[sn[i][<span class="number">1</span>]] = i;</span><br><span class="line">    <span class="keyword">if</span>(d[sn[i][<span class="number">0</span>]]&lt;d[sn[i][<span class="number">1</span>]]) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(sn[i][<span class="number">0</span>],sn[i][<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    d[i] = d[sn[i][<span class="number">1</span>]] + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;   <span class="comment">//找根(用到了路径压缩)</span></span><br><span class="line">    <span class="keyword">return</span> fa[x] == <span class="number">0</span> ? x : fa[x] = <span class="built_in">find</span>(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    <span class="built_in">qrd</span>(n), <span class="built_in">qrd</span>(m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="built_in">i</span>(<span class="number">1</span>);i&lt;=n;++i) &#123;</span><br><span class="line">        <span class="built_in">qrd</span>(a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(m--) &#123;</span><br><span class="line">        <span class="type">int</span> o;</span><br><span class="line">        <span class="built_in">qrd</span>(o);</span><br><span class="line">        <span class="keyword">if</span>(o==<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="type">int</span> x,y;</span><br><span class="line">            <span class="built_in">qrd</span>(x), <span class="built_in">qrd</span>(y);</span><br><span class="line">            <span class="keyword">if</span>(!isd[x]&amp;&amp;!isd[y]) &#123;</span><br><span class="line">                <span class="type">int</span> rx = <span class="built_in">find</span>(x);</span><br><span class="line">                <span class="type">int</span> ry = <span class="built_in">find</span>(y);</span><br><span class="line">                <span class="keyword">if</span>(rx!=ry) &#123;    <span class="comment">//只有当两个数不在同一堆里才合并</span></span><br><span class="line">                    <span class="built_in">merge</span>(rx,ry);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">int</span> x;</span><br><span class="line">            <span class="built_in">qrd</span>(x);</span><br><span class="line">            <span class="keyword">if</span>(isd[x]) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;-1\n&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="type">int</span> rx = <span class="built_in">find</span>(x);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,a[rx]);</span><br><span class="line">                isd[rx] = <span class="literal">true</span>;</span><br><span class="line">                fa[sn[rx][<span class="number">0</span>]] = fa[sn[rx][<span class="number">1</span>]] = <span class="number">0</span>;</span><br><span class="line">                fa[rx] = <span class="built_in">merge</span>(sn[rx][<span class="number">0</span>],sn[rx][<span class="number">1</span>]);    <span class="comment">//将rx的根指向合并后的新根</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+    </div>
 
+    
+    
+    
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
-
-
-
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/tags/%E5%8F%AF%E5%B9%B6%E5%A0%86/" rel="tag"># 可并堆</a>
+          </div>
 
         
 
-
-
-
-
-
-
-        
-      </div>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/20/luogu3293/" rel="prev" title="(luogu3293)美味(SCOI2016)">
+                  <i class="fa fa-angle-left"></i> (luogu3293)美味(SCOI2016)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/06/luogu2572/" rel="next" title="(luogu2572)序列操作[SCOI2010]">
+                  (luogu2572)序列操作[SCOI2010] <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
+  </article>
+</div>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
 
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">AjiL</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
+    </div>
+  </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
 
-
-
-
-
-
-
-
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
 
 
 
@@ -766,40 +397,12 @@
 
 
 
-
   
 
-  
-
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"></script>
-  
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
-  
-
-  
 
 </body>
 </html>
